@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android ui practice kotlin</string>
+    <string name="KotlinUI">Kotlin UI Design</string>
 </resources>
