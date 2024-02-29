@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">android ui practice kotlin</string>
     <string name="KotlinUI">Kotlin UI Design</string>
+    <string name="title_activity_google_maps">GoogleMaps</string>
+    <string name="viewgroupimage">this is viewgroup in Android</string>
+    <string name="intents">Intents</string>
+    <string name="text_view_and_edit_text">Text View and Edit text</string>
 </resources>
