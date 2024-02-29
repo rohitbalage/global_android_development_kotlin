@@ -63,7 +63,13 @@
                 android:id="@+id/explicitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Explicit intent" />
+                android:text="@string/explicit_intent" />
+
+            <Button
+                android:id="@+id/googleImplicit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/google_implicit_intent" />
 
 
         </LinearLayout>

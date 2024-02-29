@@ -20,6 +20,12 @@ class uiComponents : AppCompatActivity() {
 
         val edittext : EditText = findViewById(R.id.implicitIntentText)
 
+        val goTogoogleBtn : Button = findViewById(R.id.googleImplicit)
+
+
+
+        // IMPLICIT INTENT
+
         implicitBtn.setOnClickListener()
         {
         // Implicit Intent
@@ -33,6 +39,9 @@ class uiComponents : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        // EXPLICT  INTENT
+
         explicitBtn.setOnClickListener()
         {
         // Explicit Intent
@@ -43,6 +52,16 @@ class uiComponents : AppCompatActivity() {
             startActivity(i)
 
         }
+
+        // GOOGLE IMPLICIT
+
+        goTogoogleBtn.setOnClickListener()
+        {
+           intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse("https://google.com"))
+            startActivity(intent)
+        }
+
 
     }
 

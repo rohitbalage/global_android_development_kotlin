@@ -5,4 +5,6 @@
     <string name="viewgroupimage">this is viewgroup in Android</string>
     <string name="intents">Intents</string>
     <string name="text_view_and_edit_text">Text View and Edit text</string>
+    <string name="explicit_intent">Explicit intent</string>
+    <string name="google_implicit_intent">Google Implicit intent</string>
 </resources>
