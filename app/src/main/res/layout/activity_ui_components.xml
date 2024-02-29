@@ -84,6 +84,13 @@
                 android:layout_height="wrap_content"
                 android:text="Generate Random No" />
 
+            <Button
+                android:id="@+id/shareBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="shareData"
+                android:text="Share button" />
+
 
         </LinearLayout>
     </ScrollView>

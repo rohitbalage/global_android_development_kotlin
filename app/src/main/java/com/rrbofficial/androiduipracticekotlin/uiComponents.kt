@@ -28,6 +28,8 @@ class uiComponents : AppCompatActivity() {
 
         val randomTxt : TextView = findViewById(R.id.randomNumber)
 
+        val shareBtn : Button = findViewById(R.id.shareBtn)
+
 
         // IMPLICIT INTENT
 
@@ -75,6 +77,13 @@ class uiComponents : AppCompatActivity() {
             randomTxt.text = random.toString()
         }
 
+        shareBtn.setOnClickListener()
+        {
+
+            val str = edittext.text.toString()
+            val random : Int = generateRandomNum()
+            shareData(str,random)
+        }
 
     }
 
@@ -91,5 +100,13 @@ class uiComponents : AppCompatActivity() {
             startActivity(intent)
 
         }
+    }
+
+    fun shareData(name: String, randomnum: Int) {
+        // Implicit intent
+        var i = Intent(Intent.ACTION_SEND)
+        i.putExtra(Intent.EXTRA_SUBJECT, "$name is luck today!")
+        i.putExtra(Intent.EXTRA_TEXT,"His random no is $randomnum")
+        startActivity(i)
     }
 }
