@@ -71,6 +71,19 @@
                 android:layout_height="wrap_content"
                 android:text="@string/google_implicit_intent" />
 
+            <TextView
+                android:id="@+id/randomNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="I will be random no" />
+
+            <Button
+                android:id="@+id/randomNumberBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Generate Random No" />
+
 
         </LinearLayout>
     </ScrollView>

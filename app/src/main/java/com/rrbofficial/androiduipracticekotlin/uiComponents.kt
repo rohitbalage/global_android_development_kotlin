@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import kotlin.random.Random
 
 class uiComponents : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +24,9 @@ class uiComponents : AppCompatActivity() {
 
         val goTogoogleBtn : Button = findViewById(R.id.googleImplicit)
 
+        val randomBtn: Button = findViewById(R.id.randomNumberBtn)
+
+        val randomTxt : TextView = findViewById(R.id.randomNumber)
 
 
         // IMPLICIT INTENT
@@ -63,6 +68,19 @@ class uiComponents : AppCompatActivity() {
         }
 
 
+        randomBtn.setOnClickListener()
+        {
+            val random : Int = generateRandomNum()
+
+            randomTxt.text = random.toString()
+        }
+
+
+    }
+
+    private fun generateRandomNum(): Int {
+       var random =  Random.nextInt(1000)
+        return random
     }
 
     fun GoToTextAndEditText(view: View) {
