@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.content.Intent
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +22,29 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+    }
+
+
+    // All About Android Activity Life cycle
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(this,"onStart() is callled" , Toast.LENGTH_LONG).show()
+
+    }
+
+    override fun onResume() {
+        Toast.makeText(this,"onResume() is callled" , Toast.LENGTH_LONG).show()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Toast.makeText(this,"onPause() is callled" , Toast.LENGTH_LONG).show()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this,"onDestroy() is callled" , Toast.LENGTH_LONG).show()
     }
 
 }

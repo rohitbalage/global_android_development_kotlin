@@ -29,7 +29,6 @@ class UItextAndEditText : AppCompatActivity() {
             Toast.LENGTH_LONG)
             .show()
 
-
         }
 
     }
