@@ -7,4 +7,24 @@
     <string name="text_view_and_edit_text">Text View and Edit text</string>
     <string name="explicit_intent">Explicit intent</string>
     <string name="google_implicit_intent">Google Implicit intent</string>
+    <string name="jetpackCompose">Android Jetpack</string>
+    <string name="data_binding">Data Binding</string>
+    <string name="view_model">View Model</string>
+    <string name="live_data">Live Data</string>
+    <string name="mvvm_and_room">MVVM and Room</string>
+    <string name="depenedency_injection">Depenedency Injection</string>
+    <string name="apis">APIs</string>
+    <string name="databases">Databases</string>
+    <string name="jetpackcompose">JetpackCompose</string>
+    <string name="kotlin_coroutines">Kotlin Coroutines</string>
+    <string name="ui_components">UI Components</string>
+    <string name="api_designs">API Designs</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="volley">Volley</string>
+    <string name="mysql">MYSQL</string>
+    <string name="ktor">Ktor</string>
+    <string name="json_parsing">JSON Parsing</string>
+    <string name="usd">USD</string>
+    <string name="gbp">GBP</string>
+    <string name="nzd">NZD</string>
 </resources>

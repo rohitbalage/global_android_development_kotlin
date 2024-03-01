@@ -21,76 +21,71 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/amaranth"
+            android:text="@string/KotlinUI"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/KotlinUI"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
-
-    <Button
-        android:id="@+id/uicomponents"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="UI Components"
-        android:onClick="goToUIComponents"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.05" />
+        <Button
+            android:id="@+id/uicomponents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            android:backgroundTint="#8BC34A"
+            android:onClick="goToUIComponents"
+            android:text="@string/ui_components" />
 
     <Button
         android:id="@+id/Kotlincoroutines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kotlin Coroutines"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.078" />
+        android:text="@string/kotlin_coroutines"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/amaranth"
+        app:cornerRadius="10dp"
+        android:onClick="goToKotlinCoroutines"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
         <Button
             android:id="@+id/JetpackCompose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="JetpackCompose"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.078" />
+            android:text="@string/jetpackcompose"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            android:onClick="gotToJetpackCompose"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
         <Button
-            android:id="@+id/Retrofit"
+            android:id="@+id/APisbtn"
+            android:onClick="goToAPi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retrofit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.078" />
+            android:backgroundTintMode="add"
+            android:fontFamily="@font/amaranth"
+            app:cornerRadius="10dp"
+            android:text="@string/apis" />
 
         <Button
             android:id="@+id/databases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Databases"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.078" />
+            android:text="@string/databases"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            android:onClick="goToDatabases"
+           />
 
     </LinearLayout>
 </ScrollView>

@@ -36,26 +36,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/text_view_and_edit_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
-                android:onClick="GoToTextAndEditText"
-                app:layout_constraintVertical_bias="0.05" />
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
+               />
 
             <EditText
+                android:layout_marginTop="10dp"
                 android:id="@+id/implicitIntentText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Implicit intent"
                 android:ems="10"
+                android:fontFamily="@font/amaranth"
+                android:background="#E3F4CF"
                 android:inputType="text"
                  />
 
             <Button
                 android:id="@+id/implicitBtn"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
                 android:text="@string/intents" />
 
 
@@ -63,25 +66,34 @@
                 android:id="@+id/explicitBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
                 android:text="@string/explicit_intent" />
 
             <Button
                 android:id="@+id/googleImplicit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
                 android:text="@string/google_implicit_intent" />
 
             <TextView
                 android:id="@+id/randomNumber"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:fontFamily="@font/amaranth"
                 android:text="I will be random no" />
 
             <Button
                 android:id="@+id/randomNumberBtn"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
                 android:text="Generate Random No" />
 
             <Button
@@ -89,6 +101,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="shareData"
+
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
                 android:text="Share button" />
 
 
