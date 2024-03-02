@@ -114,6 +114,20 @@ class Firebase : AppCompatActivity() {
         }
 
 
+
+
+        // Update and delete documents
+
+        db.collection("Users").
+        document("user1")
+            .update("born", "1965")
+
+
+        // for deleting the document:
+//        db.collection("Users").
+//        document("user1")
+//            .delete()
+
 // SAMPLE CODE  TO TEST FIREBASE CONNECTIVITY
 //        // Real time database reference
 //    // this the reference to our database https://androiduipracticekotlin-default-rtdb.firebaseio.com/
