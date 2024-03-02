@@ -27,4 +27,8 @@
     <string name="usd">USD</string>
     <string name="gbp">GBP</string>
     <string name="nzd">NZD</string>
+    <string name="share_app">Share App</string>
+    <string name="share_whatsapp">share whatsapp</string>
+    <string name="firebase">Firebase</string>
+    <string name="mango_db">MANGO DB</string>
 </resources>

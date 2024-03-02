@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.content.Intent
+import android.view.Menu
 import android.widget.Toast
 import com.google.android.gms.common.api.Api
 
@@ -63,7 +64,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToDatabases(view: View) {
-
+        val intent = Intent(this, Databases::class.java)
+        startActivity(intent)
 
     }
 
@@ -74,3 +76,6 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
+

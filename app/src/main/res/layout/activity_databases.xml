@@ -1,9 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+
+    android:layout_height="wrap_content"
     tools:context=".Databases">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollview"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/databaseshead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/amaranth"
+                android:text="@string/databases"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/FirebaseBTN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTintMode="add"
+                app:cornerRadius="10dp"
+                android:fontFamily="@font/amaranth"
+                android:backgroundTint="#8BC34A"
+                android:onClick="goToFirebase"
+                android:text="@string/firebase" />
+
+            <Button
+                android:id="@+id/MYSQLBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mysql"
+                android:backgroundTintMode="add"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
+                android:onClick="goToMYSQL"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+            <Button
+                android:id="@+id/MangoDBBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mango_db"
+                android:backgroundTintMode="add"
+                android:fontFamily="@font/amaranth"
+                app:cornerRadius="10dp"
+                android:onClick="goToMangoDB"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
