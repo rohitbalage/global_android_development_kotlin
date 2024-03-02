@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 import com.google.firebase.firestore.firestore
+import org.w3c.dom.Document
 
 class Firebase : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ class Firebase : AppCompatActivity() {
 
         val textView: TextView = findViewById(R.id.fireTextView)
 
+
+        val firestoretextView: TextView = findViewById(R.id.firestoretext)
         // Reference to our database
         database = Firebase.database.reference
 
@@ -78,6 +81,21 @@ class Firebase : AppCompatActivity() {
 
         users_collection.document("user1").set(user1)
         users_collection.document("user2").set(user1)
+
+
+        // Receive documents from firestore
+
+        val docReference = db.collection("Users").document("user1")
+        docReference.get().addOnSuccessListener { document ->
+            if(document !=null)
+            {
+            firestoretextView.text = "${document.data?.get("name")}"
+
+            }
+
+        }
+
+
 
 
 // SAMPLE CODE  TO TEST FIREBASE CONNECTIVITY
