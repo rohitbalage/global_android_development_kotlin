@@ -2,6 +2,7 @@ package com.rrbofficial.androiduipracticekotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
@@ -29,8 +30,8 @@ class Firebase : AppCompatActivity() {
         database = Firebase.database.reference
 
         // Writing custom objects to firebase
-        val user2 = User("Rohit", "123456")
-        database.child("Users").setValue(user2)
+        val user = User("Rohit", "123456")
+        database.child("Users").setValue(user)
 
         // Reading custom objects from Firebase
 
@@ -69,7 +70,7 @@ class Firebase : AppCompatActivity() {
             "born"  to "1992"
         )
 
-        val user3 = hashMapOf(
+        val user2 = hashMapOf(
             "name" to "rohit",
             "lname" to "balage",
             "born"  to "1992"
@@ -80,22 +81,37 @@ class Firebase : AppCompatActivity() {
         // Adding Documents to Collection
 
         users_collection.document("user1").set(user1)
-        users_collection.document("user2").set(user1)
+        users_collection.document("user2").set(user2)
 
 
         // Receive documents from firestore
+//        val docReference = db.collection("Users").document("user1")
+//
+//       // Getting specific data from Document
+//        docReference.get().addOnSuccessListener { document ->
+//            if(document !=null)
+//            {
+//            firestoretextView.text = "${document.data?.get("name")}"
+//
+//            }
+//
+//        }
 
-        val docReference = db.collection("Users").document("user1")
-        docReference.get().addOnSuccessListener { document ->
-            if(document !=null)
+
+        // Getting all documents from collection:
+
+      var allDocuments :  String = ""
+
+        db.collection("Users").get().addOnSuccessListener {
+            result ->
+
+            for(document in result)
             {
-            firestoretextView.text = "${document.data?.get("name")}"
-
+                Log.i("TAGY", "${document.data}")
+                allDocuments += "${document.data} \n"
             }
-
+            firestoretextView.text = ""+allDocuments
         }
-
-
 
 
 // SAMPLE CODE  TO TEST FIREBASE CONNECTIVITY
