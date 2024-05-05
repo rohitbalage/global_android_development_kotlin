@@ -1,8 +1,10 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
@@ -18,14 +20,32 @@ import org.w3c.dom.Document
 class Firebase : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
+
+    private  lateinit var  goToAuth : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase)
 
         val textView: TextView = findViewById(R.id.fireTextView)
 
+        // Go to Auth
+       goToAuth = findViewById(R.id.goToFirebaseAuth)
+       /*** Go to AUTH SECTION**/
 
+       goToAuth.setOnClickListener()
+       {
+           // Create an intent to start the new activity
+           val intent = Intent(this, Firebase_signup::class.java)
+           // Start the new activity
+           startActivity(intent)
+       }
+
+
+       /****/
         val firestoretextView: TextView = findViewById(R.id.firestoretext)
+
+
+
         // Reference to our database
         database = Firebase.database.reference
 

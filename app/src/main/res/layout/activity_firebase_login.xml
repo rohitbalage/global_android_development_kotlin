@@ -2,58 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Firebase">
+    tools:context=".firebase_login">
 
-    <TextView
-        android:id="@+id/fireTextView"
+    <EditText
+        android:id="@+id/editTextEmailAddressLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="20sp"
+        android:ems="10"
+        android:hint="@string/emailenterhint"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintVertical_bias="0.371" />
 
-    <TextView
-        android:id="@+id/firebasehedaliine"
+    <EditText
+        android:id="@+id/editTextPasswordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FIREBASE APP"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/fireTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
-
-    <TextView
-        android:id="@+id/firestoretext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="30sp"
+        android:ems="10"
+        android:hint="@string/passwordhint"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fireTextView"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/goToFirebaseAuth"
+        android:id="@+id/btn_loginfirebase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/goToFirebaseAuth"
+        android:text="@string/btnlogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintVertical_bias="0.696" />
+
+    <TextView
+        android:id="@+id/firebaselogintxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/firebaselogintxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.206" />
 </androidx.constraintlayout.widget.ConstraintLayout>

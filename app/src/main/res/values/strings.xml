@@ -31,4 +31,23 @@
     <string name="share_whatsapp">share whatsapp</string>
     <string name="firebase">Firebase</string>
     <string name="mango_db">MANGO DB</string>
+    <string name="Login">Log in</string>
+    <string name="SignIn">Sign In</string>
+    <string name="goToFirebaseAuth">GO to Auth</string>
+    <string name="btn_signout">Sign out</string>
+    <string name="btnlogin">Log in</string>
+    <string name="firebaselogintxt">Firebase Login</string>
+    <string name="emailenterhint">Enter your email here</string>
+    <string name="passwordhint">Enter your password here</string>
+    <string name="skills">enter your skills</string>
+    <string name="degreeedittxt">enter your degree</string>
+    <string name="submitFirebaseUserdata">Submit Data</string>
+    <string name="Firebaseuserdatatxtheadline">Firebase User data</string>
+    <string name="userskillstxt">User Skills</string>
+    <string name="userdegreetxt">User degree</string>
+    <string name="currentuseremail">current user email</string>
+    <string name="edtskillshint">enter your skills</string>
+    <string name="signoutbtn">sign out</string>
+    <string name="updateuserdata">update data</string>
+    <string name="edtskills">enter your skills</string>
 </resources>
