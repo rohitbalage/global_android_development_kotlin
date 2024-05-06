@@ -7,10 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".Firebase_userdata">
 
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Firebase User Data"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/imageViewProfile"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_below="@id/textViewTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:src="@drawable/profilepic" />
@@ -24,25 +36,47 @@
         android:layout_marginTop="16dp"
         android:text="Update Profile Picture" />
 
-    <EditText
-        android:id="@+id/editTextSkills"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewSkills"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonUpdateProfilePicture"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:text="Skills"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextSkills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewSkills"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:hint="Skills" />
+        android:hint="Enter your skills..." />
+
+    <TextView
+        android:id="@+id/textViewEducation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextSkills"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Education"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextEducation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextSkills"
+        android:layout_below="@id/textViewEducation"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:hint="Education" />
+        android:hint="Enter your education..." />
 
     <Button
         android:id="@+id/buttonUpdateUserData"
@@ -51,6 +85,7 @@
         android:layout_below="@id/editTextEducation"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-        android:text="Update User Data" />
+        android:text="Update User Data"
+        android:textStyle="bold" />
 
 </RelativeLayout>
