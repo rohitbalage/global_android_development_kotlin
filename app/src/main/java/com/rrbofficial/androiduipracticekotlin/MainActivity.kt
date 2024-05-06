@@ -18,33 +18,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        fun goToUIComponents(view: View) {
 
+            val buttonClick = findViewById<Button>(R.id.uicomponents)
+            buttonClick.setOnClickListener {
+                val intent = Intent(this, uiComponents::class.java)
+                startActivity(intent)
 
-    }
-
-    fun goToUIComponents(view: View) {
-
-        val buttonClick = findViewById<Button>(R.id.uicomponents)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this, uiComponents::class.java)
-            startActivity(intent)
-
+            }
         }
-    }
-
-    // Declare the launcher at the top of your Activity/Fragment:
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission(),
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            // FCM SDK (and your app) can post notifications.
-        } else {
-            // TODO: Inform user that that your app will not show notifications.
-        }
-    }
 
 
-    // All About Android Activity Life cycle
+        // All About Android Activity Life cycle
 //    override fun onStart() {
 //        super.onStart()
 //        Toast.makeText(this,"onStart() is callled" , Toast.LENGTH_LONG).show()
@@ -66,28 +51,32 @@ class MainActivity : AppCompatActivity() {
 //        Toast.makeText(this,"onDestroy() is callled" , Toast.LENGTH_LONG).show()
 //    }
 
-    fun goToKotlinCoroutines(view: View) {
+        fun goToKotlinCoroutines(view: View) {
 
 
-    }
-    fun gotToJetpackCompose(view: View) {
-        val intent = Intent(this, jetpackCompose::class.java)
+        }
+
+        fun gotToJetpackCompose(view: View) {
+            val intent = Intent(this, jetpackCompose::class.java)
+            startActivity(intent)
+
+        }
+
+        fun goToDatabases(view: View) {
+            val intent = Intent(this, Databases::class.java)
+            startActivity(intent)
+
+        }
+
+        fun goToAPi(view: View) {
+            val intent = Intent(this, apis::class.java)
+            startActivity(intent)
+        }
+
+        fun goToMaps(view: View) {}
+        val intent = Intent(this, GoogleMaps::class.java)
         startActivity(intent)
-
     }
-
-    fun goToDatabases(view: View) {
-        val intent = Intent(this, Databases::class.java)
-        startActivity(intent)
-
-    }
-
-    fun goToAPi(view: View) {
-        val intent = Intent(this, apis::class.java)
-        startActivity(intent)
-    }
-
-
 }
 
 

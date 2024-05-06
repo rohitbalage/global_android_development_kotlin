@@ -88,6 +88,17 @@
             android:onClick="goToDatabases"
            />
 
+        <Button
+            android:id="@+id/googlemaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/google_maps"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            android:onClick="goToMaps"
+            />
+
     </LinearLayout>
 </ScrollView>
 </LinearLayout>

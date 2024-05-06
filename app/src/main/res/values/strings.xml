@@ -55,4 +55,5 @@
     <string name="firebase_in_app_messaging">Firebase in App Messaging</string>
     <string name="firebase_crash_analytics">Firebase Crash Analytics</string>
     <string name="firebase_cloud_messaging">Firebase Cloud Messaging</string>
+    <string name="google_maps">Google Maps</string>
 </resources>
