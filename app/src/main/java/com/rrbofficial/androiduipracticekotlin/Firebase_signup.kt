@@ -1,11 +1,15 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,12 +26,18 @@ class Firebase_signup : AppCompatActivity() {
     private lateinit var signInButton: Button
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
-    private lateinit var goToLogin : Button
+    private lateinit var goToLogin: Button
     private lateinit var progressBar: ProgressBar
     private lateinit var db: FirebaseFirestore
-   private  lateinit var  degreeEditText: EditText
-   private lateinit var skillsEditText: EditText
+    private lateinit var degreeEditText: EditText
+    private lateinit var skillsEditText: EditText
+    private lateinit var imageViewProfile: ImageView
+    private lateinit var buttonSelectPicture: Button
+    private var imageUri: Uri? = null
 
+    companion object {
+        private const val PICK_IMAGE_REQUEST = 1
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,17 +56,23 @@ class Firebase_signup : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         degreeEditText = findViewById(R.id.edtdegreetxt)
         skillsEditText = findViewById(R.id.edtskillstxt)
-
-
+        imageViewProfile = findViewById(R.id.imageViewProfile)
+        buttonSelectPicture = findViewById(R.id.buttonSelectPicture)
         progressBar.visibility = View.GONE
 
         signInButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
-            val degree= degreeEditText.text.toString()
+            val degree = degreeEditText.text.toString()
             val skills = skillsEditText.text.toString()
             signIn(email, password, degree, skills)
         }
+
+        buttonSelectPicture.setOnClickListener()
+        {
+            openImageChooser()
+        }
+
     }
 
     private fun signIn(email: String, password: String, degree: String, skills: String) {
@@ -108,15 +124,6 @@ class Firebase_signup : AppCompatActivity() {
             }
     }
 
-    private fun signOut() {
-        auth.signOut()
-        Toast.makeText(
-            baseContext,
-            "You are sign out",
-            Toast.LENGTH_SHORT,
-        ).show()
-
-    }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
@@ -129,4 +136,21 @@ class Firebase_signup : AppCompatActivity() {
 
         }
     }
+
+    private fun openImageChooser() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            imageUri = data.data
+            imageViewProfile.setImageURI(imageUri)
+        }
+    }
+
+
+
 }
