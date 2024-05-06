@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.view.Menu
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.Api
 
 class MainActivity : AppCompatActivity() {
@@ -18,8 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
     fun goToUIComponents(view: View) {
 
         val buttonClick = findViewById<Button>(R.id.uicomponents)
@@ -27,6 +29,17 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, uiComponents::class.java)
             startActivity(intent)
 
+        }
+    }
+
+    // Declare the launcher at the top of your Activity/Fragment:
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // FCM SDK (and your app) can post notifications.
+        } else {
+            // TODO: Inform user that that your app will not show notifications.
         }
     }
 

@@ -72,6 +72,9 @@ class Firebase : AppCompatActivity() {
 
 
 
+
+
+
         /********************FIREBASE FIRESTORE****************************/
 
         // Inititalize firiestore

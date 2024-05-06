@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/gradient_background"
     tools:context=".firebase_login">
 
     <TextView
@@ -27,6 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:hint="Email"
+        android:background="@drawable/gradient_background"
         android:inputType="textEmailAddress" />
 
     <EditText

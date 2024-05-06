@@ -7,18 +7,47 @@ import android.widget.Button
 import android.widget.Toast
 
 class apis : AppCompatActivity() {
+    private lateinit var retrofitbtn: Button
+    private lateinit var volleybtn: Button
+    private lateinit var ktorbtn: Button
+    private lateinit var jsonparsingbtn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apis)
 
 
-        val JsonPasingButton :Button = findViewById(R.id.JsonParsingBtn)
+        val jsonParsing :Button = findViewById(R.id.JsonParsingBtn)
+        val retrofitbtn :Button = findViewById(R.id.retrofitBtn)
+        val volleybtn :Button = findViewById(R.id.VolleyBtn)
+        val ktorbtn :Button = findViewById(R.id.ktorBtn)
 
 
-        JsonPasingButton.setOnClickListener()
+        retrofitbtn.setOnClickListener()
+        {
+            val intent = Intent(this, Retrofit::class.java)
+            startActivity(intent)
+        }
+
+
+        volleybtn.setOnClickListener()
+        {
+            val intent = Intent(this, Volley::class.java)
+            startActivity(intent)
+        }
+
+        jsonParsing.setOnClickListener()
         {
             val intent = Intent(this, JsonParsing::class.java)
             startActivity(intent)
         }
+
+        ktorbtn.setOnClickListener()
+        {
+            val intent = Intent(this, Ktor::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }

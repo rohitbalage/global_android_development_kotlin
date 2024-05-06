@@ -40,7 +40,7 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-            android:backgroundTint="#8BC34A"
+
             android:onClick="goToUIComponents"
             android:text="@string/ui_components" />
 

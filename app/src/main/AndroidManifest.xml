@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -15,19 +17,19 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".Ktor"
+            android:exported="false" />
+        <activity
+            android:name=".Volley"
+            android:exported="false" />
+        <activity
             android:name=".Firebase_userdata"
             android:exported="false" />
         <activity
             android:name=".Firebase_signup"
             android:exported="false" />
         <activity
-            android:name=".firebase_userdata"
-            android:exported="false" />
-        <activity
             android:name=".firebase_login"
-            android:exported="false" />
-        <activity
-            android:name=".FirebaseAuth"
             android:exported="false" />
         <activity
             android:name=".Firebase"

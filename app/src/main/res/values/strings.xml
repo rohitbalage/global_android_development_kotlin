@@ -33,7 +33,7 @@
     <string name="mango_db">MANGO DB</string>
     <string name="Login">Log in</string>
     <string name="SignIn">Sign In</string>
-    <string name="goToFirebaseAuth">GO to Auth</string>
+    <string name="goToFirebaseAuth">Firebase Authentication</string>
     <string name="btn_signout">Sign out</string>
     <string name="btnlogin">Log in</string>
     <string name="firebaselogintxt">Firebase Login</string>
@@ -50,4 +50,9 @@
     <string name="signoutbtn">sign out</string>
     <string name="updateuserdata">update data</string>
     <string name="edtskills">enter your skills</string>
+    <string name="firebase_app">FIREBASE APP</string>
+    <string name="firebase_analytics">Firebase Analytics</string>
+    <string name="firebase_in_app_messaging">Firebase in App Messaging</string>
+    <string name="firebase_crash_analytics">Firebase Crash Analytics</string>
+    <string name="firebase_cloud_messaging">Firebase Cloud Messaging</string>
 </resources>

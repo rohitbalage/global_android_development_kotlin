@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_background"
     android:padding="30dp"
-
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".Databases">
 
     <ScrollView
@@ -40,7 +40,6 @@
                 android:backgroundTintMode="add"
                 app:cornerRadius="10dp"
                 android:fontFamily="@font/amaranth"
-                android:backgroundTint="#8BC34A"
                 android:onClick="goToFirebase"
                 android:text="@string/firebase" />
 
