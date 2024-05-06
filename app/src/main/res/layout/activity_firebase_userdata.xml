@@ -1,107 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".firebase_userdata">
+    tools:context=".Firebase_userdata">
 
-    <TextView
-        android:id="@+id/useremail_firebaseuser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/currentuseremail"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
-
-    <TextView
-        android:id="@+id/firebaseheadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Firebaseuserdatatxtheadline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <EditText
-        android:id="@+id/edittextskills"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/skills"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.386" />
-
-    <EditText
-        android:id="@+id/edittextdegree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/degreeedittxt"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/profilepic" />
 
     <Button
-        android:id="@+id/btn_submit"
+        android:id="@+id/buttonUpdateProfilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/updateuserdata"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittextdegree" />
+        android:layout_below="@id/imageViewProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Update Profile Picture" />
 
-    <TextView
-        android:id="@+id/currentuserskills"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextSkills"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/userskillstxt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
+        android:layout_below="@id/buttonUpdateProfilePicture"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Skills" />
 
-    <TextView
-        android:id="@+id/currentuserdegree"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextEducation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/userdegreetxt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.283" />
+        android:layout_below="@id/editTextSkills"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:hint="Education" />
 
     <Button
-        android:id="@+id/btn_signoutuser"
+        android:id="@+id/buttonUpdateUserData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.925"
-        tools:text="@string/signoutbtn" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_below="@id/editTextEducation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Update User Data" />
+
+</RelativeLayout>

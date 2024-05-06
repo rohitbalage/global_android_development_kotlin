@@ -114,6 +114,9 @@ class Firebase_signup : AppCompatActivity() {
                                     userRef.set(userData)
                                         .addOnSuccessListener {
                                             Log.d("useraccount", "User data saved successfully")
+                                            // Navigate to Firebase_userdata activity
+                                            val intent = Intent(this, Firebase_userdata::class.java)
+                                            startActivity(intent)
                                         }
                                         .addOnFailureListener { e ->
                                             Log.w("userfailure", "Error saving user data", e)
