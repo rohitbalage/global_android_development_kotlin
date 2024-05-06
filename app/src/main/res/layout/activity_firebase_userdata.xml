@@ -88,4 +88,14 @@
         android:text="Update User Data"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/buttonSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonUpdateUserData"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Sign Out"
+        android:textStyle="bold" />
+
 </RelativeLayout>

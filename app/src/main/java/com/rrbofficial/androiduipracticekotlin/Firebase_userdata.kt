@@ -30,6 +30,7 @@ class Firebase_userdata : AppCompatActivity() {
     private lateinit var buttonUpdateUserData: Button
     private var imageUri: Uri? = null
     private val PICK_IMAGE_REQUEST = 1
+    private lateinit var buttonSignOut: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +45,19 @@ class Firebase_userdata : AppCompatActivity() {
         editTextSkills = findViewById(R.id.editTextSkills)
         editTextDegree = findViewById(R.id.editTextEducation)
         buttonUpdateUserData = findViewById(R.id.buttonUpdateUserData)
+        buttonSignOut = findViewById(R.id.buttonSignOut)
 
         // Load user data
         loadUserData()
 
         // change profile picture
-
         imageViewProfile.setOnClickListener {
             openImageChooser()
+        }
+
+        // Sign out button
+        buttonSignOut.setOnClickListener {
+            signOut()
         }
 
         // Button click listeners
@@ -136,4 +142,13 @@ class Firebase_userdata : AppCompatActivity() {
             Glide.with(this).load(imageUri).into(imageViewProfile)
         }
     }
+
+    private fun signOut() {
+        auth.signOut()
+        // Redirect to login activity after sign-out
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // Close the current activity to prevent back navigation
+    }
+
     }
