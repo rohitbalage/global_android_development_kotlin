@@ -16,57 +16,47 @@ import com.google.firebase.ktx.Firebase
 import kotlin.math.log
 
 class firebase_login : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
-    private lateinit var loginBtn: Button
-    private lateinit var emailedt: EditText
-    private lateinit var passedt: EditText
+    private lateinit var emailEditText: EditText
+    private lateinit var passwordEditText: EditText
+    private lateinit var loginButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_firebase_login)
 
+        auth = FirebaseAuth.getInstance()
 
-        // Initialize Firebase Auth
-        auth = com.google.firebase.ktx.Firebase.auth
+        emailEditText = findViewById(R.id.editTextEmail)
+        passwordEditText = findViewById(R.id.editTextPassword)
+        loginButton = findViewById(R.id.buttonLogin)
 
-        loginBtn = findViewById(R.id.btn_loginfirebase)
+        loginButton.setOnClickListener {
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
 
-        emailedt = findViewById(R.id.editTextEmailAddressLogin)
-        passedt = findViewById(R.id.editTextPasswordLogin)
-
-
-        // send this to login
-        var email = emailedt.text.toString()
-        var password = passedt.text.toString()
-
-
-        Log.d("Email", email)
-        Log.d("Password", email)
-
-        loginBtn.setOnClickListener()
-        {
-            login(email, password)
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                signIn(email, password)
+            } else {
+                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
-
-
-    private fun login(email: String, password: String) {
+    private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Login success, update UI with the signed-in user's information
-                    Log.d("login", "signInWithEmail:success")
+                    // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-                    val intent = Intent(this, firebase_userdata::class.java)
-                    startActivity(intent)
+                    Toast.makeText(this, "Authentication succeeded.", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, Firebase_userdata::class.java))
+                    finish()
                 } else {
-                    // If login fails, display a message to the user.
-                    Log.w("login", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
     }

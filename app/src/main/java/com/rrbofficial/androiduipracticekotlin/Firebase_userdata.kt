@@ -48,14 +48,18 @@ class Firebase_userdata : AppCompatActivity() {
         // Load user data
         loadUserData()
 
+        // change profile picture
+
+        imageViewProfile.setOnClickListener {
+            openImageChooser()
+        }
+
         // Button click listeners
         buttonUpdateUserData.setOnClickListener {
             updateUserData()
         }
 
-        imageViewProfile.setOnClickListener {
-            openImageChooser()
-        }
+
     }
     private fun loadUserData() {
         val userId = auth.currentUser?.uid

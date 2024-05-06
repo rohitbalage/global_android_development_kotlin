@@ -74,6 +74,12 @@ class Firebase_signup : AppCompatActivity() {
             openImageChooser()
         }
 
+        goToLogin.setOnClickListener()
+        {
+            val intent = Intent(this, firebase_login::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun signIn(email: String, password: String, degree: String, skills: String, imageUri: Uri?) {
