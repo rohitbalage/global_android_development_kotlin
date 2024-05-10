@@ -92,15 +92,6 @@ class uiComponents : AppCompatActivity() {
         return random
     }
 
-    fun GoToTextAndEditText(view: View) {
-
-        val buttonClick = findViewById<Button>(R.id.textviewandedit)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this, UItextAndEditText::class.java)
-            startActivity(intent)
-
-        }
-    }
 
     fun shareData(name: String, randomnum: Int) {
         // Implicit intent
@@ -108,5 +99,10 @@ class uiComponents : AppCompatActivity() {
         i.putExtra(Intent.EXTRA_SUBJECT, "$name is luck today!")
         i.putExtra(Intent.EXTRA_TEXT,"His random no is $randomnum")
         startActivity(i)
+    }
+
+    fun goToAndroidUIWidgets(view: View) {
+        val intent = Intent(this, AndroidUIWidgets::class.java)
+        startActivity(intent)
     }
 }

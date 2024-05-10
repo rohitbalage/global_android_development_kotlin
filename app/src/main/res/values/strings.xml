@@ -56,4 +56,10 @@
     <string name="firebase_crash_analytics">Firebase Crash Analytics</string>
     <string name="firebase_cloud_messaging">Firebase Cloud Messaging</string>
     <string name="google_maps">Google Maps</string>
+    <string name="android_ui_widgets">Android UI widgets</string>
+    <string name="button_in_android_ui">Button in Android UI</string>
+    <string name="submit_radio_buttons">Submit Radio Buttons</string>
+    <string name="submit_checkboxes">Submit Checkboxes</string>
+    <string name="submit_rating_bar">submit Rating Bar</string>
+    <string name="checked_textview">Checked TextView</string>
 </resources>

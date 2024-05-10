@@ -40,8 +40,6 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-
-            android:onClick="goToUIComponents"
             android:text="@string/ui_components" />
 
     <Button
@@ -52,7 +50,6 @@
         android:backgroundTintMode="add"
         android:fontFamily="@font/amaranth"
         app:cornerRadius="10dp"
-        android:onClick="goToKotlinCoroutines"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
         <Button
@@ -63,7 +60,6 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-            android:onClick="gotToJetpackCompose"
             app:layout_constraintTop_toBottomOf="@+id/button" />
 
 
@@ -85,7 +81,6 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-            android:onClick="goToDatabases"
            />
 
         <Button
@@ -96,7 +91,6 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-            android:onClick="goToMaps"
             />
 
     </LinearLayout>

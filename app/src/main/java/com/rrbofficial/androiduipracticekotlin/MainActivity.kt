@@ -14,19 +14,55 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.Api
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fun goToUIComponents(view: View) {
+            val uicomponents = findViewById<Button>(R.id.uicomponents)
+            val kotlinCoroutines = findViewById<Button>(R.id.Kotlincoroutines)
+            val jetpackCompose = findViewById<Button>(R.id.JetpackCompose)
+            val apis = findViewById<Button>(R.id.APisbtn)
+            val databases = findViewById<Button>(R.id.databases)
+            val googleMapsgo = findViewById<Button>(R.id.googlemaps)
 
-            val buttonClick = findViewById<Button>(R.id.uicomponents)
-            buttonClick.setOnClickListener {
+
+            kotlinCoroutines.setOnClickListener()
+            {
+                val intent = Intent(this, kotlinCoroutines::class.java)
+                startActivity(intent)
+            }
+
+           jetpackCompose.setOnClickListener()
+           {
+               val intent = Intent(this, jetpackCompose::class.java)
+               startActivity(intent)
+           }
+
+            googleMapsgo.setOnClickListener()
+            {
+                val intent = Intent(this, GoogleMaps::class.java)
+                startActivity(intent)
+            }
+
+            apis.setOnClickListener()
+            {
+                val intent = Intent(this, apis::class.java)
+                startActivity(intent)
+            }
+
+            databases.setOnClickListener()
+            {
+                val intent = Intent(this, Databases::class.java)
+                startActivity(intent)
+            }
+
+            uicomponents.setOnClickListener {
                 val intent = Intent(this, uiComponents::class.java)
                 startActivity(intent)
-
             }
         }
+
 
 
         // All About Android Activity Life cycle
@@ -56,28 +92,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        fun gotToJetpackCompose(view: View) {
-            val intent = Intent(this, jetpackCompose::class.java)
-            startActivity(intent)
-
-        }
-
-        fun goToDatabases(view: View) {
-            val intent = Intent(this, Databases::class.java)
-            startActivity(intent)
-
-        }
-
-        fun goToAPi(view: View) {
-            val intent = Intent(this, apis::class.java)
-            startActivity(intent)
-        }
-
-        fun goToMaps(view: View) {}
-        val intent = Intent(this, GoogleMaps::class.java)
-        startActivity(intent)
     }
-}
 
 
 
