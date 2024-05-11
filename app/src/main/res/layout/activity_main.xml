@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
-    android:padding="30dp"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -88,6 +87,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/google_maps"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            />
+
+        <Button
+            android:id="@+id/fragments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fragments"
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"

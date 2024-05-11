@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             val apis = findViewById<Button>(R.id.APisbtn)
             val databases = findViewById<Button>(R.id.databases)
             val googleMapsgo = findViewById<Button>(R.id.googlemaps)
+            val Fragmentsgo = findViewById<Button>(R.id.fragments)
 
 
             kotlinCoroutines.setOnClickListener()
@@ -38,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                val intent = Intent(this, jetpackCompose::class.java)
                startActivity(intent)
            }
+
+            Fragmentsgo.setOnClickListener()
+            {
+                val intent = Intent(this, Fragments::class.java)
+                startActivity(intent)
+            }
 
             googleMapsgo.setOnClickListener()
             {
@@ -61,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, uiComponents::class.java)
                 startActivity(intent)
             }
+
         }
 
 

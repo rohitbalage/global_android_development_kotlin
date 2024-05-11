@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".Fragments"
+            android:exported="false" />
+        <activity
             android:name=".AndroidUIWidgets"
             android:exported="false" />
         <activity
