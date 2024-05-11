@@ -14,7 +14,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -76,7 +75,7 @@ class Firebase_signup : AppCompatActivity() {
 
         goToLogin.setOnClickListener()
         {
-            val intent = Intent(this, firebase_login::class.java)
+            val intent = Intent(this, Firebase_login::class.java)
             startActivity(intent)
         }
 

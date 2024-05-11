@@ -1,5 +1,6 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -35,8 +36,13 @@ class Fragments : AppCompatActivity() {
 
             val secondFragment = Fragment2()
             secondfragmentTransaction.replace(R.id.frame, secondFragment) // Use secondfragmentTransaction here
+
+            // Add the second fragment to the back stack
+            secondfragmentTransaction.addToBackStack(null)
+
             secondfragmentTransaction.commit()
         }
 
     }
+
 }

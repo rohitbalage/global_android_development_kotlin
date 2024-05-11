@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 
-class apis : AppCompatActivity() {
+class Apis : AppCompatActivity() {
     private lateinit var retrofitbtn: Button
     private lateinit var volleybtn: Button
     private lateinit var ktorbtn: Button
@@ -48,6 +47,10 @@ class apis : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
     }
 }

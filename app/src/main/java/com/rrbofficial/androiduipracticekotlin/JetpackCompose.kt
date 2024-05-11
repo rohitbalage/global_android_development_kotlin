@@ -3,10 +3,9 @@ package com.rrbofficial.androiduipracticekotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.view.View
 
-class jetpackCompose : AppCompatActivity() {
+class JetpackCompose : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jetpack_compose)
@@ -35,5 +34,11 @@ class jetpackCompose : AppCompatActivity() {
         val intent = Intent(this, ViewModel::class.java)
         startActivity(intent)
 
+    }
+
+    override fun onBackPressed() {
+            val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
     }
 }

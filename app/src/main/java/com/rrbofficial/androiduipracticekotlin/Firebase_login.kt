@@ -2,20 +2,14 @@ package com.rrbofficial.androiduipracticekotlin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlin.math.log
 
-class firebase_login : AppCompatActivity() {
+class Firebase_login : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var emailEditText: EditText

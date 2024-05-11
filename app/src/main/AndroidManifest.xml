@@ -35,7 +35,7 @@
             android:name=".Firebase_signup"
             android:exported="false" />
         <activity
-            android:name=".firebase_login"
+            android:name=".Firebase_login"
             android:exported="false" />
         <activity
             android:name=".Firebase"
@@ -47,7 +47,7 @@
             android:name=".Retrofit"
             android:exported="false" />
         <activity
-            android:name=".apis"
+            android:name=".Apis"
             android:exported="false" />
         <activity
             android:name=".Databinding"
@@ -68,13 +68,13 @@
             android:name=".Databases"
             android:exported="false" />
         <activity
-            android:name=".jetpackCompose"
+            android:name=".JetpackCompose"
             android:exported="false" />
         <activity
-            android:name=".explicitIntent"
+            android:name=".ExplicitIntent"
             android:exported="false" />
         <activity
-            android:name=".implicitIntent"
+            android:name=".ImplicitIntent"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -102,7 +102,7 @@
             android:name=".UItextAndEditText"
             android:exported="false" />
         <activity
-            android:name=".uiComponents"
+            android:name=".UIComponents"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

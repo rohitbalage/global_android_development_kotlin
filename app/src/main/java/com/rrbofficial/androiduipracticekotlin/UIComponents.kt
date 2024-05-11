@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import kotlin.random.Random
 
-class uiComponents : AppCompatActivity() {
+class UIComponents : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ui_components)
@@ -38,7 +38,7 @@ class uiComponents : AppCompatActivity() {
         // Implicit Intent
             val str = edittext.text.toString()
             // Create the Intent object of this class Context() to Second_activity class
-            val intent = Intent(applicationContext, implicitIntent::class.java)
+            val intent = Intent(applicationContext, ImplicitIntent::class.java)
             // now by putExtra method put the value in key, value pair key is
             // message_key by this key we will receive the value, and put the string
             intent.putExtra("value", str)
@@ -53,7 +53,7 @@ class uiComponents : AppCompatActivity() {
         {
         // Explicit Intent
             val str = edittext.text.toString()
-            var i :Intent = Intent(this,explicitIntent::class.java)
+            var i :Intent = Intent(this,ExplicitIntent::class.java)
             // Passing data:
             i.putExtra("value",str)
             startActivity(i)
@@ -104,5 +104,11 @@ class uiComponents : AppCompatActivity() {
     fun goToAndroidUIWidgets(view: View) {
         val intent = Intent(this, AndroidUIWidgets::class.java)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
     }
 }

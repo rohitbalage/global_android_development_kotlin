@@ -3,9 +3,8 @@ package com.rrbofficial.androiduipracticekotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 
-class implicitIntent : AppCompatActivity() {
+class ImplicitIntent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_implicit_intent)
