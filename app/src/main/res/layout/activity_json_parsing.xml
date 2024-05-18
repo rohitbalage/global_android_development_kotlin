@@ -1,92 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
- xmlns:tools="http://schemas.android.com/tools"
-    android:padding="20dp"
-    android:background="@drawable/gradient_background"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".JsonParsing">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center"
-       android:gravity="center"
-        android:backgroundTintMode="multiply"
-        android:background="@color/white"
         android:padding="20dp"
-        android:layout_height="wrap_content">
+        android:background="@drawable/gradient_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".JsonParsing">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:backgroundTintMode="multiply"
+            android:background="@color/white"
+            android:padding="20dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/lastupdated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rocknroll_one"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/baseCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AUD: 1.00"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/rocknroll_one"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/usd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/usd"
+                android:fontFamily="@font/rocknroll_one"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/nzd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nzd"
+                android:textStyle="bold"
+                android:fontFamily="@font/rocknroll_one"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/gbp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/rocknroll_one"
+                android:layout_marginTop="20dp"
+                android:text="@string/gbp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/lastupdated"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/rocknroll_one"
-            android:text="TextView" />
+            android:text="The Above data is loaded from API \n" />
 
-    <TextView
-        android:id="@+id/baseCurrency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AUD: 1.00"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/rocknroll_one"
-        android:layout_marginTop="20dp"
-      />
-
-    <TextView
-        android:id="@+id/usd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/usd"
-        android:fontFamily="@font/rocknroll_one"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-    />
-
-    <TextView
-        android:id="@+id/nzd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nzd"
-        android:textStyle="bold"
-        android:fontFamily="@font/rocknroll_one"
-        android:layout_marginTop="20dp"
-       />
-
-    <TextView
-        android:id="@+id/gbp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:fontFamily="@font/rocknroll_one"
-        android:layout_marginTop="20dp"
-        android:text="@string/gbp" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fontFamily="@font/federant"
+            android:text="https://open.er-api.com/v6/latest/aud"
+            android:textColor="#E91E63"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/rocknroll_one"
-        android:text="The Above data is loaded from API \n"
-        android:layout_height="wrap_content"> </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:fontFamily="@font/federant"
-        android:text="https://open.er-api.com/v6/latest/aud"
-        android:textColor="#E91E63"
-        android:textSize="20sp"
-        android:textStyle="bold">
-
-    </TextView>
-</LinearLayout>
+</layout>

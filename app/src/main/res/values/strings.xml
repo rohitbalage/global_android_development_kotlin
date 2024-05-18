@@ -66,4 +66,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragments">Fragments</string>
     <string name="replacesecondfragment">Replace second fragment</string>
+    <string name="animations">Animations</string>
 </resources>

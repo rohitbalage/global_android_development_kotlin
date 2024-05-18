@@ -4,96 +4,95 @@ import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.content.Intent
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
+import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val gotouicomponents = findViewById<Button>(R.id.uicomponents)
-        val kotlinCoroutines = findViewById<Button>(R.id.Kotlincoroutines)
-        val gotojetpackCompose = findViewById<Button>(R.id.JetpackCompose)
-        val gotoapis = findViewById<Button>(R.id.APisbtn)
-        val databases = findViewById<Button>(R.id.databases)
-        val googleMapsgo = findViewById<Button>(R.id.googlemaps)
-        val Fragmentsgo = findViewById<Button>(R.id.fragments)
+        // Data binding initialization
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-
-        kotlinCoroutines.setOnClickListener()
-        {
-
-        }
-
-        gotojetpackCompose.setOnClickListener()
-        {
-            val intent = Intent(this, Fragments::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        Fragmentsgo.setOnClickListener()
-        {
-            val intent = Intent(this, Fragments::class.java)
-            startActivity(intent)
-        }
-
-        googleMapsgo.setOnClickListener()
-        {
-            val intent = Intent(this, GoogleMaps::class.java)
-            startActivity(intent)
-
-        }
-
-        gotoapis.setOnClickListener()
-        {
-            val intent = Intent(this, Apis::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        databases.setOnClickListener()
-        {
-            val intent = Intent(this, Databases::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        gotouicomponents.setOnClickListener {
-            val intent = Intent(this, UIComponents::class.java)
-            startActivity(intent)
-            finish()
-        }
-
+        // Set click listeners for all buttons using binding object
+        binding.uicomponents.setOnClickListener(this)
+        binding.Kotlincoroutines.setOnClickListener(this)
+        binding.JetpackCompose.setOnClickListener(this)
+        binding.APisbtn.setOnClickListener(this)
+        binding.databases.setOnClickListener(this)
+        binding.googlemaps.setOnClickListener(this)
+        binding.fragments.setOnClickListener(this)
 
         // All About Android Activity Life cycle
-//    override fun onStart() {
-//        super.onStart()
-//        Toast.makeText(this,"onStart() is callled" , Toast.LENGTH_LONG).show()
-//
-//    }
-//
-//    override fun onResume() {
-//        Toast.makeText(this,"onResume() is callled" , Toast.LENGTH_LONG).show()
-//        super.onResume()
-//    }
-//
-//    override fun onPause() {
-//        Toast.makeText(this,"onPause() is callled" , Toast.LENGTH_LONG).show()
-//        super.onPause()
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Toast.makeText(this,"onDestroy() is callled" , Toast.LENGTH_LONG).show()
-//    }
+        // override fun onStart() {
+        //     super.onStart()
+        //     Toast.makeText(this,"onStart() is callled" , Toast.LENGTH_LONG).show()
+        // }
 
-        fun goToKotlinCoroutines(view: View) {
+        // override fun onResume() {
+        //     Toast.makeText(this,"onResume() is callled" , Toast.LENGTH_LONG).show()
+        //     super.onResume()
+        // }
 
+        // override fun onPause() {
+        //     Toast.makeText(this,"onPause() is callled" , Toast.LENGTH_LONG).show()
+        //     super.onPause()
+        // }
 
+        // override fun onDestroy() {
+        //     super.onDestroy()
+        //     Toast.makeText(this,"onDestroy() is callled" , Toast.LENGTH_LONG).show()
+        // }
+
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.uicomponents -> {
+                val intent = Intent(this, UIComponents::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.Kotlincoroutines -> {
+                // Your logic for Kotlin Coroutines button
+            }
+            R.id.JetpackCompose -> {
+                val intent = Intent(this, Fragments::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.fragments -> {
+                val intent = Intent(this, Fragments::class.java)
+                startActivity(intent)
+            }
+            R.id.googlemaps -> {
+                val intent = Intent(this, GoogleMaps::class.java)
+                startActivity(intent)
+            }
+            R.id.APisbtn -> {
+                val intent = Intent(this, Apis::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.databases -> {
+                val intent = Intent(this, Databases::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.Kotlincoroutines-> {
+                val intent = Intent(this,KotlinCoroutines::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.GotoAnimations-> {
+                val intent = Intent(this, Animations::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
@@ -133,8 +132,3 @@ class MainActivity : AppCompatActivity() {
         dialog.show()
     }
 }
-
-
-
-
-

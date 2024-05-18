@@ -14,7 +14,6 @@ class JsonParsing : AppCompatActivity() {
    private  lateinit var binding : ActivityJsonParsingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_json_parsing)
         binding = ActivityJsonParsingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
