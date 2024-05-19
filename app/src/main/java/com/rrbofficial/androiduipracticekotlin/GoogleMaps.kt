@@ -1,5 +1,4 @@
 package com.rrbofficial.androiduipracticekotlin
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -9,11 +8,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 
 class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
+    private lateinit var map: GoogleMap
     private lateinit var binding: ActivityGoogleMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +38,17 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
+        map = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val cleveland = LatLng(41.49878830382801, -81.67565041048111)
+        map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
+        map.moveCamera(CameraUpdateFactory.newLatLng(cleveland))
+        map.uiSettings.apply {
+
+            isZoomControlsEnabled = true
+            isMyLocationButtonEnabled = true
+
+        }
     }
 }
