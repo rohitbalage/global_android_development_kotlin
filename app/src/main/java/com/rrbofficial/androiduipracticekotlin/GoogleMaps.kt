@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
+import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 
 class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
@@ -22,6 +23,8 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
 
     private  val typeAndStyle by lazy {TypeAndStyle()}
+
+    private   val cameraAndViewport by lazy { CameraAndViewport() }
 
     private lateinit var binding: ActivityGoogleMapsBinding
 
@@ -59,7 +62,8 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Cleveland and move the camera
         val cleveland = LatLng(41.49878830382801, -81.67565041048111)
         map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
+//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
+        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
         map.uiSettings.apply {
             // Zoom controls enabled
             isZoomControlsEnabled = true
