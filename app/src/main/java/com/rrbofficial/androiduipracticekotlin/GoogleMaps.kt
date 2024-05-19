@@ -15,10 +15,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
+import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 
 class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
+
+    private  val typeAndStyle by lazy {TypeAndStyle()}
+
     private lateinit var binding: ActivityGoogleMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,27 +49,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     // Enable menu click events
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.normal_map -> {
-                map.mapType = GoogleMap.MAP_TYPE_NORMAL
-            }
-
-            R.id.hybrid_map -> {
-                map.mapType = GoogleMap.MAP_TYPE_HYBRID
-            }
-
-            R.id.satellite_map -> {
-                map.mapType = GoogleMap.MAP_TYPE_SATELLITE
-            }
-
-            R.id.terrain_map -> {
-                map.mapType = GoogleMap.MAP_TYPE_TERRAIN
-            }
-
-            R.id.none_map -> {
-                map.mapType = GoogleMap.MAP_TYPE_NONE
-            }
-        }
+        typeAndStyle.setMapType(item,map)
         return true
     }
 
@@ -92,26 +76,6 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //        map.setPadding(0, 0, 300, 0)
 
         // Set map style
-        setMapStyle(map)
+      typeAndStyle.setMapStyle(map, this)
     }
-
-    // style of map
-
-    private fun setMapStyle(googleMap: GoogleMap) {
-        try {
-            val success = googleMap.setMapStyle(
-                MapStyleOptions.loadRawResourceStyle(
-                    this,
-                    R.raw.aubergine_style
-                )
-            )
-            if (!success) {
-                Log.d("Maps", "failed to set map style")
-            }
-        }
-            catch (e: Exception) {
-                Log.d("Maps", e.toString())
-            }
-        }
-
-    }
+}
