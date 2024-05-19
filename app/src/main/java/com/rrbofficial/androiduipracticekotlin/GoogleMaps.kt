@@ -1,6 +1,10 @@
 package com.rrbofficial.androiduipracticekotlin
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,33 +26,64 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityGoogleMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set up the toolbar
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    // Enable menu item in map
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.map_types_menu, menu)
+        return true
+    }
+
+    // Enable menu click events
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.normal_map -> {
+                map.mapType = GoogleMap.MAP_TYPE_NORMAL
+            }
+            R.id.hybrid_map -> {
+                map.mapType = GoogleMap.MAP_TYPE_HYBRID
+            }
+            R.id.satellite_map -> {
+                map.mapType = GoogleMap.MAP_TYPE_SATELLITE
+            }
+            R.id.terrain_map -> {
+                map.mapType = GoogleMap.MAP_TYPE_TERRAIN
+            }
+            R.id.none_map -> {
+                map.mapType = GoogleMap.MAP_TYPE_NONE
+            }
+        }
+        return true
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Cleveland and move the camera
         val cleveland = LatLng(41.49878830382801, -81.67565041048111)
         map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
-        map.moveCamera(CameraUpdateFactory.newLatLng(cleveland))
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
         map.uiSettings.apply {
-
+            // Zoom controls enabled
             isZoomControlsEnabled = true
-            isMyLocationButtonEnabled = true
-
+            // My location button enabled
+            isMyLocationButtonEnabled = false
+            // Scroll gestures enabled
+            isScrollGesturesEnabled = true
+            // Rotation enabled
+            isRotateGesturesEnabled = false
+            // Show map icon
+            isMapToolbarEnabled = true
         }
+        // Set padding
+//        map.setPadding(0, 0, 300, 0)
     }
 }

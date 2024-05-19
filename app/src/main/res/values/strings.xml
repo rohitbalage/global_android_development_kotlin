@@ -67,4 +67,9 @@
     <string name="fragments">Fragments</string>
     <string name="replacesecondfragment">Replace second fragment</string>
     <string name="animations">Animations</string>
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrian">Terrian</string>
+    <string name="none">None</string>
 </resources>
