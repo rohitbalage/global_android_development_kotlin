@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,6 +18,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
@@ -81,5 +84,15 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         // Set map style
       typeAndStyle.setMapStyle(map, this)
+
+//        // mim zoom preference
+//        map.setMinZoomPreference(15f)
+//        map.setMaxZoomPreference(17f)
+
+    lifecycleScope.launch {
+        // zoom in by 3f values after the map launches and after 2 seconds
+        delay(2000)
+        map.moveCamera(CameraUpdateFactory.zoomBy(3f))
+    }
     }
 }
