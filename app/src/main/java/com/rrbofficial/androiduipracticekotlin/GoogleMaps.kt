@@ -113,16 +113,29 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //            delay(4000)
 //            map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f)) }
 
-        // load map with exact boundries  of the city
+//         load map with exact boundries  of the city  (in bounds of melbourne)
         lifecycleScope.launch {
             delay(4000)
             map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100)) }
+
+
+        // use center of the bounds:
+//        lifecycleScope.launch {
+//            delay(4000)
+//            map.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.melbourneBounds.center,10f)) }
+
+
 
         // zoom in by 3f values after the map launches and after 2 seconds
 //    lifecycleScope.launch {
 //        delay(2000)
 //        map.moveCamera(CameraUpdateFactory.zoomBy(3f))
 //    }
+
+
+        // Restrict move map
+
+        map.setLatLngBoundsForCameraTarget(cameraAndViewport.melbourneBounds)
 
     }
 }
