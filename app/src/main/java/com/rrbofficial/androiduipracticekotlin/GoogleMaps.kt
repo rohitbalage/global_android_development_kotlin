@@ -64,9 +64,18 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Cleveland and move the camera
         val cleveland = LatLng(41.49878830382801, -81.67565041048111)
+
+        val newYork = LatLng(40.7128, -74.0060)
+
         map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
-        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
+
+        // Set camera position and zoom when map is loaded
+
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
+//        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
+
+
+       // Apply map settings
         map.uiSettings.apply {
             // Zoom controls enabled
             isZoomControlsEnabled = true
@@ -79,20 +88,29 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
             // Show map icon
             isMapToolbarEnabled = true
         }
-        // Set padding
+        // Set padding for plus minus buttons
 //        map.setPadding(0, 0, 300, 0)
 
-        // Set map style
-      typeAndStyle.setMapStyle(map, this)
+//        // Set map style
+//      typeAndStyle.setMapStyle(map, this)
 
-//        // mim zoom preference
+       // mim zoom preference
 //        map.setMinZoomPreference(15f)
 //        map.setMaxZoomPreference(17f)
+
+
+        // life cycle scope  // MOVE CAMERA AFTER FEW SECONDS
+
+       lifecycleScope.launch {
+           delay(4000)
+           map.moveCamera(CameraUpdateFactory.newLatLng(newYork)) }
+
 
     lifecycleScope.launch {
         // zoom in by 3f values after the map launches and after 2 seconds
         delay(2000)
         map.moveCamera(CameraUpdateFactory.zoomBy(3f))
     }
+
     }
 }
