@@ -16,6 +16,6 @@ class CameraAndViewport {
 
 
     // Bounds for Melbourne
-    val melbourneBounds = LatLngBounds(LatLng(-37.8136, 144.9631),  // SW Corner
-        LatLng(-37.8038, 144.9772))  // NE Corner
+    val melbourneBounds = LatLngBounds(LatLng(-38.348953437875444, 144.4007792355346),  // SW Corner
+        LatLng(-37.33825456045081, 145.3208841750595) ) // NE Corner
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 
@@ -69,10 +70,17 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
 
-        // Set camera position and zoom when map is loaded
 
+        // set the camera position by animating the camera to the location
+//        map.animateCamera(CameraUpdateFactory.newLatLng(cleveland),4000,null)
+
+        // Set camera position and zoom when map is loaded
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
+
+        // set the location by moving the camera to boundary
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
+
+
 
 
        // Apply map settings
@@ -100,42 +108,57 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //        map.setMaxZoomPreference(17f)
 
 
-        // Move Camera after few seconds
 
-//       lifecycleScope.launch {
-//           delay(4000)
-//           map.moveCamera(CameraUpdateFactory.newLatLng(newYork)) }
-
-
-
-        // Move Camera by scrolling after few seconds
-//        lifecycleScope.launch {
-//            delay(4000)
-//            map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f)) }
-
-//         load map with exact boundries  of the city  (in bounds of melbourne)
         lifecycleScope.launch {
+
+
+            // Move Camera after few seconds
             delay(4000)
-            map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100)) }
+
+            // set the location by animating the camera to cleveland inside all bounds
+//            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,null)
+
+            // adding callback
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,object : GoogleMap.CancelableCallback{
+                override fun onFinish() {
+                   Toast.makeText(this@GoogleMaps,"onFinish",Toast.LENGTH_SHORT).show()
+                }
+                override fun onCancel() {
+                    Toast.makeText(this@GoogleMaps,"onCancle",Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            // Move Camera after few seconds
+//              map.moveCamera(CameraUpdateFactory.newLatLng(newYork))
+
+            // Move Camera by scrolling after few seconds
+            // map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f))
 
 
-        // use center of the bounds:
-//        lifecycleScope.launch {
-//            delay(4000)
-//            map.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.melbourneBounds.center,10f)) }
+            // use center of the bounds:
+          //  map.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.melbourneBounds.center,10f))
+
+            // zoom in by 3f values after the map launches and after 2 seconds
+            // map.moveCamera(CameraUpdateFactory.zoomBy(3f))
+
+            //  load map with exact boundaries  of the city  (in bounds of melbourne)
+//            map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100))
+
+            // Animate camera to melbourne
+//            map.animateCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100),2000,null)
+
+            // Animate camera to zoom inside cleveland
+//            map.animateCamera(CameraUpdateFactory.zoomTo(15f),2000,null)
 
 
+            // Animate camera near cleveland  by scrolling to right
+//            map.animateCamera(CameraUpdateFactory.scrollBy(200f,0f),2000,null)
 
-        // zoom in by 3f values after the map launches and after 2 seconds
-//    lifecycleScope.launch {
-//        delay(2000)
-//        map.moveCamera(CameraUpdateFactory.zoomBy(3f))
-//    }
+        }
 
+        // Restrict map movement
+//        map.setLatLngBoundsForCameraTarget(cameraAndViewport.melbourneBounds)
 
-        // Restrict move map
-
-        map.setLatLngBoundsForCameraTarget(cameraAndViewport.melbourneBounds)
 
     }
 }

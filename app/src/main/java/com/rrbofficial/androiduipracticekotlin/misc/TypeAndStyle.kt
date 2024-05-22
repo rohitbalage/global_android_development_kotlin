@@ -13,7 +13,7 @@ class TypeAndStyle {
             val success = googleMap.setMapStyle(
                 MapStyleOptions.loadRawResourceStyle(
                     context,
-                    R.raw.aubergine_style
+                    R.raw.dark_style
                 )
             )
             if (!success) {
