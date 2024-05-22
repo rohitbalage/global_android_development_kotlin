@@ -88,36 +88,41 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
             // Show map icon
             isMapToolbarEnabled = true
         }
+
         // Set padding for plus minus buttons
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
 //      typeAndStyle.setMapStyle(map, this)
 
-       // mim zoom preference
+       // Mim - Max zoom preference
 //        map.setMinZoomPreference(15f)
 //        map.setMaxZoomPreference(17f)
 
 
-        // life cycle scope  // MOVE CAMERA AFTER FEW SECONDS
+        // Move Camera after few seconds
 
 //       lifecycleScope.launch {
 //           delay(4000)
 //           map.moveCamera(CameraUpdateFactory.newLatLng(newYork)) }
 
 
-        // MOVE CAMERA AFTER FEW SECONDS  BY SCROLL BY
 
+        // Move Camera by scrolling after few seconds
+//        lifecycleScope.launch {
+//            delay(4000)
+//            map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f)) }
+
+        // load map with exact boundries  of the city
         lifecycleScope.launch {
             delay(4000)
-            map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f)) }
+            map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100)) }
 
-
-    lifecycleScope.launch {
         // zoom in by 3f values after the map launches and after 2 seconds
-        delay(2000)
-        map.moveCamera(CameraUpdateFactory.zoomBy(3f))
-    }
+//    lifecycleScope.launch {
+//        delay(2000)
+//        map.moveCamera(CameraUpdateFactory.zoomBy(3f))
+//    }
 
     }
 }
