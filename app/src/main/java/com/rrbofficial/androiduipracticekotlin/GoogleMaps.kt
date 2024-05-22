@@ -101,9 +101,16 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         // life cycle scope  // MOVE CAMERA AFTER FEW SECONDS
 
-       lifecycleScope.launch {
-           delay(4000)
-           map.moveCamera(CameraUpdateFactory.newLatLng(newYork)) }
+//       lifecycleScope.launch {
+//           delay(4000)
+//           map.moveCamera(CameraUpdateFactory.newLatLng(newYork)) }
+
+
+        // MOVE CAMERA AFTER FEW SECONDS  BY SCROLL BY
+
+        lifecycleScope.launch {
+            delay(4000)
+            map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f)) }
 
 
     lifecycleScope.launch {
