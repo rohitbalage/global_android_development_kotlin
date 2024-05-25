@@ -68,7 +68,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         val newYork = LatLng(40.7128, -74.0060)
 
-        map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
+     val clevelandMarker =   map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
 
 
         // set the camera position by animating the camera to the location
@@ -107,9 +107,14 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
 
 //        lifecycleScope.launch {
-//            // Move Camera after few seconds
+//            //delay seconds for the following operations
 //            delay(4000)
 //
+                //  marker remove after 4 seconds
+
+               //  clevelandMarker?.remove()
+
+
 //            // set the location by animating the camera to cleveland inside all bounds
 ////            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,null)
 //
