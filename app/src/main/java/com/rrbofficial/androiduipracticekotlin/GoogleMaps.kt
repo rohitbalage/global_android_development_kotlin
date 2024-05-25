@@ -1,5 +1,9 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +11,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
@@ -23,7 +31,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener {
 
     private lateinit var map: GoogleMap
 
@@ -69,25 +77,44 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
         val newYork = LatLng(40.7128, -74.0060)
 
-        val clevelandMarker =
-            map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland").draggable(true))
 
-        clevelandMarker?.tag = "Cleveland city"
+        /* By this: Customized marker color to yellowgreen  .icon(BitmapDescriptorFactory.defaultMarker(134f)) hsl color link:: https://www.w3schools.com/colors/colors_hsl.asp
+         or color from BitmapDescriptorFactory ::   .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+
+        */
+
+        /*
+        *  How to create a drawable marker::
+        *
+        *
+        *
+        * */
+
+        val clevelandMarker = map.addMarker(
+            MarkerOptions()
+                .position(cleveland)
+                .title("Marker in Cleveland")
+                .icon(fromVectorToBitmap(R.drawable.baseline_accessibility_24, Color.parseColor("#07E4F2"), 200, 200)) // Adjust width and height as needed
+        )
+
+
+        // set tag for marker
+//        clevelandMarker?.tag = "Cleveland city"
 
 
         // set the camera position by animating the camera to the location
 //        map.animateCamera(CameraUpdateFactory.newLatLng(cleveland),4000,null)
 
         // Set camera position and zoom when map is loaded
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
+//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(cleveland, 10f))
 
         // set the location by moving the camera to boundary
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
 
-        // set on marker click listener
-//        map.setOnMarkerClickListener(this)
+        // set on marker click listener here first
+        map.setOnMarkerClickListener(this)
 
-        // set on marker drag listener
+        // set on marker drag listener here first
         map.setOnMarkerDragListener(this)
 
 
@@ -96,12 +123,12 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
             // Zoom controls enabled
             isZoomControlsEnabled = true
             // My location button enabled
-//            isMyLocationButtonEnabled = false
-//            // Scroll gestures enabled
-//            isScrollGesturesEnabled = true
-//            // Rotation enabled
-//            isRotateGesturesEnabled = false
-            // Show map icon
+            isMyLocationButtonEnabled = false
+            // Scroll gestures enabled
+            isScrollGesturesEnabled = true
+            // Rotation enabled
+            isRotateGesturesEnabled = false
+//             Show map icon
             isMapToolbarEnabled = true
         }
 
@@ -109,7 +136,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-      typeAndStyle.setMapStyle(map, this)
+        typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
 //        map.setMinZoomPreference(10f)
@@ -126,7 +153,11 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
 
 //            // set the location by animating the camera to cleveland inside all bounds
-////            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,null)
+        map.animateCamera(
+            CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),
+            2000,
+            null
+        )
 //
 //            // adding callback
 //            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,object : GoogleMap.CancelableCallback{
@@ -158,7 +189,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 ////            map.animateCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100),2000,null)
 //
 //            // Animate camera to zoom inside cleveland
-////            map.animateCamera(CameraUpdateFactory.zoomTo(15f),2000,null)
+//            map.animateCamera(CameraUpdateFactory.zoomTo(15f),2000,null)
 //
 //
 //            // Animate camera near cleveland  by scrolling to right
@@ -169,54 +200,78 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
         // Restrict map movement
 //        map.setLatLngBoundsForCameraTarget(cameraAndViewport.melbourneBounds)
 
-
-        // Set click listeners
-//        onMapClicked()
-//        onMapLongClicked()
+//
+//         Set click listeners
+        onMapClicked()
+        onMapLongClicked()
     }
 
     // single and long click listener
 
-//    private fun onMapClicked() {
-//        map.setOnMapClickListener {
-//            Toast.makeText(this, " Single Clicked", Toast.LENGTH_SHORT).show()
-//        }
-//    }
-//
-//    private fun onMapLongClicked() {
-//        map.setOnMapLongClickListener {
-//            Toast.makeText(
-//                this,
-//                "The coordinate is ${it.latitude} ${it.longitude}",
-//                Toast.LENGTH_SHORT
-//            ).show()
-//            map.addMarker(MarkerOptions().position(it).title(" New Marker"))
-//        }
-//
-//    }
+    private fun onMapClicked() {
+        map.setOnMapClickListener {
+            Toast.makeText(this, " Single Clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onMapLongClicked() {
+        map.setOnMapLongClickListener {
+            Toast.makeText(
+                this,
+                "The coordinate is ${it.latitude} ${it.longitude}",
+                Toast.LENGTH_SHORT
+            ).show()
+            map.addMarker(MarkerOptions().position(it).title(" New Marker"))
+        }
+
+    }
 
 
+    //     Marker click listener :: NEED TO Override Main function: GoogleMap.OnMarkerClickListener of GoogleMap
+    override fun onMarkerClick(marker: Marker): Boolean {
+        Toast.makeText(
+            this,
+            "Cleveland clicked",
+            Toast.LENGTH_SHORT
+        ).show()
+        return true
+    }
 
-    // Marker click listener :: NEED TO Override Main function: GoogleMap.OnMarkerClickListener of GoogleMap
-//    override fun onMarkerClick(marker: Marker): Boolean {
-//        Toast.makeText(
-//            this,
-//            "Cleveland clicked",
-//            Toast.LENGTH_SHORT
-//        ).show()
-//        return true
-//    }
 
+    // functions for marker drag listener:: NEED TO Override Main function: GoogleMap.OnMarkerDragListener of GoogleMap
     override fun onMarkerDrag(p0: Marker) {
-      Log.d("MarkerDrag","Dragged")
+        Log.d("MarkerDrag", "Dragged")
     }
 
     override fun onMarkerDragEnd(p0: Marker) {
-        Log.d("MarkerDrag","Drag here start ${p0.position}")
+        Log.d("MarkerDrag", "Drag here start ${p0.position}")
     }
 
     override fun onMarkerDragStart(p0: Marker) {
-        Log.d("MarkerDrag","Drag ends here ${p0.position}")
+        Log.d("MarkerDrag", "Drag ends here ${p0.position}")
     }
 
+
+    // Converting Customized Vector to Bitmap:
+
+    private fun fromVectorToBitmap(id: Int, color: Int, width: Int, height: Int): BitmapDescriptor {
+        val vectorDrawable: Drawable? = ResourcesCompat.getDrawable(resources, id, null)
+        if (vectorDrawable == null) {
+            Log.d("MapsActivity", "Resource not found")
+            return BitmapDescriptorFactory.defaultMarker()
+        }
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
+        DrawableCompat.setTint(vectorDrawable, color)
+        vectorDrawable.draw(canvas)
+
+        // Resize the bitmap to the desired width and height
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height, false)
+        return BitmapDescriptorFactory.fromBitmap(resizedBitmap)
+    }
 }
