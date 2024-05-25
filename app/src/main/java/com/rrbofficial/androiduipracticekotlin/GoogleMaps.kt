@@ -93,6 +93,17 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
         )
         *
         *
+        *
+        *  Image marker in Map::
+         val clevelandMarker = map.addMarker(
+            MarkerOptions()
+                .position(cleveland)
+                .title("Marker in Cleveland")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.carpixelicon)
+                )) // Adjust width and height as needed
+        *
+        *
+        *
         * */
 
 
@@ -100,7 +111,12 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
             MarkerOptions()
                 .position(cleveland)
                 .title("Marker in Cleveland")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.carpixelicon))) // Adjust width and height as needed
+                .alpha(0.5f)  // Adjust visibility of marker
+                .rotation(90f)// Adjust rotation of marker
+                .flat(true) // Adjust flatness of marker | means marker is rotated as soon as user try to rotate map
+        )
+
+
 
 
         // set tag for marker
