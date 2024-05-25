@@ -31,7 +31,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
 
@@ -128,6 +128,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         val boston = LatLng(42.3144474,-71.0526843)
 
         val newYork = LatLng(40.7128, -74.0060)
+
+
+
 
 
         /* By this: Customized marker color to yellowgreen  .icon(BitmapDescriptorFactory.defaultMarker(134f)) hsl color link:: https://www.w3schools.com/colors/colors_hsl.asp
@@ -333,6 +336,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
 
 
+        // set customInfo marker adapter
+        map.setInfoWindowAdapter(CustomInfoAdapter(this))
+
 
         // set tag for marker
 //        clevelandMarker?.tag = "Cleveland city"
@@ -348,7 +354,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
 
         // set on marker click listener here first
-//        map.setOnMarkerClickListener(this)
+        map.setOnMarkerClickListener(this)
 
         // set on marker drag listener here first
         map.setOnMarkerDragListener(this)
@@ -438,7 +444,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
 //
 //         Set click listeners
-        onMapClicked()
+//        onMapClicked()
         onMapLongClicked()
     }
 
@@ -464,14 +470,24 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
 
     //     Marker click listener :: NEED TO Override Main function: GoogleMap.OnMarkerClickListener of GoogleMap
-//    override fun onMarkerClick(marker: Marker): Boolean {
+    override fun onMarkerClick(marker: Marker): Boolean {
+
+
+        // show animate camera to zoom in when click marker
+        map.animateCamera(CameraUpdateFactory.zoomTo(17f),2000,null)
+
+        marker.showInfoWindow()
+
+        // show info window
+
+        // to add a toast message on marker clicked
 //        Toast.makeText(
 //            this,
 //            "Cleveland clicked",
 //            Toast.LENGTH_SHORT
 //        ).show()
-//        return true
-//    }
+        return true
+    }
 
 
     // functions for marker drag listener:: NEED TO Override Main function: GoogleMap.OnMarkerDragListener of GoogleMap
