@@ -75,6 +75,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
         // Add a marker in Cleveland and move the camera
         val cleveland = LatLng(41.49878830382801, -81.67565041048111)
 
+        val akron = LatLng(41.0844671,-81.5953782,)
+
+        val washingtondc = LatLng(38.8938592, -77.0969764)
+
         val newYork = LatLng(40.7128, -74.0060)
 
 
@@ -103,6 +107,17 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
                 )) // Adjust width and height as needed
         *
         *
+        * // Add rotation, visibility, flatness to the map
+        *
+        *  val clevelandMarker = map.addMarker(
+            MarkerOptions()
+                .position(cleveland)
+                .title("Marker in Cleveland")
+                .alpha(0.5f)  // Adjust visibility of marker
+                .rotation(90f)// Adjust rotation of marker
+                .flat(true) // Adjust flatness of marker | means marker is rotated as soon as user try to rotate map
+        )
+        *
         *
         * */
 
@@ -111,11 +126,21 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
             MarkerOptions()
                 .position(cleveland)
                 .title("Marker in Cleveland")
-                .alpha(0.5f)  // Adjust visibility of marker
-                .rotation(90f)// Adjust rotation of marker
-                .flat(true) // Adjust flatness of marker | means marker is rotated as soon as user try to rotate map
+                .zIndex(1f)
         )
 
+        val akronMarker = map.addMarker(
+            MarkerOptions()
+                .position(akron)
+                .title("Marker in Akron")")
+        )
+
+
+        val washingtonMarker = map.addMarker(
+            MarkerOptions()
+                .position(washingtondc)
+                .title("Marker in Washington")
+        )
 
 
 
@@ -273,26 +298,5 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
     }
 
 
-    // Converting Customized Vector to Bitmap:
 
-    private fun fromVectorToBitmap(id: Int, color: Int, width: Int, height: Int): BitmapDescriptor {
-        val vectorDrawable: Drawable? = ResourcesCompat.getDrawable(resources, id, null)
-        if (vectorDrawable == null) {
-            Log.d("MapsActivity", "Resource not found")
-            return BitmapDescriptorFactory.defaultMarker()
-        }
-        val bitmap = Bitmap.createBitmap(
-            vectorDrawable.intrinsicWidth,
-            vectorDrawable.intrinsicHeight,
-            Bitmap.Config.ARGB_8888
-        )
-        val canvas = Canvas(bitmap)
-        vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
-        DrawableCompat.setTint(vectorDrawable, color)
-        vectorDrawable.draw(canvas)
-
-        // Resize the bitmap to the desired width and height
-        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height, false)
-        return BitmapDescriptorFactory.fromBitmap(resizedBitmap)
-    }
 }
