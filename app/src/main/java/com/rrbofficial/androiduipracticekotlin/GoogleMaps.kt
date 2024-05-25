@@ -23,7 +23,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
     private lateinit var map: GoogleMap
 
@@ -70,7 +70,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
         val newYork = LatLng(40.7128, -74.0060)
 
         val clevelandMarker =
-            map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
+            map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland").draggable(true))
 
         clevelandMarker?.tag = "Cleveland city"
 
@@ -85,8 +85,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
 
         // set on marker click listener
+//        map.setOnMarkerClickListener(this)
 
-    map.setOnMarkerClickListener(this)
+        // set on marker drag listener
+        map.setOnMarkerDragListener(this)
 
 
         // Apply map settings
@@ -94,11 +96,11 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
             // Zoom controls enabled
             isZoomControlsEnabled = true
             // My location button enabled
-            isMyLocationButtonEnabled = false
-            // Scroll gestures enabled
-            isScrollGesturesEnabled = false
-            // Rotation enabled
-            isRotateGesturesEnabled = false
+//            isMyLocationButtonEnabled = false
+//            // Scroll gestures enabled
+//            isScrollGesturesEnabled = true
+//            // Rotation enabled
+//            isRotateGesturesEnabled = false
             // Show map icon
             isMapToolbarEnabled = true
         }
@@ -107,10 +109,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-//      typeAndStyle.setMapStyle(map, this)
+      typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
-        map.setMinZoomPreference(10f)
+//        map.setMinZoomPreference(10f)
 //        map.setMaxZoomPreference(17f)
 
 
@@ -169,37 +171,52 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCl
 
 
         // Set click listeners
-        onMapClicked()
-        onMapLongClicked()
+//        onMapClicked()
+//        onMapLongClicked()
     }
 
     // single and long click listener
 
-    private fun onMapClicked() {
-        map.setOnMapClickListener {
-            Toast.makeText(this, " Single Clicked", Toast.LENGTH_SHORT).show()
-        }
+//    private fun onMapClicked() {
+//        map.setOnMapClickListener {
+//            Toast.makeText(this, " Single Clicked", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun onMapLongClicked() {
+//        map.setOnMapLongClickListener {
+//            Toast.makeText(
+//                this,
+//                "The coordinate is ${it.latitude} ${it.longitude}",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//            map.addMarker(MarkerOptions().position(it).title(" New Marker"))
+//        }
+//
+//    }
+
+
+
+    // Marker click listener :: NEED TO Override Main function: GoogleMap.OnMarkerClickListener of GoogleMap
+//    override fun onMarkerClick(marker: Marker): Boolean {
+//        Toast.makeText(
+//            this,
+//            "Cleveland clicked",
+//            Toast.LENGTH_SHORT
+//        ).show()
+//        return true
+//    }
+
+    override fun onMarkerDrag(p0: Marker) {
+      Log.d("MarkerDrag","Dragged")
     }
 
-    private fun onMapLongClicked() {
-        map.setOnMapLongClickListener {
-            Toast.makeText(
-                this,
-                "The coordinate is ${it.latitude} ${it.longitude}",
-                Toast.LENGTH_SHORT
-            ).show()
-            map.addMarker(MarkerOptions().position(it).title(" New Marker"))
-        }
-
+    override fun onMarkerDragEnd(p0: Marker) {
+        Log.d("MarkerDrag","Drag here start ${p0.position}")
     }
 
-    override fun onMarkerClick(marker: Marker): Boolean {
-        Toast.makeText(
-            this,
-            "Cleveland clicked",
-            Toast.LENGTH_SHORT
-        ).show()
-        return true
+    override fun onMarkerDragStart(p0: Marker) {
+        Log.d("MarkerDrag","Drag ends here ${p0.position}")
     }
 
 }
