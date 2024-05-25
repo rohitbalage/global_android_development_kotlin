@@ -26,9 +26,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
 
-    private  val typeAndStyle by lazy {TypeAndStyle()}
+    private val typeAndStyle by lazy { TypeAndStyle() }
 
-    private   val cameraAndViewport by lazy { CameraAndViewport() }
+    private val cameraAndViewport by lazy { CameraAndViewport() }
 
     private lateinit var binding: ActivityGoogleMapsBinding
 
@@ -56,7 +56,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     // Enable menu click events
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        typeAndStyle.setMapType(item,map)
+        typeAndStyle.setMapType(item, map)
         return true
     }
 
@@ -81,9 +81,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
 
 
-
-
-       // Apply map settings
+        // Apply map settings
         map.uiSettings.apply {
             // Zoom controls enabled
             isZoomControlsEnabled = true
@@ -103,62 +101,77 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //        // Set map style
 //      typeAndStyle.setMapStyle(map, this)
 
-       // Mim - Max zoom preference
+        // Mim - Max zoom preference
 //        map.setMinZoomPreference(15f)
 //        map.setMaxZoomPreference(17f)
 
 
-
-        lifecycleScope.launch {
-
-
-            // Move Camera after few seconds
-            delay(4000)
-
-            // set the location by animating the camera to cleveland inside all bounds
-//            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,null)
-
-            // adding callback
-            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,object : GoogleMap.CancelableCallback{
-                override fun onFinish() {
-                   Toast.makeText(this@GoogleMaps,"onFinish",Toast.LENGTH_SHORT).show()
-                }
-                override fun onCancel() {
-                    Toast.makeText(this@GoogleMaps,"onCancle",Toast.LENGTH_SHORT).show()
-                }
-            })
-
-            // Move Camera after few seconds
-//              map.moveCamera(CameraUpdateFactory.newLatLng(newYork))
-
-            // Move Camera by scrolling after few seconds
-            // map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f))
-
-
-            // use center of the bounds:
-          //  map.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.melbourneBounds.center,10f))
-
-            // zoom in by 3f values after the map launches and after 2 seconds
-            // map.moveCamera(CameraUpdateFactory.zoomBy(3f))
-
-            //  load map with exact boundaries  of the city  (in bounds of melbourne)
-//            map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100))
-
-            // Animate camera to melbourne
-//            map.animateCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100),2000,null)
-
-            // Animate camera to zoom inside cleveland
-//            map.animateCamera(CameraUpdateFactory.zoomTo(15f),2000,null)
-
-
-            // Animate camera near cleveland  by scrolling to right
-//            map.animateCamera(CameraUpdateFactory.scrollBy(200f,0f),2000,null)
-
-        }
+//        lifecycleScope.launch {
+//            // Move Camera after few seconds
+//            delay(4000)
+//
+//            // set the location by animating the camera to cleveland inside all bounds
+////            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,null)
+//
+//            // adding callback
+//            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition),2000,object : GoogleMap.CancelableCallback{
+//                override fun onFinish() {
+//                   Toast.makeText(this@GoogleMaps,"onFinish",Toast.LENGTH_SHORT).show()
+//                }
+//                override fun onCancel() {
+//                    Toast.makeText(this@GoogleMaps,"onCancle",Toast.LENGTH_SHORT).show()
+//                }
+//            })
+//
+//            // Move Camera after few seconds
+////              map.moveCamera(CameraUpdateFactory.newLatLng(newYork))
+//
+//            // Move Camera by scrolling after few seconds
+//            // map.moveCamera(CameraUpdateFactory.scrollBy(100f,0f))
+//
+//
+//            // use center of the bounds:
+//          //  map.moveCamera(CameraUpdateFactory.newLatLngZoom(cameraAndViewport.melbourneBounds.center,10f))
+//
+//            // zoom in by 3f values after the map launches and after 2 seconds
+//            // map.moveCamera(CameraUpdateFactory.zoomBy(3f))
+//
+//            //  load map with exact boundaries  of the city  (in bounds of melbourne)
+////            map.moveCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100))
+//
+//            // Animate camera to melbourne
+////            map.animateCamera(CameraUpdateFactory.newLatLngBounds(cameraAndViewport.melbourneBounds,100),2000,null)
+//
+//            // Animate camera to zoom inside cleveland
+////            map.animateCamera(CameraUpdateFactory.zoomTo(15f),2000,null)
+//
+//
+//            // Animate camera near cleveland  by scrolling to right
+////            map.animateCamera(CameraUpdateFactory.scrollBy(200f,0f),2000,null)
+//
+//        }
 
         // Restrict map movement
 //        map.setLatLngBoundsForCameraTarget(cameraAndViewport.melbourneBounds)
 
+
+        // Set click listeners
+        onMapClicked()
+        onMapLongClicked()
+    }
+
+    // single and long click listener
+
+    private fun onMapClicked() {
+        map.setOnMapClickListener {
+            Toast.makeText(this, " Single Clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onMapLongClicked() {
+        map.setOnMapLongClickListener {
+            Toast.makeText(this, " Long Clicked", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
