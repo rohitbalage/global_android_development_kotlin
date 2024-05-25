@@ -15,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
@@ -22,7 +23,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
 
@@ -68,7 +69,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         val newYork = LatLng(40.7128, -74.0060)
 
-     val clevelandMarker =   map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
+        val clevelandMarker =
+            map.addMarker(MarkerOptions().position(cleveland).title("Marker in Cleveland"))
+
+        clevelandMarker?.tag = "Cleveland city"
 
 
         // set the camera position by animating the camera to the location
@@ -79,6 +83,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
         // set the location by moving the camera to boundary
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
+
+        // set on marker click listener
+
+    map.setOnMarkerClickListener(this)
 
 
         // Apply map settings
@@ -110,9 +118,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //            //delay seconds for the following operations
 //            delay(4000)
 //
-                //  marker remove after 4 seconds
+        //  marker remove after 4 seconds
 
-               //  clevelandMarker?.remove()
+        //  clevelandMarker?.remove()
 
 
 //            // set the location by animating the camera to cleveland inside all bounds
@@ -175,9 +183,23 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     private fun onMapLongClicked() {
         map.setOnMapLongClickListener {
-            Toast.makeText(this, "The coordinate is ${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "The coordinate is ${it.latitude} ${it.longitude}",
+                Toast.LENGTH_SHORT
+            ).show()
             map.addMarker(MarkerOptions().position(it).title(" New Marker"))
         }
 
     }
+
+    override fun onMarkerClick(marker: Marker): Boolean {
+        Toast.makeText(
+            this,
+            "Cleveland clicked",
+            Toast.LENGTH_SHORT
+        ).show()
+        return true
+    }
+
 }
