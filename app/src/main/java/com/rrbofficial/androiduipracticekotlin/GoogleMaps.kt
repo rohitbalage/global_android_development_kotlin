@@ -31,7 +31,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener {
 
     private lateinit var map: GoogleMap
 
@@ -78,6 +78,54 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
         val akron = LatLng(41.0844671,-81.5953782,)
 
         val washingtondc = LatLng(38.8938592, -77.0969764)
+
+
+        val columbus = LatLng(39.9830978,-83.1556356)
+
+        val detroit = LatLng(42.3528084,-83.1816053)
+
+
+        val pittsburg = LatLng(40.4314699,-80.0629009)
+
+
+        val losangeles = LatLng(34.0206085,-118.7413725)
+
+        val sanfransico = LatLng(37.7577607,-122.4787995)
+
+
+        val losvegas = LatLng(36.1251645,-115.3398072)
+
+        val newyork = LatLng(40.6976312,-74.1444874)
+
+
+        val atlanta = LatLng(33.7674828,-84.5025311)
+
+        val raleigh = LatLng(35.8439338,-78.8098631)
+
+        val miami = LatLng(25.7825389,-80.3118593)
+
+       val austin = LatLng(30.3079541,-97.9205504)
+
+
+        val colarado = LatLng(38.9724786,-108.1904446)
+
+       val oklahoma = LatLng(35.2848492,-101.3565999)
+
+     val dallas = LatLng(32.8208451,-96.8963602)
+
+        val minneapolis = LatLng(44.9707888,-93.3438787)
+
+        val saltlake = LatLng(40.7767086,-112.0028854)
+
+       val stlouis = LatLng(38.6532056,-90.3258624)
+
+       val chicago = LatLng(41.833871,-87.8967702)
+
+        val kansas = LatLng(38.4727673,-100.9597019)
+
+        val seattle = LatLng(47.6088285,-122.5046032)
+
+        val boston = LatLng(42.3144474,-71.0526843)
 
         val newYork = LatLng(40.7128, -74.0060)
 
@@ -126,21 +174,163 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
             MarkerOptions()
                 .position(cleveland)
                 .title("Marker in Cleveland")
+                .snippet("Some text")
                 .zIndex(1f)
         )
+
+        val sanfranciscoMarker = map.addMarker(
+            MarkerOptions()
+                .position(sanfransico)
+                .title("Marker in San Francisco")
+                .snippet("Some text"))
+
+
+        val losangelesMarker = map.addMarker(
+            MarkerOptions()
+                .position(losangeles)
+                .title("Marker in Los Angeles")
+                .snippet("Some text"))
+
+
+        val losvegasMarker = map.addMarker(
+            MarkerOptions()
+                .position(losvegas)
+                .title("Marker in Los Vegas")
+                .snippet("Some text"))
+
+
+        val seattleMarker = map.addMarker(
+            MarkerOptions()
+                .position(seattle)
+                .title("Marker in Seattle")
+                .snippet("Some text")
+                .zIndex(1f)
+        )
+        val bostonMarker = map.addMarker(
+            MarkerOptions()
+                .position(boston)
+                .title("Marker in Boston")
+                .snippet("Some text"))
+
+        val atlantaMarker = map.addMarker(
+            MarkerOptions()
+                .position(atlanta)
+                .title("Marker in Atlanta")
+                .snippet("Some text"))
+
+        val newYorkMarker = map.addMarker(
+            MarkerOptions()
+                .position(newYork)
+                .title("Marker in New York")
+                .snippet("Some text"))
+
+        val chicagoMarker = map.addMarker(
+            MarkerOptions()
+                .position(chicago)
+                .title("Marker in Chicago")
+                .snippet("Some text"))
+
+        val dallasMarker = map.addMarker(
+            MarkerOptions()
+                .position(dallas)
+                .title("Marker in Dallas")
+                .snippet("Some text"))
 
         val akronMarker = map.addMarker(
             MarkerOptions()
                 .position(akron)
-                .title("Marker in Akron")")
+                .snippet("Some text")
+                .title("Marker in Akron")
         )
 
+        val columbusMarker = map.addMarker(
+            MarkerOptions()
+                .position(columbus)
+                .snippet("Some text")
+                .title("Marker in Columbus"))
+
+        val minneapolisMarker = map.addMarker(
+            MarkerOptions()
+                .position(minneapolis)
+                .snippet("Some text")
+                .title("Marker in Minneapolis"))
+
+
+        val kansasMarker = map.addMarker(
+            MarkerOptions()
+                .position(kansas)
+                .snippet("Some text")
+                .title("Marker in Kansas"))
+
+        val stlouisMarker = map.addMarker(
+            MarkerOptions()
+                .position(stlouis)
+                .snippet("Some text")
+                .title("Marker in St. Louis"))
+
+        val raleighMarker = map.addMarker(
+            MarkerOptions()
+                .position(raleigh)
+                .snippet("Some text")
+                .title("Marker in Raleigh"))
+
+        val miamiMarker = map.addMarker(
+            MarkerOptions()
+                .position(miami)
+                .snippet("Some text")
+                .title("Marker in Miami"))
+
+        val oklahomaMarker = map.addMarker(
+            MarkerOptions()
+                .position(oklahoma)
+                .snippet("Some text")
+                .title("Marker in Oklahoma"))
+
+        val saltlakeMarker = map.addMarker(
+            MarkerOptions()
+                .position(saltlake)
+                .snippet("Some text")
+                .title("Marker in Salt Lake City"))
+
+        val newyorkMarker = map.addMarker(
+            MarkerOptions()
+                .position(newyork)
+                .snippet("Some text")
+                .title("Marker in New York"))
+
+        val austinMarker = map.addMarker(
+            MarkerOptions()
+                .position(austin)
+                .snippet("Some text")
+                .title("Marker in Austin"))
+
+        val colaradoMarker = map.addMarker(
+            MarkerOptions()
+                .position(colarado)
+                .snippet("Some text")
+                .title("Marker in Colarado"))
+
+
+        val detroitMarker = map.addMarker(
+            MarkerOptions()
+                .position(detroit)
+                .snippet("Some text")
+                .title("Marker in Detroit"))
 
         val washingtonMarker = map.addMarker(
             MarkerOptions()
                 .position(washingtondc)
+                .snippet("Some text")
                 .title("Marker in Washington")
         )
+
+        val pittsburgMarker = map.addMarker(
+            MarkerOptions()
+                .position(pittsburg)
+                .snippet("Some text")
+                .title("Marker in Pittsburg"))
+
+
 
 
 
@@ -158,7 +348,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
 //        map.moveCamera(CameraUpdateFactory.newCameraPosition(cameraAndViewport.clevelandposition))
 
         // set on marker click listener here first
-        map.setOnMarkerClickListener(this)
+//        map.setOnMarkerClickListener(this)
 
         // set on marker drag listener here first
         map.setOnMarkerDragListener(this)
@@ -274,14 +464,14 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
 
 
     //     Marker click listener :: NEED TO Override Main function: GoogleMap.OnMarkerClickListener of GoogleMap
-    override fun onMarkerClick(marker: Marker): Boolean {
-        Toast.makeText(
-            this,
-            "Cleveland clicked",
-            Toast.LENGTH_SHORT
-        ).show()
-        return true
-    }
+//    override fun onMarkerClick(marker: Marker): Boolean {
+//        Toast.makeText(
+//            this,
+//            "Cleveland clicked",
+//            Toast.LENGTH_SHORT
+//        ).show()
+//        return true
+//    }
 
 
     // functions for marker drag listener:: NEED TO Override Main function: GoogleMap.OnMarkerDragListener of GoogleMap
