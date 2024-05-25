@@ -84,18 +84,23 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerC
         */
 
         /*
-        *  How to create a drawable marker::
-        *
-        *
-        *
-        * */
-
+        *  How to create a drawable marker  with vector asset::
         val clevelandMarker = map.addMarker(
             MarkerOptions()
                 .position(cleveland)
                 .title("Marker in Cleveland")
                 .icon(fromVectorToBitmap(R.drawable.baseline_accessibility_24, Color.parseColor("#07E4F2"), 200, 200)) // Adjust width and height as needed
         )
+        *
+        *
+        * */
+
+
+        val clevelandMarker = map.addMarker(
+            MarkerOptions()
+                .position(cleveland)
+                .title("Marker in Cleveland")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.carpixelicon))) // Adjust width and height as needed
 
 
         // set tag for marker
