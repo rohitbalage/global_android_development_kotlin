@@ -170,7 +170,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 
     private fun onMapLongClicked() {
         map.setOnMapLongClickListener {
-            Toast.makeText(this, " Long Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "The coordinate is ${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
         }
 
     }
