@@ -88,7 +88,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
             // My location button enabled
             isMyLocationButtonEnabled = false
             // Scroll gestures enabled
-            isScrollGesturesEnabled = true
+            isScrollGesturesEnabled = false
             // Rotation enabled
             isRotateGesturesEnabled = false
             // Show map icon
@@ -102,7 +102,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
 //      typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
-//        map.setMinZoomPreference(15f)
+        map.setMinZoomPreference(10f)
 //        map.setMaxZoomPreference(17f)
 
 
@@ -171,6 +171,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback {
     private fun onMapLongClicked() {
         map.setOnMapLongClickListener {
             Toast.makeText(this, "The coordinate is ${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
+            map.addMarker(MarkerOptions().position(it).title(" New Marker"))
         }
 
     }
