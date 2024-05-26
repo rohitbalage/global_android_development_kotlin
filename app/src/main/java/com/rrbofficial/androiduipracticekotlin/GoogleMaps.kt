@@ -105,6 +105,11 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
     val mexico = LatLng (18.1166199,-78.5246324)
 
     val rome = LatLng(41.9102088,12.3711917)
+    val milan = LatLng(45.4628246,9.0953321)
+    val turin = LatLng(45.4628246,9.0953321)
+    val bari = LatLng(41.1114772,16.7996798)
+    val florence = LatLng(43.7800127,11.1997685)
+    val padova = LatLng(45.4065566,11.850046)
 
     private val typeAndStyle by lazy { TypeAndStyle() }
 
@@ -365,12 +370,41 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .snippet("Some text")
                 .title("Marker in Mexico"))
 
+        val turinMarker = map.addMarker(
+            MarkerOptions()
+                .position(turin)
+                .snippet("Some text")
+                .title("Marker in Turin"))
+
+        val bariMarker = map.addMarker(
+            MarkerOptions()
+                .position(bari)
+                .snippet("Some text")
+                .title("Marker in Bari"))
+
+        val florenceMarker = map.addMarker(
+            MarkerOptions()
+                .position(florence)
+                .snippet("Some text")
+                .title("Marker in Florence"))
+
+        val padovaMarker = map.addMarker(
+            MarkerOptions()
+                .position(padova)
+                .snippet("Some text")
+                .title("Marker in Padova"))
 
         val torontoMarker = map.addMarker(
             MarkerOptions()
                 .position(toronto)
                 .snippet("Some text")
                 .title("Marker in Toronto"))
+
+        val milanMarker = map.addMarker(
+            MarkerOptions()
+                .position(milan)
+                .snippet("Some text")
+                .title("Marker in Milan"))
 
 
 
@@ -407,6 +441,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             delay(4000)
             // set polyline from shapes class
             shapes.addPolyline(map)
+            shapes.addPolyline2(map)
         }
 
         // set on polyline click listener here first

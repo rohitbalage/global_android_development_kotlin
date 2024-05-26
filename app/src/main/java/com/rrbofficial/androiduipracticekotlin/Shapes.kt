@@ -2,6 +2,9 @@ import android.graphics.Color
 import android.icu.util.ChineseCalendar
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.Dash
+import com.google.android.gms.maps.model.Dot
+import com.google.android.gms.maps.model.Gap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.PolylineOptions
@@ -40,8 +43,15 @@ class Shapes {
     val kochi = LatLng(9.9828542,76.1361243)
     val mexico = LatLng(18.1166199,-78.5246324)
     val rome = LatLng(41.9102088,12.3711917)
+    val milan = LatLng(45.4628246,9.0953321)
+    val turin = LatLng(45.4628246,9.0953321)
+    val bari = LatLng(41.1114772,16.7996798)
+    val florence = LatLng(43.7800127,11.1997685)
+    val padova = LatLng(45.4065566,11.850046)
+
 
     suspend fun addPolyline(map: GoogleMap) {
+
         val polyline = map.addPolyline(
             PolylineOptions().apply {
                 add(losangeles, newyork, madrid)
@@ -57,8 +67,22 @@ class Shapes {
         delay(5000L)
 
         val newList = listOf(seattle, riodeJanero, madrid, rome, kochi)
-
         polyline.points = newList
+    }
+
+    suspend fun addPolyline2(map: GoogleMap) {
+
+        val pattern  = listOf(Dot(), Gap(30f), Dash(50f))
+        val polyline = map.addPolyline(
+            PolylineOptions().apply {
+                add(rome,milan, turin,bari,florence,padova)
+                color(Color.BLUE)
+                width(5f)
+                geodesic(true)  // add arcs in polyline
+                clickable(true) // set click on Polyline
+                pattern(pattern)
+            }
+        )
     }
 
     fun addPolygon(map: GoogleMap) {
