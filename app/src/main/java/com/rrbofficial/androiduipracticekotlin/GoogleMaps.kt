@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.firebase.firestore.model.mutation.Overlay
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
@@ -116,6 +117,8 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
     private val shapes by lazy { Shapes() }
 
     private val cameraAndViewport by lazy { CameraAndViewport() }
+
+   private val overlay by lazy { Overlays() }
 
     private lateinit var binding: ActivityGoogleMapsBinding
 
@@ -463,6 +466,11 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             shapes.addCircle(map)
         }
 
+        // set overlay in map
+        lifecycleScope.launch {
+            overlay.addGroundOverlay(map)
+        }
+
 
 
 
@@ -486,7 +494,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-//        typeAndStyle.setMapStyle(map, this)
+        typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
 //        map.setMinZoomPreference(10f)
