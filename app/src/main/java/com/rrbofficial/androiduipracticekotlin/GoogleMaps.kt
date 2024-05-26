@@ -18,11 +18,14 @@ import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnCircleClickListener
+import com.google.android.gms.maps.GoogleMap.OnPolygonClickListener
 import com.google.android.gms.maps.GoogleMap.OnPolylineClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
@@ -37,7 +40,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener, OnPolylineClickListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener, OnPolygonClickListener,OnPolylineClickListener, OnCircleClickListener {
 
     private lateinit var map: GoogleMap
     // Add a marker in Cleveland and move the camera
@@ -99,6 +102,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     val boston = LatLng(42.3144474,-71.0526843)
 
+    val mexico = LatLng (18.1166199,-78.5246324)
+
+    val rome = LatLng(41.9102088,12.3711917)
 
     private val typeAndStyle by lazy { TypeAndStyle() }
 
@@ -288,7 +294,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             MarkerOptions()
                 .position(madrid)
                 .snippet("Some text")
-                .title("Marker in St. Louis"))
+                .title("Marker in Madrid"))
 
         val raleighMarker = map.addMarker(
             MarkerOptions()
@@ -347,12 +353,24 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .snippet("Some text")
                 .title("Marker in Pittsburg"))
 
+        val romeMarker = map.addMarker(
+            MarkerOptions()
+                .position(rome)
+                .snippet("Some text")
+                .title("Marker in Rome"))
+
+        val mexicoMarker = map.addMarker(
+            MarkerOptions()
+                .position(mexico)
+                .snippet("Some text")
+                .title("Marker in Mexico"))
+
+
         val torontoMarker = map.addMarker(
             MarkerOptions()
                 .position(toronto)
                 .snippet("Some text")
                 .title("Marker in Toronto"))
-
 
 
 
@@ -398,6 +416,20 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         shapes.addPolygon(map)
 
 
+        // set on circle click listener here first
+        map.setOnCircleClickListener(this)
+
+        //set polygon click listener
+        map.setOnPolygonClickListener(this)
+
+
+        // add circle in map
+        lifecycleScope.launch {
+            shapes.addCircle(map)
+        }
+
+
+
 
 
 
@@ -419,7 +451,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-        typeAndStyle.setMapStyle(map, this)
+//        typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
 //        map.setMinZoomPreference(10f)
@@ -545,6 +577,16 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
     }
     override fun onPolylineClick(p0: Polyline) {
         Toast.makeText(this,"Polyline clicked", Toast.LENGTH_SHORT).show()
+    }
+
+
+    // On circle shape  click listener
+    override fun onCircleClick(p0: Circle) {
+        Toast.makeText(this,"Circle is clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPolygonClick(p0: Polygon) {
+        Toast.makeText(this,"Polygon is clicked", Toast.LENGTH_SHORT).show()
     }
 
 

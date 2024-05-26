@@ -1,5 +1,7 @@
 import android.graphics.Color
+import android.icu.util.ChineseCalendar
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.PolylineOptions
@@ -34,6 +36,10 @@ class Shapes {
     val kansas = LatLng(38.4727673, -100.9597019)
     val seattle = LatLng(47.6088285, -122.5046032)
     val boston = LatLng(42.3144474, -71.0526843)
+    val jamaica = LatLng(18.1166199,-78.5246324)
+    val kochi = LatLng(9.9828542,76.1361243)
+    val mexico = LatLng(18.1166199,-78.5246324)
+    val rome = LatLng(41.9102088,12.3711917)
 
     suspend fun addPolyline(map: GoogleMap) {
         val polyline = map.addPolyline(
@@ -50,7 +56,7 @@ class Shapes {
         // change polyline after 5 seconds
         delay(5000L)
 
-        val newList = listOf(losangeles, riodeJanero, madrid)
+        val newList = listOf(seattle, riodeJanero, madrid, rome, kochi)
 
         polyline.points = newList
     }
@@ -66,7 +72,50 @@ class Shapes {
                 strokeWidth(5f)
                 geodesic(true)  // add arcs in polygon
                 clickable(true) // set click on Polygon
+                zIndex(1f)
+                // add more polygon with addHole function
+//                addHole(listOf(chicago, cleveland, pittsburg, washingtondc) )
             }
         )
+        val polygon2 = map.addPolygon(
+            PolygonOptions().apply {
+                add(chicago, newyork, washingtondc, losvegas)
+//                strokeColor(Color.argb(128, 0, 0, 255)) // 50% transparent blue
+//                fillColor(Color.argb(128, 0, 255, 255)) // 50% transparent cyan
+                fillColor(R.color.black)
+                strokeColor(R.color.black)
+                strokeWidth(5f)
+                geodesic(true)  // add arcs in polygon
+                clickable(true) // set click on Polygon
+            }
+        )
+    }
+
+  suspend  fun addCircle(map: GoogleMap) {
+      val circle = map.addCircle(
+          CircleOptions().apply {
+              center(kochi)
+              radius(50000.0)
+              strokeColor(Color.argb(128, 0, 0, 255)) // 50% transparent blue
+              fillColor(Color.argb(128, 0, 255, 255)) // 50% transparent cyan
+              strokeWidth(5f)
+          }
+      )
+        val circle2 = map.addCircle(
+            CircleOptions().apply {
+                center(miami)
+                radius(50000.0)
+                strokeColor(R.color.yellow)// 50% transparent blue
+                fillColor(R.color.yellow) // 50% transparent cyan
+                strokeWidth(5f)
+                clickable(true)
+            }
+        )
+
+      delay(10000L)
+      // Change the color to 50% transparent yellow-green after the delay
+      circle2.fillColor = Color.argb(128, 154, 205, 50) // 50% transparent yellow-green
+      circle2.strokeColor = Color.argb(128, 154, 205, 50) // 50% transparent yellow-green
+
     }
 }
