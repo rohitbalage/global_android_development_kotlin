@@ -60,6 +60,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     val newyork = LatLng(40.6976312,-74.1444874)
 
+    private val riodeJanero = LatLng(-22.9137295,-43.61079)
 
     val atlanta = LatLng(33.7674828,-84.5025311)
 
@@ -69,6 +70,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     val austin = LatLng(30.3079541,-97.9205504)
 
+    val madrid = LatLng(40.4380986,-3.8443431)
 
     val colarado = LatLng(38.9724786,-108.1904446)
 
@@ -189,6 +191,11 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .title("Marker in Los Angeles")
                 .snippet("Some text"))
 
+        val riodejaneroMarker = map.addMarker(
+            MarkerOptions()
+                .position(riodeJanero)
+                .title("Marker in Rio de Janeiro")
+                .snippet("Some text"))
 
         val losvegasMarker = map.addMarker(
             MarkerOptions()
@@ -263,6 +270,14 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         val stlouisMarker = map.addMarker(
             MarkerOptions()
                 .position(stlouis)
+                .snippet("Some text")
+                .title("Marker in St. Louis"))
+
+
+
+        val madridMarker = map.addMarker(
+            MarkerOptions()
+                .position(madrid)
                 .snippet("Some text")
                 .title("Marker in St. Louis"))
 
@@ -349,9 +364,15 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         // set on marker drag listener here first
         map.setOnMarkerDragListener(this)
 
-        // set polyline function between two cities
+        // set polyline function between cities in map without delay
+//        addPolyline()
 
-        addPolyline()
+        lifecycleScope.launch {
+            //delay seconds for the polyline function
+            delay(4000)
+            addPolyline()
+        }
+
 
 
         // Apply map settings
@@ -497,14 +518,23 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         Log.d("MarkerDrag", "Drag ends here ${p0.position}")
     }
 
-private fun addPolyline(){
+private suspend fun addPolyline(){
     val polyliine = map.addPolyline(
         PolylineOptions().apply {
-            add(losangeles, newyork)
+            add(losangeles, newyork, madrid)
             color(Color.BLUE)
             width(5f)
+            geodesic(true)  // add arcs in polyline
         }
     )
+
+    // return type here is polyline object so we can change this at last moment
+    // change polyline after 5 seconds
+    delay(5000)
+
+    val newList = listOf(losangeles, riodeJanero, madrid)
+
+    polyliine.points = newList
 }
 
 }
