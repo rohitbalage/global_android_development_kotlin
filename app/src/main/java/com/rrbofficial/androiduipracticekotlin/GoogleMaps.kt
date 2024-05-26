@@ -118,7 +118,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     private val cameraAndViewport by lazy { CameraAndViewport() }
 
-   private val overlay by lazy { Overlays() }
+   private val overlays by lazy { Overlays() }
 
     private lateinit var binding: ActivityGoogleMapsBinding
 
@@ -466,9 +466,25 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             shapes.addCircle(map)
         }
 
-        // set overlay in map
+        // set groundOverlay in map
+        val groundOverlay = overlays.addGroundOverlay(map)
+
+        // set groundOverlay with tag
+
+        val groundOverlay2 = overlays.addGroundOverlayWithTag(map)
+
         lifecycleScope.launch {
-            overlay.addGroundOverlay(map)
+            delay(4000L)
+            // to remove groundoverlay after 4 seconds
+//            groundOverlay?.remove()
+
+            // set transparency
+//            groundOverlay?.transparency = 0.5f
+
+            // set clickable
+//            groundOverlay?.isClickable = true
+
+            Log.d("Maps", groundOverlay?.tag.toString())
         }
 
 
@@ -494,7 +510,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-        typeAndStyle.setMapStyle(map, this)
+//        typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
 //        map.setMinZoomPreference(10f)
