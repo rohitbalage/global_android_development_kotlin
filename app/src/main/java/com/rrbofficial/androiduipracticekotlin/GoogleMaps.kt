@@ -1,5 +1,6 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import Shapes
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -26,6 +27,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polygon
+import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
@@ -57,6 +60,8 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     val sanfransico = LatLng(37.7577607,-122.4787995)
 
+
+    val toronto = LatLng(43.718371,-79.542864)
 
     val losvegas = LatLng(36.1251645,-115.3398072)
 
@@ -96,6 +101,8 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
 
     private val typeAndStyle by lazy { TypeAndStyle() }
+
+    private val shapes by lazy { Shapes() }
 
     private val cameraAndViewport by lazy { CameraAndViewport() }
 
@@ -340,6 +347,12 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .snippet("Some text")
                 .title("Marker in Pittsburg"))
 
+        val torontoMarker = map.addMarker(
+            MarkerOptions()
+                .position(toronto)
+                .snippet("Some text")
+                .title("Marker in Toronto"))
+
 
 
 
@@ -369,14 +382,22 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         // set polyline function between cities in map without delay
 //        addPolyline()
 
+
+        // set polyline function between cities in map with delay [from Shapes.kt class]
         lifecycleScope.launch {
             //delay seconds for the polyline function
             delay(4000)
-            addPolyline()
+            // set polyline from shapes class
+            shapes.addPolyline(map)
         }
 
         // set on polyline click listener here first
         map.setOnPolylineClickListener(this)
+
+        // set Polygon in map by calling shapes class
+        shapes.addPolygon(map)
+
+
 
 
 
@@ -522,29 +543,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
     override fun onMarkerDragStart(p0: Marker) {
         Log.d("MarkerDrag", "Drag ends here ${p0.position}")
     }
-
-private suspend fun addPolyline(){
-    val polyliine = map.addPolyline(
-        PolylineOptions().apply {
-            add(losangeles, newyork, madrid)
-            color(Color.BLUE)
-            width(5f)
-            geodesic(true)  // add arcs in polyline
-            clickable(true) // set click on Polyline
-        }
-    )
-
-    // return type here is polyline object so we can change this at last moment
-    // change polyline after 5 seconds
-    delay(5000)
-
-    val newList = listOf(losangeles, riodeJanero, madrid)
-
-    polyliine.points = newList
-}
-
     override fun onPolylineClick(p0: Polyline) {
-       Toast.makeText(this,"Polyline clicked",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Polyline clicked", Toast.LENGTH_SHORT).show()
     }
+
 
 }
