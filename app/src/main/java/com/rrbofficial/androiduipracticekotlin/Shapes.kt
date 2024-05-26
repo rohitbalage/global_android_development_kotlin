@@ -3,6 +3,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.delay
 
 class Shapes {
@@ -58,8 +59,10 @@ class Shapes {
         val polygon = map.addPolygon(
             PolygonOptions().apply {
                 add(detroit, toronto, columbus, atlanta, raleigh)
-                strokeColor(Color.argb(128, 0, 0, 255)) // 50% transparent blue
-                fillColor(Color.argb(128, 0, 255, 255)) // 50% transparent cyan
+//                strokeColor(Color.argb(128, 0, 0, 255)) // 50% transparent blue
+//                fillColor(Color.argb(128, 0, 255, 255)) // 50% transparent cyan
+                fillColor(R.color.black)
+                strokeColor(R.color.black)
                 strokeWidth(5f)
                 geodesic(true)  // add arcs in polygon
                 clickable(true) // set click on Polygon
