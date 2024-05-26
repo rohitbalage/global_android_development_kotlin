@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
@@ -34,6 +35,61 @@ import kotlinx.coroutines.launch
 class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
+    // Add a marker in Cleveland and move the camera
+    val cleveland = LatLng(41.49878830382801, -81.67565041048111)
+
+    val akron = LatLng(41.0844671,-81.5953782,)
+
+    val washingtondc = LatLng(38.8938592, -77.0969764)
+
+
+    val columbus = LatLng(39.9830978,-83.1556356)
+
+    val detroit = LatLng(42.3528084,-83.1816053)
+
+
+    val pittsburg = LatLng(40.4314699,-80.0629009)
+
+
+    val losangeles = LatLng(34.0206085,-118.7413725)
+
+    val sanfransico = LatLng(37.7577607,-122.4787995)
+
+
+    val losvegas = LatLng(36.1251645,-115.3398072)
+
+    val newyork = LatLng(40.6976312,-74.1444874)
+
+
+    val atlanta = LatLng(33.7674828,-84.5025311)
+
+    val raleigh = LatLng(35.8439338,-78.8098631)
+
+    val miami = LatLng(25.7825389,-80.3118593)
+
+    val austin = LatLng(30.3079541,-97.9205504)
+
+
+    val colarado = LatLng(38.9724786,-108.1904446)
+
+    val oklahoma = LatLng(35.2848492,-101.3565999)
+
+    val dallas = LatLng(32.8208451,-96.8963602)
+
+    val minneapolis = LatLng(44.9707888,-93.3438787)
+
+    val saltlake = LatLng(40.7767086,-112.0028854)
+
+    val stlouis = LatLng(38.6532056,-90.3258624)
+
+    val chicago = LatLng(41.833871,-87.8967702)
+
+    val kansas = LatLng(38.4727673,-100.9597019)
+
+    val seattle = LatLng(47.6088285,-122.5046032)
+
+    val boston = LatLng(42.3144474,-71.0526843)
+
 
     private val typeAndStyle by lazy { TypeAndStyle() }
 
@@ -71,67 +127,6 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
-
-        // Add a marker in Cleveland and move the camera
-        val cleveland = LatLng(41.49878830382801, -81.67565041048111)
-
-        val akron = LatLng(41.0844671,-81.5953782,)
-
-        val washingtondc = LatLng(38.8938592, -77.0969764)
-
-
-        val columbus = LatLng(39.9830978,-83.1556356)
-
-        val detroit = LatLng(42.3528084,-83.1816053)
-
-
-        val pittsburg = LatLng(40.4314699,-80.0629009)
-
-
-        val losangeles = LatLng(34.0206085,-118.7413725)
-
-        val sanfransico = LatLng(37.7577607,-122.4787995)
-
-
-        val losvegas = LatLng(36.1251645,-115.3398072)
-
-        val newyork = LatLng(40.6976312,-74.1444874)
-
-
-        val atlanta = LatLng(33.7674828,-84.5025311)
-
-        val raleigh = LatLng(35.8439338,-78.8098631)
-
-        val miami = LatLng(25.7825389,-80.3118593)
-
-       val austin = LatLng(30.3079541,-97.9205504)
-
-
-        val colarado = LatLng(38.9724786,-108.1904446)
-
-       val oklahoma = LatLng(35.2848492,-101.3565999)
-
-     val dallas = LatLng(32.8208451,-96.8963602)
-
-        val minneapolis = LatLng(44.9707888,-93.3438787)
-
-        val saltlake = LatLng(40.7767086,-112.0028854)
-
-       val stlouis = LatLng(38.6532056,-90.3258624)
-
-       val chicago = LatLng(41.833871,-87.8967702)
-
-        val kansas = LatLng(38.4727673,-100.9597019)
-
-        val seattle = LatLng(47.6088285,-122.5046032)
-
-        val boston = LatLng(42.3144474,-71.0526843)
-
-        val newYork = LatLng(40.7128, -74.0060)
-
-
-
-
 
         /* By this: Customized marker color to yellowgreen  .icon(BitmapDescriptorFactory.defaultMarker(134f)) hsl color link:: https://www.w3schools.com/colors/colors_hsl.asp
          or color from BitmapDescriptorFactory ::   .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
@@ -221,16 +216,16 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .title("Marker in Atlanta")
                 .snippet("Some text"))
 
-        val newYorkMarker = map.addMarker(
-            MarkerOptions()
-                .position(newYork)
-                .title("Marker in New York")
-                .snippet("Some text"))
-
         val chicagoMarker = map.addMarker(
             MarkerOptions()
                 .position(chicago)
                 .title("Marker in Chicago")
+                .snippet("Some text"))
+
+        val newyorkMarker = map.addMarker(
+            MarkerOptions()
+                .position(newyork)
+                .title("Marker in New York")
                 .snippet("Some text"))
 
         val dallasMarker = map.addMarker(
@@ -295,11 +290,6 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
                 .snippet("Some text")
                 .title("Marker in Salt Lake City"))
 
-        val newyorkMarker = map.addMarker(
-            MarkerOptions()
-                .position(newyork)
-                .snippet("Some text")
-                .title("Marker in New York"))
 
         val austinMarker = map.addMarker(
             MarkerOptions()
@@ -358,6 +348,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
         // set on marker drag listener here first
         map.setOnMarkerDragListener(this)
+
+        // set polyline function between two cities
+
+        addPolyline()
 
 
         // Apply map settings
@@ -503,6 +497,14 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         Log.d("MarkerDrag", "Drag ends here ${p0.position}")
     }
 
-
+private fun addPolyline(){
+    val polyliine = map.addPolyline(
+        PolylineOptions().apply {
+            add(losangeles, newyork)
+            color(Color.BLUE)
+            width(5f)
+        }
+    )
+}
 
 }
