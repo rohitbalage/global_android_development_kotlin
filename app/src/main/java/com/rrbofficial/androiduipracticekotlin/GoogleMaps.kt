@@ -17,6 +17,7 @@ import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnPolylineClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
@@ -32,7 +34,7 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener, OnPolylineClickListener {
 
     private lateinit var map: GoogleMap
     // Add a marker in Cleveland and move the camera
@@ -373,6 +375,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             addPolyline()
         }
 
+        // set on polyline click listener here first
+        map.setOnPolylineClickListener(this)
+
 
 
         // Apply map settings
@@ -525,6 +530,7 @@ private suspend fun addPolyline(){
             color(Color.BLUE)
             width(5f)
             geodesic(true)  // add arcs in polyline
+            clickable(true) // set click on Polyline
         }
     )
 
@@ -536,5 +542,9 @@ private suspend fun addPolyline(){
 
     polyliine.points = newList
 }
+
+    override fun onPolylineClick(p0: Polyline) {
+       Toast.makeText(this,"Polyline clicked",Toast.LENGTH_SHORT).show()
+    }
 
 }
