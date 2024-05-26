@@ -1,13 +1,18 @@
 import android.graphics.Color
 import android.icu.util.ChineseCalendar
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.CustomCap
 import com.google.android.gms.maps.model.Dash
 import com.google.android.gms.maps.model.Dot
 import com.google.android.gms.maps.model.Gap
+import com.google.android.gms.maps.model.JointType
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.RoundCap
+import com.google.android.gms.maps.model.SquareCap
 import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.delay
 
@@ -57,6 +62,10 @@ class Shapes {
                 add(losangeles, newyork, madrid)
                 color(Color.BLUE)
                 width(5f)
+                jointType(JointType.ROUND)  // set joint type in polyline
+//                startCap(RoundCap()) // set start cap in polyline
+       //         endCap(SquareCap())   // set end cap in polyline
+//                startCap(CustomCap(BitmapDescriptorFactory.fromResource(R.drawable.baseline_ads_click_24),10f))
                 geodesic(true)  // add arcs in polyline
                 clickable(true) // set click on Polyline
             }
@@ -70,8 +79,9 @@ class Shapes {
         polyline.points = newList
     }
 
-    suspend fun addPolyline2(map: GoogleMap) {
 
+    // connected offices in Italy
+    suspend fun addPolyline2(map: GoogleMap) {
         val pattern  = listOf(Dot(), Gap(30f), Dash(50f))
         val polyline = map.addPolyline(
             PolylineOptions().apply {
