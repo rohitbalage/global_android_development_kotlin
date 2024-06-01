@@ -6,24 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
     android:gravity="center"
     tools:context=".SplashScreen">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/splash_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/appicon"
-            android:layout_marginBottom="20dp"
-            android:contentDescription="@string/splashdescription" />
+            android:id="@+id/gifsplash"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:contentDescription="Splash Image" />
 
         <TextView
             android:id="@+id/splash_text"
@@ -35,9 +35,24 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
-            android:padding="10dp"
-            />
+            android:padding="10dp" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/splash_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/appicon"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="App Icon" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splashscreenbottomtext" />
 
 </LinearLayout>

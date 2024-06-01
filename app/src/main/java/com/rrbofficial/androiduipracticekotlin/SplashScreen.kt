@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,13 @@ class SplashScreen : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, 2000) // 2000 milliseconds = 2 seconds
+
+
+        // for gif image
+        val gifImageView: ImageView = findViewById(R.id.gifsplash)
+        Glide.with(this)
+            .load(R.drawable.sunglassdudeandroid)
+            .into(gifImageView)
     }
 
     private fun animateLogoAndText() {
