@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AritificalIntelligence.setOnClickListener(this)
         binding.IOTandThings.setOnClickListener(this)
         binding.AdvanceUIComponets.setOnClickListener(this)
+        binding.AndroidSystemComponents.setOnClickListener(this)
 
 
 
