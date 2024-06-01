@@ -1,6 +1,7 @@
 package com.rrbofficial.androiduipracticekotlin
 
 import Shapes
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -12,6 +13,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.lifecycleScope
@@ -41,76 +44,79 @@ import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener, OnPolygonClickListener,OnPolylineClickListener, OnCircleClickListener {
+class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnMarkerClickListener, OnPolygonClickListener, OnPolylineClickListener,
+    OnCircleClickListener {
 
     private lateinit var map: GoogleMap
+
     // Add a marker in Cleveland and move the camera
     val cleveland = LatLng(41.49878830382801, -81.67565041048111)
 
-    val akron = LatLng(41.0844671,-81.5953782,)
+    val akron = LatLng(41.0844671, -81.5953782)
 
     val washingtondc = LatLng(38.8938592, -77.0969764)
 
 
-    val columbus = LatLng(39.9830978,-83.1556356)
+    val columbus = LatLng(39.9830978, -83.1556356)
 
-    val detroit = LatLng(42.3528084,-83.1816053)
-
-
-    val pittsburg = LatLng(40.4314699,-80.0629009)
+    val detroit = LatLng(42.3528084, -83.1816053)
 
 
-    val losangeles = LatLng(34.0206085,-118.7413725)
-
-    val sanfransico = LatLng(37.7577607,-122.4787995)
+    val pittsburg = LatLng(40.4314699, -80.0629009)
 
 
-    val toronto = LatLng(43.718371,-79.542864)
+    val losangeles = LatLng(34.0206085, -118.7413725)
 
-    val losvegas = LatLng(36.1251645,-115.3398072)
+    val sanfransico = LatLng(37.7577607, -122.4787995)
 
-    val newyork = LatLng(40.6976312,-74.1444874)
 
-    private val riodeJanero = LatLng(-22.9137295,-43.61079)
+    val toronto = LatLng(43.718371, -79.542864)
 
-    val atlanta = LatLng(33.7674828,-84.5025311)
+    val losvegas = LatLng(36.1251645, -115.3398072)
 
-    val raleigh = LatLng(35.8439338,-78.8098631)
+    val newyork = LatLng(40.6976312, -74.1444874)
 
-    val miami = LatLng(25.7825389,-80.3118593)
+    private val riodeJanero = LatLng(-22.9137295, -43.61079)
 
-    val austin = LatLng(30.3079541,-97.9205504)
+    val atlanta = LatLng(33.7674828, -84.5025311)
 
-    val madrid = LatLng(40.4380986,-3.8443431)
+    val raleigh = LatLng(35.8439338, -78.8098631)
 
-    val colarado = LatLng(38.9724786,-108.1904446)
+    val miami = LatLng(25.7825389, -80.3118593)
 
-    val oklahoma = LatLng(35.2848492,-101.3565999)
+    val austin = LatLng(30.3079541, -97.9205504)
 
-    val dallas = LatLng(32.8208451,-96.8963602)
+    val madrid = LatLng(40.4380986, -3.8443431)
 
-    val minneapolis = LatLng(44.9707888,-93.3438787)
+    val colarado = LatLng(38.9724786, -108.1904446)
 
-    val saltlake = LatLng(40.7767086,-112.0028854)
+    val oklahoma = LatLng(35.2848492, -101.3565999)
 
-    val stlouis = LatLng(38.6532056,-90.3258624)
+    val dallas = LatLng(32.8208451, -96.8963602)
 
-    val chicago = LatLng(41.833871,-87.8967702)
+    val minneapolis = LatLng(44.9707888, -93.3438787)
 
-    val kansas = LatLng(38.4727673,-100.9597019)
+    val saltlake = LatLng(40.7767086, -112.0028854)
 
-    val seattle = LatLng(47.6088285,-122.5046032)
+    val stlouis = LatLng(38.6532056, -90.3258624)
 
-    val boston = LatLng(42.3144474,-71.0526843)
+    val chicago = LatLng(41.833871, -87.8967702)
 
-    val mexico = LatLng (18.1166199,-78.5246324)
+    val kansas = LatLng(38.4727673, -100.9597019)
 
-    val rome = LatLng(41.9102088,12.3711917)
-    val milan = LatLng(45.4628246,9.0953321)
-    val turin = LatLng(45.4628246,9.0953321)
-    val bari = LatLng(41.1114772,16.7996798)
-    val florence = LatLng(43.7800127,11.1997685)
-    val padova = LatLng(45.4065566,11.850046)
+    val seattle = LatLng(47.6088285, -122.5046032)
+
+    val boston = LatLng(42.3144474, -71.0526843)
+
+    val mexico = LatLng(18.1166199, -78.5246324)
+
+    val rome = LatLng(41.9102088, 12.3711917)
+    val milan = LatLng(45.4628246, 9.0953321)
+    val turin = LatLng(45.4628246, 9.0953321)
+    val bari = LatLng(41.1114772, 16.7996798)
+    val florence = LatLng(43.7800127, 11.1997685)
+    val padova = LatLng(45.4065566, 11.850046)
 
     private val typeAndStyle by lazy { TypeAndStyle() }
 
@@ -118,7 +124,12 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
     private val cameraAndViewport by lazy { CameraAndViewport() }
 
-   private val overlays by lazy { Overlays() }
+    private val overlays by lazy { Overlays() }
+
+
+    companion object {
+        const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }
 
     private lateinit var binding: ActivityGoogleMapsBinding
 
@@ -193,6 +204,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         * */
 
 
+        // Enable location if permission is granted
+
+
         val clevelandMarker = map.addMarker(
             MarkerOptions()
                 .position(cleveland)
@@ -205,26 +219,30 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             MarkerOptions()
                 .position(sanfransico)
                 .title("Marker in San Francisco")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
 
         val losangelesMarker = map.addMarker(
             MarkerOptions()
                 .position(losangeles)
                 .title("Marker in Los Angeles")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val riodejaneroMarker = map.addMarker(
             MarkerOptions()
                 .position(riodeJanero)
                 .title("Marker in Rio de Janeiro")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val losvegasMarker = map.addMarker(
             MarkerOptions()
                 .position(losvegas)
                 .title("Marker in Los Vegas")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
 
         val seattleMarker = map.addMarker(
@@ -238,31 +256,36 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             MarkerOptions()
                 .position(boston)
                 .title("Marker in Boston")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val atlantaMarker = map.addMarker(
             MarkerOptions()
                 .position(atlanta)
                 .title("Marker in Atlanta")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val chicagoMarker = map.addMarker(
             MarkerOptions()
                 .position(chicago)
                 .title("Marker in Chicago")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val newyorkMarker = map.addMarker(
             MarkerOptions()
                 .position(newyork)
                 .title("Marker in New York")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val dallasMarker = map.addMarker(
             MarkerOptions()
                 .position(dallas)
                 .title("Marker in Dallas")
-                .snippet("Some text"))
+                .snippet("Some text")
+        )
 
         val akronMarker = map.addMarker(
             MarkerOptions()
@@ -275,78 +298,89 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             MarkerOptions()
                 .position(columbus)
                 .snippet("Some text")
-                .title("Marker in Columbus"))
+                .title("Marker in Columbus")
+        )
 
         val minneapolisMarker = map.addMarker(
             MarkerOptions()
                 .position(minneapolis)
                 .snippet("Some text")
-                .title("Marker in Minneapolis"))
+                .title("Marker in Minneapolis")
+        )
 
 
         val kansasMarker = map.addMarker(
             MarkerOptions()
                 .position(kansas)
                 .snippet("Some text")
-                .title("Marker in Kansas"))
+                .title("Marker in Kansas")
+        )
 
         val stlouisMarker = map.addMarker(
             MarkerOptions()
                 .position(stlouis)
                 .snippet("Some text")
-                .title("Marker in St. Louis"))
-
+                .title("Marker in St. Louis")
+        )
 
 
         val madridMarker = map.addMarker(
             MarkerOptions()
                 .position(madrid)
                 .snippet("Some text")
-                .title("Marker in Madrid"))
+                .title("Marker in Madrid")
+        )
 
         val raleighMarker = map.addMarker(
             MarkerOptions()
                 .position(raleigh)
                 .snippet("Some text")
-                .title("Marker in Raleigh"))
+                .title("Marker in Raleigh")
+        )
 
         val miamiMarker = map.addMarker(
             MarkerOptions()
                 .position(miami)
                 .snippet("Some text")
-                .title("Marker in Miami"))
+                .title("Marker in Miami")
+        )
 
         val oklahomaMarker = map.addMarker(
             MarkerOptions()
                 .position(oklahoma)
                 .snippet("Some text")
-                .title("Marker in Oklahoma"))
+                .title("Marker in Oklahoma")
+        )
 
         val saltlakeMarker = map.addMarker(
             MarkerOptions()
                 .position(saltlake)
                 .snippet("Some text")
-                .title("Marker in Salt Lake City"))
+                .title("Marker in Salt Lake City")
+        )
 
 
         val austinMarker = map.addMarker(
             MarkerOptions()
                 .position(austin)
                 .snippet("Some text")
-                .title("Marker in Austin"))
+                .title("Marker in Austin")
+        )
 
         val colaradoMarker = map.addMarker(
             MarkerOptions()
                 .position(colarado)
                 .snippet("Some text")
-                .title("Marker in Colarado"))
+                .title("Marker in Colarado")
+        )
 
 
         val detroitMarker = map.addMarker(
             MarkerOptions()
                 .position(detroit)
                 .snippet("Some text")
-                .title("Marker in Detroit"))
+                .title("Marker in Detroit")
+        )
 
         val washingtonMarker = map.addMarker(
             MarkerOptions()
@@ -359,56 +393,64 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             MarkerOptions()
                 .position(pittsburg)
                 .snippet("Some text")
-                .title("Marker in Pittsburg"))
+                .title("Marker in Pittsburg")
+        )
 
         val romeMarker = map.addMarker(
             MarkerOptions()
                 .position(rome)
                 .snippet("Some text")
-                .title("Marker in Rome"))
+                .title("Marker in Rome")
+        )
 
         val mexicoMarker = map.addMarker(
             MarkerOptions()
                 .position(mexico)
                 .snippet("Some text")
-                .title("Marker in Mexico"))
+                .title("Marker in Mexico")
+        )
 
         val turinMarker = map.addMarker(
             MarkerOptions()
                 .position(turin)
                 .snippet("Some text")
-                .title("Marker in Turin"))
+                .title("Marker in Turin")
+        )
 
         val bariMarker = map.addMarker(
             MarkerOptions()
                 .position(bari)
                 .snippet("Some text")
-                .title("Marker in Bari"))
+                .title("Marker in Bari")
+        )
 
         val florenceMarker = map.addMarker(
             MarkerOptions()
                 .position(florence)
                 .snippet("Some text")
-                .title("Marker in Florence"))
+                .title("Marker in Florence")
+        )
 
         val padovaMarker = map.addMarker(
             MarkerOptions()
                 .position(padova)
                 .snippet("Some text")
-                .title("Marker in Padova"))
+                .title("Marker in Padova")
+        )
 
         val torontoMarker = map.addMarker(
             MarkerOptions()
                 .position(toronto)
                 .snippet("Some text")
-                .title("Marker in Toronto"))
+                .title("Marker in Toronto")
+        )
 
         val milanMarker = map.addMarker(
             MarkerOptions()
                 .position(milan)
                 .snippet("Some text")
-                .title("Marker in Milan"))
-
+                .title("Marker in Milan")
+        )
 
 
         // set customInfo marker adapter
@@ -473,6 +515,9 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
         val groundOverlay2 = overlays.addGroundOverlayWithTag(map)
 
+        // check location permission
+        checkLocationPermission()
+
         lifecycleScope.launch {
             delay(4000L)
             // to remove groundoverlay after 4 seconds
@@ -488,8 +533,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
         }
 
 
-
-
+        // set location permission in map
 
 
         // Apply map settings
@@ -497,7 +541,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
             // Zoom controls enabled
             isZoomControlsEnabled = true
             // My location button enabled
-            isMyLocationButtonEnabled = false
+            isMyLocationButtonEnabled = true
             // Scroll gestures enabled
             isScrollGesturesEnabled = true
             // Rotation enabled
@@ -505,6 +549,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 //             Show map icon
             isMapToolbarEnabled = true
         }
+
 
         // Set padding for plus minus buttons
 //        map.setPadding(0, 0, 300, 0)
@@ -606,7 +651,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
 
 
         // show animate camera to zoom in when click marker
-        map.animateCamera(CameraUpdateFactory.zoomTo(17f),2000,null)
+        map.animateCamera(CameraUpdateFactory.zoomTo(17f), 2000, null)
 
         marker.showInfoWindow()
 
@@ -634,19 +679,62 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback,   GoogleMap.OnMarker
     override fun onMarkerDragStart(p0: Marker) {
         Log.d("MarkerDrag", "Drag ends here ${p0.position}")
     }
+
     override fun onPolylineClick(p0: Polyline) {
-        Toast.makeText(this,"Polyline clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Polyline clicked", Toast.LENGTH_SHORT).show()
     }
 
 
     // On circle shape  click listener
     override fun onCircleClick(p0: Circle) {
-        Toast.makeText(this,"Circle is clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Circle is clicked", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPolygonClick(p0: Polygon) {
-        Toast.makeText(this,"Polygon is clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Polygon is clicked", Toast.LENGTH_SHORT).show()
     }
 
+    private fun checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        } else {
+            map.isMyLocationEnabled = true
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            LOCATION_PERMISSION_REQUEST_CODE -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    if (ContextCompat.checkSelfPermission(
+                            this,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        map.isMyLocationEnabled = true
+                    }
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+                return
+            }
+
+            else -> {
+            }
+        }
+    }
 
 }

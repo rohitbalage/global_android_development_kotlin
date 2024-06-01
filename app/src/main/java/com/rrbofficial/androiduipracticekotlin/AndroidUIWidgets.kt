@@ -1,5 +1,6 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,4 +13,11 @@ class AndroidUIWidgets : AppCompatActivity() {
         setContentView(R.layout.activity_android_uiwidgets)
 
     }
+
+    override fun onBackPressed() {
+        val intent = Intent(this,MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
+    }
+
 }

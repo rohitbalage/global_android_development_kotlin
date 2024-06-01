@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/amaranth"
-            android:text="@string/KotlinUI"
+            android:text="@string/KotlinPractice"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -43,6 +43,48 @@
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
             android:text="@string/ui_components" />
+
+        <Button
+            android:id="@+id/AdvanceUIComponets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/advanced_ui_components"
+            android:backgroundTintMode="add"
+            android:fontFamily="@font/amaranth"
+            app:cornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+        <Button
+            android:id="@+id/AndroidSystemComponents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android_system_components"
+            android:backgroundTintMode="add"
+            android:fontFamily="@font/amaranth"
+            app:cornerRadius="10dp" />
+
+
+        <Button
+            android:id="@+id/AritificalIntelligence"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/artificial_intelligence"
+            android:backgroundTintMode="add"
+            android:fontFamily="@font/amaranth"
+            app:cornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <Button
+            android:id="@+id/IOTandThings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/internet_of_things_iot"
+            android:backgroundTintMode="add"
+            android:fontFamily="@font/amaranth"
+            app:cornerRadius="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
 
     <Button
         android:id="@+id/Kotlincoroutines"
@@ -110,6 +152,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/animations"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            />
+
+        <Button
+            android:id="@+id/GotoNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            />
+
+        <Button
+            android:id="@+id/GotoAWS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aws"
+            android:backgroundTintMode="add"
+            app:cornerRadius="10dp"
+            android:fontFamily="@font/amaranth"
+            />
+
+        <Button
+            android:id="@+id/GoToAndroidSecurity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android_security"
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"

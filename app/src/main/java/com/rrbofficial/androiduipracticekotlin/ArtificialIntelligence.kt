@@ -7,18 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class KotlinCoroutines : AppCompatActivity() {
+class ArtificialIntelligence : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_kotlin_coroutines)
+        setContentView(R.layout.activity_artificial_intelligence)
 
     }
-
     override fun onBackPressed() {
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }
-
 }

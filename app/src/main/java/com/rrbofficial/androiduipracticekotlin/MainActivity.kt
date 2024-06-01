@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.databases.setOnClickListener(this)
         binding.googlemaps.setOnClickListener(this)
         binding.fragments.setOnClickListener(this)
+        binding.GotoAnimations.setOnClickListener(this)
+        binding.Kotlincoroutines.setOnClickListener(this)
+        binding.GotoNotifications.setOnClickListener(this)
+        binding.GotoAnimations.setOnClickListener(this)
+        binding.GotoAWS.setOnClickListener(this)
+        binding.GoToAndroidSecurity.setOnClickListener(this)
+        binding.AritificalIntelligence.setOnClickListener(this)
+        binding.IOTandThings.setOnClickListener(this)
+        binding.AdvanceUIComponets.setOnClickListener(this)
+
+
 
         // All About Android Activity Life cycle
         // override fun onStart() {
@@ -57,45 +68,96 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+
             R.id.Kotlincoroutines -> {
-                // Your logic for Kotlin Coroutines button
-            }
-            R.id.JetpackCompose -> {
-                val intent = Intent(this, Fragments::class.java)
+                val intent = Intent(this, KotlinCoroutines::class.java)
                 startActivity(intent)
                 finish()
             }
+
+            R.id.JetpackCompose -> {
+                val intent = Intent(this, JetpackCompose::class.java)
+                startActivity(intent)
+                finish()
+            }
+
             R.id.fragments -> {
                 val intent = Intent(this, Fragments::class.java)
                 startActivity(intent)
             }
+
             R.id.googlemaps -> {
                 val intent = Intent(this, GoogleMaps::class.java)
                 startActivity(intent)
             }
+
             R.id.APisbtn -> {
                 val intent = Intent(this, Apis::class.java)
                 startActivity(intent)
                 finish()
             }
+
             R.id.databases -> {
                 val intent = Intent(this, Databases::class.java)
                 startActivity(intent)
                 finish()
             }
-            R.id.Kotlincoroutines-> {
-                val intent = Intent(this,KotlinCoroutines::class.java)
+
+            R.id.Kotlincoroutines -> {
+                val intent = Intent(this, KotlinCoroutines::class.java)
                 startActivity(intent)
                 finish()
             }
-            R.id.GotoAnimations-> {
+
+            R.id.GotoAnimations -> {
                 val intent = Intent(this, Animations::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.GotoNotifications -> {
+                val intent = Intent(this, Notifications::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.GotoAWS -> {
+                val intent = Intent(this, AWS::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.GoToAndroidSecurity -> {
+                val intent = Intent(this, AndroidSecurity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.AritificalIntelligence -> {
+                val intent = Intent(this, ArtificialIntelligence::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.IOTandThings -> {
+                val intent = Intent(this, InternetOfThings::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.AdvanceUIComponets -> {
+                val intent = Intent(this, AndroidUIWidgets::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.AndroidSystemComponents -> {
+                val intent = Intent(this,AndroidSystemComponents::class.java)
                 startActivity(intent)
                 finish()
             }
         }
     }
-
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
 
