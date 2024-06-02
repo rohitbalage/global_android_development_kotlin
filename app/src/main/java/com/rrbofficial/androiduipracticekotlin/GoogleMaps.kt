@@ -101,7 +101,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
     val boston = LatLng(42.3144474, -71.0526843)
 
-    val mexico = LatLng(18.1166199, -78.5246324)
+    val mexico = LatLng(19.3909832,-99.3084217)
 
 
     val rome = LatLng(41.9102088, 12.3711917)
@@ -554,7 +554,10 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
     // Initialize Cluster Manager
     clusterManager = ClusterManager(this, map)
     map.setOnCameraIdleListener(clusterManager)
-    addClusterItems()
+    // clustering cities for Italy
+    addClusterItemsItaly()
+    // clustering ciites for USA
+    addClusterItemsUSA()
 
 
         lifecycleScope.launch {
@@ -664,7 +667,49 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
         onMapLongClicked()
     }
 
-    private fun addClusterItems() {
+    private fun addClusterItemsUSA() {
+        val usCities = listOf(
+            Pair(cleveland, "Cleveland"),
+            Pair(akron, "Akron"),
+            Pair(washingtondc, "Washington DC"),
+            Pair(columbus, "Columbus"),
+            Pair(detroit, "Detroit"),
+            Pair(pittsburg, "Pittsburg"),
+            Pair(losangeles, "Los Angeles"),
+            Pair(sanfransico, "San Francisco"),
+            Pair(toronto, "Toronto"), // Note: This is not in the US, but included in your list
+            Pair(losvegas, "Los Vegas"),
+            Pair(newyork, "New York"),
+            Pair(riodeJanero, "Rio de Janeiro"), // Note: This is not in the US, but included in your list
+            Pair(atlanta, "Atlanta"),
+            Pair(raleigh, "Raleigh"),
+            Pair(miami, "Miami"),
+            Pair(austin, "Austin"),
+            Pair(madrid, "Madrid"), // Note: This is not in the US, but included in your list
+            Pair(colarado, "Colarado"), // Note: Correct the spelling to Colorado
+            Pair(oklahoma, "Oklahoma"),
+            Pair(dallas, "Dallas"),
+            Pair(minneapolis, "Minneapolis"),
+            Pair(saltlake, "Salt Lake City"),
+            Pair(stlouis, "St. Louis"),
+            Pair(chicago, "Chicago"),
+            Pair(kansas, "Kansas"),
+            Pair(seattle, "Seattle"),
+            Pair(boston, "Boston"),
+            Pair(mexico, "Mexico") // Note: This is not in the US, but included in your list
+        )
+
+        for ((cityLatLng, cityName) in usCities) {
+            val cityItem = MyItem(cityLatLng, cityName, "", 1f) // Adjust zIndex as needed
+            clusterManager.addItem(cityItem)
+        }
+
+        clusterManager.cluster()
+    }
+
+
+
+    private fun addClusterItemsItaly() {
         val locations = listOf(
             Pair(rome, "Rome"),
             Pair(milan, "Milan"),
