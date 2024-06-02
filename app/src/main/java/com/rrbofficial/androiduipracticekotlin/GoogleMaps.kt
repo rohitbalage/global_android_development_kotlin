@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.firebase.firestore.model.mutation.Overlay
+import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
@@ -517,6 +518,13 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
         // check location permission
         checkLocationPermission()
+
+
+        // add GEO JSON data on maps
+
+        val layer = GeoJsonLayer(map,R.raw.map,this)
+        layer.addLayerToMap()
+
 
         lifecycleScope.launch {
             delay(4000L)

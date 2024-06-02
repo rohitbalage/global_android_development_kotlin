@@ -24,13 +24,13 @@ class SplashScreen : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        }, 2000) // 2000 milliseconds = 2 seconds
+        }, 3000) // 2000 milliseconds = 2 seconds
 
 
         // for gif image
         val gifImageView: ImageView = findViewById(R.id.gifsplash)
         Glide.with(this)
-            .load(R.drawable.sunglassdudeandroid)
+            .load(R.drawable.androideating)
             .into(gifImageView)
     }
 
