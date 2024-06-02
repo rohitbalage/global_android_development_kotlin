@@ -2,10 +2,7 @@ package com.rrbofficial.androiduipracticekotlin
 
 import Shapes
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,8 +12,6 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.lifecycleScope
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,21 +21,17 @@ import com.google.android.gms.maps.GoogleMap.OnPolygonClickListener
 import com.google.android.gms.maps.GoogleMap.OnPolylineClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptor
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
-import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
-import com.google.android.gms.maps.model.PolylineOptions
-import com.google.firebase.firestore.model.mutation.Overlay
+import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
 import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
+import com.rrbofficial.androiduipracticekotlin.misc.MyItem
 import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -112,6 +103,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
     val mexico = LatLng(18.1166199, -78.5246324)
 
+
     val rome = LatLng(41.9102088, 12.3711917)
     val milan = LatLng(45.4628246, 9.0953321)
     val turin = LatLng(45.4628246, 9.0953321)
@@ -119,13 +111,26 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
     val florence = LatLng(43.7800127, 11.1997685)
     val padova = LatLng(45.4065566, 11.850046)
 
+
+    // map styles
     private val typeAndStyle by lazy { TypeAndStyle() }
 
+    // shapes
     private val shapes by lazy { Shapes() }
 
+    // camera and viewport
     private val cameraAndViewport by lazy { CameraAndViewport() }
 
+    //overlays
     private val overlays by lazy { Overlays() }
+
+    // cluster declaration
+    private lateinit var clusterManager: ClusterManager <MyItem>
+
+    private val locationList = listOf(
+        rome, milan, turin, bari, florence, padova
+    )
+
 
 
     companion object {
@@ -161,7 +166,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
         typeAndStyle.setMapType(item, map)
         return true
     }
-
+//******************************************** ON MAP READY ************************************************
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
@@ -524,6 +529,32 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
         val layer = GeoJsonLayer(map,R.raw.map,this)
         layer.addLayerToMap()
+        // modify properties of GEO JSON object
+        val polygonStyle =layer.defaultPolygonStyle
+        polygonStyle.apply {
+//        fillColor = ContextCompat.getColor(this@GoogleMaps,R.color.white)
+            fillColor = Color.GREEN
+        }
+        layer.setOnFeatureClickListener {
+            Toast.makeText(this, " geoJSON Area Denver Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+//        // GEO Json features move through properties
+//        for(feature in layer.features)
+//        {
+//            if(feature.hasProperties("country"))
+//            {
+//                val country = feature.getProperty("country")
+//                Log.d("Maps",country.toString())
+//            }
+//        }
+
+
+        // cluster the markers in map
+    // Initialize Cluster Manager
+    clusterManager = ClusterManager(this, map)
+    map.setOnCameraIdleListener(clusterManager)
+    addClusterItems()
 
 
         lifecycleScope.launch {
@@ -632,6 +663,25 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 //        onMapClicked()
         onMapLongClicked()
     }
+
+    private fun addClusterItems() {
+        val locations = listOf(
+            Pair(rome, "Rome"),
+            Pair(milan, "Milan"),
+            Pair(turin, "Turin"),
+            Pair(bari, "Bari"),
+            Pair(florence, "Florence"),
+            Pair(padova, "Padova")
+        )
+
+        for ((location, title) in locations) {
+            val offsetItem = MyItem(location, title, "", 1f) // Adjust zIndex as needed
+            clusterManager.addItem(offsetItem)
+        }
+
+        clusterManager.cluster()
+    }
+
 
     // single and long click listener
 
