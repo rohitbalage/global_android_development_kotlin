@@ -16,7 +16,7 @@ object NotificationHelper {
         val notificationManager = NotificationManagerCompat.from(context)
 
         val defaultNotification = NotificationCompat.Builder(context, NOTIFICATION_DEFAULT_CHANNEL_ID)
-            .setSmallIcon(R.drawable.notification_icon_background)
+            .setSmallIcon(R.drawable.notification_icon_vector_foreground)
             .setContentTitle(title)
             .setContentText(msg)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)  // required API level <26
