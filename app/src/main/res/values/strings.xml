@@ -97,4 +97,6 @@
     <string name="clipboard">Clipboard</string>
     <string name="splashscreenbottomtext">Depicted my practice for Android system</string>
     <string name="machine_learning">Machine Learning</string>
+    <string name="android_types_of_notifications">Android Types of Notifications</string>
+    <string name="default_notification">Default Notification</string>
 </resources>
