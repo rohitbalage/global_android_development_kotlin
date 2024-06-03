@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".Notifications.Notifications">
+    android:layout_height="match_parent"
+    tools:context=".MachineLearning">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.GoogleMaps
 
-import Shapes
 import android.content.pm.PackageManager
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -29,10 +28,9 @@ import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.Polyline
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.rrbofficial.androiduipracticekotlin.CustomInfoAdapter
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGoogleMapsBinding
-import com.rrbofficial.androiduipracticekotlin.misc.CameraAndViewport
-import com.rrbofficial.androiduipracticekotlin.misc.MyItem
-import com.rrbofficial.androiduipracticekotlin.misc.TypeAndStyle
+import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -486,7 +484,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 //        addPolyline()
 
 
-        // set polyline function between cities in map with delay [from Shapes.kt class]
+        // set polyline function between cities in map with delay [from com.rrbofficial.androiduipracticekotlin.GoogleMaps.Shapes.kt class]
         lifecycleScope.launch {
             //delay seconds for the polyline function
             delay(4000)
@@ -527,7 +525,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 
         // add GEO JSON data on maps
 
-        val layer = GeoJsonLayer(map,R.raw.map,this)
+        val layer = GeoJsonLayer(map, R.raw.map,this)
         layer.addLayerToMap()
         // modify properties of GEO JSON object
         val polygonStyle =layer.defaultPolygonStyle

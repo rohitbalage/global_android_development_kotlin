@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.firebase
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +10,12 @@ import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 import com.google.firebase.firestore.firestore
-import org.w3c.dom.Document
+import com.rrbofficial.androiduipracticekotlin.R
+import com.rrbofficial.androiduipracticekotlin.User
 
 class Firebase : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.misc
+package com.rrbofficial.androiduipracticekotlin.GoogleMaps
 
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng

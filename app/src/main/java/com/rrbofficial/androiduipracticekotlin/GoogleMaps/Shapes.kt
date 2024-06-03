@@ -1,9 +1,8 @@
+package com.rrbofficial.androiduipracticekotlin.GoogleMaps
+
 import android.graphics.Color
-import android.icu.util.ChineseCalendar
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CircleOptions
-import com.google.android.gms.maps.model.CustomCap
 import com.google.android.gms.maps.model.Dash
 import com.google.android.gms.maps.model.Dot
 import com.google.android.gms.maps.model.Gap
@@ -11,8 +10,6 @@ import com.google.android.gms.maps.model.JointType
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.PolylineOptions
-import com.google.android.gms.maps.model.RoundCap
-import com.google.android.gms.maps.model.SquareCap
 import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.delay
 

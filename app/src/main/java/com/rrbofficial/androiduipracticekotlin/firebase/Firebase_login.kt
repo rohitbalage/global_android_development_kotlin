@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.firebase
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.rrbofficial.androiduipracticekotlin.R
 
 class Firebase_login : AppCompatActivity() {
 

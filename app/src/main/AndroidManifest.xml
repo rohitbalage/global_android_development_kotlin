@@ -19,6 +19,9 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".MachineLearning"
+            android:exported="false" />
+        <activity
             android:name=".AndroidSystemComponents"
             android:exported="false" />
         <activity
@@ -43,7 +46,7 @@
             android:name=".AWS"
             android:exported="false" />
         <activity
-            android:name=".Notifications"
+            android:name=".Notifications.Notifications"
             android:exported="false" />
         <activity
             android:name=".Animations"
@@ -64,16 +67,16 @@
             android:name=".Volley"
             android:exported="false" />
         <activity
-            android:name=".Firebase_userdata"
+            android:name=".firebase.Firebase_userdata"
             android:exported="false" />
         <activity
-            android:name=".Firebase_signup"
+            android:name=".firebase.Firebase_signup"
             android:exported="false" />
         <activity
-            android:name=".Firebase_login"
+            android:name=".firebase.Firebase_login"
             android:exported="false" />
         <activity
-            android:name=".Firebase"
+            android:name=".firebase.Firebase"
             android:exported="false" />
         <activity
             android:name=".JsonParsing"
@@ -103,7 +106,7 @@
             android:name=".Databases"
             android:exported="false" />
         <activity
-            android:name=".JetpackCompose"
+            android:name=".JetpackCompose.JetpackCompose"
             android:exported="false" />
         <activity
             android:name=".ExplicitIntent"
@@ -130,7 +133,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".GoogleMaps"
+            android:name=".GoogleMaps.GoogleMaps"
             android:exported="false"
             android:label="@string/title_activity_google_maps" />
         <activity
@@ -141,7 +144,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.misc
+package com.rrbofficial.androiduipracticekotlin.GoogleMaps
 
 import android.content.Context
 import android.util.Log

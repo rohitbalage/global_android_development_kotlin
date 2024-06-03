@@ -1,9 +1,16 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.JetpackCompose
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.rrbofficial.androiduipracticekotlin.Databinding
+import com.rrbofficial.androiduipracticekotlin.DependencyInjection
+import com.rrbofficial.androiduipracticekotlin.LiveData
+import com.rrbofficial.androiduipracticekotlin.MVMandRoom
+import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.R
+import com.rrbofficial.androiduipracticekotlin.ViewModel
 
 class JetpackCompose : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +44,7 @@ class JetpackCompose : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }

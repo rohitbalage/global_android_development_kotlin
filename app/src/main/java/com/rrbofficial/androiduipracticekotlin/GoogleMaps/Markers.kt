@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.GoogleMaps
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
