@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
@@ -71,6 +72,15 @@ class NotificationApp : Application() {
                 lightColor = Color.GREEN
             }
 
+            // contentIntent Notification Channel
+            val contentIntentNotification = NotificationChannel(
+                NOTIFICATION_CONTENT_INTENT_CHANNEL_ID,
+                "Content Intent Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is the content intent notification channel"
+                lightColor = Color.RED
+            }
 
 
             val notificationManager = getSystemService(NotificationManager::class.java)
@@ -82,7 +92,8 @@ class NotificationApp : Application() {
                 defaultNotification,
                 highNotification,
                 lowNotification,
-                actionNotification
+                actionNotification,
+                contentIntentNotification
 
             ))
         }

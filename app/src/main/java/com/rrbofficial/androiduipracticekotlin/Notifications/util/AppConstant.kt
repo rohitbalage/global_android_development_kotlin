@@ -11,4 +11,7 @@ object AppConstant {
     const val NOTIFICATION_ACTION_CHANNEL_ID = "dn04"
     const val NOTIFICATION_ACTION_ID = 1004
 
+    const val NOTIFICATION_CONTENT_INTENT_CHANNEL_ID = "dn05"
+    const val NOTIFICATION_CONTENT_INTENT_ID = 1005
+
 }

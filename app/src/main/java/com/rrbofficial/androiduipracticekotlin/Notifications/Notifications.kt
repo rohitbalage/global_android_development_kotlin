@@ -61,6 +61,14 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.actionNotification(this,title,msg)
         }
 
+        // content notification
+        binding.btnContentIntenrNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.contentIntentNotification(this,title,msg)
+        }
+
     }
 
     override fun onBackPressed() {
