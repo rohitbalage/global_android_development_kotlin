@@ -259,6 +259,7 @@ object NotificationHelper {
             .setContentIntent(contentPendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
             .setCategory(NotificationCompat.CATEGORY_PROMO)
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .addAction(R.drawable.action_add_tocart_foreground, "Add to cart", pendingIntent)
             .setSound(getUriFromResourceFile(context,R.raw.arabianmusicnotification))
             .build()

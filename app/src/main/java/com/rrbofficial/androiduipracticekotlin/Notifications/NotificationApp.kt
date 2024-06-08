@@ -53,6 +53,9 @@ class NotificationApp : Application() {
             ).apply {
                 description = "This is the default notification channel"
                 lightColor = Color.GREEN
+                // vibration for notification
+                enableVibration(true)
+                vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
             }
 
 
