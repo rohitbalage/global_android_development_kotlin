@@ -20,7 +20,9 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.R
+import com.rrbofficial.androiduipracticekotlin.SplashScreen
 
 object NotificationHelper {
     fun defaultNotification(context: Context, title: String, msg: String) {
@@ -183,5 +185,52 @@ object NotificationHelper {
             return
         }
         notificationManager.notify( NOTIFICATION_CONTENT_INTENT_ID, contentIntentNotification)
+    }
+
+    fun onGoingNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+        // Create the pending intent
+        val intent = Intent(context, AddToCartReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent,
+            PendingIntent.FLAG_MUTABLE)
+
+        // Create the content intent
+        val contentIntent = Intent(context, SplashScreen::class.java).apply {
+           addCategory(Intent.CATEGORY_LAUNCHER)
+            action = Intent.ACTION_MAIN
+        }
+        val contentPendingIntent = PendingIntent.getActivity(context, 0, contentIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+
+        val onGoingNotification = NotificationCompat.Builder(context, NOTIFICATION_CONTENT_INTENT_CHANNEL_ID )
+            .setSmallIcon(R.drawable.notification_icon_vector_foreground)
+            .setContentTitle(title)
+            .setContentText(msg)
+            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .setCategory(NotificationCompat.CATEGORY_PROMO)
+            .addAction(R.drawable.action_add_tocart_foreground, "Add to cart", pendingIntent)
+            .setOngoing(true)
+            .setAutoCancel(false)
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_ONGOING_INTENT_ID, onGoingNotification)
     }
 }

@@ -95,7 +95,7 @@
                     app:cornerRadius="10dp" />
 
                 <Button
-                    android:id="@+id/btnContentIntenrNotificaiton"
+                    android:id="@+id/btnContentIntenNotificaiton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/content_intent_notification"
@@ -103,6 +103,14 @@
                     android:fontFamily="@font/amaranth"
                     app:cornerRadius="10dp" />
 
+                <Button
+                    android:id="@+id/btnOnGoingNotificaiton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/on_going_notification"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp" />
 
 
             </LinearLayout>

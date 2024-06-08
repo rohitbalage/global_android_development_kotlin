@@ -61,12 +61,20 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.actionNotification(this,title,msg)
         }
 
-        // content notification
-        binding.btnContentIntenrNotificaiton.setOnClickListener()
+        // content  intent notification
+        binding.btnContentIntenNotificaiton.setOnClickListener()
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
             NotificationHelper.contentIntentNotification(this,title,msg)
+        }
+
+        // onGoing intent Notification
+        binding.btnOnGoingNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.onGoingNotification(this,title,msg)
         }
 
     }

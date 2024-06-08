@@ -11,6 +11,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
 
 class NotificationApp : Application() {
 
@@ -82,6 +83,16 @@ class NotificationApp : Application() {
                 lightColor = Color.RED
             }
 
+            // contentIntent Notification Channel
+            val onGoingNotification = NotificationChannel(
+                NOTIFICATION_ONGOING_CHANNEL_ID,
+                "OnGoing Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is the on going notification channel"
+                lightColor = Color.RED
+            }
+
 
             val notificationManager = getSystemService(NotificationManager::class.java)
 //            notificationManager.createNotificationChannel(defaultNotification)
@@ -93,7 +104,8 @@ class NotificationApp : Application() {
                 highNotification,
                 lowNotification,
                 actionNotification,
-                contentIntentNotification
+                contentIntentNotification,
+                onGoingNotification
 
             ))
         }
