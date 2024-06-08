@@ -3,15 +3,20 @@ package com.rrbofficial.androiduipracticekotlin.Notifications
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.R
 
 class NotificationApp : Application() {
 
@@ -31,6 +36,14 @@ class NotificationApp : Application() {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
+
+
+            // audio attributes for notification
+            val audioAttributes = AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                .build()
+
 
             // default Notification Channel
             val defaultNotification = NotificationChannel(
@@ -93,6 +106,18 @@ class NotificationApp : Application() {
                 lightColor = Color.RED
             }
 
+            // custom sound Notification Channel
+            val customSoundNotification = NotificationChannel(
+                NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID ,
+                "custom sound Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is custom sound notification channel"
+                lightColor = Color.RED
+                setSound(getUriFromResourceFile(this@NotificationApp,
+                    R.raw.arabianmusicnotification), audioAttributes)
+            }
+
 
             val notificationManager = getSystemService(NotificationManager::class.java)
 //            notificationManager.createNotificationChannel(defaultNotification)
@@ -105,10 +130,14 @@ class NotificationApp : Application() {
                 lowNotification,
                 actionNotification,
                 contentIntentNotification,
-                onGoingNotification
+                onGoingNotification,
+                customSoundNotification
 
             ))
         }
+    }
 
+   private fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
+    return Uri.parse("android.resource://$packageName/$resourceId")
     }
 }

@@ -112,6 +112,15 @@
                     android:fontFamily="@font/amaranth"
                     app:cornerRadius="10dp" />
 
+                <Button
+                    android:id="@+id/btncustomSoundNotificaiton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/custom_sound_notification"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp" />
+
 
             </LinearLayout>
         </ScrollView>

@@ -77,6 +77,15 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.onGoingNotification(this,title,msg)
         }
 
+
+        // custom sound Notification
+        binding.btncustomSoundNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.customSoundNotification(this,title,msg)
+        }
+
     }
 
     override fun onBackPressed() {
