@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 
 class NotificationApp : Application() {
 
@@ -49,10 +50,30 @@ class NotificationApp : Application() {
                 lightColor = Color.GREEN
             }
 
+            // low Notification Channel
+            val lowNotification = NotificationChannel(
+                NOTIFICATION_LOW_CHANNEL_ID,
+                "Low Notification Channel",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "This is the low notification channel"
+                lightColor = Color.GREEN
+            }
+
+
 
             val notificationManager = getSystemService(NotificationManager::class.java)
-            notificationManager.createNotificationChannel(defaultNotification)
-            notificationManager.createNotificationChannel(highNotification)
+//            notificationManager.createNotificationChannel(defaultNotification)
+//            notificationManager.createNotificationChannel(highNotification)
+
+            // create a list of notification channels
+            notificationManager.createNotificationChannels(listOf(
+                defaultNotification,
+                highNotification,
+                lowNotification
+
+
+            ))
         }
 
     }

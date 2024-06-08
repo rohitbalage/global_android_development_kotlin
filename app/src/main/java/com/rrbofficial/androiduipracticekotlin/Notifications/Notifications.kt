@@ -30,17 +30,27 @@ class Notifications : AppCompatActivity() {
     private fun buttonClickListener()
     {
 
+        // default notification
     binding.btndefaultNotification.setOnClickListener()
     {
         val title = binding.txtTitle.text.toString()
         val msg = binding.txtMessage.text.toString()
         NotificationHelper.defaultNotification(this,title,msg)
     }
+        // high notification
         binding.btnHighNotificaiton.setOnClickListener()
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
             NotificationHelper.highNotification(this,title,msg)
+        }
+
+        // low notification
+        binding.btnLowNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.lowNotification(this,title,msg)
         }
 
     }
