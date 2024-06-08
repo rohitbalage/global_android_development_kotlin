@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 
 class NotificationApp : Application() {
 
@@ -26,6 +27,8 @@ class NotificationApp : Application() {
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
+
+            // default Notification Channel
             val defaultNotification = NotificationChannel(
                 NOTIFICATION_DEFAULT_CHANNEL_ID,
                 "Default Notification Channel",
@@ -35,8 +38,21 @@ class NotificationApp : Application() {
                 lightColor = Color.GREEN
             }
 
+
+            // High Notification Channel
+            val highNotification = NotificationChannel(
+                NOTIFICATION_HIGH_CHANNEL_ID,
+                "High Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is the HIGH notification channel"
+                lightColor = Color.GREEN
+            }
+
+
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.createNotificationChannel(defaultNotification)
+            notificationManager.createNotificationChannel(highNotification)
         }
 
     }

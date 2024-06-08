@@ -66,10 +66,10 @@
                     android:text="@string/default_notification" />
 
                 <Button
-                    android:id="@+id/AdvanceUIComponets"
+                    android:id="@+id/btnHighNotificaiton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/advanced_ui_components"
+                    android:text="@string/high_notification"
                     android:backgroundTintMode="add"
                     android:fontFamily="@font/amaranth"
                     app:cornerRadius="10dp"

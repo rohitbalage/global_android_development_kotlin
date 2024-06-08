@@ -99,4 +99,5 @@
     <string name="machine_learning">Machine Learning</string>
     <string name="android_types_of_notifications">Android Types of Notifications</string>
     <string name="default_notification">Default Notification</string>
+    <string name="high_notification">High Notification</string>
 </resources>
