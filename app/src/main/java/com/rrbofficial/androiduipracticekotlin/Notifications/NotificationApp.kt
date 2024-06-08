@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
@@ -60,6 +61,16 @@ class NotificationApp : Application() {
                 lightColor = Color.GREEN
             }
 
+            // action Notification Channel
+            val actionNotification = NotificationChannel(
+                NOTIFICATION_ACTION_CHANNEL_ID,
+                "Action Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is the action notification channel"
+                lightColor = Color.GREEN
+            }
+
 
 
             val notificationManager = getSystemService(NotificationManager::class.java)
@@ -70,8 +81,8 @@ class NotificationApp : Application() {
             notificationManager.createNotificationChannels(listOf(
                 defaultNotification,
                 highNotification,
-                lowNotification
-
+                lowNotification,
+                actionNotification
 
             ))
         }

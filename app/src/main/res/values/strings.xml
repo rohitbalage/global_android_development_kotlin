@@ -101,4 +101,5 @@
     <string name="default_notification">Default Notification</string>
     <string name="high_notification">High Notification</string>
     <string name="low_notification">Low Notification</string>
+    <string name="action_notification">Action Notification</string>
 </resources>
