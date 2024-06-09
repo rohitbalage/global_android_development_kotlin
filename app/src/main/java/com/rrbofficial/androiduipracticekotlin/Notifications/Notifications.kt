@@ -87,12 +87,20 @@ class Notifications : AppCompatActivity() {
         }
 
 
-        // custom sound Notification
+        // big text style Notification
         binding.btnbigTextStyleNotificaiton.setOnClickListener()
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
             NotificationHelper.bigTextStyleNotification(this,title,msg)
+        }
+
+        // inbox style Notification
+        binding.btninboxStyleNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.inboxStyleNotification(this,title,msg)
         }
 
     }

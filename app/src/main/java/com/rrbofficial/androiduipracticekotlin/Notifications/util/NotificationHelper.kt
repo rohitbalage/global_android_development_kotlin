@@ -23,6 +23,8 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
@@ -328,6 +330,61 @@ object NotificationHelper {
             return
         }
         notificationManager.notify( NOTIFICATION_BIG_TEXT_STYLE_INTENT_ID, bigTextStyleNotification)
+    }
+
+
+    fun inboxStyleNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+//        // Create the pending intent
+//        val intent = Intent(context, AddToCartReceiver::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent,
+//            PendingIntent.FLAG_MUTABLE)
+//
+//        // Create the content intent
+//        val contentIntent = Intent(context, MainActivity::class.java)
+//        val contentPendingIntent = PendingIntent.getActivity(context, 0, contentIntent,
+//            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val inboxStyleNotification = NotificationCompat.Builder(context, NOTIFICATION_INBOX_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.app_icon_kotlin_background)
+            .setStyle(NotificationCompat.InboxStyle()
+                .setBigContentTitle("Inbox style notifications")
+                .setSummaryText("Reply S.P.A company")
+                .addLine("Concept Reply - Focuses on the Internet of Things (IoT) and development of smart products, providing end-to-end solutions for connected devices.")
+                .addLine("Light Reply -- company responsible for giving busineess solution to businesss")
+                .addLine("Valorem Reply - Specializes in digital transformation and innovation consulting, helping businesses adopt advanced digital solutions.")
+                .addLine("Aktive Reply - Specializes in digital experience and enterprise content management, delivering solutions for web content, digital asset management, and customer experience.")
+                .addLine("Breed Reply - A venture capital arm that invests in and supports early-stage IoT startups, offering funding and expertise to accelerate growth.")
+                .addLine("Data Reply - Provides services in big data analytics, machine learning, and artificial intelligence, helping companies leverage data for better decision-making.")
+                .addLine("Glue Reply - Focuses on IT architecture, integration, and enterprise architecture management, ensuring seamless and efficient IT ecosystems.")
+            )
+            .setContentTitle(title)
+            .setContentText(msg)
+            .setOngoing(false)
+//            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setCategory(NotificationCompat.CATEGORY_PROMO)
+            .setSound(getUriFromResourceFile(context,R.raw.notificationdoorbell))
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_INBOX_STYLE_INTENT_ID, inboxStyleNotification)
     }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {

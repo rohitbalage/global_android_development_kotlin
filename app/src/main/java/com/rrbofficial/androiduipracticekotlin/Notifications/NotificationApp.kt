@@ -15,6 +15,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.R
@@ -138,6 +139,20 @@ class NotificationApp : Application() {
             }
 
 
+            // inbox  style Notification Channel
+            val inboxStyleNotification = NotificationChannel(
+                NOTIFICATION_INBOX_STYLE_CHANNEL_ID ,
+                "inbox style Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "inbox style notification channel"
+                lightColor = Color.RED
+                setSound(getUriFromResourceFile(this@NotificationApp,
+                    R.raw.notificationdoorbell), audioAttributes)
+            }
+
+
+
             val notificationManager = getSystemService(NotificationManager::class.java)
 //            notificationManager.createNotificationChannel(defaultNotification)
 //            notificationManager.createNotificationChannel(highNotification)
@@ -151,7 +166,8 @@ class NotificationApp : Application() {
                 contentIntentNotification,
                 onGoingNotification,
                 customSoundNotification,
-                bigTextStyleNotification
+                bigTextStyleNotification,
+                inboxStyleNotification
 
             ))
         }
