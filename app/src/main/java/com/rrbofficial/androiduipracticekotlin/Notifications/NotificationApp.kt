@@ -19,6 +19,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -169,7 +170,7 @@ class NotificationApp : Application() {
             }
 
 
-            // big picture  style Notification Channel
+            // download  style Notification Channel
             val downloadStyleNotification = NotificationChannel(
                 NOTIFICATION_DOWNLOAD_STYLE_CHANNEL_ID ,
                 "download style Notification Channel",
@@ -178,6 +179,17 @@ class NotificationApp : Application() {
                 description = "download style notification channel"
                 lightColor = Color.RED
             }
+
+            //  messaging  style Notification Channel
+            val messagingStyleNotification = NotificationChannel(
+                NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID ,
+                "messaging style Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "messaging style notification channel"
+                lightColor = Color.RED
+            }
+
 
 
 
@@ -201,7 +213,8 @@ class NotificationApp : Application() {
                 bigTextStyleNotification,
                 inboxStyleNotification,
                 bigPictureStyleNotification,
-                downloadStyleNotification
+                downloadStyleNotification,
+                messagingStyleNotification
             ))
         }
     }

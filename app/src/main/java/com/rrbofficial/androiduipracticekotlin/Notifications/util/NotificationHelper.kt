@@ -11,8 +11,12 @@ import android.net.Uri
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.Person
+import androidx.core.app.RemoteInput
+import androidx.core.graphics.drawable.IconCompat
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.AddToCartReceiver
+import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.MessageReceiver
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID
@@ -33,6 +37,8 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.SplashScreen
@@ -42,6 +48,20 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 object NotificationHelper {
+
+    val messageList = mutableListOf<AppMessage>(
+        AppMessage("Hi", 123456, Person.Builder().setName("David").build()),
+        AppMessage("Hello", 123456, null),
+         AppMessage("How are you?", 123456, Person.Builder().setName("David").build()),
+         AppMessage("I am doing good", 123456, null),
+        AppMessage("how about you?", 123456, Person.Builder().setName("David").build()),
+        AppMessage("I am good too.", 123456, null),
+        AppMessage("Are you free", 123456, Person.Builder().setName("David").build()),
+        AppMessage("Yes I'am free..", 123456, null)
+
+
+    )
+
     fun defaultNotification(context: Context, title: String, msg: String) {
 
         val notificationManager = NotificationManagerCompat.from(context)
@@ -456,7 +476,7 @@ object NotificationHelper {
             .setOngoing(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
-            .setProgress(maxProgress, minProgress, false)
+            .setProgress(maxProgress, minProgress, false) // set indertminate to true and comment out coroutine below --------- For downloading without percentage
 
         CoroutineScope(Dispatchers.Main).launch {
             while (minProgress <= maxProgress) {
@@ -487,6 +507,77 @@ object NotificationHelper {
         }
     }
 
+    fun messagingStyleNotification(context: Context) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+        // Create the content intent
+        val contentIntent = Intent(context, MainActivity::class.java).apply {
+            addCategory(Intent.CATEGORY_LAUNCHER)
+            action = Intent.ACTION_MAIN
+        }
+        val contentPendingIntent = PendingIntent.getActivity(context, 0, contentIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val messageReceiver = Intent(context, MessageReceiver::class.java)
+        val messageReceiverPendingIntent = PendingIntent.getBroadcast(context, 0, messageReceiver,
+            PendingIntent.FLAG_MUTABLE)
+
+        // build a sender
+        val sender = Person.Builder().setName("Rohit").setIcon(IconCompat.createWithResource(context, R.drawable.rohit2016)).build()
+        // create  a messaging style
+        val messagingStyleNotification = NotificationCompat.MessagingStyle(sender).setConversationTitle("Android Chat")
+
+        // loop through the message list and add to messageStyle
+        messageList.forEach {
+            val notificationMessage = NotificationCompat.MessagingStyle.Message(
+                it.text,
+                it.timestamp!!,
+                it.person
+            )
+            messagingStyleNotification.addMessage(notificationMessage)
+        }
+
+        // Remote intent
+        val remoteInput = RemoteInput.Builder("KEY_TEXT_REPLY")
+            .setLabel("Please type here...")
+            .build()
+
+
+        // create  reply action
+        val replyAction = NotificationCompat.Action.Builder(
+            R.drawable.message_icon,
+            "Reply",
+           messageReceiverPendingIntent
+        ).addRemoteInput(remoteInput).build()
+
+        val messagingStyleNotifications = NotificationCompat.Builder(context, NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.notification_icon_vector_foreground)
+            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+            .setStyle(messagingStyleNotification)
+            .addAction(replyAction)
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setAutoCancel(true)
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_MESSAGING_STYLE_INTENT_ID, messagingStyleNotifications)
+    }
 }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {

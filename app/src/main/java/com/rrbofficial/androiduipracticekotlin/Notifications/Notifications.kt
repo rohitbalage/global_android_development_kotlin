@@ -124,12 +124,18 @@ class Notifications : AppCompatActivity() {
         }
 
 
-        // inbox style Notification
+        // download style Notification
         binding.btndownloadStyleNotificaiton.setOnClickListener()
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
             NotificationHelper.downloadStyleNotification(this,title,msg)
+        }
+
+        // download style Notification
+        binding.btnmessagingStyleNotificaiton.setOnClickListener()
+        {
+            NotificationHelper.messagingStyleNotification(this)
         }
 
     }
