@@ -19,6 +19,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MEDIA_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.R
@@ -191,7 +192,15 @@ class NotificationApp : Application() {
             }
 
 
-
+            //  messaging  style Notification Channel
+            val mediaStyleNotification = NotificationChannel(
+                NOTIFICATION_MEDIA_STYLE_CHANNEL_ID ,
+                "media style Notification Channel",
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                description = "media style notification channel"
+                lightColor = Color.RED
+            }
 
 
 
@@ -214,7 +223,8 @@ class NotificationApp : Application() {
                 inboxStyleNotification,
                 bigPictureStyleNotification,
                 downloadStyleNotification,
-                messagingStyleNotification
+                messagingStyleNotification,
+                mediaStyleNotification
             ))
         }
     }

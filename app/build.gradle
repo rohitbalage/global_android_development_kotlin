@@ -103,7 +103,9 @@ dependencies {
     // optional - Test helpers for Lifecycle runtime
     testImplementation "androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version"
 
+    // media - jetpack compose
 
+    implementation "androidx.media:media:1.7.0"
 
     // KTX for the Maps SDK for Android library
     implementation 'com.google.maps.android:maps-ktx:5.0.0'

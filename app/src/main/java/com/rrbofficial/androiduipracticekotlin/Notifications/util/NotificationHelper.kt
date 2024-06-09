@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.support.v4.media.MediaMetadataCompat
+import android.support.v4.media.session.MediaSessionCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -37,6 +39,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_LOW_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MEDIA_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
@@ -577,6 +580,59 @@ object NotificationHelper {
             return
         }
         notificationManager.notify( NOTIFICATION_MESSAGING_STYLE_INTENT_ID, messagingStyleNotifications)
+    }
+
+    fun mediaStyleNotification(context: Context) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+
+        // build media session
+        val mediaSession = MediaSessionCompat(context, "MediaNotification")
+        mediaSession.setMetadata(
+            MediaMetadataCompat.Builder()
+                .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, "Song Title")
+                .putString(MediaMetadataCompat.METADATA_KEY_TITLE, "Artist Name")
+                .build())
+
+        val largeIcon = BitmapFactory.decodeResource(context.resources, R.drawable.appicon)
+
+        val mediaStyleNotifications = NotificationCompat.Builder(context, NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.notification_icon_vector_foreground)
+            .setLargeIcon(largeIcon)
+            .setContentTitle("Track 1")
+            .setContentText("Song content")
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .setCategory(NotificationCompat.CATEGORY_PROGRESS)
+            .addAction(R.drawable.previousbutton, "previous", null)
+            .addAction(R.drawable.nexttrackbutton, "next", null)
+            .addAction(R.drawable.pausetrackbutton, "pause", null)
+            .addAction(R.drawable.stoptrack,"stop", null)
+            .setStyle(
+                androidx.media.app.NotificationCompat.MediaStyle()
+                    .setShowActionsInCompactView(0, 1, 2)
+                    .setMediaSession(mediaSession.sessionToken)
+
+            )
+            .setOngoing(true)
+            .setAutoCancel(false)
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_MEDIA_STYLE_INTENT_ID, mediaStyleNotifications)
     }
 }
 

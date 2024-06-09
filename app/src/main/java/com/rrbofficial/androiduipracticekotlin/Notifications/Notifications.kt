@@ -132,10 +132,16 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.downloadStyleNotification(this,title,msg)
         }
 
-        // download style Notification
+        // Messaging style Notification
         binding.btnmessagingStyleNotificaiton.setOnClickListener()
         {
             NotificationHelper.messagingStyleNotification(this)
+        }
+
+        // Media style Notification
+        binding.btnmediaStyleNotificaiton.setOnClickListener()
+        {
+            NotificationHelper.mediaStyleNotification(this)
         }
 
     }

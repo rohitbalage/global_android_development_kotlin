@@ -110,4 +110,5 @@
     <string name="big_picture_style_notification">Big picture style notification</string>
     <string name="download_style_notification">Download Style Notification</string>
     <string name="messaging_style_notification">Messaging Style Notification</string>
+    <string name="media_style_notification">Media Style Notification</string>
 </resources>
