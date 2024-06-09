@@ -122,6 +122,16 @@
                     app:cornerRadius="10dp" />
 
 
+                <Button
+                    android:id="@+id/btnbigTextStyleNotificaiton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/big_style_text_notification"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp" />
+
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

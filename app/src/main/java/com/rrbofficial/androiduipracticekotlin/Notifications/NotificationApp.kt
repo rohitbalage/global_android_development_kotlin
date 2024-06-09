@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
@@ -117,6 +118,21 @@ class NotificationApp : Application() {
             ).apply {
                 description = "This is custom sound notification channel"
                 lightColor = Color.RED
+
+                // set sound
+                setSound(getUriFromResourceFile(this@NotificationApp,
+                    R.raw.arabianmusicnotification), audioAttributes)
+
+            }
+
+            // big text style Notification Channel
+            val bigTextStyleNotification = NotificationChannel(
+                NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID ,
+                "big text style Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is big text style notification channel"
+                lightColor = Color.RED
                 setSound(getUriFromResourceFile(this@NotificationApp,
                     R.raw.arabianmusicnotification), audioAttributes)
             }
@@ -134,7 +150,8 @@ class NotificationApp : Application() {
                 actionNotification,
                 contentIntentNotification,
                 onGoingNotification,
-                customSoundNotification
+                customSoundNotification,
+                bigTextStyleNotification
 
             ))
         }

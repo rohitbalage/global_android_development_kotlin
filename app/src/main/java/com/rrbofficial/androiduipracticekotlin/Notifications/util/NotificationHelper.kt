@@ -13,6 +13,8 @@ import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.AddToCartReceiver
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
@@ -279,6 +281,53 @@ object NotificationHelper {
             return
         }
         notificationManager.notify( NOTIFICATION_CUSTOM_SOUND_INTENT_ID, customSoundNotification)
+    }
+
+    fun bigTextStyleNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+//        // Create the pending intent
+//        val intent = Intent(context, AddToCartReceiver::class.java)
+//        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent,
+//            PendingIntent.FLAG_MUTABLE)
+//
+//        // Create the content intent
+//        val contentIntent = Intent(context, MainActivity::class.java)
+//        val contentPendingIntent = PendingIntent.getActivity(context, 0, contentIntent,
+//            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val bigTextStyleNotification = NotificationCompat.Builder(context, NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.app_icon_kotlin_background)
+            .setStyle(NotificationCompat.BigTextStyle()
+                .setBigContentTitle("This is Big Text Style Notification")
+                .setSummaryText("Android Kotlin Practice Project")
+                .bigText("Android Kotlin Practice Project is made by Rohit for all related mobile design practices. It contains various databasess such as AWS, mySQL, SQLite, Firebase, etc also contains various UI design patterns such as Material Design, Jetpack Compose, MVVM etc")
+            )
+            .setContentTitle(title)
+            .setContentText(msg)
+//            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+//            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setCategory(NotificationCompat.CATEGORY_PROMO)
+            .setSound(getUriFromResourceFile(context,R.raw.arabianmusicnotification))
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_BIG_TEXT_STYLE_INTENT_ID, bigTextStyleNotification)
     }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
