@@ -103,6 +103,15 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.inboxStyleNotification(this,title,msg)
         }
 
+
+        // big picture style Notification
+        binding.btnbigPictureStyleNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.bigPictureStyleNotification(this,title,msg)
+        }
+
     }
 
     override fun onBackPressed() {

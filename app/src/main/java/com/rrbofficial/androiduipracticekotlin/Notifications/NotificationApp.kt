@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
@@ -124,6 +125,8 @@ class NotificationApp : Application() {
                 setSound(getUriFromResourceFile(this@NotificationApp,
                     R.raw.arabianmusicnotification), audioAttributes)
 
+                //   vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
+
             }
 
             // big text style Notification Channel
@@ -151,6 +154,22 @@ class NotificationApp : Application() {
                     R.raw.notificationdoorbell), audioAttributes)
             }
 
+            // big picture  style Notification Channel
+            val bigPictureStyleNotification = NotificationChannel(
+                NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID ,
+                "Big picture style Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "big picture style notification channel"
+
+                lightColor = Color.RED
+                setSound(getUriFromResourceFile(this@NotificationApp,
+                    R.raw.notifictionhappybell), audioAttributes)
+            }
+
+
+
+
 
 
             val notificationManager = getSystemService(NotificationManager::class.java)
@@ -167,8 +186,8 @@ class NotificationApp : Application() {
                 onGoingNotification,
                 customSoundNotification,
                 bigTextStyleNotification,
-                inboxStyleNotification
-
+                inboxStyleNotification,
+                bigPictureStyleNotification
             ))
         }
     }

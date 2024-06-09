@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -13,6 +14,8 @@ import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.AddToCartReceiver
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_PICTURE_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
@@ -385,6 +388,51 @@ object NotificationHelper {
             return
         }
         notificationManager.notify( NOTIFICATION_INBOX_STYLE_INTENT_ID, inboxStyleNotification)
+    }
+
+
+    fun bigPictureStyleNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+        val bigPictureBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.rohit_edgewater)
+
+        val largeIconBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.rohit2016)
+
+        val bigPictureStyleNotification = NotificationCompat.Builder(context, NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.app_icon_kotlin_background)
+            .setStyle(
+                NotificationCompat.BigPictureStyle()
+                    .setBigContentTitle("This is Big Picture Style Notification")
+                    .setSummaryText("Android Kotlin Practice Project")
+                    .bigPicture(bigPictureBitmap)
+                    .bigLargeIcon(largeIconBitmap)
+            )
+            .setContentTitle(title)
+            .setContentText(msg)
+            .setOngoing(false)
+//            .setContentIntent(contentPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+//            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setCategory(NotificationCompat.CATEGORY_PROMO)
+            .setSound(getUriFromResourceFile(context,R.raw.notifictionhappybell))
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_BIG_PICTURE_STYLE_INTENT_ID, bigPictureStyleNotification)
     }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
