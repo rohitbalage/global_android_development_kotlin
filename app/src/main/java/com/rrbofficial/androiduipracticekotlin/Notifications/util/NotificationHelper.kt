@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.core.app.ActivityCompat
@@ -391,7 +392,7 @@ object NotificationHelper {
     }
 
 
-    fun bigPictureStyleNotification(context: Context, title: String, msg: String) {
+    fun bigPictureStyleNotification(context: Context, title: String, msg: String, bitmap: Bitmap) {
 
         val notificationManager = NotificationManagerCompat.from(context)
 
@@ -406,7 +407,7 @@ object NotificationHelper {
                     .setBigContentTitle("This is Big Picture Style Notification")
                     .setSummaryText("Android Kotlin Practice Project")
                     .bigPicture(bigPictureBitmap)
-                    .bigLargeIcon(largeIconBitmap)
+                    .bigLargeIcon(bitmap)
             )
             .setContentTitle(title)
             .setContentText(msg)

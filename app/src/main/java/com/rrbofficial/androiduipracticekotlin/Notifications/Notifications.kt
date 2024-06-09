@@ -1,9 +1,14 @@
 package com.rrbofficial.androiduipracticekotlin.Notifications
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper
 import com.rrbofficial.androiduipracticekotlin.R
@@ -17,15 +22,20 @@ class Notifications : AppCompatActivity() {
     // binding to binding ---------------------------------------------
    private  val binding :ActivityNotificationsBinding get() = _binding!!
 
+    private var bitmap : Bitmap? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // set-up glide
+        setUpGlide()
+
 
         _binding = ActivityNotificationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         buttonClickListener()
-
     }
     private fun buttonClickListener()
     {
@@ -109,7 +119,10 @@ class Notifications : AppCompatActivity() {
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
-            NotificationHelper.bigPictureStyleNotification(this,title,msg)
+
+
+            // check bitmap not null then pass it
+            NotificationHelper.bigPictureStyleNotification(this,title,msg,bitmap!!)
         }
 
     }
@@ -124,5 +137,23 @@ class Notifications : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
+
+
+    private fun setUpGlide() {
+        Glide.with(this)
+            .asBitmap()
+            .load(R.drawable.rohit2016)
+            .circleCrop()
+            .into(object : CustomTarget<Bitmap>() {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    bitmap = resource
+                }
+
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    bitmap = null
+                }
+            })
+    }
+
 
 }
