@@ -151,6 +151,16 @@
                     app:cornerRadius="10dp" />
 
 
+                <Button
+                    android:id="@+id/btndownloadStyleNotificaiton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/download_style_notification"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp" />
+
+
 
             </LinearLayout>
         </ScrollView>

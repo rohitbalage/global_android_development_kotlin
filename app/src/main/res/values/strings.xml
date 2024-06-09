@@ -108,4 +108,5 @@
     <string name="big_style_text_notification">Big Style Text Notification</string>
     <string name="inbox_style_notification">Inbox Style Notification</string>
     <string name="big_picture_style_notification">Big picture style notification</string>
+    <string name="download_style_notification">Download Style Notification</string>
 </resources>

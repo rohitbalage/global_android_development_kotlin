@@ -119,10 +119,17 @@ class Notifications : AppCompatActivity() {
         {
             val title = binding.txtTitle.text.toString()
             val msg = binding.txtMessage.text.toString()
-
-
             // check bitmap not null then pass it
             NotificationHelper.bigPictureStyleNotification(this,title,msg,bitmap!!)
+        }
+
+
+        // inbox style Notification
+        binding.btndownloadStyleNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.downloadStyleNotification(this,title,msg)
         }
 
     }

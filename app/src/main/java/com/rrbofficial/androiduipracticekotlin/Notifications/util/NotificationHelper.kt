@@ -25,6 +25,8 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DOWNLOAD_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DOWNLOAD_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_INBOX_STYLE_CHANNEL_ID
@@ -34,6 +36,10 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.SplashScreen
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 object NotificationHelper {
     fun defaultNotification(context: Context, title: String, msg: String) {
@@ -436,7 +442,54 @@ object NotificationHelper {
         notificationManager.notify( NOTIFICATION_BIG_PICTURE_STYLE_INTENT_ID, bigPictureStyleNotification)
     }
 
+
+    fun downloadStyleNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+        val maxProgress = 100
+        var minProgress = 0
+
+        val downloadStyleNotification = NotificationCompat.Builder(context, NOTIFICATION_DOWNLOAD_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.app_icon_kotlin_background)
+            .setContentTitle(title)
+            .setContentText(msg)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .setCategory(NotificationCompat.CATEGORY_PROGRESS)
+            .setProgress(maxProgress, minProgress, false)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            while (minProgress <= maxProgress) {
+                minProgress += 10
+                downloadStyleNotification.setProgress(maxProgress, minProgress, false)
+                if (ActivityCompat.checkSelfPermission(
+                        context,  // Use context directly here
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return@launch
+                }
+                notificationManager.notify(NOTIFICATION_DOWNLOAD_STYLE_INTENT_ID, downloadStyleNotification.build())
+                delay(1000)
+            }
+
+            downloadStyleNotification.setContentTitle("Download Finished")
+            downloadStyleNotification.setProgress(0, 0, false)
+            downloadStyleNotification.setOngoing(false)
+            notificationManager.notify(NOTIFICATION_DOWNLOAD_STYLE_INTENT_ID, downloadStyleNotification.build())
+        }
+    }
+
+}
+
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
         return Uri.parse("android.resource://$context.packageName/$resourceId")
     }
-}
+
