@@ -26,8 +26,11 @@ import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.Calendar
 
 class AndroidUIWidgets : AppCompatActivity() {
@@ -122,7 +125,6 @@ class AndroidUIWidgets : AppCompatActivity() {
         seekbarUI.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 textViewSeekBarUI.text = "Progress: $progress"
-                Toast.makeText(this@AndroidUIWidgets, "SeekBar Progress: $progress", Toast.LENGTH_SHORT).show()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -181,6 +183,20 @@ class AndroidUIWidgets : AppCompatActivity() {
             }
         })
 
+        val materialButton: MaterialButton = findViewById(R.id.materialButton)
+        materialButton.setOnClickListener {
+            Toast.makeText(this, "Material Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            Toast.makeText(this, "FAB Clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        val cardView: CardView = findViewById(R.id.cardView)
+        cardView.setOnClickListener {
+            Toast.makeText(this, "CardView Clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onBackPressed() {
