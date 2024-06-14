@@ -112,4 +112,16 @@
     <string name="messaging_style_notification">Messaging Style Notification</string>
     <string name="media_style_notification">Media Style Notification</string>
     <string name="this_is_a_cardview">This is a CardView</string>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
 </resources>

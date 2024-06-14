@@ -4,8 +4,11 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.CheckedTextView
@@ -97,7 +100,11 @@ class AndroidUIWidgets : AppCompatActivity() {
 
         toggle.setOnClickListener {
             val isChecked = toggle.isChecked
-            Toast.makeText(this, "ToggleButton is ${if (isChecked) "ON" else "OFF"}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "ToggleButton is ${if (isChecked) "ON" else "OFF"}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         image.setOnClickListener {
@@ -114,7 +121,8 @@ class AndroidUIWidgets : AppCompatActivity() {
 
         switchButtonCheckboxesUI.setOnClickListener {
             val isChecked = switchButtonCheckboxesUI.isChecked
-            Toast.makeText(this, "Switch is ${if (isChecked) "ON" else "OFF"}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Switch is ${if (isChecked) "ON" else "OFF"}", Toast.LENGTH_SHORT)
+                .show()
         }
 
         submitRatingBarUI.setOnClickListener {
@@ -128,17 +136,23 @@ class AndroidUIWidgets : AppCompatActivity() {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
-                Toast.makeText(this@AndroidUIWidgets, "SeekBar Touch Started", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AndroidUIWidgets, "SeekBar Touch Started", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                Toast.makeText(this@AndroidUIWidgets, "SeekBar Touch Stopped", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AndroidUIWidgets, "SeekBar Touch Stopped", Toast.LENGTH_SHORT)
+                    .show()
             }
         })
 
         checkedTextviewUI.setOnClickListener {
             checkedTextviewUI.toggle()
-            Toast.makeText(this, "CheckedTextView Clicked, isChecked: ${checkedTextviewUI.isChecked}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "CheckedTextView Clicked, isChecked: ${checkedTextviewUI.isChecked}",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         // DatePicker
@@ -148,9 +162,14 @@ class AndroidUIWidgets : AppCompatActivity() {
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-                Toast.makeText(this, "Selected Date: $selectedDay/${selectedMonth + 1}/$selectedYear", Toast.LENGTH_SHORT).show()
-            }, year, month, day)
+            val datePickerDialog =
+                DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                    Toast.makeText(
+                        this,
+                        "Selected Date: $selectedDay/${selectedMonth + 1}/$selectedYear",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }, year, month, day)
             datePickerDialog.show()
         }
 
@@ -161,7 +180,11 @@ class AndroidUIWidgets : AppCompatActivity() {
             val minute = calendar.get(Calendar.MINUTE)
 
             val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-                Toast.makeText(this, "Selected Time: $selectedHour:$selectedMinute", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Selected Time: $selectedHour:$selectedMinute",
+                    Toast.LENGTH_SHORT
+                ).show()
             }, hour, minute, true)
             timePickerDialog.show()
         }
@@ -174,7 +197,8 @@ class AndroidUIWidgets : AppCompatActivity() {
         // SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@AndroidUIWidgets, "Search Query: $query", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AndroidUIWidgets, "Search Query: $query", Toast.LENGTH_SHORT)
+                    .show()
                 return false
             }
 
@@ -197,12 +221,38 @@ class AndroidUIWidgets : AppCompatActivity() {
         cardView.setOnClickListener {
             Toast.makeText(this, "CardView Clicked", Toast.LENGTH_SHORT).show()
         }
-    }
 
+        val spinner: Spinner = findViewById(R.id.spinner)
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.planets_array,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = parent?.getItemAtPosition(position).toString()
+                Toast.makeText(this@AndroidUIWidgets, "Selected: $selectedItem", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Another interface callback
+            }
+        }
+
+
+    }
     override fun onBackPressed() {
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }
-
 }
