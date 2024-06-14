@@ -29,6 +29,7 @@ import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -69,6 +70,7 @@ class AndroidUIWidgets : AppCompatActivity() {
         val showTimePicker: Button = findViewById(R.id.showTimePicker)
         val webView: WebView = findViewById(R.id.webView)
         val searchView: SearchView = findViewById(R.id.searchView)
+        val switchCompat: SwitchCompat = findViewById(R.id.switchCompat)
 
         // Setting onClick listeners with Toast messages
         buttonInAndroidUI.setOnClickListener {
@@ -247,8 +249,18 @@ class AndroidUIWidgets : AppCompatActivity() {
                 // Another interface callback
             }
         }
+        switchCompat.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                Toast.makeText(this@AndroidUIWidgets, "Compatct Switch: ON", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                // Switch is off
+                Toast.makeText(this@AndroidUIWidgets, "Compatct Switch: OFF", Toast.LENGTH_SHORT)
+                    .show()
+            }
 
 
+        }
     }
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
