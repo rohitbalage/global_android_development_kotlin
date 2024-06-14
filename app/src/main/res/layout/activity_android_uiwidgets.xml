@@ -23,7 +23,7 @@
             android:layout_marginTop="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
          <TextView
              android:layout_width="wrap_content"
@@ -195,15 +195,41 @@
                        android:layout_height="wrap_content"
                        />
 
-                   <Button
-                       android:id="@+id/next"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="Next"
-                       android:textColor="@color/white"
-                       android:background="@color/violet"
-                       android:layout_marginTop="47dp"
-                       />
+
+            <!-- Add DatePicker -->
+            <Button
+                android:id="@+id/showDatePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show DatePicker"
+                android:textColor="@color/white"
+                android:background="@color/violet"
+                android:layout_marginTop="20dp" />
+
+            <!-- Add TimePicker -->
+            <Button
+                android:id="@+id/showTimePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show TimePicker"
+                android:textColor="@color/white"
+                android:background="@color/violet"
+                android:layout_marginTop="20dp" />
+
+            <!-- Add WebView -->
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="20dp" />
+
+            <!-- Add SearchView -->
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:queryHint="Search here..." />
 
         </LinearLayout>
     </ScrollView>
