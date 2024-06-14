@@ -84,6 +84,9 @@
     <string name="androidsyscomponentsheadliine">Android System Components</string>
     <string name="camera">Camera</string>
     <string name="wifi_off">WIFI OFF</string>
+    <string name="wifi_on">WIFI ON</string>
+    <string name="bluetooth_off">Bluetooth OFF</string>
+    <string name="bluetooth_on">Bluetooth ON</string>
     <string name="gallary">Gallary</string>
     <string name="files">Files</string>
     <string name="messages">Messages</string>
@@ -112,6 +115,32 @@
     <string name="messaging_style_notification">Messaging Style Notification</string>
     <string name="media_style_notification">Media Style Notification</string>
     <string name="this_is_a_cardview">This is a CardView</string>
+
+    <string name="code_snippet">
+        // code for bluetooth toggle button
+        fun toggleBluetooth() {
+            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            if (bluetoothAdapter == null) {
+                // Device does not support Bluetooth
+                Toast.makeText(this, "Bluetooth not supported", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (bluetoothAdapter.isEnabled) {
+                bluetoothAdapter.disable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+            } else {
+                // Request Bluetooth permissions if not granted
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                    return
+                }
+
+                bluetoothAdapter.enable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+            }
+        }
+    </string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

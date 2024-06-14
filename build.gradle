@@ -4,9 +4,9 @@ buildscript {
     repositories {
 
         //  for firebase firestore
-
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
 
     }
 

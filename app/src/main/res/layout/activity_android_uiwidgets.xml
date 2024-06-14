@@ -290,6 +290,49 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/editTextMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your message"
+                android:inputType="textMultiLine"
+                android:minLines="3" />
+
+            <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit" />
+
+            <WebView
+                android:id="@+id/code_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.amrdeveloper.codeview.CodeView
+                android:id="@+id/codeView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:dropDownWidth="match_parent"
+                android:dropDownHorizontalOffset="0dp"
+                android:dropDownSelector="@color/grey"
+                android:gravity="top|start" />
+
 
 
         </LinearLayout>

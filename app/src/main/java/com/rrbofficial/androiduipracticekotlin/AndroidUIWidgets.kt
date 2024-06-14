@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.CheckedTextView
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -31,11 +32,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
+import android.graphics.Color
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
+import com.amrdeveloper.codeview.CodeView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import org.intellij.lang.annotations.Language
 import java.util.Calendar
+import java.util.regex.Pattern
 
 class AndroidUIWidgets : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,7 +77,68 @@ class AndroidUIWidgets : AppCompatActivity() {
         val webView: WebView = findViewById(R.id.webView)
         val searchView: SearchView = findViewById(R.id.searchView)
         val switchCompat: SwitchCompat = findViewById(R.id.switchCompat)
+         lateinit var editTextName: EditText
+         lateinit var editTextEmail: EditText
+         lateinit var editTextMessage: EditText
+         lateinit var buttonSubmit: Button
 
+        // Find the CodeView by its ID
+        val codeView: CodeView = findViewById(R.id.codeView)
+
+        // Define the code snippet
+        val codeSnippet = """
+            fun toggleBluetooth() {
+                val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+                if (bluetoothAdapter == null) {
+                    // Device does not support Bluetooth
+                    showToast("Bluetooth not supported")
+                    return
+                }
+
+                if (bluetoothAdapter.isEnabled) {
+                    bluetoothAdapter.disable()
+                    binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+                } else {
+                    // Request Bluetooth permissions if not granted
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                        return
+                    }
+
+                    bluetoothAdapter.enable()
+                    binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+                }
+            }
+        """.trimIndent()
+// Set text size and syntax highlighting
+        codeView.setText(codeSnippet)
+        codeView.setTextSize(14f)
+
+        // Define syntax patterns for Kotlin
+        val syntaxPatterns: MutableMap<Pattern, Int> = HashMap()
+        syntaxPatterns[Pattern.compile("\\b(fun|if|else|return)\\b")] = Color.parseColor("#EC407A")
+        syntaxPatterns[Pattern.compile("\".*\"")] = Color.parseColor("#FFA726")
+        syntaxPatterns[Pattern.compile("//.*")] = Color.parseColor("#9E9E9E")
+        syntaxPatterns[Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL)] = Color.parseColor("#9E9E9E")
+        syntaxPatterns[Pattern.compile("\\b(true|false|null)\\b")] = Color.parseColor("#42A5F5")
+        syntaxPatterns[Pattern.compile("\\b\\d+\\b")] = Color.parseColor("#42A5F5")
+
+        // Set the syntax patterns map and re-highlight syntax
+        codeView.setSyntaxPatternsMap(syntaxPatterns)
+        codeView.reHighlightSyntax()
+
+        // Optionally enable line numbers and customize appearance
+        codeView.setEnableLineNumber(true)
+        codeView.setLineNumberTextSize(25f);
+        codeView.setLineNumberTextColor(Color.WHITE)
+        codeView.setEnableHighlightCurrentLine(true)
+        codeView.setLineNumberTypeface(null) // Use default typeface, or set your own
+
+        // enable indendation error
+        codeView.setEnableAutoIndentation(true);
+
+        // Set the text color for the entire CodeView
+        codeView.setTextColor(Color.WHITE)
         // Setting onClick listeners with Toast messages
         buttonInAndroidUI.setOnClickListener {
             Toast.makeText(this, "TextView Clicked", Toast.LENGTH_SHORT).show()
@@ -260,11 +327,39 @@ class AndroidUIWidgets : AppCompatActivity() {
             }
 
 
+            // Initialize EditText and Button outside of setOnCheckedChangeListener scope
+            editTextName = findViewById(R.id.editTextName)
+            editTextEmail = findViewById(R.id.editTextEmail)
+            editTextMessage = findViewById(R.id.editTextMessage)
+            buttonSubmit = findViewById(R.id.buttonSubmit)
+
+            // Set OnClickListener for buttonSubmit here
+            buttonSubmit.setOnClickListener {
+                handleSubmit(
+                    editTextName.text.toString().trim(),
+                    editTextEmail.text.toString().trim(),
+                    editTextMessage.text.toString().trim()
+                )
+            }
+
         }
+
     }
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }
+    private fun handleSubmit(name: String, email: String, message: String) {
+        if (name.isEmpty() || email.isEmpty() || message.isEmpty()) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Process the form data (e.g., send it to a server, save to database)
+        // Here, we'll just display a toast message with the submitted data
+        val toastMessage = "Name: $name\nEmail: $email\nMessage: $message"
+        Toast.makeText(this, toastMessage, Toast.LENGTH_LONG).show()
+    }
+
 }
