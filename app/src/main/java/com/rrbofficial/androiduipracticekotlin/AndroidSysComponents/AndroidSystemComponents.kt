@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
 
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
@@ -13,9 +13,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityAndroidSystemComponentsBinding
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AndroidSystemComponents : AppCompatActivity() {
 

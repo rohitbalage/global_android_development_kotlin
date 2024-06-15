@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin
+package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -28,18 +28,15 @@ import android.widget.TextSwitcher
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ToggleButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import android.graphics.Color
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.NestedScrollView
 import com.amrdeveloper.codeview.CodeView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import org.intellij.lang.annotations.Language
+import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.R
 import java.util.Calendar
 import java.util.regex.Pattern
 
@@ -261,7 +258,10 @@ class AndroidUIWidgets : AppCompatActivity() {
         // WebView
         webView.webViewClient = WebViewClient()
         webView.settings.javaScriptEnabled = true
-        webView.loadUrl("https://www.google.com")
+        // Enable vertical scrolling
+        webView.isVerticalScrollBarEnabled = true
+        webView.isHorizontalScrollBarEnabled = false
+        webView.loadUrl("https://www.rrbofficial.com/")
 
         // SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
