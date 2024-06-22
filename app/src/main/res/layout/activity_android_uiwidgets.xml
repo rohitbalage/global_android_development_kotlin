@@ -195,6 +195,15 @@
                        android:layout_height="wrap_content"
                        />
 
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_x="-7dp"
+                android:layout_y="447dp"
+                android:queryHint="Search here..." />
+
 
             <!-- Add DatePicker -->
             <Button
@@ -223,14 +232,8 @@
                 android:layout_height="500dp"
                 android:layout_marginTop="20dp" >
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_x="-7dp"
-                    android:layout_y="447dp"
-                    android:queryHint="Search here..." />
+
+
             </WebView>
 
             <!-- Add SearchView -->

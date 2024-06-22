@@ -179,6 +179,15 @@
                     app:cornerRadius="10dp" />
 
 
+                <Button
+                    android:id="@+id/btncustomStyleNotificaiton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/custom_style_notificaiton"
+                    android:backgroundTintMode="add"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

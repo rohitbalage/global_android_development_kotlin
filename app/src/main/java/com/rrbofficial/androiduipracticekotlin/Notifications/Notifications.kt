@@ -144,6 +144,14 @@ class Notifications : AppCompatActivity() {
             NotificationHelper.mediaStyleNotification(this)
         }
 
+        // Custom style Notification
+        binding.btncustomStyleNotificaiton.setOnClickListener()
+        {
+            val title = binding.txtTitle.text.toString()
+            val msg = binding.txtMessage.text.toString()
+            NotificationHelper.customStyleNotification(this,title,msg)
+        }
+
     }
 
     override fun onBackPressed() {

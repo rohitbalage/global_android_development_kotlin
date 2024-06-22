@@ -33,6 +33,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
+        <receiver
+            android:name=".Notifications.receiver.CustomNotificationReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+
+        <activity
+            android:name=".githubretrofit.GithubUserActivity"
+            android:exported="false" />
         <activity
             android:name=".githubretrofit.GithubActivity"
             android:exported="false" />

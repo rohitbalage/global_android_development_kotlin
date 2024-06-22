@@ -141,6 +141,12 @@
             }
         }
     </string>
+    <string name="api_integration">API Integration</string>
+    <string name="enter_your_github_username">enter your github username</string>
+    <string name="github">Github</string>
+    <string name="github_user">Github user</string>
+    <string name="github_email">Github Email</string>
+    <string name="custom_style_notificaiton">Custom Style Notificaiton</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

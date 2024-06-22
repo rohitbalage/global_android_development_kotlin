@@ -261,7 +261,7 @@ class AndroidUIWidgets : AppCompatActivity() {
         // Enable vertical scrolling
         webView.isVerticalScrollBarEnabled = true
         webView.isHorizontalScrollBarEnabled = false
-        webView.loadUrl("https://www.rrbofficial.com/")
+        webView.loadUrl("https://www.google.com/")
 
         // SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

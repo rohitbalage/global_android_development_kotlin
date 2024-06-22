@@ -10,6 +10,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
+import android.widget.RemoteViews
+import android.widget.RemoteViews.RemoteView
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -18,6 +20,7 @@ import androidx.core.app.RemoteInput
 import androidx.core.graphics.drawable.IconCompat
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.AddToCartReceiver
+import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.CustomNotificationReceiver
 import com.rrbofficial.androiduipracticekotlin.Notifications.receiver.MessageReceiver
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_ID
@@ -29,6 +32,8 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_INTENT_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DOWNLOAD_STYLE_CHANNEL_ID
@@ -634,6 +639,52 @@ object NotificationHelper {
         }
         notificationManager.notify( NOTIFICATION_MEDIA_STYLE_INTENT_ID, mediaStyleNotifications)
     }
+
+
+
+    fun customStyleNotification(context: Context, title: String, msg: String) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+        val intent = Intent(context, CustomNotificationReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(context, 0, intent,
+            PendingIntent.FLAG_MUTABLE)
+
+        val collapseView = RemoteViews(context.packageName, R.layout.collapse_notification_view)
+        val expandView = RemoteViews(context.packageName, R.layout.expanded_notification_view)
+
+        collapseView.setTextViewText(R.id.txt_collapse_title,title)
+        collapseView.setTextViewText(R.id.txt_collapse_info,msg)
+
+        expandView.setImageViewResource(R.id.expanded_imageView, R.drawable.rohit_edgewater)
+       expandView.setOnClickPendingIntent( R.id.expanded_btnSend,pendingIntent)
+
+
+        val customStyleNotification = NotificationCompat.Builder(context, NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID )
+            .setSmallIcon(R.drawable.app_icon_kotlin_background)
+            .setCustomHeadsUpContentView(collapseView)
+            .setCustomContentView(expandView)
+            .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+            .setPriority(NotificationCompat.PRIORITY_HIGH) // required API level <26
+            .build()
+
+        if (ActivityCompat.checkSelfPermission(
+                context,  // Use the context parameter here instead of `this`
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        notificationManager.notify( NOTIFICATION_CUSTOM_STYLE_INTENT_ID, customStyleNotification)
+    }
+
 }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {

@@ -1,21 +1,38 @@
 package com.rrbofficial.androiduipracticekotlin.githubretrofit
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
 import com.rrbofficial.androiduipracticekotlin.R
+import com.rrbofficial.androiduipracticekotlin.databinding.ActivityGithubBinding
 
 class GithubActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGithubBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_github)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_github)
+
+        // Access your EditText and Button via the binding object
+        val loginToGithubButton = binding.loginToGithubBtn
+        val githubUsernameEditText = binding.editTextgithubUsername
+
+        loginToGithubButton.setOnClickListener {
+            val enteredUsername = githubUsernameEditText.text.toString()
+            goToGithubUserActivity(enteredUsername)
         }
+    }
+
+    private fun goToGithubUserActivity(username: String) {
+        // Explicit Intent
+        val i = Intent(this, GithubUserActivity::class.java).apply {
+            // Passing data:
+            putExtra("value", username)
+        }
+        startActivity(i)
     }
 }

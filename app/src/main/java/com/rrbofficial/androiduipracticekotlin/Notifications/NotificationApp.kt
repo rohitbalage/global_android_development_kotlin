@@ -14,6 +14,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CONTENT_INTENT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_SOUND_CHANNEL_ID
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DEFAULT_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_DOWNLOAD_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_HIGH_CHANNEL_ID
@@ -203,7 +204,15 @@ class NotificationApp : Application() {
             }
 
 
-
+            //  messaging  style Notification Channel
+            val customStyleNotification = NotificationChannel(
+                NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID ,
+                "custom style Notification Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "custom style notification channel"
+                lightColor = Color.RED
+            }
 
 
             val notificationManager = getSystemService(NotificationManager::class.java)
@@ -224,7 +233,8 @@ class NotificationApp : Application() {
                 bigPictureStyleNotification,
                 downloadStyleNotification,
                 messagingStyleNotification,
-                mediaStyleNotification
+                mediaStyleNotification,
+                customStyleNotification
             ))
         }
     }
