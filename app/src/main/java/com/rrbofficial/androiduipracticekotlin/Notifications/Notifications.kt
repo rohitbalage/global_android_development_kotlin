@@ -82,6 +82,7 @@ class Notifications : AppCompatActivity() {
                 }
                 else
                 {
+                    NotificationHelper.openNotificationChannelSetting(this, AppConstant.NOTIFICATION_HIGH_CHANNEL_ID)
                     Toast.makeText(this, "Please enable notification channel", Toast.LENGTH_SHORT).show()
                 }
             }

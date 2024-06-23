@@ -775,6 +775,17 @@ object NotificationHelper {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun openNotificationChannelSetting(context: Context, id: String) {
+
+        val intent = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS).apply {
+            this.putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+            this.putExtra(Settings.EXTRA_CHANNEL_ID, id)
+            context.startActivity(this)
+        }
+        context.startActivity(intent)
+    }
+
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
         return Uri.parse("android.resource://$context.packageName/$resourceId")
     }
