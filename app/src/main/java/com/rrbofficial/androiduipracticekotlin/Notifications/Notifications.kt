@@ -40,6 +40,15 @@ class Notifications : AppCompatActivity() {
     private fun buttonClickListener()
     {
 
+         binding.btndefaultNotification.isEnabled =  NotificationHelper.isNotificationEnabled(this)
+        binding.btnHighNotificaiton.isEnabled =  NotificationHelper.isNotificationEnabled(this)
+
+
+
+
+
+
+
         // default notification
     binding.btndefaultNotification.setOnClickListener()
     {

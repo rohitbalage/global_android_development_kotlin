@@ -685,6 +685,13 @@ object NotificationHelper {
         notificationManager.notify( NOTIFICATION_CUSTOM_STYLE_INTENT_ID, customStyleNotification)
     }
 
+    fun isNotificationEnabled(context: Context):Boolean
+    {
+        val notificationManager = NotificationManagerCompat.from(context)
+        val notificationEnabled = notificationManager.areNotificationsEnabled()
+        return notificationEnabled
+    }
+
 }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {
