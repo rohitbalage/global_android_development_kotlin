@@ -61,7 +61,7 @@ class NotificationApp : Application() {
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
                 description = "This is the default notification channel"
-                lightColor = Color.GREEN
+                lightColor = Color.parseColor("#EE82EE") // Violet LED light color
                 // vibration for notification
                 enableVibration(true)
                 vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)

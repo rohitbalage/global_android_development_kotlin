@@ -1,5 +1,8 @@
 package com.rrbofficial.androiduipracticekotlin.Notifications
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -11,8 +14,10 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper.openNotificationSetting
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityNotificationsBinding
+
 
 class Notifications : AppCompatActivity() {
 
@@ -40,13 +45,15 @@ class Notifications : AppCompatActivity() {
     private fun buttonClickListener()
     {
 
-         binding.btndefaultNotification.isEnabled =  NotificationHelper.isNotificationEnabled(this)
-        binding.btnHighNotificaiton.isEnabled =  NotificationHelper.isNotificationEnabled(this)
+        // disable button if notification is blocked
+//        binding.btndefaultNotification.isEnabled =  NotificationHelper.isNotificationEnabled(this)
+//        binding.btnHighNotificaiton.isEnabled =  NotificationHelper.isNotificationEnabled(this)
 
 
-
-
-
+        if(!NotificationHelper.isNotificationEnabled(this))
+        {
+          showNotificationSettingsDialog(this)
+        }
 
 
         // default notification
@@ -172,6 +179,24 @@ class Notifications : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    fun showNotificationSettingsDialog(context: Context?) {
+        AlertDialog.Builder(context)
+            .setTitle("Enable Notifications")
+            .setMessage("Notifications are disabled. Would you like to open settings to enable them?")
+            .setPositiveButton(
+                "Yes",
+                DialogInterface.OnClickListener { dialog, which -> // Open notification settings
+                    context?.let { openNotificationSetting(it) }
+                })
+            .setNegativeButton(
+                "No",
+                DialogInterface.OnClickListener { dialog, which -> // Do nothing
+                    dialog.dismiss()
+                })
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
     }
 
 
