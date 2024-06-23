@@ -1,6 +1,7 @@
 package com.rrbofficial.androiduipracticekotlin.Notifications.util
 
 import android.Manifest
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -14,6 +15,7 @@ import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.widget.RemoteViews
 import android.widget.RemoteViews.RemoteView
+import androidx.annotation.RequiresApi
 import androidx.compose.ui.text.font.FontVariation
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -762,6 +764,15 @@ object NotificationHelper {
             }
         }
 
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun isNotificationChannelEnabled(context: Context, id: String): Boolean {
+        val notificationManager = NotificationManagerCompat.from(context)
+        return notificationManager.getNotificationChannel(id).run {
+        this?.importance == NotificationManager.IMPORTANCE_NONE
+        }
     }
 
     fun getUriFromResourceFile(context: Context, resourceId: Int): Uri {

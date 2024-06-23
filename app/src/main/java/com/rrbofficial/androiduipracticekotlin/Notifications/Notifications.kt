@@ -6,13 +6,17 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper.openNotificationSetting
 import com.rrbofficial.androiduipracticekotlin.R
@@ -66,9 +70,30 @@ class Notifications : AppCompatActivity() {
         // high notification
         binding.btnHighNotificaiton.setOnClickListener()
         {
-            val title = binding.txtTitle.text.toString()
-            val msg = binding.txtMessage.text.toString()
-            NotificationHelper.highNotification(this,title,msg)
+
+            // checking Notification channel status
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            {
+                if(!NotificationHelper.isNotificationChannelEnabled(this, AppConstant.NOTIFICATION_HIGH_CHANNEL_ID))
+                {
+                    val title = binding.txtTitle.text.toString()
+                    val msg = binding.txtMessage.text.toString()
+                    NotificationHelper.highNotification(this,title,msg)
+                }
+                else
+                {
+                    Toast.makeText(this, "Please enable notification channel", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else
+            {
+                val title = binding.txtTitle.text.toString()
+                val msg = binding.txtMessage.text.toString()
+                NotificationHelper.highNotification(this,title,msg)
+            }
+
+
+
         }
 
         // low notification
