@@ -2,6 +2,7 @@ package com.rrbofficial.androiduipracticekotlin.Notifications
 
 import android.app.Application
 import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.content.Context
 import android.graphics.Color
@@ -9,6 +10,7 @@ import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_PICTURE_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_BIG_TEXT_STYLE_CHANNEL_ID
@@ -106,7 +108,7 @@ class NotificationApp : Application() {
                 lightColor = Color.RED
             }
 
-            // contentIntent Notification Channel
+            // ongoing Notification Channel
             val onGoingNotification = NotificationChannel(
                 NOTIFICATION_ONGOING_CHANNEL_ID,
                 "OnGoing Notification Channel",
@@ -180,6 +182,7 @@ class NotificationApp : Application() {
             ).apply {
                 description = "download style notification channel"
                 lightColor = Color.RED
+                group = AppConstant.GROUP_1_ID
             }
 
             //  messaging  style Notification Channel
@@ -190,10 +193,11 @@ class NotificationApp : Application() {
             ).apply {
                 description = "messaging style notification channel"
                 lightColor = Color.RED
+                group = AppConstant.GROUP_1_ID
             }
 
 
-            //  messaging  style Notification Channel
+            //  media  style Notification Channel
             val mediaStyleNotification = NotificationChannel(
                 NOTIFICATION_MEDIA_STYLE_CHANNEL_ID ,
                 "media style Notification Channel",
@@ -201,10 +205,11 @@ class NotificationApp : Application() {
             ).apply {
                 description = "media style notification channel"
                 lightColor = Color.RED
+                group = AppConstant.GROUP_2_ID
             }
 
 
-            //  messaging  style Notification Channel
+            //  custom  style Notification Channel
             val customStyleNotification = NotificationChannel(
                 NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID ,
                 "custom style Notification Channel",
@@ -212,12 +217,28 @@ class NotificationApp : Application() {
             ).apply {
                 description = "custom style notification channel"
                 lightColor = Color.RED
+                group = AppConstant.GROUP_2_ID
             }
 
 
             val notificationManager = getSystemService(NotificationManager::class.java)
 //            notificationManager.createNotificationChannel(defaultNotification)
 //            notificationManager.createNotificationChannel(highNotification)
+
+
+            // create notification channel group
+
+            notificationManager.createNotificationChannelGroup(
+                NotificationChannelGroup( AppConstant.GROUP_1_ID, AppConstant.GROUP_1_NAME)
+
+            )
+
+            notificationManager.createNotificationChannelGroup(
+                NotificationChannelGroup( AppConstant.GROUP_2_ID, AppConstant.GROUP_2_NAME)
+
+            )
+
+
 
             // create a list of notification channels
             notificationManager.createNotificationChannels(listOf(
