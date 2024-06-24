@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.firebase
+package com.rrbofficial.androiduipracticekotlin.Firebase
 
 import android.app.Activity
 import android.content.Intent

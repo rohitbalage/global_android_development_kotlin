@@ -115,6 +115,7 @@
     <string name="messaging_style_notification">Messaging Style Notification</string>
     <string name="media_style_notification">Media Style Notification</string>
     <string name="this_is_a_cardview">This is a CardView</string>
+    <string name="default_notification_channel_id">dn15</string>
 
     <string name="code_snippet">
         // code for bluetooth toggle button

@@ -1,12 +1,21 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.content.ContentValues.TAG
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.rrbofficial.androiduipracticekotlin.AWS.AWS
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidUIWidgets
@@ -21,6 +30,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        // Declare the launcher at the top of your Activity/Fragment:
+        val requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                // FCM SDK (and your app) can post notifications.
+            } else {
+                // TODO: Inform user that that your app will not show notifications.
+            }
+        }
+
 
         // Data binding initialization
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -44,7 +66,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AdvanceUIComponets.setOnClickListener(this)
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
-
 
 
         // All About Android Activity Life cycle
