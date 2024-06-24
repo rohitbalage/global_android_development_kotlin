@@ -6,9 +6,11 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="34"
+        tools:overrideLibrary="androidx.annotation" />
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
