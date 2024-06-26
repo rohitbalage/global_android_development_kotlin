@@ -9,8 +9,11 @@ import android.graphics.Color
 import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
+import android.os.StrictMode
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.google.firebase.FirebaseApp
+import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ACTION_CHANNEL_ID
@@ -29,18 +32,54 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
 
 class MyApplication : Application() {
-
+    private lateinit var crashlytics: FirebaseCrashlytics
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
+
+        crashlytics = FirebaseCrashlytics.getInstance()
+
         // Enable Crashlytics collection
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
 
         // Call default Notification channel
         createNotificationChannel()
+
+        // Set custom uncaught exception handler
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            // Log the uncaught exception to Crashlytics
+            crashlytics.recordException(throwable)
+
+            // Optionally log to Logcat for debugging purposes
+            Log.e("MyApplication", "Uncaught exception in thread ${thread.name}", throwable)
+
+            // Force a crash to close the app
+            forceCrash()
+        }
+    }
+
+    private fun enableStrictMode() {
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(
+                StrictMode.ThreadPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build()
+            )
+            StrictMode.setVmPolicy(
+                StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .build()
+            )
+        }
+    }
+
+    private fun forceCrash() {
+        throw RuntimeException("Test crash to force close the app")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
