@@ -40,7 +40,6 @@ class MyApplication : Application() {
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
 
-        crashlytics = FirebaseCrashlytics.getInstance()
 
         // Enable Crashlytics collection
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
@@ -48,38 +47,6 @@ class MyApplication : Application() {
         // Call default Notification channel
         createNotificationChannel()
 
-        // Set custom uncaught exception handler
-        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
-            // Log the uncaught exception to Crashlytics
-            crashlytics.recordException(throwable)
-
-            // Optionally log to Logcat for debugging purposes
-            Log.e("MyApplication", "Uncaught exception in thread ${thread.name}", throwable)
-
-            // Force a crash to close the app
-            forceCrash()
-        }
-    }
-
-    private fun enableStrictMode() {
-        if (BuildConfig.DEBUG) {
-            StrictMode.setThreadPolicy(
-                StrictMode.ThreadPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
-            )
-            StrictMode.setVmPolicy(
-                StrictMode.VmPolicy.Builder()
-                    .detectAll()
-                    .penaltyLog()
-                    .build()
-            )
-        }
-    }
-
-    private fun forceCrash() {
-        throw RuntimeException("Test crash to force close the app")
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

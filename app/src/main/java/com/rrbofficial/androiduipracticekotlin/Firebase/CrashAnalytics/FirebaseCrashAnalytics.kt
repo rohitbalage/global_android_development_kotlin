@@ -50,42 +50,27 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         binding.crashButton.setOnClickListener {
             // Log a message to Crashlytics
             crashlytics.log("Crash button clicked")
-            // Set a user ID if applicable
+            // Set a user ID
             // crashlytics.setUserId("user123456789")
-            // Set custom keys
-            crashlytics.setCustomKey("ButtonClicked", "Crash Button")
             // Force a crash
             throw RuntimeException("Test Crash") // Force a crash
         }
 
         binding.crashAppButton.setOnClickListener {
             val crashString: String? = null
-            try {
-                val length = crashString!!.length // This will cause a NullPointerException
-            } catch (e: Exception) {
-                crashlytics.recordException(e)
-                crashlytics.setCustomKey("ErrorLocation", "crashAppButton OnClickListener")
-            }
+            val length = crashString!!.length // This will cause a NullPointerException
         }
 
-        binding.IndexOutOfBoundsButton.setOnClickListener {
+        binding.IndexOutOfBoundsButton.setOnClickListener()
+        {
             val array = arrayOf(1, 2, 3)
-            try {
-                val element = array[10] // This will cause an IndexOutOfBoundsException
-            } catch (e: Exception) {
-                crashlytics.recordException(e)
-                crashlytics.setCustomKey("ErrorLocation", "IndexOutOfBoundsButton OnClickListener")
-            }
+            val element = array[10] // This will cause an IndexOutOfBoundsException
         }
 
-        binding.ArithmeticExceptionCrashButton.setOnClickListener {
-            try {
-                val result = 10 / 0 // This will cause an ArithmeticException (divide by zero)
-            } catch (e: Exception) {
-                crashlytics.recordException(e)
-                crashlytics.setCustomKey("ErrorLocation", "ArithmeticExceptionCrashButton OnClickListener")
-            }
+        binding.ArithmeticExceptionCrashButton.setOnClickListener()
+        {
+            val result = 10 / 0 // This will cause an ArithmeticException (divide by zero)
         }
-    }
-    }
 
+    }
+}
