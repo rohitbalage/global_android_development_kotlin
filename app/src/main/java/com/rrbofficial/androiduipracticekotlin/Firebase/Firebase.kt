@@ -14,6 +14,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 import com.google.firebase.firestore.firestore
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.Firebase_signup
+import com.rrbofficial.androiduipracticekotlin.Firebase.CrashAnalytics.FirebaseCrashAnalytics
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.User
 
@@ -22,6 +24,9 @@ class Firebase : AppCompatActivity() {
     private lateinit var database: DatabaseReference
 
     private  lateinit var  goToAuth : Button
+    private  lateinit var  goToCloudMessaging : Button
+    private  lateinit var  goToCrashAnalytics : Button
+    private  lateinit var  goToInappMessaging : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase)
@@ -30,6 +35,7 @@ class Firebase : AppCompatActivity() {
 
         // Go to Auth
        goToAuth = findViewById(R.id.goToFirebaseAuth)
+        goToCrashAnalytics = findViewById(R.id.buttonCrashanalytics)
        /*** Go to AUTH SECTION**/
 
        goToAuth.setOnClickListener()
@@ -39,6 +45,14 @@ class Firebase : AppCompatActivity() {
            // Start the new activity
            startActivity(intent)
        }
+
+        goToCrashAnalytics.setOnClickListener()
+        {
+            // Create an intent to start the new activity
+            val intent = Intent(this, FirebaseCrashAnalytics::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
 
 
        /****/
@@ -123,18 +137,18 @@ class Firebase : AppCompatActivity() {
 
         // Getting all documents from collection:
 
-      var allDocuments :  String = ""
-
-        db.collection("Users").get().addOnSuccessListener {
-            result ->
-
-            for(document in result)
-            {
-                Log.i("TAGY", "${document.data}")
-                allDocuments += "${document.data} \n"
-            }
-            firestoretextView.text = ""+allDocuments
-        }
+//      var allDocuments :  String = ""
+//
+//        db.collection("Users").get().addOnSuccessListener {
+//            result ->
+//
+//            for(document in result)
+//            {
+//                Log.i("TAGY", "${document.data}")
+//                allDocuments += "${document.data} \n"
+//            }
+//            firestoretextView.text = ""+allDocuments
+//        }
 
 
 

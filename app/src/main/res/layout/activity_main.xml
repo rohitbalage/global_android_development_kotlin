@@ -44,13 +44,13 @@
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"
-            android:text="@string/ui_components" />
+            android:text="@string/material_ui_designs" />
 
         <Button
             android:id="@+id/AdvanceUIComponets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/advanced_ui_components"
+            android:text="@string/android_ui_components"
             android:backgroundTintMode="add"
             android:fontFamily="@font/amaranth"
             app:cornerRadius="10dp"

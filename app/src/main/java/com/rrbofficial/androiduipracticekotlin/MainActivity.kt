@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.messaging.FirebaseMessaging
 import com.rrbofficial.androiduipracticekotlin.AWS.AWS
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
@@ -27,10 +28,14 @@ import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var crashlytics: FirebaseCrashlytics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        // Firebase crashanalytics
+
+        crashlytics = FirebaseCrashlytics.getInstance()
 
         // Declare the launcher at the top of your Activity/Fragment:
         val requestPermissionLauncher = registerForActivityResult(

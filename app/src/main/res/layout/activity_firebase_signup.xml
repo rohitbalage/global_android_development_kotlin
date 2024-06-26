@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:layout_margin="10dp"
-    tools:context=".Firebase.Firebase_signup">
+    tools:context=".Firebase.Auth.Firebase_signup">
 
     <TextView
         android:id="@+id/textView2"

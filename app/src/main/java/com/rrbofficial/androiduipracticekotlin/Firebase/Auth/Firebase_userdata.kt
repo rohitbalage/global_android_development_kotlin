@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.Firebase
+package com.rrbofficial.androiduipracticekotlin.Firebase.Auth
 
 import android.content.Intent
 import android.net.Uri

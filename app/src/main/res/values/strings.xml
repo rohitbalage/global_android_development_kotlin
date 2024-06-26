@@ -17,7 +17,7 @@
     <string name="databases">Databases</string>
     <string name="jetpackcompose">JetpackCompose</string>
     <string name="kotlin_coroutines">Kotlin Coroutines</string>
-    <string name="ui_components">UI Components</string>
+    <string name="material_ui_designs">Material and UI designs</string>
     <string name="api_designs">API Designs</string>
     <string name="retrofit">Retrofit</string>
     <string name="volley">Volley</string>
@@ -75,7 +75,7 @@
     <string name="notifications">Notifications</string>
     <string name="aws">AWS</string>
     <string name="android_security">Android Security</string>
-    <string name="advanced_ui_components">Advanced UI Components</string>
+    <string name="android_ui_components">Android UI Widgets</string>
     <string name="artificial_intelligence">Artificial Intelligence</string>
     <string name="internet_of_things_iot">Internet of Things (IOT)</string>
     <string name="kotlin_practice_by_rohit">KOTLIN PRACTICE BY ROHIT</string>
@@ -148,6 +148,11 @@
     <string name="github_user">Github user</string>
     <string name="github_email">Github Email</string>
     <string name="custom_style_notificaiton">Custom Style Notificaiton</string>
+    <string name="firebase_crash_analytics_head">Firebase Crash Analytics</string>
+    <string name="crash_me_btn_head">Crash Me</string>
+    <string name="crash_the_app">Crash the App</string>
+    <string name="index_out_of_bounds_btn">Index Out Of Bounds</string>
+    <string name="arithmetic_exception_crash">Arithmetic Exception Crash</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -3,18 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rrbofficial.androiduipracticekotlin">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="34"
         tools:overrideLibrary="androidx.annotation" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -25,7 +25,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
-        android:name=".Notifications.NotificationApp"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -35,10 +35,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Firebase.CrashAnalytics.FirebaseCrashAnalytics"
+            android:exported="false" />
+
         <receiver
             android:name=".Notifications.receiver.CustomNotificationReceiver"
             android:enabled="true"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <activity
             android:name=".githubretrofit.GithubUserActivity"
@@ -105,13 +110,13 @@
             android:name=".Volley"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Firebase_userdata"
+            android:name=".Firebase.Auth.Firebase_userdata"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Firebase_signup"
+            android:name=".Firebase.Auth.Firebase_signup"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Firebase_login"
+            android:name=".Firebase.Auth.Firebase_login"
             android:exported="false" />
         <activity
             android:name=".Firebase.Firebase"
@@ -178,25 +183,26 @@
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/notification_icon_background" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/violet" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
-
     </application>
 
 </manifest>
