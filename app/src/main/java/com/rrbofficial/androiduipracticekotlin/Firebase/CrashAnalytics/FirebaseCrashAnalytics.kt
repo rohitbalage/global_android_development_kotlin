@@ -50,27 +50,42 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         binding.crashButton.setOnClickListener {
             // Log a message to Crashlytics
             crashlytics.log("Crash button clicked")
-            // Set a user ID
+            // Set a user ID if applicable
             // crashlytics.setUserId("user123456789")
+            // Set custom keys
+            crashlytics.setCustomKey("ButtonClicked", "Crash Button")
             // Force a crash
             throw RuntimeException("Test Crash") // Force a crash
         }
 
         binding.crashAppButton.setOnClickListener {
             val crashString: String? = null
-            val length = crashString!!.length // This will cause a NullPointerException
+            try {
+                val length = crashString!!.length // This will cause a NullPointerException
+            } catch (e: Exception) {
+                crashlytics.recordException(e)
+                crashlytics.setCustomKey("ErrorLocation", "crashAppButton OnClickListener")
+            }
         }
 
-        binding.IndexOutOfBoundsButton.setOnClickListener()
-        {
+        binding.IndexOutOfBoundsButton.setOnClickListener {
             val array = arrayOf(1, 2, 3)
-            val element = array[10] // This will cause an IndexOutOfBoundsException
+            try {
+                val element = array[10] // This will cause an IndexOutOfBoundsException
+            } catch (e: Exception) {
+                crashlytics.recordException(e)
+                crashlytics.setCustomKey("ErrorLocation", "IndexOutOfBoundsButton OnClickListener")
+            }
         }
 
-        binding.ArithmeticExceptionCrashButton.setOnClickListener()
-        {
-            val result = 10 / 0 // This will cause an ArithmeticException (divide by zero)
+        binding.ArithmeticExceptionCrashButton.setOnClickListener {
+            try {
+                val result = 10 / 0 // This will cause an ArithmeticException (divide by zero)
+            } catch (e: Exception) {
+                crashlytics.recordException(e)
+                crashlytics.setCustomKey("ErrorLocation", "ArithmeticExceptionCrashButton OnClickListener")
+            }
         }
-
+    }
     }
 }
