@@ -35,7 +35,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Firebase.CloudMessaging.CloudMessagingFirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Analytics.FirebaseAnalyticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.InAppMessagin.InAppMessagingFirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.DynamicLink.DynamicLinkWithFirebaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Admob.AdMobWithFirebaseActivity"
+            android:exported="false" />
         <activity
             android:name=".Firebase.CrashAnalytics.FirebaseCrashAnalytics"
             android:exported="false" />

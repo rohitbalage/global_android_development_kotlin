@@ -36,13 +36,14 @@
        />
 
 
-    <Button
-        android:id="@+id/buttonFirebaseAnalytics"
-        android:layout_height="wrap_content"
-        android:text="@string/firebase_analytics"
-        app:cornerRadius="10dp"
-        android:layout_width="match_parent"
-        />
+        <Button
+            android:id="@+id/buttonFirebaseAnalticsApp"
+            android:layout_height="wrap_content"
+            android:text="@string/firebase_analytics_app"
+            app:cornerRadius="10dp"
+            android:layout_width="match_parent"
+            />
+
 
     <Button
         android:id="@+id/buttonFirebaseCloudMessaging"
@@ -68,6 +69,25 @@
             app:cornerRadius="10dp"
             android:layout_width="match_parent"
             />
+
+
+
+        <Button
+            android:id="@+id/buttonAdmobwithFirebase"
+            android:layout_height="wrap_content"
+            android:text="@string/admob_with_firebase"
+            app:cornerRadius="10dp"
+            android:layout_width="match_parent"
+            />
+
+        <Button
+            android:id="@+id/buttonDynamicLink"
+            android:layout_height="wrap_content"
+            android:text="Dynamic Link with Firebase"
+            app:cornerRadius="10dp"
+            android:layout_width="match_parent"
+            />
+
 
         <TextView
             android:id="@+id/fireTextView"

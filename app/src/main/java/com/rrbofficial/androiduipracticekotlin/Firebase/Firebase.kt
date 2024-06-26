@@ -3,7 +3,6 @@ package com.rrbofficial.androiduipracticekotlin.Firebase
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.Firebase
@@ -14,8 +13,13 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.getValue
 import com.google.firebase.firestore.firestore
+import com.rrbofficial.androiduipracticekotlin.Firebase.Admob.AdMobWithFirebaseActivity
+import com.rrbofficial.androiduipracticekotlin.Firebase.Analytics.FirebaseAnalyticsActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.Firebase_signup
+import com.rrbofficial.androiduipracticekotlin.Firebase.CloudMessaging.CloudMessagingFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.CrashAnalytics.FirebaseCrashAnalytics
+import com.rrbofficial.androiduipracticekotlin.Firebase.DynamicLink.DynamicLinkWithFirebaseActivity
+import com.rrbofficial.androiduipracticekotlin.Firebase.InAppMessagin.InAppMessagingFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.User
 
@@ -27,6 +31,10 @@ class Firebase : AppCompatActivity() {
     private  lateinit var  goToCloudMessaging : Button
     private  lateinit var  goToCrashAnalytics : Button
     private  lateinit var  goToInappMessaging : Button
+    private  lateinit var  goToAnalyticsApp : Button
+    private  lateinit var  goToAdmobWithFirebase : Button
+    private  lateinit var  goToDynamicLink : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase)
@@ -36,6 +44,12 @@ class Firebase : AppCompatActivity() {
         // Go to Auth
        goToAuth = findViewById(R.id.goToFirebaseAuth)
         goToCrashAnalytics = findViewById(R.id.buttonCrashanalytics)
+        goToAdmobWithFirebase = findViewById(R.id.buttonAdmobwithFirebase)
+        goToCloudMessaging = findViewById(R.id.buttonFirebaseCloudMessaging)
+        goToInappMessaging = findViewById(R.id.buttonInappMessaging)
+        goToAnalyticsApp = findViewById(R.id.buttonFirebaseAnalticsApp)
+        goToDynamicLink = findViewById(R.id.buttonDynamicLink)
+
        /*** Go to AUTH SECTION**/
 
        goToAuth.setOnClickListener()
@@ -53,6 +67,42 @@ class Firebase : AppCompatActivity() {
             // Start the new activity
             startActivity(intent)
         }
+
+        goToAdmobWithFirebase.setOnClickListener()
+        {
+            // Create an intent to start the new activity
+            val intent = Intent(this, AdMobWithFirebaseActivity::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
+
+        goToCloudMessaging.setOnClickListener(){
+            // Create an intent to start the new activity
+            val intent = Intent(this, CloudMessagingFirebaseActivity::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
+
+
+        goToDynamicLink.setOnClickListener(){
+            // Create an intent to start the new activity
+            val intent = Intent(this, DynamicLinkWithFirebaseActivity::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
+
+        goToInappMessaging.setOnClickListener(){
+            val intent = Intent(this, InAppMessagingFirebaseActivity::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
+
+        goToAnalyticsApp.setOnClickListener(){
+            val intent = Intent(this, FirebaseAnalyticsActivity::class.java)
+            // Start the new activity
+            startActivity(intent)
+        }
+
 
 
        /****/

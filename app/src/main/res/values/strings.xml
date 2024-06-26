@@ -157,6 +157,8 @@
     <string name="array_store_exception">Array store exception</string>
     <string name="class_class_exception">Class cast exception</string>
     <string name="illegal_argument_exception">Illegal argument exception</string>
+    <string name="firebase_analytics_app">Firebase Analytics</string>
+    <string name="admob_with_firebase">Admob with Firebase</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
