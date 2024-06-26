@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.FirebaseApp
+import com.google.firebase.crashlytics.BuildConfig
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.internal.model.CrashlyticsReport
 import com.google.firebase.crashlytics.setCustomKeys
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityFirebaseCrashAnalyticsBinding
@@ -29,6 +31,15 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         // Enable Crashlytics collection
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
         val crashlytics = FirebaseCrashlytics.getInstance()
+
+//        setKeysBasic("JasonTest");
+//        logReportAndPrint()
+//        logReportOnly()
+//        setUserId()
+//        logCaughtEx()
+//        enableDebugMode()
+//        forceACrash()
+
         crashlytics.setCustomKeys {
             key("my_string_key", "foo") // String value
             key("my_bool_key", true) // boolean value
@@ -41,7 +52,7 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
             key("last_UI_action", "logged_in")
         }
 
-        // track error with try and catch
+        // record an throwable exception
         // Uncomment the following block to track exceptions
         // try {
         //     methodThatThrows()
@@ -49,6 +60,20 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         //     FirebaseCrashlytics.getInstance().recordException(e)
         //     // handle your exception here
         // }
+
+
+        //  enable Crashlytics debug logging to get more insights during development.
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(BuildConfig.DEBUG)
+
+
+
+        // send user ID
+        crashlytics.setUserId("user123456789")
+
+
+        // log report only
+        FirebaseCrashlytics.getInstance().log("message")
+
 
         binding.crashButton.setOnClickListener {
             // Log a message to Crashlytics
@@ -100,4 +125,5 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         }
 
     }
+
 }
