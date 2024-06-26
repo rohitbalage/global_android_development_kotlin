@@ -40,9 +40,9 @@ class MyApplication : Application() {
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
 
-
         // Enable Crashlytics collection
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
+
 
         // Call default Notification channel
         createNotificationChannel()

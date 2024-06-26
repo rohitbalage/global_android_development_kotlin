@@ -1,5 +1,8 @@
 package com.rrbofficial.androiduipracticekotlin.Firebase.CrashAnalytics
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -59,17 +62,41 @@ class FirebaseCrashAnalytics : AppCompatActivity() {
         binding.crashAppButton.setOnClickListener {
             val crashString: String? = null
             val length = crashString!!.length // This will cause a NullPointerException
+            crashlytics.log("null pointer exception is recorded here")
         }
 
         binding.IndexOutOfBoundsButton.setOnClickListener()
         {
             val array = arrayOf(1, 2, 3)
             val element = array[10] // This will cause an IndexOutOfBoundsException
+            crashlytics.log("index out of bound exception is recorded here")
         }
 
         binding.ArithmeticExceptionCrashButton.setOnClickListener()
         {
             val result = 10 / 0 // This will cause an ArithmeticException (divide by zero)
+            crashlytics.log("arithmetic exception exception is recorded here")
+        }
+
+        binding.classCastExceptionBtn.setOnClickListener()
+        {
+            val obj: Any = "string"
+            val number = obj as Int // This will cause a ClassCastException
+            crashlytics.log("class cast exception is recorded here")
+        }
+        binding.stackOverflowErrorBtn.setOnClickListener(){
+            fun recursiveFunction() {
+                recursiveFunction()
+            }
+            recursiveFunction() // This will cause a StackOverflowError
+            crashlytics.log("stack overflow exception is recorded here")
+        }
+        binding.illegalArgumentExceptionBtn.setOnClickListener(){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val channel = NotificationChannel("", "", NotificationManager.IMPORTANCE_UNSPECIFIED)
+                getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+                crashlytics.log("illegal argument is recorded here")
+            }
         }
 
     }

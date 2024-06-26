@@ -153,6 +153,10 @@
     <string name="crash_the_app">Crash the App</string>
     <string name="index_out_of_bounds_btn">Index Out Of Bounds</string>
     <string name="arithmetic_exception_crash">Arithmetic Exception Crash</string>
+    <string name="stack_overflow_error">Stack overflow error</string>
+    <string name="array_store_exception">Array store exception</string>
+    <string name="class_class_exception">Class cast exception</string>
+    <string name="illegal_argument_exception">Illegal argument exception</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
