@@ -159,6 +159,8 @@
     <string name="illegal_argument_exception">Illegal argument exception</string>
     <string name="firebase_analytics_app">Firebase Analytics</string>
     <string name="admob_with_firebase">Admob with Firebase</string>
+    <string name="sqlite_db">SQLite DB</string>
+    <string name="expandable_list_view">Expandable List View</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

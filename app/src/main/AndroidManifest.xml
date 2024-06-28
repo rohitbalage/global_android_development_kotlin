@@ -36,6 +36,36 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".MaterialUIDesgins.TabLayoutWithViewPager"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.NavigationDrawer"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.BottomNavigationTabs"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.RecycleViewWithJsonParsing"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.RecycleViewWithGridView"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.RecycleViewWithLinearView"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.LoginMaterialUI"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.CustomGridViewAndCardView"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.CustomListViewAndCardView"
+            android:exported="false" />
+        <activity
+            android:name=".MaterialUIDesgins.ExpandableListView.ExpandableListViewScreen"
+            android:exported="false" />
+        <activity
             android:name=".SQLite.SQLite_result"
             android:exported="false" />
         <activity
@@ -88,7 +118,7 @@
             android:name=".AndroidSysComponents.AndroidSystemComponents"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Splash.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -193,7 +223,7 @@
             android:name=".UItextAndEditText"
             android:exported="false" />
         <activity
-            android:name=".UIComponents"
+            android:name=".MaterialUIDesgins.MaterialUIComponents"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

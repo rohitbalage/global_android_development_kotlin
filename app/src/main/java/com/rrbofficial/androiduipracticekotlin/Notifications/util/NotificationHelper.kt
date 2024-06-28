@@ -14,9 +14,7 @@ import android.provider.Settings
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.widget.RemoteViews
-import android.widget.RemoteViews.RemoteView
 import androidx.annotation.RequiresApi
-import androidx.compose.ui.text.font.FontVariation
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -54,7 +52,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_INTENT_ID
 import com.rrbofficial.androiduipracticekotlin.R
-import com.rrbofficial.androiduipracticekotlin.SplashScreen
+import com.rrbofficial.androiduipracticekotlin.Splash.SplashScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

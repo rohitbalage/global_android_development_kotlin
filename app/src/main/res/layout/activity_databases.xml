@@ -71,7 +71,7 @@
                 android:id="@+id/SQLiteBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/mango_db"
+                android:text="@string/sqlite_db"
                 android:backgroundTintMode="add"
                 android:fontFamily="@font/amaranth"
                 app:cornerRadius="10dp"
