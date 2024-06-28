@@ -36,6 +36,9 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".SQLite.SQLite_result"
+            android:exported="false" />
+        <activity
             android:name=".SQLite.SQLiteForm"
             android:exported="false" />
         <activity

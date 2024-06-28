@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.rrbofficial.androiduipracticekotlin.Firebase.Firebase
+import com.rrbofficial.androiduipracticekotlin.SQLite.SQLiteForm
 
 class Databases : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,4 +29,9 @@ class Databases : AppCompatActivity() {
     }
     fun goToMYSQL(view: View) {}
     fun goToMangoDB(view: View) {}
+    fun goToSQLITE(view: View) {
+
+        val intent = Intent(this, SQLiteForm::class.java)
+        startActivity(intent)
+    }
 }
