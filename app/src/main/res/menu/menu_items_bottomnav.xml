@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/notification_icon_vector_foreground"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigation_favourite"
+        android:icon="@drawable/notification_icon_vector_foreground"
+        android:title="Favourite" />
+    <item
+        android:id="@+id/navigation_notification"
+        android:icon="@drawable/notification_icon_vector_foreground"
+        android:title="Notification" />
+</menu>

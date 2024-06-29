@@ -118,6 +118,13 @@
                     app:cornerRadius="10dp"
                     android:text="@string/tab_layouts" />
 
+                <Button
+                    android:id="@+id/BottomTabLayoutViewBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp"
+                    android:text="@string/bottom_nav_bar_tabs" />
 
             </LinearLayout>
         </ScrollView>

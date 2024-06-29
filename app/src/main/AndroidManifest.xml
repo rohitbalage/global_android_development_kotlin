@@ -42,7 +42,7 @@
             android:name=".MaterialUIDesgins.NavigationDrawer"
             android:exported="false" />
         <activity
-            android:name=".MaterialUIDesgins.BottomNavigationTabs"
+            android:name=".MaterialUIDesgins.BottomNavigationTabs.BottomNavigationTabs"
             android:exported="false" />
         <activity
             android:name=".MaterialUIDesgins.RecycleViewWithJsonParsing"

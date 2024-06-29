@@ -14,6 +14,7 @@ import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidUIWid
 import com.rrbofficial.androiduipracticekotlin.ExplicitIntent
 import com.rrbofficial.androiduipracticekotlin.ImplicitIntent
 import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.BottomNavigationTabs.BottomNavigationTabs
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.ExpandableListView.ExpandableListViewScreen
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.TabLayout.TabLayoutWithViewPager
 import com.rrbofficial.androiduipracticekotlin.R
@@ -64,6 +65,16 @@ class MaterialUIComponents : AppCompatActivity() {
         {
             goToTabLayout()
         }
+
+        binding.BottomTabLayoutViewBtn.setOnClickListener()
+        {
+            goToBottomTabLayout()
+        }
+    }
+
+    private fun goToBottomTabLayout() {
+        val intent = Intent(this,BottomNavigationTabs::class.java)
+        startActivity(intent)
     }
 
     private fun goToTabLayout() {

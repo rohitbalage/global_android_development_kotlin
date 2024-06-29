@@ -162,6 +162,7 @@
     <string name="sqlite_db">SQLite DB</string>
     <string name="expandable_list_view">Expandable List View</string>
     <string name="tab_layouts">Tab layouts</string>
+    <string name="bottom_nav_bar_tabs">Bottom Nav bar Tabs</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
