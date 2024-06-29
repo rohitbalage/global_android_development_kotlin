@@ -48,7 +48,7 @@
             android:name=".MaterialUIDesgins.RecycleViewWithJsonParsing"
             android:exported="false" />
         <activity
-            android:name=".MaterialUIDesgins.RecycleViewWithGridView"
+            android:name=".MaterialUIDesgins.GridLayoutWithRecycleView.RecycleViewWithGridView"
             android:exported="false" />
         <activity
             android:name=".MaterialUIDesgins.RecycleViewWithLinearView"

@@ -16,6 +16,7 @@ import com.rrbofficial.androiduipracticekotlin.ImplicitIntent
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.BottomNavigationTabs.BottomNavigationTabs
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.ExpandableListView.ExpandableListViewScreen
+import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.GridLayoutWithRecycleView.RecycleViewWithGridView
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.TabLayout.TabLayoutWithViewPager
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMaterialUiScreenComponentsBinding
@@ -70,6 +71,16 @@ class MaterialUIComponents : AppCompatActivity() {
         {
             goToBottomTabLayout()
         }
+
+        binding.GridLayoutViewBtn.setOnClickListener()
+        {
+            goToGridLayout()
+        }
+    }
+
+    private fun goToGridLayout() {
+        val intent = Intent(this, RecycleViewWithGridView::class.java)
+        startActivity(intent)
     }
 
     private fun goToBottomTabLayout() {
