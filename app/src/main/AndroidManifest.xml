@@ -36,7 +36,7 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
-            android:name=".MaterialUIDesgins.TabLayoutWithViewPager"
+            android:name=".MaterialUIDesgins.TabLayout.TabLayoutWithViewPager"
             android:exported="false" />
         <activity
             android:name=".MaterialUIDesgins.NavigationDrawer"

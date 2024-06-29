@@ -109,6 +109,16 @@
                     app:cornerRadius="10dp"
                     android:text="@string/expandable_list_view" />
 
+
+                <Button
+                    android:id="@+id/TabLayoutViewBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/amaranth"
+                    app:cornerRadius="10dp"
+                    android:text="@string/tab_layouts" />
+
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

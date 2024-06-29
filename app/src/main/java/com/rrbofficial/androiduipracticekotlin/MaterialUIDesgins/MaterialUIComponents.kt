@@ -15,6 +15,7 @@ import com.rrbofficial.androiduipracticekotlin.ExplicitIntent
 import com.rrbofficial.androiduipracticekotlin.ImplicitIntent
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.ExpandableListView.ExpandableListViewScreen
+import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.TabLayout.TabLayoutWithViewPager
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMaterialUiScreenComponentsBinding
 import kotlin.random.Random
@@ -59,6 +60,15 @@ class MaterialUIComponents : AppCompatActivity() {
         {
             goToExpandableListView()
         }
+        binding.TabLayoutViewBtn.setOnClickListener()
+        {
+            goToTabLayout()
+        }
+    }
+
+    private fun goToTabLayout() {
+        val intent = Intent(this,TabLayoutWithViewPager::class.java)
+        startActivity(intent)
     }
 
     private fun handleImplicitIntent() {
@@ -104,7 +114,6 @@ class MaterialUIComponents : AppCompatActivity() {
     }
 
     private fun goToExpandableListView() {
-        // Replace with your ExpandableListView activity intent
         val intent = Intent(this, ExpandableListViewScreen::class.java)
         startActivity(intent)
     }

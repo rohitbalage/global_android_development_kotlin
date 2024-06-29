@@ -161,6 +161,7 @@
     <string name="admob_with_firebase">Admob with Firebase</string>
     <string name="sqlite_db">SQLite DB</string>
     <string name="expandable_list_view">Expandable List View</string>
+    <string name="tab_layouts">Tab layouts</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
