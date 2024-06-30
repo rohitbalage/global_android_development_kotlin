@@ -7,6 +7,8 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +23,7 @@ class AndroidSystemComponents : AppCompatActivity() {
     private lateinit var binding: ActivityAndroidSystemComponentsBinding
     private lateinit var wifiManager: android.net.wifi.WifiManager
     private lateinit var batteryLevelReceiver: BroadcastReceiver
+    private var backLightValue: Float = 0.5f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,26 @@ class AndroidSystemComponents : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+
+        // brightness control listener
+        binding.brightnessControl.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                backLightValue = progress / 100.0f
+                binding.brightnessValue.text = backLightValue.toString()
+                val layoutParams = window.attributes
+                layoutParams.screenBrightness = backLightValue
+                window.attributes = layoutParams
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Do something when the touch starts
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Do something when the touch stops
+            }
+        })
+
 
         // Initialize Wi-Fi manager
         wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as android.net.wifi.WifiManager
@@ -60,9 +83,9 @@ class AndroidSystemComponents : AppCompatActivity() {
                 }
             }
         }
-
         // Register battery level receiver
         registerReceiver(batteryLevelReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+
     }
 
     private fun toggleWifi() {
