@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
+package com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog

@@ -55,6 +55,28 @@
                     android:layout_gravity="center"
                     android:layout_centerInParent="true" />
 
+                <TextView
+                    android:id="@+id/batterylevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/violet"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    color="@color/violet"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:max="100"
+                    android:minHeight="40dp"
+                    android:minWidth="200dp"/>
+
+
                 <Button
                     android:id="@+id/Camerabtn"
                     android:layout_width="match_parent"

@@ -4,13 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ExpandableListView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidUIWidgets
+import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.ExplicitIntent
 import com.rrbofficial.androiduipracticekotlin.ImplicitIntent
 import com.rrbofficial.androiduipracticekotlin.MainActivity

@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AWS.AWSSignUp
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
-import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidUIWidgets
+import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents

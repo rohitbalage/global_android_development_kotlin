@@ -175,7 +175,7 @@
             android:name=".Fragments"
             android:exported="false" />
         <activity
-            android:name=".AndroidSysComponents.AndroidUIWidgets"
+            android:name=".AdvancedUIWidgets.AndroidUIWidgets"
             android:exported="false" />
         <activity
             android:name=".Ktor"
