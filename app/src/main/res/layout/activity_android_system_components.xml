@@ -120,6 +120,15 @@
                     android:text="@string/click_to_call" />
 
                 <Button
+                    android:id="@+id/saveNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTintMode="add"
+                    app:cornerRadius="10dp"
+                    android:fontFamily="@font/amaranth"
+                    android:text="@string/save_number" />
+
+                <Button
                     android:id="@+id/Camerabtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,6 +147,16 @@
                     app:cornerRadius="10dp"
                     />
 
+                <ToggleButton
+                    android:id="@+id/flashlightButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flashlight"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/violet" />
 
                 <Button
                     android:id="@+id/WifiONOFFBtn"

@@ -6,14 +6,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraManager
 import android.net.Uri
 import android.os.BatteryManager
+import android.os.Build
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
@@ -29,6 +34,9 @@ class AndroidSystemComponents : AppCompatActivity() {
     private lateinit var batteryLevelReceiver: BroadcastReceiver
     private var backLightValue: Float = 0.5f
     private lateinit var mobileNumber: String
+    private lateinit var cameraManager: CameraManager
+    private var cameraId: String? = null
+    private var isFlashlightOn: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +54,8 @@ class AndroidSystemComponents : AppCompatActivity() {
         }
 
         // brightness control listener
-        binding.brightnessControl.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.brightnessControl.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 backLightValue = progress / 100.0f
                 binding.brightnessValue.text = backLightValue.toString()
@@ -71,17 +80,67 @@ class AndroidSystemComponents : AppCompatActivity() {
             mobileNumber = binding.EditTextmobileNumber.text.toString()
 
             if (mobileNumber.isEmpty()) {
-                Toast.makeText(applicationContext, "Please fill the fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    applicationContext,
+                    "Please fill the mobile number",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
                 intent.data = Uri.parse("tel:$mobileNumber")
-                if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(applicationContext, "Permission not granted.", Toast.LENGTH_SHORT).show()
-                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CALL_PHONE), 1)
+                if (ActivityCompat.checkSelfPermission(
+                        applicationContext,
+                        Manifest.permission.CALL_PHONE
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    Toast.makeText(
+                        applicationContext,
+                        "Permission not granted.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.CALL_PHONE),
+                        1
+                    )
                 } else {
                     startActivity(intent)
                 }
             }
         }
+
+        binding.saveNumber.setOnClickListener()
+        {
+            val intent = Intent(ContactsContract.Intents.Insert.ACTION)
+            mobileNumber = binding.EditTextmobileNumber.text.toString()
+
+            if (mobileNumber.isEmpty()) {
+                Toast.makeText(
+                    applicationContext,
+                    "Please fill the mobile number",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                intent.type = ContactsContract.RawContacts.CONTENT_TYPE
+                intent.putExtra(ContactsContract.Intents.Insert.PHONE, mobileNumber)
+                startActivity(intent)
+            }
+        }
+
+        // Initialize camera manager
+        cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+        try {
+            cameraId = cameraManager.cameraIdList[0]
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+
+        // Flashlight toggle button listener
+        binding.flashlightButton.setOnCheckedChangeListener { _, isChecked ->
+            isFlashlightOn = isChecked
+            switchFlashLight(isFlashlightOn)
+        }
+
+
 
         // Initialize Wi-Fi manager
         wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as android.net.wifi.WifiManager
@@ -110,6 +169,22 @@ class AndroidSystemComponents : AppCompatActivity() {
         registerReceiver(batteryLevelReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
 
     }
+
+    private fun switchFlashLight(status: Boolean) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                cameraManager.setTorchMode(cameraId!!, status)
+            }
+            if (status) {
+                binding.flashlightButton.textOn = "ON"
+            } else {
+                binding.flashlightButton.textOff = "OFF"
+            }
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    }
+
 
     private fun toggleWifi() {
         if (wifiManager.isWifiEnabled) {
