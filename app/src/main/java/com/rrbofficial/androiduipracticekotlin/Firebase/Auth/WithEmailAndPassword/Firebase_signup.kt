@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -66,7 +67,24 @@ class Firebase_signup : AppCompatActivity() {
             val password = passwordEditText.text.toString()
             val degree = degreeEditText.text.toString()
             val skills = skillsEditText.text.toString()
-            signIn(email, password, degree, skills, imageUri)
+
+            if(email.isEmpty() || password.isEmpty() || degree.isEmpty() || skills.isEmpty())
+            {
+                val alertDialog = AlertDialog.Builder(this)
+                    .setTitle("Please enter all the valid fields")
+                    .setMessage("Required fields are empty or invalid")
+                    .setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                        // Handle OK button click if needed
+                    }
+                    .create()
+                alertDialog.show()
+            }
+            else{
+                signIn(email, password, degree, skills, imageUri)
+            }
+
+
         }
 
         buttonSelectPicture.setOnClickListener()
@@ -97,63 +115,19 @@ class Firebase_signup : AppCompatActivity() {
 
                     val user = auth.currentUser
                     user?.let {
-                        val userId = it.uid
-
-                        // Check if an image is selected
-                        if (imageUri != null) {
-                            // Upload profile picture to Firebase Storage
-                            val storageRef = FirebaseStorage.getInstance().reference
-                                .child("profile_images/$userId/${imageUri.lastPathSegment}")
-
-                            val uploadTask = storageRef.putFile(imageUri)
-                            uploadTask.addOnSuccessListener { _ ->
-                                // Profile picture uploaded successfully, get the download URL
-                                storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
-                                    // Save user data to Firestore including profile picture URL
-                                    val userRef = db.collection("users").document(userId)
-                                    val userData = hashMapOf(
-                                        "email" to email,
-                                        "degree" to degree,
-                                        "skills" to skills,
-                                        "profileImageUrl" to downloadUri.toString()
-                                    )
-                                    userRef.set(userData)
-                                        .addOnSuccessListener {
-                                            Log.d("useraccount", "User data saved successfully")
-                                            // Navigate to Firebase_userdata activity
-                                            val intent = Intent(this, Firebase_userdata::class.java)
-                                            startActivity(intent)
-                                        }
-                                        .addOnFailureListener { e ->
-                                            Log.w("userfailure", "Error saving user data", e)
-                                        }
+                        // Send email verification
+                        it.sendEmailVerification()
+                            .addOnCompleteListener { emailVerificationTask ->
+                                if (emailVerificationTask.isSuccessful) {
+                                    Log.d("emailVerification", "Email verification sent.")
+                                    // Save user data to Firestore
+                                    saveUserData(email, degree, skills, imageUri)
+                                    showVerificationAlertDialog(email)
+                                } else {
+                                    Log.e("emailVerification", "Failed to send verification email.", emailVerificationTask.exception)
                                 }
                             }
-                            uploadTask.addOnFailureListener { e ->
-                                // Handle failure to upload profile picture
-                                Log.w("userfailure", "Error uploading profile picture", e)
-                            }
-                        } else {
-                            // No image selected, save user data without profile picture URL
-                            val userRef = db.collection("users").document(userId)
-                            val userData = hashMapOf(
-                                "email" to email,
-                                "degree" to degree,
-                                "skills" to skills
-                            )
-                            userRef.set(userData)
-                                .addOnSuccessListener {
-                                    Log.d("useraccount", "User data saved successfully")
-                                }
-                                .addOnFailureListener { e ->
-                                    Log.w("userfailure", "Error saving user data", e)
-                                }
-                        }
                     }
-
-                    // Navigate to user data page
-                    progressBar.visibility = View.GONE
-
                 } else {
                     // User creation failed, display a message to the user.
                     Log.w("userfailure", "createUserWithEmailAndPassword:failure", task.exception)
@@ -167,6 +141,72 @@ class Firebase_signup : AppCompatActivity() {
             }
     }
 
+    private fun saveUserData(email: String, degree: String, skills: String, imageUri: Uri?) {
+        val user = auth.currentUser
+        user?.let {
+            val userId = it.uid
+            val userRef = db.collection("users").document(userId)
+            val userData = hashMapOf(
+                "email" to email,
+                "degree" to degree,
+                "skills" to skills
+            )
+
+            // Check if an image is selected
+            if (imageUri != null) {
+                // Upload profile picture to Firebase Storage
+                val storageRef = FirebaseStorage.getInstance().reference
+                    .child("profile_images/$userId/${imageUri.lastPathSegment}")
+
+                val uploadTask = storageRef.putFile(imageUri)
+                uploadTask.addOnSuccessListener { _ ->
+                    // Profile picture uploaded successfully, get the download URL
+                    storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
+                        // Add profile image URL to user data
+                        userData["profileImageUrl"] = downloadUri.toString()
+                        // Save user data including profile picture URL
+                        userRef.set(userData)
+                            .addOnSuccessListener {
+                                Log.d("useraccount", "User data saved successfully")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("userfailure", "Error saving user data", e)
+                            }
+                    }
+                }.addOnFailureListener { e ->
+                    // Handle failure to upload profile picture
+                    Log.w("userfailure", "Error uploading profile picture", e)
+                }
+            } else {
+                // No image selected, save user data without profile picture URL
+                userRef.set(userData)
+                    .addOnSuccessListener {
+                        Log.d("useraccount", "User data saved successfully")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("userfailure", "Error saving user data", e)
+                    }
+            }
+        }
+    }
+
+
+
+    private fun showVerificationAlertDialog(email: String) {
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Email Verification Sent")
+            .setMessage("A verification email has been sent to $email. Please verify your email before continuing.")
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+                // Handle OK button click if needed
+                progressBar.visibility = View.GONE
+                val intent = Intent(this, Firebase_login::class.java)
+                startActivity(intent)
+            }
+            .create()
+
+        alertDialog.show()
+    }
 
 
     private fun updateUI(user: FirebaseUser?) {
