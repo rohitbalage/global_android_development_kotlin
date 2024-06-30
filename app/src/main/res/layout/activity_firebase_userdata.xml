@@ -1,102 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/gradient_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Firebase.Auth.WithEmailAndPassword.Firebase_userdata">
+    android:background="@drawable/gradient_background"
+    >
 
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
         android:text="Firebase User Data"
         android:textColor="@android:color/black"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        />
 
     <ImageView
         android:id="@+id/imageViewProfile"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_below="@id/textViewTitle"
-        android:layout_centerHorizontal="true"
+        android:src="@drawable/profilepic"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
-        android:src="@drawable/profilepic" />
+        />
 
     <Button
         android:id="@+id/buttonUpdateProfilePicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageViewProfile"
-        android:layout_centerHorizontal="true"
+        android:text="Update Profile Picture"
+        app:layout_constraintTop_toBottomOf="@id/imageViewProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:text="Update Profile Picture" />
+        />
 
     <TextView
         android:id="@+id/textViewSkills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonUpdateProfilePicture"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:text="Skills"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonUpdateProfilePicture"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        />
 
     <EditText
         android:id="@+id/editTextSkills"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewSkills"
-        android:layout_marginStart="32dp"
+        android:hint="Enter your skills..."
+        app:layout_constraintTop_toBottomOf="@id/textViewSkills"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Enter your skills..." />
+        />
 
     <TextView
         android:id="@+id/textViewEducation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextSkills"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
         android:text="Education"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextSkills"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        />
 
     <EditText
         android:id="@+id/editTextEducation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewEducation"
-        android:layout_marginStart="32dp"
+        android:hint="Enter your education..."
+        app:layout_constraintTop_toBottomOf="@id/textViewEducation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Enter your education..." />
+        />
 
     <Button
         android:id="@+id/buttonUpdateUserData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextEducation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
         android:text="Update User Data"
-        android:textStyle="bold" />
+        app:layout_constraintTop_toBottomOf="@id/editTextEducation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        />
 
     <Button
         android:id="@+id/buttonSignOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/buttonUpdateUserData"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
         android:text="Sign Out"
-        android:textStyle="bold" />
+        app:layout_constraintTop_toBottomOf="@id/buttonUpdateUserData"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        />
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/buttonUpdateuserEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter your new email..."
+        app:layout_constraintTop_toBottomOf="@id/buttonSignOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        />
+
+    <Button
+        android:id="@+id/buttonUpdateEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Update Email"
+        app:layout_constraintTop_toBottomOf="@id/buttonUpdateuserEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textStyle="bold"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

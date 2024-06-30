@@ -28,9 +28,10 @@ class Firebase_userdata : AppCompatActivity() {
     private lateinit var editTextSkills: EditText
     private lateinit var editTextDegree: EditText
     private lateinit var buttonUpdateUserData: Button
-    private var imageUri: Uri? = null
-    private val PICK_IMAGE_REQUEST = 1
     private lateinit var buttonSignOut: Button
+    private lateinit var buttonUpdateuserEmail: EditText
+    private lateinit var buttonUpdateEmail: Button
+    private val PICK_IMAGE_REQUEST = 1 // Define PICK_IMAGE_REQUEST here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,8 @@ class Firebase_userdata : AppCompatActivity() {
         editTextDegree = findViewById(R.id.editTextEducation)
         buttonUpdateUserData = findViewById(R.id.buttonUpdateUserData)
         buttonSignOut = findViewById(R.id.buttonSignOut)
+        buttonUpdateuserEmail = findViewById(R.id.buttonUpdateuserEmail)
+        buttonUpdateEmail = findViewById(R.id.buttonUpdateEmail)
 
         // Load user data
         loadUserData()
@@ -60,13 +63,17 @@ class Firebase_userdata : AppCompatActivity() {
             signOut()
         }
 
-        // Button click listeners
-        buttonUpdateUserData.setOnClickListener {
-            updateUserData()
+        // Update email button click listener
+        buttonUpdateEmail.setOnClickListener {
+            val newEmail = buttonUpdateuserEmail.text.toString().trim()
+            if (newEmail.isNotEmpty()) {
+                updateEmail(newEmail)
+            } else {
+                Toast.makeText(this, "Please enter a valid email", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
+
     private fun loadUserData() {
         val userId = auth.currentUser?.uid
         if (userId != null) {
@@ -95,41 +102,25 @@ class Firebase_userdata : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.d("Firebase_userdata", "get failed with ", exception)
                 }
+
+            // Pre-fill current email address
+            val currentUser = auth.currentUser
+            buttonUpdateuserEmail.setText(currentUser?.email)
         }
     }
 
-    private fun updateUserData() {
-        val userId = auth.currentUser?.uid
-        if (userId != null) {
-            val userRef = db.collection("users").document(userId)
-            val skills = editTextSkills.text.toString()
-            val degree = editTextDegree.text.toString()
-
-            // Update skills and degree in Firestore
-            userRef.update(mapOf(
-                "skills" to skills,
-                "degree" to degree
-            ))
-                .addOnSuccessListener {
-                    Toast.makeText(this, "User data updated successfully", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener { e ->
-                    Log.w("Firebase_userdata", "Error updating document", e)
-                }
-
-            // If a new profile picture is selected, upload it to Firebase Storage
-            if (imageUri != null) {
-                val profileImageRef = storageRef.child("profile_images").child(userId)
-                profileImageRef.putFile(imageUri!!)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Profile picture updated successfully", Toast.LENGTH_SHORT).show()
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w("Firebase_userdata", "Error uploading profile picture", e)
-                    }
+    private fun updateEmail(newEmail: String) {
+        val currentUser = auth.currentUser
+        currentUser?.updateEmail(newEmail)
+            ?.addOnSuccessListener {
+                Toast.makeText(this, "Email updated successfully", Toast.LENGTH_SHORT).show()
             }
-        }
+            ?.addOnFailureListener { e ->
+                Log.e("Firebase_userdata", "Error updating email", e)
+                Toast.makeText(this, "Failed to update email: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
+
     private fun openImageChooser() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
@@ -138,7 +129,7 @@ class Firebase_userdata : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.data != null) {
-            imageUri = data.data
+            val imageUri = data.data
             Glide.with(this).load(imageUri).into(imageViewProfile)
         }
     }
@@ -150,5 +141,4 @@ class Firebase_userdata : AppCompatActivity() {
         startActivity(intent)
         finish() // Close the current activity to prevent back navigation
     }
-
-    }
+}
