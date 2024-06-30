@@ -176,6 +176,8 @@
     <string name="reset_email">Reset email</string>
     <string name="reset_email_input">Reset Email Link</string>
     <string name="reset_your_email">Reset Your Email</string>
+    <string name="click_to_call">Click to Call</string>
+    <string name="enter_your_mobile_number">Enter your mobile number</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

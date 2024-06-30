@@ -1,9 +1,12 @@
 package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
 
+import android.Manifest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.BatteryManager
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
@@ -24,6 +28,7 @@ class AndroidSystemComponents : AppCompatActivity() {
     private lateinit var wifiManager: android.net.wifi.WifiManager
     private lateinit var batteryLevelReceiver: BroadcastReceiver
     private var backLightValue: Float = 0.5f
+    private lateinit var mobileNumber: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +64,24 @@ class AndroidSystemComponents : AppCompatActivity() {
             }
         })
 
+
+        // call number
+        binding.callNumber.setOnClickListener {
+            val intent = Intent(Intent.ACTION_CALL)
+            mobileNumber = binding.EditTextmobileNumber.text.toString()
+
+            if (mobileNumber.isEmpty()) {
+                Toast.makeText(applicationContext, "Please fill the fields", Toast.LENGTH_SHORT).show()
+            } else {
+                intent.data = Uri.parse("tel:$mobileNumber")
+                if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(applicationContext, "Permission not granted.", Toast.LENGTH_SHORT).show()
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CALL_PHONE), 1)
+                } else {
+                    startActivity(intent)
+                }
+            }
+        }
 
         // Initialize Wi-Fi manager
         wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as android.net.wifi.WifiManager
