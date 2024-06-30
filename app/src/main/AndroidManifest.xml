@@ -36,6 +36,12 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".Firebase.Auth.FirebaseResetEmail"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Auth.FirebasePasswordReset"
+            android:exported="false" />
+        <activity
             android:name=".Firebase.Auth.WithPhoneNumber.SignInwithPhoneNumberFirebase"
             android:exported="false" />
         <activity

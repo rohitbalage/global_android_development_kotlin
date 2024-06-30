@@ -172,6 +172,8 @@
     <string name="with_phone_number">With Phone Number</string>
     <string name="with_google_sign_in">Google Sign In</string>
     <string name="facebook_sign_in">Facebook Sign in</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_email">Reset email</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

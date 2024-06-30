@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.FirebasePasswordReset
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.FirebaseResetEmail
 import com.rrbofficial.androiduipracticekotlin.R
 
 class Firebase_signup : AppCompatActivity() {
@@ -36,7 +38,8 @@ class Firebase_signup : AppCompatActivity() {
     private lateinit var imageViewProfile: ImageView
     private lateinit var buttonSelectPicture: Button
     private var imageUri: Uri? = null
-
+    private  lateinit var resetButton: Button
+    private lateinit var  resetEmail: Button
     companion object {
         private const val PICK_IMAGE_REQUEST = 1
     }
@@ -52,6 +55,7 @@ class Firebase_signup : AppCompatActivity() {
 
         // Assigning buttons from XML
         signInButton = findViewById(R.id.btn_signin)
+        resetButton = findViewById(R.id.btn_reset)
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         goToLogin = findViewById(R.id.btn_login)
@@ -60,6 +64,7 @@ class Firebase_signup : AppCompatActivity() {
         skillsEditText = findViewById(R.id.edtskillstxt)
         imageViewProfile = findViewById(R.id.imageViewProfile)
         buttonSelectPicture = findViewById(R.id.buttonSelectPicture)
+        resetEmail = findViewById(R.id.btn_emailreset)
         progressBar.visibility = View.GONE
 
         signInButton.setOnClickListener {
@@ -95,6 +100,16 @@ class Firebase_signup : AppCompatActivity() {
         goToLogin.setOnClickListener()
         {
             val intent = Intent(this, Firebase_login::class.java)
+            startActivity(intent)
+        }
+
+        resetButton.setOnClickListener(){
+            val intent = Intent(this, FirebasePasswordReset::class.java)
+            startActivity(intent)
+        }
+
+        resetEmail.setOnClickListener(){
+            val intent = Intent(this, FirebaseResetEmail::class.java)
             startActivity(intent)
         }
 
