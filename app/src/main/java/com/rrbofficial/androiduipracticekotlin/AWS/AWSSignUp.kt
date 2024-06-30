@@ -7,16 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
-class AWS : AppCompatActivity() {
+class AWSSignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_aws)
+        setContentView(R.layout.activity_aws_signup)
 
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, AWSDBActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }

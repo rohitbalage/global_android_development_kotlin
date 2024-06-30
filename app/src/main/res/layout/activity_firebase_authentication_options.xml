@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@drawable/gradient_background"
+        android:orientation="vertical"
+        tools:context=".Firebase.Auth.FirebaseAuthenticationOptions">
+
+        <TextView
+            android:id="@+id/firebaseoptionshedaliine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/firebase_auth_options"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/withEmailIdandPassFirebaseAuth"
+            app:cornerRadius="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/with_email_and_password"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/withPhoneNumberFirebaseAuth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/with_phone_number"
+            app:cornerRadius="10dp" />
+
+        <Button
+            android:id="@+id/withGoogleSignInFirebaseAuth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/with_google_sign_in"
+            app:cornerRadius="10dp" />
+
+        <Button
+            android:id="@+id/withFbSignInFirebaseAuth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook Sign In"
+            app:cornerRadius="10dp" />
+
+    </LinearLayout>
+</layout>

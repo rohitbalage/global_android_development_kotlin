@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@drawable/gradient_background"
-    tools:context=".Firebase.Auth.Firebase_login">
+    tools:context=".Firebase.Auth.WithEmailAndPassword.Firebase_login">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -28,7 +28,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:hint="Email"
-        android:background="@drawable/gradient_background"
         android:inputType="textEmailAddress" />
 
     <EditText

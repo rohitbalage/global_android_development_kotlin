@@ -1,4 +1,4 @@
-package com.rrbofficial.androiduipracticekotlin.Firebase.Auth
+package com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword
 
 import android.app.Activity
 import android.content.Intent

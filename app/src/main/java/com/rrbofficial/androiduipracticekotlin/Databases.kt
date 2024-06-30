@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.rrbofficial.androiduipracticekotlin.AWS.AWSDBActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Firebase
 import com.rrbofficial.androiduipracticekotlin.SQLite.SQLiteForm
 
@@ -33,5 +34,12 @@ class Databases : AppCompatActivity() {
 
         val intent = Intent(this, SQLiteForm::class.java)
         startActivity(intent)
+    }
+
+    fun goToAWSDB(view: View) {
+
+        val intent = Intent(this, AWSDBActivity ::class.java)
+        startActivity(intent)
+
     }
 }

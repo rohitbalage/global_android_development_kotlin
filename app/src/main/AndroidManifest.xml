@@ -36,6 +36,24 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+            android:name=".Firebase.Auth.WithPhoneNumber.SignInwithPhoneNumberFirebase"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Auth.FirebaseAuthenticationOptions"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Auth.FacebookSignIn.FacebookSingInFirebase"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Auth.GoogleSignIn.GoogleSignInFirebase"
+            android:exported="false" />
+        <activity
+            android:name=".Firebase.Auth.WithPhoneNumber.FirebaseLoginWithPhoneNumber"
+            android:exported="false" />
+        <activity
+            android:name=".AWS.AWSDBActivity"
+            android:exported="false" />
+        <activity
             android:name=".MaterialUIDesgins.TabLayout.TabLayoutWithViewPager"
             android:exported="false" />
         <activity
@@ -136,7 +154,7 @@
             android:name=".Security.AndroidSecurity"
             android:exported="false" />
         <activity
-            android:name=".AWS.AWS"
+            android:name=".AWS.AWSSignUp"
             android:exported="false" />
         <activity
             android:name=".Notifications.Notifications"
@@ -160,13 +178,13 @@
             android:name=".Volley"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Auth.Firebase_userdata"
+            android:name=".Firebase.Auth.WithEmailAndPassword.Firebase_userdata"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Auth.Firebase_signup"
+            android:name=".Firebase.Auth.WithEmailAndPassword.Firebase_signup"
             android:exported="false" />
         <activity
-            android:name=".Firebase.Auth.Firebase_login"
+            android:name=".Firebase.Auth.WithEmailAndPassword.Firebase_login"
             android:exported="false" />
         <activity
             android:name=".Firebase.Firebase"

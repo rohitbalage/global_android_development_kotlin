@@ -163,6 +163,15 @@
     <string name="expandable_list_view">Expandable List View</string>
     <string name="tab_layouts">Tab layouts</string>
     <string name="bottom_nav_bar_tabs">Bottom Nav bar Tabs</string>
+    <string name="aws_db">AWS DB</string>
+    <string name="aws_login">AWS Login</string>
+    <string name="aws_signup">AWS SignUp</string>
+    <string name="aws_db_headline">AWS DB</string>
+    <string name="firebase_auth_options">Firebase Auth Options</string>
+    <string name="with_email_and_password">With Email and Password</string>
+    <string name="with_phone_number">With Phone Number</string>
+    <string name="with_google_sign_in">Google Sign In</string>
+    <string name="facebook_sign_in">Facebook Sign in</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

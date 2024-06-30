@@ -12,7 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.rrbofficial.androiduipracticekotlin.AWS.AWS
+import com.rrbofficial.androiduipracticekotlin.AWS.AWSSignUp
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.GotoAWS -> {
-                val intent = Intent(this, AWS::class.java)
+                val intent = Intent(this, AWSSignUp::class.java)
                 startActivity(intent)
                 finish()
             }

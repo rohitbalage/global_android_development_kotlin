@@ -15,7 +15,8 @@ import com.google.firebase.database.getValue
 import com.google.firebase.firestore.firestore
 import com.rrbofficial.androiduipracticekotlin.Firebase.Admob.AdMobWithFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Analytics.FirebaseAnalyticsActivity
-import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.Firebase_signup
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.FirebaseAuthenticationOptions
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_signup
 import com.rrbofficial.androiduipracticekotlin.Firebase.CloudMessaging.CloudMessagingFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.CrashAnalytics.FirebaseCrashAnalytics
 import com.rrbofficial.androiduipracticekotlin.Firebase.DynamicLink.DynamicLinkWithFirebaseActivity
@@ -35,6 +36,7 @@ class Firebase : AppCompatActivity() {
     private  lateinit var  goToAdmobWithFirebase : Button
     private  lateinit var  goToDynamicLink : Button
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase)
@@ -50,12 +52,13 @@ class Firebase : AppCompatActivity() {
         goToAnalyticsApp = findViewById(R.id.buttonFirebaseAnalticsApp)
         goToDynamicLink = findViewById(R.id.buttonDynamicLink)
 
+
        /*** Go to AUTH SECTION**/
 
        goToAuth.setOnClickListener()
        {
            // Create an intent to start the new activity
-           val intent = Intent(this, Firebase_signup::class.java)
+           val intent = Intent(this, FirebaseAuthenticationOptions::class.java)
            // Start the new activity
            startActivity(intent)
        }
