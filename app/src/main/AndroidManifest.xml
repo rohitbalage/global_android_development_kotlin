@@ -45,9 +45,6 @@
             android:name=".AchitecturePatterns.ArchitecturePatternsActivity"
             android:exported="false" />
         <activity
-            android:name=".AchitecturePatterns.ArchitecturePatterns"
-            android:exported="false" />
-        <activity
             android:name=".Firebase.Auth.FirebaseResetEmail"
             android:exported="false" />
         <activity
@@ -64,9 +61,6 @@
             android:exported="false" />
         <activity
             android:name=".Firebase.Auth.GoogleSignIn.GoogleSignInFirebase"
-            android:exported="false" />
-        <activity
-            android:name=".Firebase.Auth.WithPhoneNumber.FirebaseLoginWithPhoneNumber"
             android:exported="false" />
         <activity
             android:name=".AWS.AWSDBActivity"

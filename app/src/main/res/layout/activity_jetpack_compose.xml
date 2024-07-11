@@ -33,44 +33,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/simple_view_model"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:id="@+id/simpleViewModelBtn"/>
 
             <Button
                 android:id="@+id/LiveDataBtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/live_data"
                 />
 
             <Button
                 android:id="@+id/viewModelLiveDataDataBindingBtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/viewmodel_livedata_databinding"
 
                 />
 
             <Button
                 android:id="@+id/ActivityFragmentLifecycleBtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/activity_fragment_lifecycle" />
 
             <Button
                 android:id="@+id/NavigationArchitectureComponentBtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/navigation_architecture_component"
 
            />
 
             <Button
                 android:id="@+id/recycleViewFuncdamentalsbtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/recycleview_fundamentals"
 
                 />
 
             <Button
                 android:id="@+id/kotlinCoroutinesBtn"
-                style="@style/CustomButtonStyle"
+                style="@style/CustomButtonStyle.Day"
                 android:text="@string/kotlin_coroutines"
                 />
 

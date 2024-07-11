@@ -1,21 +1,23 @@
 package com.rrbofficial.androiduipracticekotlin
 
 import android.content.DialogInterface
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.rrbofficial.androiduipracticekotlin.AWS.AWSSignUp
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
-import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
+import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
@@ -24,26 +26,51 @@ import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     private lateinit var crashlytics: FirebaseCrashlytics
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
 
-        // Firebase crashanalytics
+        // Initialize DataBinding
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
+        // Set the current theme based on saved preferences
+        setInitialTheme()
+
+        // Observe changes in isNightMode to apply the theme dynamically
+        viewModel.isNightMode.observe(this) { isNightMode ->
+            applyTheme(isNightMode)
+        }
+
+        // Handle switchTheme changes
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked != viewModel.isNightMode.value) {
+                viewModel.toggleTheme(isChecked)
+            }
+        }
+
+        // Firebase crash analytics
         crashlytics = FirebaseCrashlytics.getInstance()
 
         // Declare the launcher at the top of your Activity/Fragment:
         val requestPermissionLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestPermission(),
+            ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
                 // FCM SDK (and your app) can post notifications.
             } else {
-                // TODO: Inform user that that your app will not show notifications.
+                // TODO: Inform user that your app will not show notifications.
             }
         }
+
         fun askNotificationPermission() {
             // This is only necessary for API level >= 33 (TIRAMISU)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -64,13 +91,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
                 }
             }
-
         }
-
-
-
-            // Data binding initialization
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         // Set click listeners for all buttons using binding object
         binding.uicomponents.setOnClickListener(this)
@@ -83,7 +104,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GotoAnimations.setOnClickListener(this)
         binding.Kotlincoroutines.setOnClickListener(this)
         binding.GotoNotifications.setOnClickListener(this)
-        binding.GotoAnimations.setOnClickListener(this)
         binding.GotoArchitecturePatterns.setOnClickListener(this)
         binding.GoToAndroidSecurity.setOnClickListener(this)
         binding.AritificalIntelligence.setOnClickListener(this)
@@ -91,29 +111,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AdvanceUIComponets.setOnClickListener(this)
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
+        binding.switchTheme.setOnClickListener(this)
+    }
 
+    private fun setInitialTheme() {
+        val isNightMode = sharedPreferences.getBoolean("NightMode", false)
+        applyTheme(isNightMode)
+        binding.switchTheme.isChecked = isNightMode
+    }
 
-        // All About Android Activity Life cycle
-        // override fun onStart() {
-        //     super.onStart()
-        //     Toast.makeText(this,"onStart() is callled" , Toast.LENGTH_LONG).show()
-        // }
-
-        // override fun onResume() {
-        //     Toast.makeText(this,"onResume() is callled" , Toast.LENGTH_LONG).show()
-        //     super.onResume()
-        // }
-
-        // override fun onPause() {
-        //     Toast.makeText(this,"onPause() is callled" , Toast.LENGTH_LONG).show()
-        //     super.onPause()
-        // }
-
-        // override fun onDestroy() {
-        //     super.onDestroy()
-        //     Toast.makeText(this,"onDestroy() is callled" , Toast.LENGTH_LONG).show()
-        // }
-
+    private fun applyTheme(isNightMode: Boolean) {
+        if (isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.root.setBackgroundResource(R.drawable.gradient_background)
+        }
     }
 
     override fun onClick(view: View?) {
@@ -123,105 +137,92 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
-
             R.id.Kotlincoroutines -> {
                 val intent = Intent(this, KotlinCoroutines::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.JetpackCompose -> {
                 val intent = Intent(this, JetpackCompose::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.fragments -> {
                 val intent = Intent(this, Fragments::class.java)
                 startActivity(intent)
             }
-
             R.id.googlemaps -> {
                 val intent = Intent(this, GoogleMaps::class.java)
                 startActivity(intent)
             }
-
             R.id.APisbtn -> {
                 val intent = Intent(this, Apis::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.databases -> {
                 val intent = Intent(this, Databases::class.java)
                 startActivity(intent)
                 finish()
             }
-
-            R.id.Kotlincoroutines -> {
-                val intent = Intent(this, KotlinCoroutines::class.java)
-                startActivity(intent)
-                finish()
-            }
-
             R.id.GotoAnimations -> {
                 val intent = Intent(this, Animations::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.GotoNotifications -> {
                 val intent = Intent(this, Notifications::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.GotoArchitecturePatterns -> {
                 val intent = Intent(this, ArchitecturePatternsActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.GoToAndroidSecurity -> {
                 val intent = Intent(this, AndroidSecurity::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.AritificalIntelligence -> {
                 val intent = Intent(this, ArtificialIntelligence::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.IOTandThings -> {
                 val intent = Intent(this, InternetOfThings::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.AdvanceUIComponets -> {
                 val intent = Intent(this, AndroidUIWidgets::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.AndroidSystemComponents -> {
                 val intent = Intent(this, AndroidSystemComponents::class.java)
                 startActivity(intent)
                 finish()
             }
-
             R.id.GotoMachineLearning -> {
-                val intent = Intent(this,MachineLearning::class.java)
+                val intent = Intent(this, MachineLearning::class.java)
                 startActivity(intent)
                 finish()
             }
+            R.id.switchTheme -> {
+                // Handle switchTheme changes
+                binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked != viewModel.isNightMode.value) {
+                        viewModel.toggleTheme(isChecked)
+                    }
+                }
+            }
         }
     }
+
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
-
         // Set dialog title and message
         builder.setTitle("Confirmation")
             .setMessage("Are you sure you want to close this activity?")
