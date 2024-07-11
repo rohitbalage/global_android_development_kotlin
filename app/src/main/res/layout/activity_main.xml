@@ -179,10 +179,10 @@
             />
 
         <Button
-            android:id="@+id/GotoAWS"
+            android:id="@+id/GotoArchitecturePatterns"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/aws"
+            android:text="@string/architecture_patterns"
             android:backgroundTintMode="add"
             app:cornerRadius="10dp"
             android:fontFamily="@font/amaranth"

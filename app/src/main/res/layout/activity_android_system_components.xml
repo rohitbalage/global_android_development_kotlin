@@ -129,6 +129,46 @@
                     android:text="@string/save_number" />
 
                 <Button
+                    android:id="@+id/startrecord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start Recording"
+                    app:cornerRadius="10dp"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                   />
+
+                <Button
+                    android:id="@+id/stopRecording"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stop Recording"
+                    app:cornerRadius="10dp"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                  />
+
+                <Button
+                    android:id="@+id/playRecording"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Play Recording"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                    app:cornerRadius="10dp"
+                />
+
+                <Button
+                    android:id="@+id/stop_playing_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stop Playing Record"
+                    android:textColor="#FFFFFF"
+                    android:padding="16dp"
+                    app:cornerRadius="10dp"
+                     />
+
+                <Button
                     android:id="@+id/Camerabtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

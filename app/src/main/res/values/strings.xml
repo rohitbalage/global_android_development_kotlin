@@ -179,6 +179,17 @@
     <string name="click_to_call">Click to Call</string>
     <string name="enter_your_mobile_number">Enter your mobile number</string>
     <string name="save_number">Save Number</string>
+    <string name="architecture_patterns">Architecture patterns</string>
+    <string name="mvvm_pattenr">MVVM Patten</string>
+    <string name="mvc_pattern">MVC Pattern</string>
+    <string name="mvp_pattern">MVP Pattern</string>
+    <string name="mvvm_room">MVVM + Room</string>
+    <string name="mvvm_retrofit">MVVM + Retrofit</string>
+    <string name="simple_view_model">Simple View Model</string>
+    <string name="viewmodel_livedata_databinding">ViewModel + LiveData + DataBinding</string>
+    <string name="activity_fragment_lifecycle">Activity Fragment Lifecycle</string>
+    <string name="navigation_architecture_component">Navigation Architecture Component</string>
+    <string name="recycleview_fundamentals">RecycleView Fundamentals</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

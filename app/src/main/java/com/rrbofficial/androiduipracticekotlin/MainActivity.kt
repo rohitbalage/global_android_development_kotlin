@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AWS.AWSSignUp
+import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.Kotlincoroutines.setOnClickListener(this)
         binding.GotoNotifications.setOnClickListener(this)
         binding.GotoAnimations.setOnClickListener(this)
-        binding.GotoAWS.setOnClickListener(this)
+        binding.GotoArchitecturePatterns.setOnClickListener(this)
         binding.GoToAndroidSecurity.setOnClickListener(this)
         binding.AritificalIntelligence.setOnClickListener(this)
         binding.IOTandThings.setOnClickListener(this)
@@ -175,8 +176,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
 
-            R.id.GotoAWS -> {
-                val intent = Intent(this, AWSSignUp::class.java)
+            R.id.GotoArchitecturePatterns -> {
+                val intent = Intent(this, ArchitecturePatternsActivity::class.java)
                 startActivity(intent)
                 finish()
             }

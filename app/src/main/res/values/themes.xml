@@ -11,4 +11,25 @@
         <item name="colorAccent">#8BC34A</item>
     </style>
 
+    <!-- Default custom button style -->
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/amaranth</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:layout_margin">10dp</item> <!-- Add margin around the button -->
+    </style>
+
+    <!-- Headline TextView style -->
+    <style name="HeadlineTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/amaranth</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
 </resources>

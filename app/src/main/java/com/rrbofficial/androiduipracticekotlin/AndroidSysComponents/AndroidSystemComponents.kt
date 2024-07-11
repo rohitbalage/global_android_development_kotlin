@@ -1,42 +1,44 @@
 package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
 
 import android.Manifest
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.hardware.camera2.CameraAccessException
-import android.hardware.camera2.CameraManager
+import android.media.MediaPlayer
+import android.media.MediaRecorder
 import android.net.Uri
-import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.ContactsContract
 import android.widget.ImageView
-import android.widget.SeekBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
-import com.bumptech.glide.Glide
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityAndroidSystemComponentsBinding
+import java.io.IOException
 
 class AndroidSystemComponents : AppCompatActivity() {
 
     private lateinit var binding: ActivityAndroidSystemComponentsBinding
     private lateinit var wifiManager: android.net.wifi.WifiManager
-    private lateinit var batteryLevelReceiver: BroadcastReceiver
+    private lateinit var batteryLevelReceiver: android.content.BroadcastReceiver
     private var backLightValue: Float = 0.5f
     private lateinit var mobileNumber: String
-    private lateinit var cameraManager: CameraManager
+    private lateinit var cameraManager: android.hardware.camera2.CameraManager
     private var cameraId: String? = null
     private var isFlashlightOn: Boolean = false
+
+    // For recording functionality
+    private lateinit var mediaRecorder: MediaRecorder
+    private lateinit var mediaPlayer: MediaPlayer
+    private var audioFilePath: String? = null
+    private var isRecording = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class AndroidSystemComponents : AppCompatActivity() {
         setContentView(binding.root)
 
         // Initialize the Toolbar
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         // Handle navigation icon click
@@ -55,8 +57,8 @@ class AndroidSystemComponents : AppCompatActivity() {
 
         // brightness control listener
         binding.brightnessControl.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+            android.widget.SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: android.widget.SeekBar, progress: Int, fromUser: Boolean) {
                 backLightValue = progress / 100.0f
                 binding.brightnessValue.text = backLightValue.toString()
                 val layoutParams = window.attributes
@@ -64,15 +66,14 @@ class AndroidSystemComponents : AppCompatActivity() {
                 window.attributes = layoutParams
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            override fun onStartTrackingTouch(seekBar: android.widget.SeekBar) {
                 // Do something when the touch starts
             }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar) {
+            override fun onStopTrackingTouch(seekBar: android.widget.SeekBar) {
                 // Do something when the touch stops
             }
         })
-
 
         // call number
         binding.callNumber.setOnClickListener {
@@ -108,26 +109,13 @@ class AndroidSystemComponents : AppCompatActivity() {
             }
         }
 
-        binding.saveNumber.setOnClickListener()
-        {
-            val intent = Intent(ContactsContract.Intents.Insert.ACTION)
-            mobileNumber = binding.EditTextmobileNumber.text.toString()
-
-            if (mobileNumber.isEmpty()) {
-                Toast.makeText(
-                    applicationContext,
-                    "Please fill the mobile number",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                intent.type = ContactsContract.RawContacts.CONTENT_TYPE
-                intent.putExtra(ContactsContract.Intents.Insert.PHONE, mobileNumber)
-                startActivity(intent)
-            }
+        // Save number button click listener
+        binding.saveNumber.setOnClickListener {
+            saveNumber()
         }
 
         // Initialize camera manager
-        cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+        cameraManager = getSystemService(Context.CAMERA_SERVICE) as android.hardware.camera2.CameraManager
         try {
             cameraId = cameraManager.cameraIdList[0]
         } catch (e: CameraAccessException) {
@@ -140,8 +128,6 @@ class AndroidSystemComponents : AppCompatActivity() {
             switchFlashLight(isFlashlightOn)
         }
 
-
-
         // Initialize Wi-Fi manager
         wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as android.net.wifi.WifiManager
 
@@ -151,15 +137,15 @@ class AndroidSystemComponents : AppCompatActivity() {
 
         // Load GIF image using Glide
         val gifImageView: ImageView = findViewById(R.id.gifComponents)
-        Glide.with(this)
+        com.bumptech.glide.Glide.with(this)
             .load(R.drawable.androidsysgif)
             .into(gifImageView)
 
         // Initialize battery level receiver
-        batteryLevelReceiver = object : BroadcastReceiver() {
+        batteryLevelReceiver = object : android.content.BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 intent?.let {
-                    val level = it.getIntExtra(BatteryManager.EXTRA_LEVEL, 0)
+                    val level = it.getIntExtra(android.os.BatteryManager.EXTRA_LEVEL, 0)
                     binding.batterylevel.text = "Battery Level Remaining: $level%"
                     binding.progressbar.progress = level
                 }
@@ -168,6 +154,116 @@ class AndroidSystemComponents : AppCompatActivity() {
         // Register battery level receiver
         registerReceiver(batteryLevelReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
 
+        // Initialize media recorder and player
+        mediaRecorder = MediaRecorder()
+        mediaPlayer = MediaPlayer()
+        setupRecordingButtons()
+    }
+
+    private fun setupRecordingButtons() {
+        // Start recording button click listener
+        binding.startrecord.setOnClickListener {
+            if (isRecording) {
+                stopRecording()
+            } else {
+                startRecording()
+            }
+        }
+
+        // Stop recording button click listener
+        binding.stopRecording.setOnClickListener {
+            stopRecording()
+        }
+
+        // Play recording button click listener
+        binding.playRecording.setOnClickListener {
+            playRecording()
+        }
+
+        // Stop playing recording button click listener
+        binding.stopPlayingRecord.setOnClickListener {
+            stopPlaying()
+        }
+    }
+
+    private fun startRecording() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.RECORD_AUDIO
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.RECORD_AUDIO),
+                1
+            )
+            return
+        }
+
+        try {
+            audioFilePath = Environment.getExternalStorageDirectory().absolutePath +
+                    "/RecordedAudio.3gp"
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC)
+            mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
+            mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+            mediaRecorder.setOutputFile(audioFilePath)
+
+            mediaRecorder.prepare()
+            mediaRecorder.start()
+
+            isRecording = true
+            binding.startrecord.text = "Recording..."
+            Toast.makeText(this, "Recording started", Toast.LENGTH_SHORT).show()
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun stopRecording() {
+        if (isRecording) {
+            mediaRecorder.stop()
+            mediaRecorder.release()
+            isRecording = false
+            binding.startrecord.text = "Start Recording"
+            Toast.makeText(this, "Recording stopped", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun playRecording() {
+        try {
+            mediaPlayer.setDataSource(audioFilePath)
+            mediaPlayer.prepare()
+            mediaPlayer.start()
+            Toast.makeText(this, "Recording playing", Toast.LENGTH_SHORT).show()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun stopPlaying() {
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+            mediaPlayer.release()
+            Toast.makeText(this, "Recording stopped playing", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun saveNumber() {
+        val intent = Intent(ContactsContract.Intents.Insert.ACTION)
+        mobileNumber = binding.EditTextmobileNumber.text.toString()
+
+        if (mobileNumber.isEmpty()) {
+            Toast.makeText(
+                applicationContext,
+                "Please fill the mobile number",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            intent.type = ContactsContract.RawContacts.CONTENT_TYPE
+            intent.putExtra(ContactsContract.Intents.Insert.PHONE, mobileNumber)
+            startActivity(intent)
+        }
     }
 
     private fun switchFlashLight(status: Boolean) {
@@ -184,7 +280,6 @@ class AndroidSystemComponents : AppCompatActivity() {
             e.printStackTrace()
         }
     }
-
 
     private fun toggleWifi() {
         if (wifiManager.isWifiEnabled) {
@@ -204,6 +299,14 @@ class AndroidSystemComponents : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unregisterReceiver(batteryLevelReceiver)
+        if (isRecording) {
+            mediaRecorder.stop()
+            mediaRecorder.release()
+        }
+        if (mediaPlayer.isPlaying) {
+            mediaPlayer.stop()
+            mediaPlayer.release()
+        }
     }
 
     override fun onBackPressed() {
