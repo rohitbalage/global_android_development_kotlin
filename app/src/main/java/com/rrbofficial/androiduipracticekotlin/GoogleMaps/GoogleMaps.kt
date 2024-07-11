@@ -595,7 +595,7 @@ class GoogleMaps : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDr
 //        map.setPadding(0, 0, 300, 0)
 
 //        // Set map style
-        typeAndStyle.setMapStyle(map, this)
+//        typeAndStyle.setMapStyle(map, this)
 
         // Mim - Max zoom preference
 //        map.setMinZoomPreference(10f)

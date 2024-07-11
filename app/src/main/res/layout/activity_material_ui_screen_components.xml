@@ -5,8 +5,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:padding="30dp"
-        android:background="@drawable/gradient_background"
+        android:padding="10dp"
         android:layout_height="match_parent">
 
         <ScrollView
@@ -30,13 +29,10 @@
 
                 <Button
                     android:id="@+id/androidUIWidgets"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/android_ui_widgets"
-                    android:fontFamily="@font/amaranth"
                     android:onClick="goToAndroidUIWidgets"
-                    app:cornerRadius="10dp" />
+                  />
 
                 <EditText
                     android:id="@+id/implicitIntentText"
@@ -46,33 +42,24 @@
                     android:hint="Implicit intent"
                     android:ems="10"
                     android:fontFamily="@font/amaranth"
-                    android:background="#E3F4CF"
+                    android:background="#C0A4F3"
                     android:inputType="text" />
 
                 <Button
                     android:id="@+id/implicitBtn"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
                     android:text="@string/intents" />
 
 
                 <Button
                     android:id="@+id/explicitBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="@string/explicit_intent" />
 
                 <Button
                     android:id="@+id/googleImplicit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="@string/google_implicit_intent" />
 
                 <TextView
@@ -86,53 +73,34 @@
 
                 <Button
                     android:id="@+id/randomNumberBtn"
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="Generate Random No" />
 
                 <Button
                     android:id="@+id/shareBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="Share button" />
 
                 <Button
                     android:id="@+id/expandableListViewBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="@string/expandable_list_view" />
 
 
                 <Button
                     android:id="@+id/TabLayoutViewBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="@string/tab_layouts" />
 
                 <Button
                     android:id="@+id/BottomTabLayoutViewBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="@string/bottom_nav_bar_tabs" />
 
 
                 <Button
                     android:id="@+id/GridLayoutViewBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
                     android:text="Grid Layout with RecycleView" />
 
             </LinearLayout>

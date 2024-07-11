@@ -24,6 +24,22 @@ class TypeAndStyle {
         }
     }
 
+    fun setDarkMapStyle(googleMap: GoogleMap, context: Context) {
+        try {
+            val success = googleMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                    context,
+                    R.raw.dark_style
+                )
+            )
+            if (!success) {
+                Log.d("Maps", "failed to set map style")
+            }
+        } catch (e: Exception) {
+            Log.d("Maps", e.toString())
+        }
+    }
+
     fun setMapType(item: MenuItem, map: GoogleMap) {
         when (item.itemId) {
             R.id.normal_map -> {

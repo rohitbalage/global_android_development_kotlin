@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/gradient_background"
     tools:context=".Retrofit">
 
     <TextView
         android:id="@+id/APIsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+      style="@style/HeadlineTextViewStyle"
         android:text="@string/api_integration"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -24,16 +22,18 @@
 
     <Button
         android:id="@+id/githubBtn"
+        style="?attr/buttonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="528dp"
-        android:text="Github"
         android:onClick="goToGithub"
+        android:text="Github"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/APIsTextView"
         app:layout_constraintVertical_bias="0.107" />
 
     <Button
@@ -41,6 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="StackOverflow"
+        style="?attr/buttonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"

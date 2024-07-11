@@ -11,13 +11,15 @@ import android.net.Uri
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
+import com.rrbofficial.androiduipracticekotlin.GoogleMaps.TypeAndStyle
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant
 
 class MyApplication : Application() {
     private lateinit var crashlytics: FirebaseCrashlytics
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
@@ -68,6 +70,7 @@ class MyApplication : Application() {
         val isNightMode = sharedPreferences.getBoolean("NightMode", false)
         if (isNightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }

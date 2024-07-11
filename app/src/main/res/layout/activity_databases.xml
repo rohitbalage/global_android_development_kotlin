@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
     android:padding="30dp"
     android:layout_height="match_parent"
     tools:context=".Databases">
@@ -24,44 +23,28 @@
 
             <TextView
                 android:id="@+id/databaseshead"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/amaranth"
+                style="@style/HeadlineTextViewStyle"
                 android:text="@string/databases"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/FirebaseBTN"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTintMode="add"
-                app:cornerRadius="10dp"
-                android:fontFamily="@font/amaranth"
+                style="?attr/buttonStyle"
                 android:onClick="goToFirebase"
                 android:text="@string/firebase" />
 
             <Button
                 android:id="@+id/MYSQLBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/mysql"
-                android:backgroundTintMode="add"
-                android:fontFamily="@font/amaranth"
-                app:cornerRadius="10dp"
                 android:onClick="goToMYSQL"
                 app:layout_constraintTop_toBottomOf="@+id/button" />
 
             <Button
                 android:id="@+id/MangoDBBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/mango_db"
-                android:backgroundTintMode="add"
-                android:fontFamily="@font/amaranth"
-                app:cornerRadius="10dp"
                 android:onClick="goToMangoDB"
                 app:layout_constraintTop_toBottomOf="@+id/button" />
 
@@ -69,26 +52,18 @@
 
             <Button
                 android:id="@+id/SQLiteBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/sqlite_db"
-                android:backgroundTintMode="add"
-                android:fontFamily="@font/amaranth"
-                app:cornerRadius="10dp"
                 android:onClick="goToSQLITE"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+              />
 
 
             <Button
                 android:id="@+id/GotoAWSDBBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/aws_db"
-                android:backgroundTintMode="add"
-                android:fontFamily="@font/amaranth"
-                app:cornerRadius="10dp"
                 android:onClick="goToAWSDB"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+             />
 
 
 
