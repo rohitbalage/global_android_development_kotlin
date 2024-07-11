@@ -24,45 +24,36 @@
 
             <TextView
                 android:id="@+id/APIDesignHeadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/HeadlineTextViewStyle"
                 android:text="@string/api_designs"
-                android:textSize="20sp"
-                android:layout_gravity="center"
                 />
 
             <Button
                 android:id="@+id/retrofitBtn"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/retrofit"
                />
 
             <Button
                 android:id="@+id/VolleyBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/volley"
               />
 
             <Button
                 android:id="@+id/mySQLiteBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="MYSQLLITE" />
 
 
             <Button
                 android:id="@+id/ktorBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/ktor" />
 
             <Button
                 android:id="@+id/JsonParsingBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/json_parsing" />
 
         </LinearLayout>

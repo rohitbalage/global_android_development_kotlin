@@ -12,34 +12,26 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/headlineArchitecture"
+            style="@style/HeadlineTextViewStyle"
             android:text="@string/architecture_patterns"
-            android:textSize="20sp"
-            android:textStyle="bold"
-
-            android:layout_marginBottom="20dp"
-           android:gravity="center_horizontal"
             />
 
         <Button
-            android:layout_width="match_parent"
             android:text="@string/mvvm_room"
-            app:cornerRadius="10dp"
-            android:layout_height="wrap_content"/>
+            style="?attr/buttonStyle"/>
 
 
         <Button
-            android:layout_width="match_parent"
-            app:cornerRadius="10dp"
+            style="?attr/buttonStyle"
             android:text="@string/mvvm_retrofit"
-            android:layout_height="wrap_content"/>
+            />
 
         <Button
-            android:layout_width="match_parent"
+            style="?attr/buttonStyle"
             android:text="@string/mvp_pattern"
             app:cornerRadius="10dp"
-            android:layout_height="wrap_content"/>
+   />
 
         <Button
             android:layout_width="match_parent"

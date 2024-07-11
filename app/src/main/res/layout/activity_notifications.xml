@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/gradient_background"
         tools:context=".Notifications.Notifications">
 
         <!-- Toolbar -->
@@ -37,13 +36,9 @@
                 <!-- Example content -->
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/amaranth"
+                    style="@style/HeadlineTextViewStyle"
                     android:text="@string/android_types_of_notifications"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                     />
 
                 <EditText
                     android:id="@+id/txtTitle"
@@ -63,130 +58,86 @@
 
                 <Button
                     android:id="@+id/btndefaultNotification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:backgroundTintMode="add"
-                    app:cornerRadius="10dp"
-                    android:fontFamily="@font/amaranth"
+                    style="?attr/buttonStyle"
                     android:text="@string/default_notification" />
 
                 <Button
                     android:id="@+id/btnHighNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/high_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                    />
 
                 <Button
                     android:id="@+id/btnLowNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/low_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                    />
 
                 <Button
                     android:id="@+id/btnActionNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/action_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                    />
 
                 <Button
                     android:id="@+id/btnContentIntenNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/content_intent_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                    />
 
                 <Button
                     android:id="@+id/btnOnGoingNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/on_going_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                     />
 
                 <Button
                     android:id="@+id/btncustomSoundNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/custom_sound_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                   />
 
                 <Button
                     android:id="@+id/btnbigTextStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/big_style_text_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                     />
 
                 <Button
                     android:id="@+id/btninboxStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/inbox_style_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+             />
 
                 <Button
                     android:id="@+id/btnbigPictureStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/big_picture_style_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                   />
 
                 <Button
                     android:id="@+id/btndownloadStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/download_style_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                     />
 
                 <Button
                     android:id="@+id/btnmessagingStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/messaging_style_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                   />
 
                 <Button
                     android:id="@+id/btnmediaStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/media_style_notification"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                   />
 
                 <Button
                     android:id="@+id/btncustomStyleNotificaiton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:text="@string/custom_style_notificaiton"
-                    android:backgroundTintMode="add"
-                    android:fontFamily="@font/amaranth"
-                    app:cornerRadius="10dp" />
+                    />
 
             </LinearLayout>
         </ScrollView>
