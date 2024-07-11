@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@drawable/gradient_background"
     android:layout_height="match_parent"
     tools:context=".AdvancedUIWidgets.AndroidUIWidgets">
 
@@ -26,11 +25,8 @@
             android:layout_height="match_parent">
 
          <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
+             style="@style/HeadlineTextViewStyle"
              android:id="@+id/buttonInAndroidUI"
-             android:textStyle="bold"
-             android:textSize="20dp"
              android:text="@string/button_in_android_ui"
              />
 
@@ -79,12 +75,8 @@
 
             <Button
                 android:id="@+id/submitRadioButtonUi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/submit_radio_buttons"
-                android:textColor="@color/white"
-                android:padding="20dp"
-                android:paddingBottom="20dp"
                 android:background="@color/violet"/>
 
 
@@ -92,6 +84,7 @@
                        android:padding="20dp"
                       android:id="@+id/toggle"
                        android:paddingTop="10dp"
+                       style="?attr/buttonStyle"
                       android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                       android:background="@color/violet"/>
@@ -126,12 +119,9 @@
                        android:layout_marginBottom="20dp"/>
                    <Button
                        android:id="@+id/submitCheckboxesUI"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
+                       style="?attr/buttonStyle"
                        android:text="@string/submit_checkboxes"
-                      android:textColor="@color/white"
-                       android:padding="20dp"
-                     android:background="@color/violet"/>
+                      />
 
                   <Switch
                    android:id="@+id/switchbuttonCheckboxesUI"
@@ -160,12 +150,9 @@
 
             <Button
                 android:id="@+id/submitRatingBarUI"
-                android:layout_width="wrap_content"
-                android:padding="20dp"
-                android:layout_height="wrap_content"
+                style="?attr/buttonStyle"
                 android:text="@string/submit_rating_bar"
-                android:textColor="@color/white"
-                android:background="@color/violet"/>
+            />
 
 
 
@@ -219,22 +206,16 @@
             <!-- Add DatePicker -->
             <Button
                 android:id="@+id/showDatePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Show DatePicker"
-                android:textColor="@color/white"
-                android:background="@color/violet"
-                android:layout_marginTop="20dp" />
+                style="?attr/buttonStyle"
+                android:text="@string/show_datepicker"
+               />
 
             <!-- Add TimePicker -->
             <Button
                 android:id="@+id/showTimePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Show TimePicker"
-                android:textColor="@color/white"
-                android:background="@color/violet"
-                android:layout_marginTop="20dp" />
+                style="?attr/buttonStyle"
+                />
 
             <!-- Add WebView -->
             <WebView
@@ -242,7 +223,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
                 android:layout_marginTop="20dp" >
-
 
 
             </WebView>

@@ -3,11 +3,8 @@ package com.rrbofficial.androiduipracticekotlin
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -60,39 +57,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Firebase crash analytics
         crashlytics = FirebaseCrashlytics.getInstance()
 
-        // Declare the launcher at the top of your Activity/Fragment:
-        val requestPermissionLauncher = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                // FCM SDK (and your app) can post notifications.
-            } else {
-                // TODO: Inform user that your app will not show notifications.
-            }
-        }
-
-        fun askNotificationPermission() {
-            // This is only necessary for API level >= 33 (TIRAMISU)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                if (ContextCompat.checkSelfPermission(
-                        this,
-                        android.Manifest.permission.POST_NOTIFICATIONS
-                    ) ==
-                    PackageManager.PERMISSION_GRANTED
-                ) {
-                    // FCM SDK (and your app) can post notifications.
-                } else if (shouldShowRequestPermissionRationale(android.Manifest.permission.POST_NOTIFICATIONS)) {
-                    // TODO: display an educational UI explaining to the user the features that will be enabled
-                    //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
-                    //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
-                    //       If the user selects "No thanks," allow the user to continue without notifications.
-                } else {
-                    // Directly ask for the permission
-                    requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
-                }
-            }
-        }
-
         // Set click listeners for all buttons using binding object
         binding.uicomponents.setOnClickListener(this)
         binding.Kotlincoroutines.setOnClickListener(this)
@@ -102,7 +66,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.googlemaps.setOnClickListener(this)
         binding.fragments.setOnClickListener(this)
         binding.GotoAnimations.setOnClickListener(this)
-        binding.Kotlincoroutines.setOnClickListener(this)
         binding.GotoNotifications.setOnClickListener(this)
         binding.GotoArchitecturePatterns.setOnClickListener(this)
         binding.GoToAndroidSecurity.setOnClickListener(this)
@@ -111,7 +74,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AdvanceUIComponets.setOnClickListener(this)
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
-        binding.switchTheme.setOnClickListener(this)
     }
 
     private fun setInitialTheme() {
@@ -123,10 +85,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun applyTheme(isNightMode: Boolean) {
         if (isNightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            binding.root.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            binding.root.setBackgroundResource(R.drawable.gradient_background)
         }
     }
 

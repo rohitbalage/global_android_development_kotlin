@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
     android:padding="10dp"
     android:layout_height="match_parent"
     tools:context=".JetpackCompose.JetpackCompose">
@@ -24,7 +23,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                style="@style/HeadlineTextViewStyle"
+                style="?attr/buttonStyle"
                 android:text="@string/jetpackCompose"
                 android:padding="20dp"
                />
@@ -38,39 +37,39 @@
 
             <Button
                 android:id="@+id/LiveDataBtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/live_data"
                 />
 
             <Button
                 android:id="@+id/viewModelLiveDataDataBindingBtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/viewmodel_livedata_databinding"
 
                 />
 
             <Button
                 android:id="@+id/ActivityFragmentLifecycleBtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/activity_fragment_lifecycle" />
 
             <Button
                 android:id="@+id/NavigationArchitectureComponentBtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/navigation_architecture_component"
 
            />
 
             <Button
                 android:id="@+id/recycleViewFuncdamentalsbtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/recycleview_fundamentals"
 
                 />
 
             <Button
                 android:id="@+id/kotlinCoroutinesBtn"
-                style="@style/CustomButtonStyle.Day"
+                style="?attr/buttonStyle"
                 android:text="@string/kotlin_coroutines"
                 />
 

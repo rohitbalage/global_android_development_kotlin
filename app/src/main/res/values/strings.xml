@@ -190,6 +190,7 @@
     <string name="activity_fragment_lifecycle">Activity Fragment Lifecycle</string>
     <string name="navigation_architecture_component">Navigation Architecture Component</string>
     <string name="recycleview_fundamentals">RecycleView Fundamentals</string>
+    <string name="show_datepicker">Show DatePicker</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

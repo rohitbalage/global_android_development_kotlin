@@ -48,84 +48,84 @@
 
                 <Button
                     android:id="@+id/uicomponents"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/material_ui_designs" />
 
                 <Button
                     android:id="@+id/AdvanceUIComponets"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/android_ui_components"
                    />
 
                 <Button
                     android:id="@+id/AndroidSystemComponents"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/android_system_components"
                      />
 
                 <Button
                     android:id="@+id/AritificalIntelligence"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/artificial_intelligence" />
 
                 <Button
                     android:id="@+id/IOTandThings"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/internet_of_things_iot"
                    />
 
                 <Button
                     android:id="@+id/GotoMachineLearning"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/machine_learning"
                    />
 
                 <Button
                     android:id="@+id/Kotlincoroutines"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/kotlin_coroutines"
 
                   />
 
                 <Button
                     android:id="@+id/JetpackCompose"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/jetpackcompose"
 
                    />
 
                 <Button
                     android:id="@+id/APisbtn"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/apis" />
 
                 <Button
                     android:id="@+id/databases"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/databases"
                    />
 
                 <Button
                     android:id="@+id/googlemaps"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/google_maps"
                  />
 
                 <Button
                     android:id="@+id/fragments"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/fragments"
                 />
 
                 <Button
                     android:id="@+id/GotoAnimations"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/animations"
                     />
 
                 <Button
                     android:id="@+id/GotoNotifications"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/notifications"
@@ -133,13 +133,13 @@
 
                 <Button
                     android:id="@+id/GotoArchitecturePatterns"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/architecture_patterns"
                  />
 
                 <Button
                     android:id="@+id/GoToAndroidSecurity"
-                    style="@style/CustomButtonStyle.Day"
+                    style="?attr/buttonStyle"
                     android:text="@string/android_security"
                  />
             </LinearLayout>
