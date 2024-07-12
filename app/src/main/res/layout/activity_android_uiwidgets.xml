@@ -3,15 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
     android:layout_height="match_parent"
     tools:context=".AdvancedUIWidgets.AndroidUIWidgets">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:paddingBottom="50dp"
+        android:orientation="vertical"
         android:id="@+id/scrollview"
         >
         <LinearLayout
@@ -19,9 +18,6 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:layout_height="match_parent">
 
          <TextView
