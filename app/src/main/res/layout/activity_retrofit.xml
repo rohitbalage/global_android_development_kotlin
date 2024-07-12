@@ -22,12 +22,12 @@
 
     <Button
         android:id="@+id/githubBtn"
-        style="?attr/buttonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="528dp"
         android:onClick="goToGithub"
         android:text="Github"
+        style="?attr/buttonStyle"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

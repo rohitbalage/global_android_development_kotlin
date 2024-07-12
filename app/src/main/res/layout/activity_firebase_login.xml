@@ -6,19 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/gradient_background"
     tools:context=".Firebase.Auth.WithEmailAndPassword.Firebase_login">
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/HeadlineTextViewStyle"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:text="Firebase User Login"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+         />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -28,6 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:hint="Email"
+        android:textColor="@color/violetlight"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -38,15 +36,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:hint="Password"
+        android:textColor="@color/violetlight"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_below="@+id/editTextPassword"
+        style="?attr/buttonStyle"
         android:text="Login" />
 
 </RelativeLayout>

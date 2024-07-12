@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
     tools:context=".Firebase.Firebase">
 
     <LinearLayout
@@ -18,8 +17,7 @@
         >
         <TextView
             android:id="@+id/firebasehedaliine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/HeadlineTextViewStyle"
             android:text="@string/firebase_app"
             android:textSize="30sp"
         />
@@ -28,64 +26,51 @@
 
     <Button
         android:id="@+id/goToFirebaseAuth"
-        app:cornerRadius="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="?attr/buttonStyle"
         android:text="@string/goToFirebaseAuth"
-        android:layout_marginTop="20dp"
        />
 
 
         <Button
             android:id="@+id/buttonFirebaseAnalticsApp"
-            android:layout_height="wrap_content"
+            style="?attr/buttonStyle"
             android:text="@string/firebase_analytics_app"
-            app:cornerRadius="10dp"
-            android:layout_width="match_parent"
             />
 
 
     <Button
         android:id="@+id/buttonFirebaseCloudMessaging"
-        android:layout_height="wrap_content"
         android:text="@string/firebase_in_app_messaging"
         app:cornerRadius="10dp"
-        android:layout_width="match_parent"
+        style="?attr/buttonStyle"
         />
 
 
         <Button
             android:id="@+id/buttonCrashanalytics"
-            android:layout_height="wrap_content"
+            style="?attr/buttonStyle"
             android:text="@string/firebase_crash_analytics"
             app:cornerRadius="10dp"
-            android:layout_width="match_parent"
             />
 
         <Button
             android:id="@+id/buttonInappMessaging"
-            android:layout_height="wrap_content"
+            style="?attr/buttonStyle"
             android:text="@string/firebase_cloud_messaging"
-            app:cornerRadius="10dp"
-            android:layout_width="match_parent"
             />
 
 
 
         <Button
             android:id="@+id/buttonAdmobwithFirebase"
-            android:layout_height="wrap_content"
             android:text="@string/admob_with_firebase"
-            app:cornerRadius="10dp"
-            android:layout_width="match_parent"
+            style="?attr/buttonStyle"
             />
 
         <Button
             android:id="@+id/buttonDynamicLink"
-            android:layout_height="wrap_content"
             android:text="Dynamic Link with Firebase"
-            app:cornerRadius="10dp"
-            android:layout_width="match_parent"
+            style="?attr/buttonStyle"
             />
 
 

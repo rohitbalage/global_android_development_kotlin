@@ -184,8 +184,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
         // Set dialog title and message
-        builder.setTitle("Confirmation")
-            .setMessage("Are you sure you want to close this activity?")
+        builder.setTitle("CLOSE APP")
+            .setMessage("Are you sure you want to close this app?")
 
         // Set "Yes" button and its listener
         builder.setPositiveButton("Yes") { dialogInterface: DialogInterface, _: Int ->

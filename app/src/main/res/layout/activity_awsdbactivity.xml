@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/gradient_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/main"
@@ -36,21 +35,19 @@
                     android:layout_height="wrap_content"
                     android:text="@string/aws_db_headline"
                     android:textSize="30dp"
+                    style="@style/HeadlineTextViewStyle"
                     android:gravity="center_horizontal" />
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="?attr/buttonStyle"
                     android:id="@+id/AWSSignUp"
                     android:text="@string/aws_signup"
-                    app:cornerRadius="10dp" />
+                 />
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/AWSLogin"
                     android:text="@string/aws_login"
-                    app:cornerRadius="10dp" />
+                    style="?attr/buttonStyle" />
 
             </LinearLayout>
         </ScrollView>

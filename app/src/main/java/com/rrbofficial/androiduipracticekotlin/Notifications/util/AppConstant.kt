@@ -43,7 +43,6 @@ object AppConstant {
     const val NOTIFICATION_CUSTOM_STYLE_CHANNEL_ID = "dn14"
     const val NOTIFICATION_CUSTOM_STYLE_INTENT_ID = 1014
 
-
     const val GROUP_1_ID = "group_01"
     const val GROUP_1_NAME = "Private group"
     const val GROUP_2_ID = "group_02"

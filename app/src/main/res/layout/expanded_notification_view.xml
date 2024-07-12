@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:fontFamily="@font/amaranth"
         app:cornerRadius="10dp"
+        style="?attr/buttonStyle"
         android:backgroundTint="@color/violet"
         android:layout_height="wrap_content"
         android:text="Send" />

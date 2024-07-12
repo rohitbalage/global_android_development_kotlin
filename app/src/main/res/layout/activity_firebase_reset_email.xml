@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/gradient_background"
         android:padding="20dp"
         tools:context=".Firebase.Auth.FirebaseResetEmail">
 
@@ -22,6 +21,7 @@
             android:layout_height="wrap_content"
             android:text="@string/reset_your_email"
             android:textSize="20dp"
+            style="@style/HeadlineTextViewStyle"
             android:gravity="center_horizontal"
             />
 
@@ -32,18 +32,16 @@
             android:layout_height="wrap_content"
             android:hint="Enter your email"
             android:inputType="textEmailAddress"
+            android:textColor="@color/violetlight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnResetEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="@string/reset_email_input"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailEditText" />
+            style="?attr/buttonStyle"
+            />
 
     </LinearLayout>
 </layout>

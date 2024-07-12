@@ -92,9 +92,6 @@ class Notifications : AppCompatActivity() {
                 val msg = binding.txtMessage.text.toString()
                 NotificationHelper.highNotification(this,title,msg)
             }
-
-
-
         }
 
         // low notification
