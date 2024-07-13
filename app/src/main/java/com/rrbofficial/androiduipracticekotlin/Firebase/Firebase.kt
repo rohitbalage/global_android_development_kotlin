@@ -127,6 +127,7 @@ class Firebase : AppCompatActivity() {
                 val u1  = snapshot.getValue<User>()
 
                 textView.text = u1.toString()
+
             }
 
             override fun onCancelled(error: DatabaseError) {

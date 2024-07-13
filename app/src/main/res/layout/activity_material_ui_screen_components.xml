@@ -39,10 +39,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Implicit intent"
+                    android:hint="@string/enter_intent"
                     android:ems="10"
                     android:fontFamily="@font/amaranth"
-                    android:background="#C0A4F3"
                     android:inputType="text" />
 
                 <Button

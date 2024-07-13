@@ -4,42 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import com.rrbofficial.androiduipracticekotlin.Databinding
 import com.rrbofficial.androiduipracticekotlin.DependencyInjection
+import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleViewModel.SimpleViewModelActivity
+import com.rrbofficial.androiduipracticekotlin.KotlinCoroutines
 import com.rrbofficial.androiduipracticekotlin.LiveData
 import com.rrbofficial.androiduipracticekotlin.MVMandRoom
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.ViewModel
+import com.rrbofficial.androiduipracticekotlin.databinding.ActivityJetpackComposeBinding
 
-class JetpackCompose : AppCompatActivity() {
+class JetpackCompose : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityJetpackComposeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_jetpack_compose)
-    }
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_jetpack_compose)
 
-    fun goToMVVMandRoom(view: View) {
-        val intent = Intent(this, MVMandRoom::class.java)
-        startActivity(intent)
-    }
-    fun goToDependencyInjection(view: View) {
-        val intent = Intent(this, DependencyInjection::class.java)
-        startActivity(intent)
-
-    }
-    fun goToLiveData(view: View) {
-        val intent = Intent(this, LiveData::class.java)
-        startActivity(intent)
-
-    }
-    fun goToDataBinding(view: View) {
-        val intent = Intent(this, Databinding::class.java)
-        startActivity(intent)
-
-    }
-    fun goToViewModel(view: View) {
-        val intent = Intent(this, ViewModel::class.java)
-        startActivity(intent)
+        binding.kotlinCoroutinesBtn.setOnClickListener(this)
+        binding.simpleViewModelBtn.setOnClickListener(this)
+        binding.LiveDataBtn.setOnClickListener(this)
+        binding.viewModelLiveDataDataBindingBtn.setOnClickListener(this)
 
     }
 
@@ -47,5 +33,32 @@ class JetpackCompose : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+
+            R.id.kotlinCoroutinesBtn -> {
+                val intent = Intent(this, KotlinCoroutines::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.simpleViewModelBtn -> {
+                val intent = Intent(this, SimpleViewModelActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.LiveDataBtn -> {
+//                val intent = Intent(this, LiveData::class.java)
+//                startActivity(intent)
+//                finish()
+            }
+            R.id.viewModelLiveDataDataBindingBtn -> {
+//                val intent = Intent(this, Databinding::class.java)
+//                startActivity(intent)
+//                finish()
+            }
+
+        }
     }
 }

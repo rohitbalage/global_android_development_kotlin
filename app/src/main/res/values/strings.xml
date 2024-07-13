@@ -7,7 +7,7 @@
     <string name="text_view_and_edit_text">Text View and Edit text</string>
     <string name="explicit_intent">Explicit intent</string>
     <string name="google_implicit_intent">Google Implicit intent</string>
-    <string name="jetpackCompose">Android Jetpack</string>
+    <string name="jetpackCompose">Android Jetpack Compose</string>
     <string name="data_binding">Data Binding</string>
     <string name="view_model">View Model</string>
     <string name="live_data">Live Data</string>
@@ -187,10 +187,16 @@
     <string name="mvvm_retrofit">MVVM + Retrofit</string>
     <string name="simple_view_model">Simple View Model</string>
     <string name="viewmodel_livedata_databinding">ViewModel + LiveData + DataBinding</string>
-    <string name="activity_fragment_lifecycle">Activity Fragment Lifecycle</string>
+    <string name="activity_fragment_lifecycle">Activity + Fragment Lifecycle</string>
     <string name="navigation_architecture_component">Navigation Architecture Component</string>
     <string name="recycleview_fundamentals">RecycleView Fundamentals</string>
     <string name="show_datepicker">Show DatePicker</string>
+    <string name="enter_intent">Enter Intent</string>
+    <string name="room_data_persistance_library">Room Data Persistance Library</string>
+    <string name="retrofit_with_kotlin_coroutine">Retrofit With Kotlin Coroutine</string>
+    <string name="dependency_injection_with_dagger">Dependency Injection with Dagger</string>
+    <string name="unit_testing">Unit Testing</string>
+    <string name="click_here">Click Here</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

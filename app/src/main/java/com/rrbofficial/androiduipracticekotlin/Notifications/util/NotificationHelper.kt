@@ -73,6 +73,7 @@ object NotificationHelper {
 
     )
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun defaultNotification(context: Context, title: String, msg: String) {
 
         val notificationManager = NotificationManagerCompat.from(context)

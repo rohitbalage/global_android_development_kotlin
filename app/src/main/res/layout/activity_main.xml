@@ -112,6 +112,12 @@
                  />
 
                 <Button
+                    android:id="@+id/unitTesting"
+                    style="?attr/buttonStyle"
+                    android:text="@string/unit_testing"
+                    />
+
+                <Button
                     android:id="@+id/fragments"
                     style="?attr/buttonStyle"
                     android:text="@string/fragments"

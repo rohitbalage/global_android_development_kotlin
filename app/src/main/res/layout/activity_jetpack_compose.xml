@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".JetpackCompose.JetpackCompose"
+    >
+
+<LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
     android:layout_height="match_parent"
-    tools:context=".JetpackCompose.JetpackCompose">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,12 +29,16 @@
                 android:id="@+id/textView"
                 style="@style/HeadlineTextViewStyle"
                 android:text="@string/jetpackCompose"
-                android:padding="20dp"
                />
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/kotlinCoroutinesBtn"
+                style="?attr/buttonStyle"
+                android:text="@string/kotlin_coroutines"
+                />
+
+
+            <Button
                 android:text="@string/simple_view_model"
                 style="?attr/buttonStyle"
                 android:id="@+id/simpleViewModelBtn"/>
@@ -60,19 +69,31 @@
            />
 
             <Button
-                android:id="@+id/recycleViewFuncdamentalsbtn"
+                android:id="@+id/dependencyInjectionWithDagger"
                 style="?attr/buttonStyle"
-                android:text="@string/recycleview_fundamentals"
-
+                android:text="@string/dependency_injection_with_dagger"
                 />
 
             <Button
-                android:id="@+id/kotlinCoroutinesBtn"
+                android:id="@+id/recycleViewFuncdamentalsbtn"
                 style="?attr/buttonStyle"
-                android:text="@string/kotlin_coroutines"
+                android:text="@string/recycleview_fundamentals"
                 />
 
+            <Button
+                android:id="@+id/roomDataPersistanceLibrarybtn"
+                style="?attr/buttonStyle"
+                android:text="@string/room_data_persistance_library"
+                />
+
+            <Button
+                android:id="@+id/retrofitWithKotlinCoroutinebtn"
+                style="?attr/buttonStyle"
+                android:text="@string/retrofit_with_kotlin_coroutine"
+                />
 
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+
+</layout>
