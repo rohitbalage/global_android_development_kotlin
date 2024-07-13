@@ -1,12 +1,10 @@
 package com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleViewModel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SimpleViewModel : ViewModel() {
-    private var count =0
-    private var addition = 0
-
+class SimpleViewModel(startingTotal: Int) : ViewModel() {
+    private var count = 0
+    private var addition = startingTotal
 
     fun getCurrentCount(): Int {
         return count
@@ -21,8 +19,7 @@ class SimpleViewModel : ViewModel() {
         return addition
     }
 
-    fun setTotal(input :Int){
-        addition+=input
+    fun setTotal(input: Int) {
+        addition += input
     }
-
 }
