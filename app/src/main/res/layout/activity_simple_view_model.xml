@@ -13,13 +13,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:text="@string/a_simple_view_model"
+            style="@style/HeadlineTextViewStyle"
+            android:layout_height="wrap_content">
+        </TextView>
 
     <TextView
         android:layout_width="wrap_content"
         android:textSize="20dp"
         android:id="@+id/simpleViewModelTextView"
         android:text="0"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"/>
 
     <Button
@@ -29,6 +37,32 @@
         android:layout_marginTop="20dp"
         style="attr/buttonStyle"
         android:text="@string/click_here"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/SimpleViewModelEditText"
+            android:layout_marginTop="20dp"
+            android:hint="enter your add number here"
+            android:layout_gravity="center_horizontal"
+            />
+        <Button
+           style="attr/buttonStyle"
+            android:text="@string/add_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/addMeBtn"
+/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/resultAdditionTextView"
+            android:layout_gravity="center_horizontal"
+            android:text="Add total"
+            android:layout_marginTop="20dp"
+            />
 
     </LinearLayout>
 

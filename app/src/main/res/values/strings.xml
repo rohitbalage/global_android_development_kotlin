@@ -197,6 +197,8 @@
     <string name="dependency_injection_with_dagger">Dependency Injection with Dagger</string>
     <string name="unit_testing">Unit Testing</string>
     <string name="click_here">Click Here</string>
+    <string name="a_simple_view_model">A simple View Model</string>
+    <string name="add_me">Add me</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
