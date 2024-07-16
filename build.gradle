@@ -14,6 +14,8 @@ buildscript {
         // Add the dependency for the google services gradle plugin
 
         classpath 'com.google.gms.google-services:com.google.gms.google-services.gradle.plugin:4.4.1'
+        // Safe ask for passing data between fragment
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7"
     }
 
 }
@@ -26,4 +28,5 @@ id 'com.android.application' version '8.2.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.9.22' apply false
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
     id("com.google.firebase.crashlytics") version "3.0.2" apply false
+
 }

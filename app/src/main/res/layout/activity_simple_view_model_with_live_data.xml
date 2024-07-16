@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".JetpackCompose.SimpleLiveData.SimpleViewModelWithLiveDataActivity">
+
+    <TextView
+        style="@style/HeadlineTextViewStyle"
+        android:text="Simple ViewModel With LiveData"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/input_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/violetlight"
+        android:inputType="number"
+        android:textSize="36sp"
+        />
+
+    <Button
+        android:id="@+id/insert_button"
+        style="?attr/buttonStyle"
+        android:text="Add"
+       />
+
+        <TextView
+          android:id="@+id/result_text_view"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+           android:textSize="36sp"
+            android:text="0"
+        />
+
+
+
+</LinearLayout>

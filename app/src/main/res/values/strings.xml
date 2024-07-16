@@ -10,7 +10,7 @@
     <string name="jetpackCompose">Android Jetpack Compose</string>
     <string name="data_binding">Data Binding</string>
     <string name="view_model">View Model</string>
-    <string name="live_data">Live Data</string>
+    <string name="live_data">Live Data + ViewModel</string>
     <string name="mvvm_and_room">MVVM and Room</string>
     <string name="depenedency_injection">Depenedency Injection</string>
     <string name="apis">APIs</string>
@@ -199,6 +199,8 @@
     <string name="click_here">Click Here</string>
     <string name="a_simple_view_model">A simple View Model</string>
     <string name="add_me">Add me</string>
+    <string name="nav_fragment_1">Nav Fragment 1</string>
+    <string name="navigation_fragment_2">Navigation Fragment 2</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

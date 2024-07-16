@@ -53,7 +53,6 @@
                 android:id="@+id/viewModelLiveDataDataBindingBtn"
                 style="?attr/buttonStyle"
                 android:text="@string/viewmodel_livedata_databinding"
-
                 />
 
             <Button

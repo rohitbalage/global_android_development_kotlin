@@ -24,7 +24,7 @@ class SimpleViewModelActivity : AppCompatActivity() {
 //        viewModel = ViewModelProvider(this).get(SimpleViewModel::class.java)
 
         // ViewModelFactory initialization
-        viewModelFactory = SimpleViewModelFactory(0)
+        viewModelFactory = SimpleViewModelFactory(100)
         viewModel = ViewModelProvider(this, viewModelFactory).get(SimpleViewModel::class.java)
 
         // Set initial text

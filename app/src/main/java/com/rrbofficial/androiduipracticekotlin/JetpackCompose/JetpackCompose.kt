@@ -5,15 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
-import com.rrbofficial.androiduipracticekotlin.Databinding
-import com.rrbofficial.androiduipracticekotlin.DependencyInjection
+import com.rrbofficial.androiduipracticekotlin.JetpackCompose.NavigationComponent.NavigationMainActivity
+import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleLiveData.SimpleViewModelWithLiveDataActivity
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleViewModel.SimpleViewModelActivity
 import com.rrbofficial.androiduipracticekotlin.KotlinCoroutines
-import com.rrbofficial.androiduipracticekotlin.LiveData
-import com.rrbofficial.androiduipracticekotlin.MVMandRoom
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
-import com.rrbofficial.androiduipracticekotlin.ViewModel
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityJetpackComposeBinding
 
 class JetpackCompose : AppCompatActivity(), View.OnClickListener {
@@ -26,6 +23,7 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
         binding.simpleViewModelBtn.setOnClickListener(this)
         binding.LiveDataBtn.setOnClickListener(this)
         binding.viewModelLiveDataDataBindingBtn.setOnClickListener(this)
+        binding.NavigationArchitectureComponentBtn.setOnClickListener(this)
 
     }
 
@@ -49,14 +47,20 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
             R.id.LiveDataBtn -> {
-//                val intent = Intent(this, LiveData::class.java)
+                val intent = Intent(this, SimpleViewModelWithLiveDataActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.viewModelLiveDataDataBindingBtn -> {
+//                val intent = Intent(this, ViewModelAndLiveDataWithDataBindingActivity::class.java)
 //                startActivity(intent)
 //                finish()
             }
-            R.id.viewModelLiveDataDataBindingBtn -> {
-//                val intent = Intent(this, Databinding::class.java)
-//                startActivity(intent)
-//                finish()
+
+            R.id.NavigationArchitectureComponentBtn -> {
+                val intent = Intent(this, NavigationMainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
         }
