@@ -17,21 +17,26 @@ import com.rrbofficial.androiduipracticekotlin.databinding.FragmentNav2Binding
 class Nav2Fragment : Fragment() {
 
     private lateinit var binding: FragmentNav2Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+        // Handle any necessary setup
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nav2, container, false)
+        // Inflate the layout for this fragment using DataBindingUtil
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nav2, container, false)
+
+        // Retrieve the argument passed from Nav1Fragment
+        val userInput = arguments?.getString("user_input")
+
+        // Use the retrieved argument to set the text of the TextView
+        binding.showUserInput.text = userInput
+
+        // Return the root view of the binding
         return binding.root
     }
-
 }

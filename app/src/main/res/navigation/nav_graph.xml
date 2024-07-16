@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_nav1" >
         <action
             android:id="@+id/action_nav1Fragment_to_nav2Fragment"
-            app:destination="@id/nav2Fragment" />
+            app:destination="@id/nav2Fragment">
+            <argument
+                android:name="user_input"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment
