@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_nav1" >
         <action
             android:id="@+id/action_nav1Fragment_to_nav2Fragment"
-            app:destination="@id/nav2Fragment">
+            app:destination="@id/nav2Fragment"
+            app:enterAnim="@anim/anim_slide_in_left"
+            app:exitAnim="@anim/anim_slide_out_right"
+            app:popEnterAnim="@anim/anim_slide_in_right"
+            app:popExitAnim="@anim/anim_slide_out_left">
             <argument
                 android:name="user_input"
                 app:argType="string" />
