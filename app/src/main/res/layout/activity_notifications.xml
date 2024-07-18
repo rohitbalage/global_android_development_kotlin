@@ -49,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/enter_notification_headline"
                     android:inputType="text"
                     android:text="" />
 
@@ -57,6 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="@string/enter_summary_message"
                     android:inputType="text"
                     android:text="" />
 
