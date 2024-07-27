@@ -55,10 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
 
         // Load Header image using Glide
-        val gifImageView: ImageView = binding.headerImage
-        Glide.with(this)
-            .load(R.drawable.androidheader) // Replace with your GIF resource
-            .into(gifImageView)
+        updateHeaderImage()
 
         // Navigation drawer
         drawerLayout = binding.drawerLayout
@@ -100,6 +97,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Observe changes in isNightMode to apply the theme dynamically
         viewModel.isNightMode.observe(this) { isNightMode ->
             applyTheme(isNightMode)
+            updateHeaderImage() // Update the header image when theme changes
         }
 
         // Handle switchTheme changes
@@ -143,6 +141,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+    }
+
+    private fun updateHeaderImage() {
+        val gifImageView: ImageView = binding.headerImage
+        val gifResource = if (viewModel.isNightMode.value == true) {
+            R.drawable.androiddarkgif // Dark theme GIF
+        } else {
+            R.drawable.androidheader // Light theme GIF
+        }
+        Glide.with(this)
+            .load(gifResource)
+            .into(gifImageView)
     }
 
     override fun onClick(view: View?) {
