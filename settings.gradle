@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "android ui practice kotlin"
 include ':app'
+include ':androidpractisewearos'
