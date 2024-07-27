@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Set click listeners for all buttons using binding object
         binding.uicomponents.setOnClickListener(this)
-        binding.Kotlincoroutines.setOnClickListener(this)
+        binding.Kotlindsaandfundamentals.setOnClickListener(this)
         binding.JetpackCompose.setOnClickListener(this)
         binding.APisbtn.setOnClickListener(this)
         binding.databases.setOnClickListener(this)
@@ -250,8 +250,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
-            R.id.Kotlincoroutines -> {
-                val intent = Intent(this, KotlinDSAActivity::class.java)
+            R.id.Kotlindsaandfundamentals -> {
+                val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
                 startActivity(intent)
                 finish()
             }

@@ -112,9 +112,9 @@
                         android:text="@string/machine_learning" />
 
                     <Button
-                        android:id="@+id/Kotlincoroutines"
+                        android:id="@+id/Kotlindsaandfundamentals"
                         style="?attr/buttonStyle"
-                        android:text="@string/kotlin_coroutines" />
+                        android:text="@string/kotlin_dsa_and_fundamentals" />
 
                     <Button
                         android:id="@+id/JetpackCompose"
