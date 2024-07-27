@@ -1,8 +1,12 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -48,6 +52,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Set the toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // Check internet connectivity
+        if (!isInternetAvailable(this)) {
+            showInternetDialog()
+        }
 
         // Set the title of the CollapsingToolbarLayout
         binding.collapsingToolbar.title = "Android Practise by Rohit"
@@ -142,6 +151,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
+
+
 
     private fun updateHeaderImage() {
         val gifImageView: ImageView = binding.headerImage
@@ -279,5 +290,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Show the dialog
         dialog.show()
+    }
+
+    fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+            return networkInfo.isConnected
+        }
+    }
+
+    private fun showInternetDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("No Internet Connection")
+            .setMessage("Please turn on your internet connection to use this app.")
+            .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                dialogInterface.dismiss()
+            }
+            .setCancelable(false)
+            .show()
     }
 }
