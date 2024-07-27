@@ -29,11 +29,8 @@ import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidget
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
-<<<<<<< HEAD
 import com.rrbofficial.androiduipracticekotlin.KotlinDSA.KotlinDSAActivity
-=======
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
->>>>>>> AndroidPracticeWearOS
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
@@ -150,7 +147,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Set click listeners for all buttons using binding object
         binding.uicomponents.setOnClickListener(this)
-        binding.KotlinDSA.setOnClickListener(this)
+        binding.Kotlincoroutines.setOnClickListener(this)
         binding.JetpackCompose.setOnClickListener(this)
         binding.APisbtn.setOnClickListener(this)
         binding.databases.setOnClickListener(this)
@@ -165,7 +162,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AdvanceUIComponets.setOnClickListener(this)
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
-
     }
 
     private fun setInitialTheme() {
@@ -254,13 +250,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
-<<<<<<< HEAD
-            R.id.KotlinDSA-> {
-                val intent = Intent(this, KotlinDSAActivity::class.java)
-=======
             R.id.Kotlincoroutines -> {
-                val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
->>>>>>> AndroidPracticeWearOS
+                val intent = Intent(this, KotlinDSAActivity::class.java)
                 startActivity(intent)
                 finish()
             }

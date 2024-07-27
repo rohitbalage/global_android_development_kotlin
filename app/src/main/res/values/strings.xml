@@ -116,6 +116,9 @@
     <string name="media_style_notification">Media Style Notification</string>
     <string name="this_is_a_cardview">This is a CardView</string>
     <string name="default_notification_channel_id">dn15</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 
     <string name="code_snippet">
         // code for bluetooth toggle button
@@ -201,6 +204,11 @@
     <string name="add_me">Add me</string>
     <string name="nav_fragment_1">Nav Fragment 1</string>
     <string name="navigation_fragment_2">Navigation Fragment 2</string>
+    <string name="kotlin_fundamentals">Kotlin Fundamentals</string>
+    <string name="kotlin_dsa_and_fundamentals">Kotlin DSA And Fundamentals</string>
+    <string name="kotlin_dsa">Kotlin DSA</string>
+    <string name="enter_notification_summary">Enter notification summary</string>
+    <string name="enter_notification_headline">Enter Notification headline</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

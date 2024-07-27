@@ -3,152 +3,183 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <variable
             name="viewModel"
             type="com.rrbofficial.androiduipracticekotlin.MainViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <ScrollView
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/scrollview">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:padding="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/amaranth"
-                    android:text="@string/KotlinPractice"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:contentScrim="?attr/colorPrimary"
+                    app:expandedTitleMarginStart="48dp"
+                    app:expandedTitleMarginEnd="64dp"
+                    app:title="Android Practise by Rohit">
 
-                <Switch
-                    android:id="@+id/switchTheme"
-                    android:padding="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    <ImageView
+                        android:id="@+id/header_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/androidheader" />
 
-                <Button
-                    android:id="@+id/uicomponents"
-                    style="?attr/buttonStyle"
-                    android:text="@string/material_ui_designs" />
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
 
-                <Button
-                    android:id="@+id/AdvanceUIComponets"
-                    style="?attr/buttonStyle"
-                    android:text="@string/android_ui_components"
-                   />
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <Button
-                    android:id="@+id/AndroidSystemComponents"
-                    style="?attr/buttonStyle"
-                    android:text="@string/android_system_components"
-                     />
-
-                <Button
-                    android:id="@+id/AritificalIntelligence"
-                    style="?attr/buttonStyle"
-                    android:text="@string/artificial_intelligence" />
-
-                <Button
-                    android:id="@+id/IOTandThings"
-                    style="?attr/buttonStyle"
-                    android:text="@string/internet_of_things_iot"
-                   />
-
-                <Button
-                    android:id="@+id/GotoMachineLearning"
-                    style="?attr/buttonStyle"
-                    android:text="@string/machine_learning"
-                   />
-
-                <Button
-                    android:id="@+id/Kotlincoroutines"
-                    style="?attr/buttonStyle"
-                    android:text="@string/kotlin_coroutines"
-
-                  />
-
-                <Button
-                    android:id="@+id/JetpackCompose"
-                    style="?attr/buttonStyle"
-                    android:text="@string/jetpackcompose"
-
-                   />
-
-                <Button
-                    android:id="@+id/APisbtn"
-                    style="?attr/buttonStyle"
-                    android:text="@string/apis" />
-
-                <Button
-                    android:id="@+id/databases"
-                    style="?attr/buttonStyle"
-                    android:text="@string/databases"
-                   />
-
-                <Button
-                    android:id="@+id/googlemaps"
-                    style="?attr/buttonStyle"
-                    android:text="@string/google_maps"
-                 />
-
-                <Button
-                    android:id="@+id/unitTesting"
-                    style="?attr/buttonStyle"
-                    android:text="@string/unit_testing"
-                    />
-
-                <Button
-                    android:id="@+id/fragments"
-                    style="?attr/buttonStyle"
-                    android:text="@string/fragments"
-                />
-
-                <Button
-                    android:id="@+id/GotoAnimations"
-                    style="?attr/buttonStyle"
-                    android:text="@string/animations"
-                    />
-
-                <Button
-                    android:id="@+id/GotoNotifications"
-                    style="?attr/buttonStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/notifications"
-                    android:fontFamily="@font/amaranth" />
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-                <Button
-                    android:id="@+id/GotoArchitecturePatterns"
-                    style="?attr/buttonStyle"
-                    android:text="@string/architecture_patterns"
-                 />
+                    <!-- Your existing layout elements go here -->
 
-                <Button
-                    android:id="@+id/GoToAndroidSecurity"
-                    style="?attr/buttonStyle"
-                    android:text="@string/android_security"
-                 />
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/amaranth"
+                        android:text="@string/KotlinPractice"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <Switch
+                        android:id="@+id/switchTheme"
+                        android:padding="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <Button
+                        android:id="@+id/uicomponents"
+                        style="?attr/buttonStyle"
+                        android:text="@string/material_ui_designs" />
+
+                    <Button
+                        android:id="@+id/AdvanceUIComponets"
+                        style="?attr/buttonStyle"
+                        android:text="@string/android_ui_components" />
+
+                    <Button
+                        android:id="@+id/AndroidSystemComponents"
+                        style="?attr/buttonStyle"
+                        android:text="@string/android_system_components" />
+
+                    <Button
+                        android:id="@+id/AritificalIntelligence"
+                        style="?attr/buttonStyle"
+                        android:text="@string/artificial_intelligence" />
+
+                    <Button
+                        android:id="@+id/IOTandThings"
+                        style="?attr/buttonStyle"
+                        android:text="@string/internet_of_things_iot" />
+
+                    <Button
+                        android:id="@+id/GotoMachineLearning"
+                        style="?attr/buttonStyle"
+                        android:text="@string/machine_learning" />
+
+                    <Button
+                        android:id="@+id/Kotlincoroutines"
+                        style="?attr/buttonStyle"
+                        android:text="@string/kotlin_coroutines" />
+
+                    <Button
+                        android:id="@+id/JetpackCompose"
+                        style="?attr/buttonStyle"
+                        android:text="@string/jetpackcompose" />
+
+                    <Button
+                        android:id="@+id/APisbtn"
+                        style="?attr/buttonStyle"
+                        android:text="@string/apis" />
+
+                    <Button
+                        android:id="@+id/databases"
+                        style="?attr/buttonStyle"
+                        android:text="@string/databases" />
+
+                    <Button
+                        android:id="@+id/googlemaps"
+                        style="?attr/buttonStyle"
+                        android:text="@string/google_maps" />
+
+                    <Button
+                        android:id="@+id/unitTesting"
+                        style="?attr/buttonStyle"
+                        android:text="@string/unit_testing" />
+
+                    <Button
+                        android:id="@+id/fragments"
+                        style="?attr/buttonStyle"
+                        android:text="@string/fragments" />
+
+                    <Button
+                        android:id="@+id/GotoAnimations"
+                        style="?attr/buttonStyle"
+                        android:text="@string/animations" />
+
+                    <Button
+                        android:id="@+id/GotoNotifications"
+                        style="?attr/buttonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/notifications"
+                        android:fontFamily="@font/amaranth" />
+
+                    <Button
+                        android:id="@+id/GotoArchitecturePatterns"
+                        style="?attr/buttonStyle"
+                        android:text="@string/architecture_patterns" />
+
+                    <Button
+                        android:id="@+id/GoToAndroidSecurity"
+                        style="?attr/buttonStyle"
+                        android:text="@string/android_security" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <!-- Navigation Drawer -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/drawer_menu"
+            app:headerLayout="@layout/nav_header" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

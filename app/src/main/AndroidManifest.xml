@@ -12,10 +12,10 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -27,7 +27,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <uses-feature android:name="android.hardware.camera.flash" />
@@ -47,7 +46,6 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
             android:name=".KotlinDSA.KotlinDSAActivity"
             android:exported="false" />
         <activity
@@ -55,15 +53,12 @@
             android:exported="false" />
         <activity
             android:name=".PaymentIntegration.PaymentIntegrationActivity"
-=======
+            android:exported="false" />
+        <activity
             android:name=".KotlinFundamentalsAndDSA.KotlinDocumentActivity"
->>>>>>> AndroidPracticeWearOS
             android:exported="false" />
         <activity
             android:name=".JetpackCompose.NavigationComponent.NavigationMainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".JetpackCompose.ViewModelAndLiveDataWithBinding.ViewModelAndLiveDataWithDataBindingActivity"
             android:exported="false" />
         <activity
             android:name=".JetpackCompose.SimpleLiveData.SimpleViewModelWithLiveDataActivity"
@@ -185,7 +180,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -299,17 +293,11 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!--
- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more.
-        -->
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/notification_icon_background" />
-        <!--
- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more.
-        -->
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming notification message. -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/violet" />
@@ -317,5 +305,4 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
     </application>
-
 </manifest>
