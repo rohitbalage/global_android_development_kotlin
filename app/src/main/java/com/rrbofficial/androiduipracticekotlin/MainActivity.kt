@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
@@ -17,6 +16,7 @@ import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidget
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
+import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 finish()
             }
             R.id.Kotlincoroutines -> {
-                val intent = Intent(this, KotlinCoroutines::class.java)
+                val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
                 startActivity(intent)
                 finish()
             }
