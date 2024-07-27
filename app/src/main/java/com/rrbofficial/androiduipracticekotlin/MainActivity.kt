@@ -11,8 +11,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
@@ -43,10 +45,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        // Set the toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // Set the title of the CollapsingToolbarLayout
+        binding.collapsingToolbar.title = "Android Practise by Rohit"
+        binding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+
+        // Load Header image using Glide
+        val gifImageView: ImageView = binding.headerImage
+        Glide.with(this)
+            .load(R.drawable.androidheader) // Replace with your GIF resource
+            .into(gifImageView)
+
         // Navigation drawer
         drawerLayout = binding.drawerLayout
         navView = binding.navView
-        setSupportActionBar(binding.toolbar)
 
         toggle = ActionBarDrawerToggle(
             this, drawerLayout, binding.toolbar,
@@ -74,12 +90,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             drawerLayout.closeDrawers()
             true
         }
-
-        // Load Header image using Glide
-        val gifImageView: ImageView = findViewById(R.id.header_image)
-        com.bumptech.glide.Glide.with(this)
-            .load(R.drawable.androidheader)
-            .into(gifImageView)
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
