@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.NavigationComponent.NavigationMainActivity
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleLiveData.SimpleViewModelWithLiveDataActivity
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleViewModel.SimpleViewModelActivity
-import com.rrbofficial.androiduipracticekotlin.KotlinCoroutines
+import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityJetpackComposeBinding
@@ -37,7 +37,7 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
         when (view?.id) {
 
             R.id.kotlinCoroutinesBtn -> {
-                val intent = Intent(this, KotlinCoroutines::class.java)
+                val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
                 startActivity(intent)
                 finish()
             }

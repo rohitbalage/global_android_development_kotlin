@@ -1,23 +1,39 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.Manifest
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
+<<<<<<< HEAD
 import com.rrbofficial.androiduipracticekotlin.KotlinDSA.KotlinDSAActivity
+=======
+import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
+>>>>>>> AndroidPracticeWearOS
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
@@ -28,17 +44,90 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var crashlytics: FirebaseCrashlytics
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
+
+    // Permissions to request
+    private val PERMISSIONS = arrayOf(
+        Manifest.permission.INTERNET,
+        Manifest.permission.ACCESS_NETWORK_STATE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.CAMERA,
+        Manifest.permission.RECORD_AUDIO,
+        Manifest.permission.CALL_PHONE,
+        Manifest.permission.READ_CONTACTS
+    )
+
+    // Request code for permissions
+    private val PERMISSION_REQUEST_CODE = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize SharedPreferences
-        sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
+        // Check for permissions
+        if (!hasPermissions(this, *PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
+        }
+
+        // Check internet connectivity
+        if (!isInternetAvailable(this)) {
+            showInternetDialog()
+        }
 
         // Initialize DataBinding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        // Set the toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // Set the title of the CollapsingToolbarLayout
+        binding.collapsingToolbar.title = "Android Practise by Rohit"
+        binding.collapsingToolbar.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
+
+        // Load Header image using Glide
+        updateHeaderImage()
+
+        // Navigation drawer
+        drawerLayout = binding.drawerLayout
+        navView = binding.navView
+
+        toggle = ActionBarDrawerToggle(
+            this, drawerLayout, binding.toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    // Handle home click
+                    val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.nav_profile -> {
+                    // Handle profile click
+                }
+                R.id.nav_settings -> {
+                    // Handle settings click
+                }
+            }
+            drawerLayout.closeDrawers()
+            true
+        }
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
 
         // Set the current theme based on saved preferences
         setInitialTheme()
@@ -46,6 +135,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Observe changes in isNightMode to apply the theme dynamically
         viewModel.isNightMode.observe(this) { isNightMode ->
             applyTheme(isNightMode)
+            updateHeaderImage() // Update the header image when theme changes
         }
 
         // Handle switchTheme changes
@@ -92,6 +182,71 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun updateHeaderImage() {
+        val gifImageView: ImageView = binding.headerImage
+        val gifResource = if (viewModel.isNightMode.value == true) {
+            R.drawable.androiddarkgif // Dark theme GIF
+        } else {
+            R.drawable.androidheader // Light theme GIF
+        }
+        Glide.with(this)
+            .load(gifResource)
+            .into(gifImageView)
+    }
+
+    private fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+            return networkInfo.isConnected
+        }
+    }
+
+    private fun showInternetDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("No Internet Connection")
+            .setMessage("Please turn on your internet connection to use this app.")
+            .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                dialogInterface.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun hasPermissions(context: Context, vararg permissions: String): Boolean {
+        return permissions.all {
+            ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val deniedPermissions = permissions.filterIndexed { index, _ ->
+                grantResults[index] != PackageManager.PERMISSION_GRANTED
+            }
+            if (deniedPermissions.isNotEmpty()) {
+                // Handle the case where some permissions were denied
+                AlertDialog.Builder(this)
+                    .setTitle("Permissions Required")
+                    .setMessage("Please grant all permissions to continue using the app.")
+                    .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), PERMISSION_REQUEST_CODE)
+                    }
+                    .setCancelable(false)
+                    .show()
+            }
+        }
+    }
+
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.uicomponents -> {
@@ -99,8 +254,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+<<<<<<< HEAD
             R.id.KotlinDSA-> {
                 val intent = Intent(this, KotlinDSAActivity::class.java)
+=======
+            R.id.Kotlincoroutines -> {
+                val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
+>>>>>>> AndroidPracticeWearOS
                 startActivity(intent)
                 finish()
             }

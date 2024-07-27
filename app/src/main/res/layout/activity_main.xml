@@ -81,9 +81,9 @@
                    />
 
                 <Button
-                    android:id="@+id/KotlinDSA"
+                    android:id="@+id/Kotlincoroutines"
                     style="?attr/buttonStyle"
-                    android:text="@string/kotlin_data_structures"
+                    android:text="@string/kotlin_coroutines"
 
                   />
 
@@ -136,12 +136,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/notifications"
                     android:fontFamily="@font/amaranth" />
-
-                <Button
-                    android:id="@+id/GotoPaymentIntegraiton"
-                    style="?attr/buttonStyle"
-                    android:text="@string/payment_integration"
-                    />
 
                 <Button
                     android:id="@+id/GotoArchitecturePatterns"

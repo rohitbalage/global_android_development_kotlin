@@ -15,15 +15,20 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <uses-feature android:name="android.hardware.camera.flash" />
     <uses-feature
@@ -42,6 +47,7 @@
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".KotlinDSA.KotlinDSAActivity"
             android:exported="false" />
         <activity
@@ -49,6 +55,9 @@
             android:exported="false" />
         <activity
             android:name=".PaymentIntegration.PaymentIntegrationActivity"
+=======
+            android:name=".KotlinFundamentalsAndDSA.KotlinDocumentActivity"
+>>>>>>> AndroidPracticeWearOS
             android:exported="false" />
         <activity
             android:name=".JetpackCompose.NavigationComponent.NavigationMainActivity"
@@ -199,7 +208,7 @@
             android:name=".Animations"
             android:exported="false" />
         <activity
-            android:name=".KotlinCoroutines"
+            android:name=".KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals"
             android:exported="false" />
         <activity
             android:name=".Fragments"

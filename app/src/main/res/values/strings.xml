@@ -201,10 +201,6 @@
     <string name="add_me">Add me</string>
     <string name="nav_fragment_1">Nav Fragment 1</string>
     <string name="navigation_fragment_2">Navigation Fragment 2</string>
-    <string name="payment_integration">Payment Integration</string>
-    <string name="kotlin_data_structures">Kotlin Data Structures</string>
-    <string name="enter_notification_headline">Enter notification headline</string>
-    <string name="enter_summary_message">Enter summary message</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

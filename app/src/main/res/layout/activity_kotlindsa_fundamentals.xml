@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/main"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/HeadlineTextViewStyle"
+            android:text="@string/kotlin_dsa_and_fundamentals"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:text="@string/kotlin_fundamentals"
+           android:id="@+id/kotlin_fundamentalsbtn"
+            />
+        <Button
+            style="?attr/buttonStyle"
+            android:text="@string/kotlin_dsa"
+            android:id="@+id/kotlin_dsabtn"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:text="@string/kotlin_coroutines"
+            android:id="@+id/kotlinCoroutinesBtn"
+            />
+    </LinearLayout>
+
+</ScrollView>
+
+</layout>
