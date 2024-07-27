@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "500227008308",
+    "project_id": "androiduipracticekotlin",
+    "storage_bucket": "androiduipracticekotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500227008308:android:fd986070cdf6a6bd2f2761",
+        "android_client_info": {
+          "package_name": "com.rrbofficial.androiduipracticekotlin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA16J9uBrCqN51r7AwS7YBeAoik-QuPnL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
