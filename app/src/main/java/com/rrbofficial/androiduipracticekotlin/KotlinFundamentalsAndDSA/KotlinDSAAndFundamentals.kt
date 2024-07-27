@@ -26,6 +26,22 @@ class KotlinDSAAndFundamentals : AppCompatActivity() {
            startActivity(intent)
        }
 
+        binding.kotlinCoroutinesBtn.setOnClickListener()
+        {
+            val link = "https://docs.google.com/document/d/10hA15oXfdZ_HCPnn2R0qkZFc2u_rSSld/edit?usp=sharing&ouid=104171225019598136614&rtpof=true&sd=true"
+            val intent = Intent(applicationContext, KotlinDocumentActivity::class.java)
+            intent.putExtra("value", link)
+            startActivity(intent)
+        }
+
+        binding.kotlinDsabtn.setOnClickListener()
+        {
+            val link = "https://docs.google.com/document/d/10jCnaPJngQwL1-TnZstHYeysNIlpWIoJ/edit?usp=sharing&rtpof=true&sd=true"
+            val intent = Intent(applicationContext, KotlinDocumentActivity::class.java)
+            intent.putExtra("value", link)
+            startActivity(intent)
+        }
+
 
     }
 
