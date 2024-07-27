@@ -1,9 +1,11 @@
 package com.rrbofficial.androiduipracticekotlin
 
+import android.Manifest
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -15,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -41,8 +44,35 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var navView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
 
+    // Permissions to request
+    private val PERMISSIONS = arrayOf(
+        Manifest.permission.INTERNET,
+        Manifest.permission.ACCESS_NETWORK_STATE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.CAMERA,
+        Manifest.permission.RECORD_AUDIO,
+        Manifest.permission.CALL_PHONE,
+        Manifest.permission.READ_CONTACTS
+    )
+
+    // Request code for permissions
+    private val PERMISSION_REQUEST_CODE = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Check for permissions
+        if (!hasPermissions(this, *PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
+        }
+
+        // Check internet connectivity
+        if (!isInternetAvailable(this)) {
+            showInternetDialog()
+        }
 
         // Initialize DataBinding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -52,11 +82,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Set the toolbar
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        // Check internet connectivity
-        if (!isInternetAvailable(this)) {
-            showInternetDialog()
-        }
 
         // Set the title of the CollapsingToolbarLayout
         binding.collapsingToolbar.title = "Android Practise by Rohit"
@@ -152,8 +177,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
-
     private fun updateHeaderImage() {
         val gifImageView: ImageView = binding.headerImage
         val gifResource = if (viewModel.isNightMode.value == true) {
@@ -164,6 +187,59 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Glide.with(this)
             .load(gifResource)
             .into(gifImageView)
+    }
+
+    private fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+            return networkInfo.isConnected
+        }
+    }
+
+    private fun showInternetDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("No Internet Connection")
+            .setMessage("Please turn on your internet connection to use this app.")
+            .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                dialogInterface.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun hasPermissions(context: Context, vararg permissions: String): Boolean {
+        return permissions.all {
+            ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            val deniedPermissions = permissions.filterIndexed { index, _ ->
+                grantResults[index] != PackageManager.PERMISSION_GRANTED
+            }
+            if (deniedPermissions.isNotEmpty()) {
+                // Handle the case where some permissions were denied
+                AlertDialog.Builder(this)
+                    .setTitle("Permissions Required")
+                    .setMessage("Please grant all permissions to continue using the app.")
+                    .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
+                        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), PERMISSION_REQUEST_CODE)
+                    }
+                    .setCancelable(false)
+                    .show()
+            }
+        }
     }
 
     override fun onClick(view: View?) {
@@ -290,33 +366,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Show the dialog
         dialog.show()
-    }
-
-    fun isInternetAvailable(context: Context): Boolean {
-        val connectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val network = connectivityManager.activeNetwork ?: return false
-            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
-            return when {
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                else -> false
-            }
-        } else {
-            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
-            return networkInfo.isConnected
-        }
-    }
-
-    private fun showInternetDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("No Internet Connection")
-            .setMessage("Please turn on your internet connection to use this app.")
-            .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
-                dialogInterface.dismiss()
-            }
-            .setCancelable(false)
-            .show()
     }
 }
