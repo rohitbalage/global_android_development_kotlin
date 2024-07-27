@@ -6,10 +6,13 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
@@ -27,17 +30,52 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var crashlytics: FirebaseCrashlytics
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize SharedPreferences
-        sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
 
         // Initialize DataBinding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+
+        // Navigation drawer
+        drawerLayout = binding.drawerLayout
+        navView = binding.navView
+        setSupportActionBar(binding.toolbar)
+
+        toggle = ActionBarDrawerToggle(
+            this, drawerLayout, binding.toolbar,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    // Handle home click
+                    val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                R.id.nav_profile -> {
+                    // Handle profile click
+                }
+                R.id.nav_settings -> {
+                    // Handle settings click
+                }
+            }
+            drawerLayout.closeDrawers()
+            true
+        }
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)
 
         // Set the current theme based on saved preferences
         setInitialTheme()
