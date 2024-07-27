@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -73,6 +74,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             drawerLayout.closeDrawers()
             true
         }
+
+        // Load Header image using Glide
+        val gifImageView: ImageView = findViewById(R.id.header_image)
+        com.bumptech.glide.Glide.with(this)
+            .load(R.drawable.androidheader)
+            .into(gifImageView)
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)

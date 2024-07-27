@@ -36,7 +36,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/rohit_edgewater"
                         app:layout_collapseMode="parallax" />
 
                     <androidx.appcompat.widget.Toolbar
@@ -173,11 +172,12 @@
         <!-- Navigation Drawer -->
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
+            android:layout_width="260dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:menu="@menu/drawer_menu"
             app:headerLayout="@layout/nav_header" />
+
 
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
