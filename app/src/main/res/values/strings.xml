@@ -209,6 +209,11 @@
     <string name="kotlin_dsa">Kotlin DSA</string>
     <string name="enter_notification_summary">Enter notification summary</string>
     <string name="enter_notification_headline">Enter Notification headline</string>
+    <string name="camera_filters">Camera filters</string>
+    <string name="image_editor">Image editor</string>
+    <string name="video_editor">Video Editor</string>
+    <string name="global_android_kotlin_practice">Global Android Kotlin Practice</string>
+    <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

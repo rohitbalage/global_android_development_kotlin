@@ -7,19 +7,19 @@
     android:gravity="bottom">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/carpixelicon" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/appicon" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Your App Name"
+        android:text="@string/global_android_kotlin_practice"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="your_email@example.com" />
+        android:text="@string/rohitbalage_rrbofficial_com" />
 </LinearLayout>
