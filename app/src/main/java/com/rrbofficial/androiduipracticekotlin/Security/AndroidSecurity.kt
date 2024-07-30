@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
@@ -15,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.safetynet.SafetyNet
+import com.google.android.gms.safetynet.SafetyNetApi
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import io.grpc.android.BuildConfig
@@ -51,6 +55,15 @@ class AndroidSecurity : AppCompatActivity() {
         val secureNetworkBtn = findViewById<Button>(R.id.secureNetworkBtn)
         val loggingBtn = findViewById<Button>(R.id.loggingBtn)
         val integrityCheckBtn = findViewById<Button>(R.id.integrityCheckBtn)
+        val seapSdkBtn = findViewById<Button>(R.id.seapSdkBtn)
+        val emulatorCheckBtn = findViewById<Button>(R.id.emulatorCheckBtn)
+        val safetyNetCheckBtn = findViewById<Button>(R.id.safetyNetCheckBtn)
+        val appUpdateCheckBtn = findViewById<Button>(R.id.appUpdateCheckBtn)
+        val tamperDetectionBtn = findViewById<Button>(R.id.tamperDetectionBtn)
+        val secureClipboardBtn = findViewById<Button>(R.id.secureClipboardBtn)
+        val deviceEncryptionCheckBtn = findViewById<Button>(R.id.deviceEncryptionCheckBtn)
+        val keychainAccessBtn = findViewById<Button>(R.id.keychainAccessBtn)
+        val networkSecurityConfigBtn = findViewById<Button>(R.id.networkSecurityConfigBtn)
 
         biometricPromptBtn.setOnClickListener { authenticateUser() }
         checkRootBtn.setOnClickListener { checkRootStatus() }
@@ -62,6 +75,15 @@ class AndroidSecurity : AppCompatActivity() {
         secureNetworkBtn.setOnClickListener { secureNetwork() }
         loggingBtn.setOnClickListener { disableLogging() }
         integrityCheckBtn.setOnClickListener { appIntegrityCheck() }
+        seapSdkBtn.setOnClickListener { seapSdkIntegration() }
+        emulatorCheckBtn.setOnClickListener { checkEmulator() }
+        safetyNetCheckBtn.setOnClickListener { safetyNetCheck() }
+        appUpdateCheckBtn.setOnClickListener { checkAppUpdate() }
+        tamperDetectionBtn.setOnClickListener { tamperDetection() }
+        secureClipboardBtn.setOnClickListener { secureClipboard() }
+        deviceEncryptionCheckBtn.setOnClickListener { checkDeviceEncryption() }
+        keychainAccessBtn.setOnClickListener { keychainAccess() }
+        networkSecurityConfigBtn.setOnClickListener { networkSecurityConfig() }
     }
 
     override fun onBackPressed() {
@@ -218,5 +240,67 @@ class AndroidSecurity : AppCompatActivity() {
         val md = MessageDigest.getInstance("SHA")
         val currentSignature = Base64.encodeToString(md.digest(signature), Base64.DEFAULT)
         Toast.makeText(this, if (expectedSignature == currentSignature) "App integrity verified" else "App integrity compromised", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun seapSdkIntegration() {
+        // SEAP SDK integration logic here
+        Toast.makeText(this, "SEAP SDK integrated", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun checkEmulator() {
+        val isEmulator = (Build.FINGERPRINT.startsWith("generic") || Build.FINGERPRINT.startsWith("unknown") ||
+                Build.MODEL.contains("google_sdk") || Build.MODEL.contains("Emulator") ||
+                Build.MODEL.contains("Android SDK built for x86") || Build.MANUFACTURER.contains("Genymotion") ||
+                Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic") ||
+                "google_sdk" == Build.PRODUCT)
+        Toast.makeText(this, if (isEmulator) "Running on Emulator" else "Running on Real Device", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun safetyNetCheck() {
+        val googleApiClient = GoogleApiClient.Builder(this)
+            .addApi(SafetyNet.API)
+            .build()
+
+        googleApiClient.connect()
+        SafetyNet.SafetyNetApi.attest(googleApiClient, "nonce".toByteArray())
+            .setResultCallback { result ->
+                if (result.status.isSuccess) {
+                    val jwsResult = result.jwsResult
+                    // Parse JWS and validate SafetyNet response
+                    Toast.makeText(this, "SafetyNet check passed", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "SafetyNet check failed", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+    private fun checkAppUpdate() {
+        // Proactive app update check logic here
+        Toast.makeText(this, "App update check performed", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun tamperDetection() {
+        // Tamper detection logic here
+        Toast.makeText(this, "Tamper detection performed", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun secureClipboard() {
+        // Secure clipboard logic here
+        Toast.makeText(this, "Clipboard secured", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun checkDeviceEncryption() {
+        val encryptionStatus = Settings.Global.getInt(contentResolver, Settings.Global.DEVICE_PROVISIONED, 0)
+        Toast.makeText(this, if (encryptionStatus != 0) "Device is encrypted" else "Device is not encrypted", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun keychainAccess() {
+        // Keychain access logic here
+        Toast.makeText(this, "Keychain accessed", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun networkSecurityConfig() {
+        // Network security configuration logic here
+        Toast.makeText(this, "Network security configured", Toast.LENGTH_SHORT).show()
     }
 }

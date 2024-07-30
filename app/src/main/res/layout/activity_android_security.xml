@@ -7,6 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="60dp"
         android:id="@+id/scrollview">
 
         <LinearLayout
@@ -93,63 +94,63 @@
             <Button
                 android:id="@+id/seapSdkBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/seap_sdk" />
 
             <Button
                 android:id="@+id/emulatorCheckBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/check_emulator" />
 
             <Button
                 android:id="@+id/safetyNetCheckBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/safetynet_check" />
 
             <Button
                 android:id="@+id/appUpdateCheckBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/check_app_update" />
 
             <Button
                 android:id="@+id/tamperDetectionBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tamper_detection" />
 
             <Button
                 android:id="@+id/secureClipboardBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/secure_clipboard" />
 
             <Button
                 android:id="@+id/deviceEncryptionCheckBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/check_device_encryption" />
 
             <Button
                 android:id="@+id/keychainAccessBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/keychain_access" />
 
             <Button
                 android:id="@+id/networkSecurityConfigBtn"
                 style="?attr/buttonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/network_security_config" />
 
