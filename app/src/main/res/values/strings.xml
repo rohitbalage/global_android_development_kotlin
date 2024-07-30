@@ -215,6 +215,24 @@
     <string name="global_android_kotlin_practice">Global Android Kotlin Practice</string>
     <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
     <string name="biomatric_prompt">Biomatric Prompt</string>
+    <string name="check_root_status">Check Root Status</string>
+    <string name="secure_storage">Secure Storage</string>
+    <string name="ssl_pinning">SSL Pinning</string>
+    <string name="data_encryption">Data Encryption</string>
+    <string name="code_obfuscation">Code Obfuscation</string>
+    <string name="check_permissions">Check Permissions</string>
+    <string name="secure_network">Secure Network</string>
+    <string name="disable_logging">Disable Logging</string>
+    <string name="app_integrity_check">App Integrity Check</string>
+    <string name="seap_sdk">SEAP SDK</string>
+    <string name="check_emulator">Check Emulator</string>
+    <string name="safetynet_check">SafetyNet Check</string>
+    <string name="check_app_update">Check App Update</string>
+    <string name="tamper_detection">Tamper Detection</string>
+    <string name="secure_clipboard">Secure Clipboard</string>
+    <string name="check_device_encryption">Check Device Encryption</string>
+    <string name="keychain_access">Keychain Access</string>
+    <string name="network_security_config">Network Security Config</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

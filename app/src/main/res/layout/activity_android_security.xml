@@ -32,63 +32,126 @@
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Check Root Status" />
+                android:text="@string/check_root_status" />
 
             <Button
                 android:id="@+id/secureStorageBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Secure Storage" />
+                android:text="@string/secure_storage" />
 
             <Button
                 android:id="@+id/sslPinningBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SSL Pinning" />
+                android:text="@string/ssl_pinning" />
 
             <Button
                 android:id="@+id/encryptionBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data Encryption" />
+                android:text="@string/data_encryption" />
 
             <Button
                 android:id="@+id/codeObfuscationBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Code Obfuscation" />
+                android:text="@string/code_obfuscation" />
 
             <Button
                 android:id="@+id/permissionsBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Check Permissions" />
+                android:text="@string/check_permissions" />
 
             <Button
                 android:id="@+id/secureNetworkBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Secure Network" />
+                android:text="@string/secure_network" />
 
             <Button
                 android:id="@+id/loggingBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Disable Logging" />
+                android:text="@string/disable_logging" />
 
             <Button
                 android:id="@+id/integrityCheckBtn"
                 style="?attr/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="App Integrity Check" />
+                android:text="@string/app_integrity_check" />
+
+            <Button
+                android:id="@+id/seapSdkBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/seap_sdk" />
+
+            <Button
+                android:id="@+id/emulatorCheckBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_emulator" />
+
+            <Button
+                android:id="@+id/safetyNetCheckBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/safetynet_check" />
+
+            <Button
+                android:id="@+id/appUpdateCheckBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_app_update" />
+
+            <Button
+                android:id="@+id/tamperDetectionBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tamper_detection" />
+
+            <Button
+                android:id="@+id/secureClipboardBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/secure_clipboard" />
+
+            <Button
+                android:id="@+id/deviceEncryptionCheckBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_device_encryption" />
+
+            <Button
+                android:id="@+id/keychainAccessBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keychain_access" />
+
+            <Button
+                android:id="@+id/networkSecurityConfigBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/network_security_config" />
 
         </LinearLayout>
     </ScrollView>
