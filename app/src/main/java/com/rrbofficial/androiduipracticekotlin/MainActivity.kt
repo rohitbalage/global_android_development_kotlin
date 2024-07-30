@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Permissions to request
     private val PERMISSIONS = arrayOf(
         Manifest.permission.INTERNET,
+        Manifest.permission.USE_BIOMETRIC,
         Manifest.permission.ACCESS_NETWORK_STATE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
         Manifest.permission.READ_EXTERNAL_STORAGE,

@@ -1,10 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".Security.AndroidSecurity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollview">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearlayoutSecurity">
+            <TextView
+                style="@style/HeadlineTextViewStyle"
+                android:text="@string/android_security"
+                />
+
+            <Button
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/biometricPromptBtn"
+                android:text="@string/biomatric_prompt" />
+
+            <Button
+                android:id="@+id/checkRootBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check Root Status" />
+
+            <Button
+                android:id="@+id/secureStorageBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Secure Storage" />
+
+            <Button
+                android:id="@+id/sslPinningBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SSL Pinning" />
+
+            <Button
+                android:id="@+id/encryptionBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Encryption" />
+
+            <Button
+                android:id="@+id/codeObfuscationBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Code Obfuscation" />
+
+            <Button
+                android:id="@+id/permissionsBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Check Permissions" />
+
+            <Button
+                android:id="@+id/secureNetworkBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Secure Network" />
+
+            <Button
+                android:id="@+id/loggingBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disable Logging" />
+
+            <Button
+                android:id="@+id/integrityCheckBtn"
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="App Integrity Check" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

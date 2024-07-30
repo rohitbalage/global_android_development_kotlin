@@ -70,6 +70,11 @@ android {
             applicationIdSuffix ".antarctica"
             versionNameSuffix "-antarctica"
         }
+        AFRICA {
+            dimension "region"
+            applicationIdSuffix ".africa"
+            versionNameSuffix "-africa"
+        }
     }
 
     buildFeatures {
@@ -172,4 +177,7 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
     implementation "androidx.navigation:navigation-ui-ktx:2.7.7"
+
+    // Biometric Prompt
+    implementation "androidx.biometric:biometric:1.2.0-alpha03"
 }

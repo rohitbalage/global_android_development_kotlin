@@ -214,6 +214,7 @@
     <string name="video_editor">Video Editor</string>
     <string name="global_android_kotlin_practice">Global Android Kotlin Practice</string>
     <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
+    <string name="biomatric_prompt">Biomatric Prompt</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
