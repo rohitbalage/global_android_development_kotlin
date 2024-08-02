@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.NavigationComponent.NavigationMainActivity
+import com.rrbofficial.androiduipracticekotlin.JetpackCompose.RecycleView.RecycleViewActivity
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleLiveData.SimpleViewModelWithLiveDataActivity
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.SimpleViewModel.SimpleViewModelActivity
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
@@ -24,6 +25,7 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
         binding.LiveDataBtn.setOnClickListener(this)
         binding.viewModelLiveDataDataBindingBtn.setOnClickListener(this)
         binding.NavigationArchitectureComponentBtn.setOnClickListener(this)
+        binding.recycleViewFuncdamentalsbtn.setOnClickListener(this)
 
     }
 
@@ -59,6 +61,11 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
 
             R.id.NavigationArchitectureComponentBtn -> {
                 val intent = Intent(this, NavigationMainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.recycleViewFuncdamentalsbtn -> {
+                val intent = Intent(this, RecycleViewActivity::class.java)
                 startActivity(intent)
                 finish()
             }

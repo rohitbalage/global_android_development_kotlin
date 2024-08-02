@@ -21,6 +21,8 @@
             android:layout_marginTop="20dp"
             android:layout_height="wrap_content">
 
+
+
             <TextView
                 android:id="@+id/databaseshead"
                 style="@style/HeadlineTextViewStyle"
@@ -64,6 +66,14 @@
                 android:text="@string/aws_db"
                 android:onClick="goToAWSDB"
              />
+
+            <Button
+                android:id="@+id/SharePrefBtn"
+                style="?attr/buttonStyle"
+                android:text="@string/shared_preference"
+                android:onClick="goToSharePref"
+              />
+
 
 
 

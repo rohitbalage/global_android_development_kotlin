@@ -233,6 +233,7 @@
     <string name="check_device_encryption">Check Device Encryption</string>
     <string name="keychain_access">Keychain Access</string>
     <string name="network_security_config">Network Security Config</string>
+    <string name="shared_preference">Shared Preference</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

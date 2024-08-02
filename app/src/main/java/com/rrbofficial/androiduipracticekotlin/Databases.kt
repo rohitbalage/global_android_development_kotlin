@@ -7,6 +7,7 @@ import android.view.View
 import com.rrbofficial.androiduipracticekotlin.AWS.AWSDBActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Firebase
 import com.rrbofficial.androiduipracticekotlin.SQLite.SQLiteForm
+import com.rrbofficial.androiduipracticekotlin.SharedPreferences.SharedPreferenceActivity
 
 class Databases : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,5 +42,10 @@ class Databases : AppCompatActivity() {
         val intent = Intent(this, AWSDBActivity ::class.java)
         startActivity(intent)
 
+    }
+
+    fun goToSharePref(view: View) {
+        val intent = Intent(this, SharedPreferenceActivity   ::class.java)
+        startActivity(intent)
     }
 }
