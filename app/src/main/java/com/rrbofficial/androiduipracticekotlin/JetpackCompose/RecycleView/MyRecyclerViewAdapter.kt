@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -31,10 +32,19 @@ class MyRecyclerViewAdapter (val fruitsList: List<Fruit>): RecyclerView.Adapter<
 
 }
 
-class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val myTextView = view.findViewById<TextView>(R.id.tvName)
+class MyViewHolder(val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val myTextView: TextView = itemView.findViewById(R.id.tvName)
+
     fun bind(fruit: Fruit) {
         myTextView.text = fruit.name
 
+        // Set the onClickListener for the itemView
+        itemView.setOnClickListener {
+            Toast.makeText(
+                itemView.context,
+                "Selected Fruit is : ${fruit.name}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 }
