@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rrbofficial.androiduipracticekotlin.R
 
 class RecycleViewActivity : AppCompatActivity() {
+    val fruitsList = listOf("Mango","Apple","Orange","Banana","Guava","Lemon","Pear","Hayberry","Kiwifruit")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -17,7 +19,7 @@ class RecycleViewActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.myRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MyRecyclerViewAdapter()
+        recyclerView.adapter = MyRecyclerViewAdapter(fruitsList)
 
     }
 }
