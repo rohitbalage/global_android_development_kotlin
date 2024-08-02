@@ -1,6 +1,7 @@
 package com.rrbofficial.androiduipracticekotlin.JetpackCompose.RecycleView
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,7 +22,19 @@ class RecycleViewActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.myRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MyRecyclerViewAdapter(fruitsList)
+        recyclerView.adapter = MyRecyclerViewAdapter(
+            fruitsList,
 
+            ) { selectedItem: Fruit ->
+            listItemClicked(selectedItem)
+        }
     }
-}
+
+    private fun listItemClicked(fruit: Fruit) {
+        Toast.makeText(
+            this@RecycleViewActivity,
+            "Supplier is : ${fruit.supplier}",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+    }
