@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rrbofficial.androiduipracticekotlin.R
 
-class MyRecyclerViewAdapter (val fruitsList: List<String>): RecyclerView.Adapter<MyViewHolder>() {
+class MyRecyclerViewAdapter (val fruitsList: List<Fruit>): RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
        val layoutInflater = LayoutInflater.from(parent.context)
@@ -18,7 +18,7 @@ class MyRecyclerViewAdapter (val fruitsList: List<String>): RecyclerView.Adapter
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val fruit = fruitsList[position]
 //        holder.myTextView.text = "Hello World $position" //set the holder with position
-        holder.myTextView.text = fruit   // set the holder to the fruit name
+        holder.myTextView.text = fruit.name   // set the holder to the fruit name
 
     }
 

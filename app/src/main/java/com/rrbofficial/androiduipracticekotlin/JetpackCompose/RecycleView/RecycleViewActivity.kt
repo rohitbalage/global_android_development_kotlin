@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rrbofficial.androiduipracticekotlin.R
 
 class RecycleViewActivity : AppCompatActivity() {
-    val fruitsList = listOf("Mango","Apple","Orange","Banana","Guava","Lemon","Pear","Hayberry","Kiwifruit")
-
+    val fruitsList = listOf<Fruit>(
+        Fruit("mango", "Green delight"), Fruit("Apple", "Red Corp"), Fruit("Banana", "Golder factory"),
+        Fruit("Guava", "Green delight"), Fruit("Lemon", "Red Corp"), Fruit("Pear", "Golder factory"),
+        )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
