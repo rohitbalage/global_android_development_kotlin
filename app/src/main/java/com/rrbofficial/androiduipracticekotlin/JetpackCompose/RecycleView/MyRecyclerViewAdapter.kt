@@ -18,7 +18,8 @@ class MyRecyclerViewAdapter (val fruitsList: List<Fruit>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val fruit = fruitsList[position]
 //        holder.myTextView.text = "Hello World $position" //set the holder with position
-        holder.myTextView.text = fruit.name   // set the holder to the fruit name
+//        holder.myTextView.text = fruit.name   // set the holder to the fruit name
+        holder.bind(fruit)
 
     }
 
@@ -32,6 +33,8 @@ class MyRecyclerViewAdapter (val fruitsList: List<Fruit>): RecyclerView.Adapter<
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val myTextView = view.findViewById<TextView>(R.id.tvName)
+    fun bind(fruit: Fruit) {
+        myTextView.text = fruit.name
 
-
+    }
 }
