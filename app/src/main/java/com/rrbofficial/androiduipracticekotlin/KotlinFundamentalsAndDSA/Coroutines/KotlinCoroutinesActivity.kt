@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -56,18 +59,18 @@ class KotlinCoroutinesActivity : AppCompatActivity() {
         }
 
 
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Main).launch {
             Log.i("MyStock", "calculation started...")
-           val stock1 = async {
+           val stock1 = async(IO) {
                getStocck1()
            }
 
-           val stock2 = async {
+           val stock2 = async(IO) {
                getStocck2()
            }
            val total = stock1.await() + stock2.await()
+            Toast.makeText(applicationContext, "Total is $total", Toast.LENGTH_LONG).show()
            Log.i("MyStock", "Total is $total")
-
         }
 
 

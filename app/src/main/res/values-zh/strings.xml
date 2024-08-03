@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">安卓UI实践Kotlin</string>
+    <string name="KotlinPractice">安卓Kotlin练习</string>
+    <string name="title_activity_google_maps">谷歌地图</string>
+    <string name="viewgroupimage">这是安卓中的视图组</string>
+    <string name="intents">意图</string>
+    <string name="text_view_and_edit_text">文本视图和编辑文本</string>
+    <string name="explicit_intent">显式意图</string>
+    <string name="google_implicit_intent">谷歌隐式意图</string>
+    <string name="jetpackCompose">安卓Jetpack Compose</string>
+    <string name="data_binding">数据绑定</string>
+    <string name="view_model">视图模型</string>
+    <string name="live_data">实时数据 + 视图模型</string>
+    <string name="mvvm_and_room">MVVM 和 Room</string>
+    <string name="depenedency_injection">依赖注入</string>
+    <string name="apis">API</string>
+    <string name="databases">数据库</string>
+    <string name="jetpackcompose">Jetpack Compose</string>
+    <string name="kotlin_coroutines">Kotlin 协程</string>
+    <string name="material_ui_designs">材质设计和UI设计</string>
+    <string name="api_designs">API设计</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="volley">Volley</string>
+    <string name="mysql">MySQL</string>
+    <string name="ktor">Ktor</string>
+    <string name="json_parsing">JSON解析</string>
+    <string name="usd">美元</string>
+    <string name="gbp">英镑</string>
+    <string name="nzd">新西兰元</string>
+    <string name="share_app">分享应用</string>
+    <string name="share_whatsapp">分享至WhatsApp</string>
+    <string name="firebase">Firebase</string>
+    <string name="mango_db">芒果数据库</string>
+    <string name="Login">登录</string>
+    <string name="SignIn">登录</string>
+    <string name="goToFirebaseAuth">Firebase认证</string>
+    <string name="btn_signout">退出登录</string>
+    <string name="btnlogin">登录</string>
+    <string name="firebaselogintxt">Firebase登录</string>
+    <string name="emailenterhint">在这里输入您的电子邮件</string>
+    <string name="passwordhint">在这里输入您的密码</string>
+    <string name="skills">输入您的技能</string>
+    <string name="degreeedittxt">输入您的学位</string>
+    <string name="submitFirebaseUserdata">提交数据</string>
+    <string name="Firebaseuserdatatxtheadline">Firebase用户数据</string>
+    <string name="userskillstxt">用户技能</string>
+    <string name="userdegreetxt">用户学位</string>
+    <string name="currentuseremail">当前用户电子邮件</string>
+    <string name="edtskillshint">输入您的技能</string>
+    <string name="signoutbtn">退出登录</string>
+    <string name="updateuserdata">更新数据</string>
+    <string name="edtskills">输入您的技能</string>
+    <string name="firebase_app">Firebase应用</string>
+    <string name="firebase_analytics">Firebase分析</string>
+    <string name="firebase_in_app_messaging">Firebase应用内消息</string>
+    <string name="firebase_crash_analytics">Firebase崩溃分析</string>
+    <string name="firebase_cloud_messaging">Firebase云消息</string>
+    <string name="google_maps">谷歌地图</string>
+    <string name="android_ui_widgets">安卓UI控件</string>
+    <string name="button_in_android_ui">安卓UI中的按钮</string>
+    <string name="submit_radio_buttons">提交单选按钮</string>
+    <string name="submit_checkboxes">提交复选框</string>
+    <string name="submit_rating_bar">提交评分条</string>
+    <string name="checked_textview">已选文本视图</string>
+    <string name="hello_blank_fragment">你好，空白片段</string>
+    <string name="fragments">片段</string>
+    <string name="replacesecondfragment">替换第二个片段</string>
+    <string name="animations">动画</string>
+    <string name="normal">正常</string>
+    <string name="hybrid">混合</string>
+    <string name="satellite">卫星</string>
+    <string name="terrian">地形</string>
+    <string name="none">无</string>
+    <string name="notifications">通知</string>
+    <string name="aws">AWS</string>
+    <string name="android_security">安卓安全</string>
+    <string name="android_ui_components">安卓UI控件</string>
+    <string name="artificial_intelligence">人工智能</string>
+    <string name="internet_of_things_iot">物联网（IOT）</string>
+    <string name="kotlin_practice_by_rohit">Rohit的Kotlin练习</string>
+    <string name="splashdescription">此应用用于Kotlin练习</string>
+    <string name="android_system_components">安卓系统组件</string>
+    <string name="androidsyscomponentsheadliine">安卓系统组件</string>
+    <string name="camera">相机</string>
+    <string name="wifi_off">WiFi关闭</string>
+    <string name="wifi_on">WiFi开启</string>
+    <string name="bluetooth_off">蓝牙关闭</string>
+    <string name="bluetooth_on">蓝牙开启</string>
+    <string name="gallary">图库</string>
+    <string name="files">文件</string>
+    <string name="messages">消息</string>
+    <string name="calls_history">通话记录</string>
+    <string name="browser">浏览器</string>
+    <string name="recordings">开始录音</string>
+    <string name="dial_phone">拨打电话</string>
+    <string name="torch_off">手电筒关闭</string>
+    <string name="my_current_phone_info">我当前的手机信息</string>
+    <string name="airplane_mode">飞行模式关闭</string>
+    <string name="clipboard">剪贴板</string>
+    <string name="splashscreenbottomtext">展示我的安卓系统实践</string>
+    <string name="machine_learning">机器学习</string>
+    <string name="android_types_of_notifications">安卓通知类型</string>
+    <string name="default_notification">默认通知</string>
+    <string name="high_notification">高优先级通知</string>
+    <string name="low_notification">低优先级通知</string>
+    <string name="action_notification">操作通知</string>
+    <string name="content_intent_notification">内容意图通知</string>
+    <string name="on_going_notification">进行中的通知</string>
+    <string name="custom_sound_notification">自定义声音通知</string>
+    <string name="big_style_text_notification">大样式文本通知</string>
+    <string name="inbox_style_notification">收件箱样式通知</string>
+    <string name="big_picture_style_notification">大图片样式通知</string>
+    <string name="download_style_notification">下载样式通知</string>
+    <string name="messaging_style_notification">消息样式通知</string>
+    <string name="media_style_notification">媒体样式通知</string>
+    <string name="this_is_a_cardview">这是一个卡片视图</string>
+    <string name="default_notification_channel_id">dn15</string>
+    <string name="navigation_drawer_open">打开导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+    <string name="code_snippet">
+        // 蓝牙切换按钮代码
+        fun toggleBluetooth() {
+            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            if (bluetoothAdapter == null) {
+                // 设备不支持蓝牙
+                Toast.makeText(this, "不支持蓝牙", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (bluetoothAdapter.isEnabled) {
+                bluetoothAdapter.disable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+            } else {
+                // 请求蓝牙权限
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                    return
+                }
+
+                bluetoothAdapter.enable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+            }
+        }
+    </string>
+    <string name="api_integration">API集成</string>
+    <string name="enter_your_github_username">输入您的GitHub用户名</string>
+    <string name="github">GitHub</string>
+    <string name="github_user">GitHub用户</string>
+    <string name="github_email">GitHub电子邮件</string>
+    <string name="custom_style_notificaiton">自定义样式通知</string>
+    <string name="firebase_crash_analytics_head">Firebase崩溃分析</string>
+    <string name="crash_me_btn_head">崩溃我</string>
+    <string name="crash_the_app">崩溃应用</string>
+    <string name="index_out_of_bounds_btn">索引越界</string>
+    <string name="arithmetic_exception_crash">算术异常崩溃</string>
+    <string name="stack_overflow_error">栈溢出错误</string>
+    <string name="array_store_exception">数组存储异常</string>
+    <string name="class_class_exception">类转换异常</string>
+    <string name="illegal_argument_exception">非法参数异常</string>
+    <string name="firebase_analytics_app">Firebase分析</string>
+    <string name="admob_with_firebase">Admob与Firebase</string>
+    <string name="sqlite_db">SQLite数据库</string>
+    <string name="expandable_list_view">可扩展列表视图</string>
+    <string name="tab_layouts">标签布局</string>
+    <string name="bottom_nav_bar_tabs">底部导航栏标签</string>
+    <string name="aws_db">AWS数据库</string>
+    <string name="aws_login">AWS登录</string>
+    <string name="aws_signup">AWS注册</string>
+    <string name="aws_db_headline">AWS数据库</string>
+    <string name="firebase_auth_options">Firebase认证选项</string>
+    <string name="with_email_and_password">使用电子邮件和密码</string>
+    <string name="with_phone_number">使用电话号码</string>
+    <string name="with_google_sign_in">使用Google登录</string>
+    <string name="facebook_sign_in">Facebook登录</string>
+    <string name="reset_password">重置密码</string>
+    <string name="reset_email">重置电子邮件</string>
+    <string name="reset_email_input">重置电子邮件链接</string>
+    <string name="reset_your_email">重置您的电子邮件</string>
+    <string name="click_to_call">点击呼叫</string>
+    <string name="enter_your_mobile_number">输入您的手机号码</string>
+    <string name="save_number">保存号码</string>
+    <string name="architecture_patterns">架构模式</string>
+    <string name="mvvm_pattenr">MVVM模式</string>
+    <string name="mvc_pattern">MVC模式</string>
+    <string name="mvp_pattern">MVP模式</string>
+    <string name="mvvm_room">MVVM + Room</string>
+    <string name="mvvm_retrofit">MVVM + Retrofit</string>
+    <string name="simple_view_model">简单视图模型</string>
+    <string name="viewmodel_livedata_databinding">视图模型 + 实时数据 + 数据绑定</string>
+    <string name="activity_fragment_lifecycle">活动 + 片段生命周期</string>
+    <string name="navigation_architecture_component">导航架构组件</string>
+    <string name="recycleview_fundamentals">回收视图基础知识</string>
+    <string name="show_datepicker">显示日期选择器</string>
+    <string name="enter_intent">输入意图</string>
+    <string name="room_data_persistance_library">Room数据持久性库</string>
+    <string name="retrofit_with_kotlin_coroutine">Kotlin协程与Retrofit</string>
+    <string name="dependency_injection_with_dagger">使用Dagger的依赖注入</string>
+    <string name="unit_testing">单元测试</string>
+    <string name="click_here">点击这里</string>
+    <string name="a_simple_view_model">一个简单的视图模型</string>
+    <string name="add_me">添加我</string>
+    <string name="nav_fragment_1">导航片段1</string>
+    <string name="navigation_fragment_2">导航片段2</string>
+    <string name="kotlin_fundamentals">Kotlin基础</string>
+    <string name="kotlin_dsa_and_fundamentals">Kotlin数据结构与算法及基础</string>
+    <string name="kotlin_dsa">Kotlin数据结构与算法</string>
+    <string name="enter_notification_summary">输入通知摘要</string>
+    <string name="enter_notification_headline">输入通知标题</string>
+    <string name="camera_filters">相机滤镜</string>
+    <string name="image_editor">图像编辑器</string>
+    <string name="video_editor">视频编辑器</string>
+    <string name="global_android_kotlin_practice">全球安卓Kotlin练习</string>
+    <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
+    <string name="biomatric_prompt">生物识别提示</string>
+    <string name="check_root_status">检查Root状态</string>
+    <string name="secure_storage">安全存储</string>
+    <string name="ssl_pinning">SSL固定</string>
+    <string name="data_encryption">数据加密</string>
+    <string name="code_obfuscation">代码混淆</string>
+    <string name="check_permissions">检查权限</string>
+    <string name="secure_network">安全网络</string>
+    <string name="disable_logging">禁用日志记录</string>
+    <string name="app_integrity_check">应用完整性检查</string>
+    <string name="seap_sdk">SEAP SDK</string>
+    <string name="check_emulator">检查模拟器</string>
+    <string name="safetynet_check">SafetyNet检查</string>
+    <string name="check_app_update">检查应用更新</string>
+    <string name="tamper_detection">篡改检测</string>
+    <string name="secure_clipboard">安全剪贴板</string>
+    <string name="check_device_encryption">检查设备加密</string>
+    <string name="keychain_access">钥匙串访问</string>
+    <string name="network_security_config">网络安全配置</string>
+    <string name="shared_preference">共享偏好</string>
+    <string name="kotlin_coroutines_demo">Kotlin协程演示</string>
+    <string name="download_user_data">下载用户数据</string>
+
+    <string-array name="planets_array">
+        <item>水星</item>
+        <item>金星</item>
+        <item>地球</item>
+        <item>火星</item>
+        <item>木星</item>
+        <item>土星</item>
+        <item>天王星</item>
+        <item>海王星</item>
+    </string-array>
+</resources>

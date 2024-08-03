@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">एंड्रॉइड यूआई प्रैक्टिस कोटलिन</string>
+    <string name="KotlinPractice">एंड्रॉइड कोटलिन प्रैक्टिस</string>
+    <string name="title_activity_google_maps">गूगल मैप्स</string>
+    <string name="viewgroupimage">यह एंड्रॉइड में व्यूग्रुप है</string>
+    <string name="intents">इंटेंट्स</string>
+    <string name="text_view_and_edit_text">टेक्स्ट व्यू और एडिट टेक्स्ट</string>
+    <string name="explicit_intent">एक्सप्लिसिट इंटेंट</string>
+    <string name="google_implicit_intent">गूगल इम्प्लिसिट इंटेंट</string>
+    <string name="jetpackCompose">एंड्रॉइड जेटपैक कंपोज</string>
+    <string name="data_binding">डेटा बाइंडिंग</string>
+    <string name="view_model">व्यू मॉडल</string>
+    <string name="live_data">लाइव डेटा + व्यू मॉडल</string>
+    <string name="mvvm_and_room">एमवीवीएम और रूम</string>
+    <string name="depenedency_injection">डिपेंडेंसी इंजेक्शन</string>
+    <string name="apis">एपीआईज</string>
+    <string name="databases">डेटाबेस</string>
+    <string name="jetpackcompose">जेटपैक कंपोज</string>
+    <string name="kotlin_coroutines">कोटलिन कॉरूटिन्स</string>
+    <string name="material_ui_designs">मटेरियल और यूआई डिज़ाइन</string>
+    <string name="api_designs">एपीआई डिज़ाइन</string>
+    <string name="retrofit">रिट्रोफिट</string>
+    <string name="volley">वॉली</string>
+    <string name="mysql">मायएसक्यूएल</string>
+    <string name="ktor">केटोर</string>
+    <string name="json_parsing">जेएसओएन पार्सिंग</string>
+    <string name="usd">यूएसडी</string>
+    <string name="gbp">जीबीपी</string>
+    <string name="nzd">एनजेडडी</string>
+    <string name="share_app">ऐप शेयर करें</string>
+    <string name="share_whatsapp">व्हाट्सएप पर शेयर करें</string>
+    <string name="firebase">फायरबेस</string>
+    <string name="mango_db">मैंगो डीबी</string>
+    <string name="Login">लॉग इन करें</string>
+    <string name="SignIn">साइन इन करें</string>
+    <string name="goToFirebaseAuth">फायरबेस ऑथेंटिकेशन</string>
+    <string name="btn_signout">साइन आउट करें</string>
+    <string name="btnlogin">लॉग इन करें</string>
+    <string name="firebaselogintxt">फायरबेस लॉगिन</string>
+    <string name="emailenterhint">यहां अपना ईमेल दर्ज करें</string>
+    <string name="passwordhint">यहां अपना पासवर्ड दर्ज करें</string>
+    <string name="skills">अपनी स्किल्स दर्ज करें</string>
+    <string name="degreeedittxt">अपनी डिग्री दर्ज करें</string>
+    <string name="submitFirebaseUserdata">डेटा सबमिट करें</string>
+    <string name="Firebaseuserdatatxtheadline">फायरबेस यूजर डेटा</string>
+    <string name="userskillstxt">यूजर स्किल्स</string>
+    <string name="userdegreetxt">यूजर डिग्री</string>
+    <string name="currentuseremail">वर्तमान यूजर ईमेल</string>
+    <string name="edtskillshint">अपनी स्किल्स दर्ज करें</string>
+    <string name="signoutbtn">साइन आउट करें</string>
+    <string name="updateuserdata">डेटा अपडेट करें</string>
+    <string name="edtskills">अपनी स्किल्स दर्ज करें</string>
+    <string name="firebase_app">फायरबेस ऐप</string>
+    <string name="firebase_analytics">फायरबेस एनालिटिक्स</string>
+    <string name="firebase_in_app_messaging">फायरबेस इन-ऐप मैसेजिंग</string>
+    <string name="firebase_crash_analytics">फायरबेस क्रैश एनालिटिक्स</string>
+    <string name="firebase_cloud_messaging">फायरबेस क्लाउड मैसेजिंग</string>
+    <string name="google_maps">गूगल मैप्स</string>
+    <string name="android_ui_widgets">एंड्रॉइड यूआई विजेट्स</string>
+    <string name="button_in_android_ui">एंड्रॉइड यूआई में बटन</string>
+    <string name="submit_radio_buttons">रेडियो बटन सबमिट करें</string>
+    <string name="submit_checkboxes">चेकबॉक्स सबमिट करें</string>
+    <string name="submit_rating_bar">रेटिंग बार सबमिट करें</string>
+    <string name="checked_textview">चेक किया गया टेक्स्टव्यू</string>
+    <string name="hello_blank_fragment">हैलो ब्लैंक फ्रैगमेंट</string>
+    <string name="fragments">फ्रैगमेंट्स</string>
+    <string name="replacesecondfragment">दूसरे फ्रैगमेंट को बदलें</string>
+    <string name="animations">एनिमेशन</string>
+    <string name="normal">नॉर्मल</string>
+    <string name="hybrid">हाइब्रिड</string>
+    <string name="satellite">सैटेलाइट</string>
+    <string name="terrian">टेर्रियन</string>
+    <string name="none">कोई नहीं</string>
+    <string name="notifications">नोटिफिकेशन</string>
+    <string name="aws">एडब्ल्यूएस</string>
+    <string name="android_security">एंड्रॉइड सिक्योरिटी</string>
+    <string name="android_ui_components">एंड्रॉइड यूआई विजेट्स</string>
+    <string name="artificial_intelligence">आर्टिफिशियल इंटेलिजेंस</string>
+    <string name="internet_of_things_iot">इंटरनेट ऑफ थिंग्स (आईओटी)</string>
+    <string name="kotlin_practice_by_rohit">रोहित द्वारा कोटलिन प्रैक्टिस</string>
+    <string name="splashdescription">यह ऐप कोटलिन प्रैक्टिस के लिए है</string>
+    <string name="android_system_components">एंड्रॉइड सिस्टम कंपोनेंट्स</string>
+    <string name="androidsyscomponentsheadliine">एंड्रॉइड सिस्टम कंपोनेंट्स</string>
+    <string name="camera">कैमरा</string>
+    <string name="wifi_off">वाई-फाई बंद</string>
+    <string name="wifi_on">वाई-फाई चालू</string>
+    <string name="bluetooth_off">ब्लूटूथ बंद</string>
+    <string name="bluetooth_on">ब्लूटूथ चालू</string>
+    <string name="gallary">गैलरी</string>
+    <string name="files">फाइल्स</string>
+    <string name="messages">मैसेजेस</string>
+    <string name="calls_history">कॉल्स हिस्ट्री</string>
+    <string name="browser">ब्राउज़र</string>
+    <string name="recordings">रिकॉर्डिंग शुरू करें</string>
+    <string name="dial_phone">फोन डायल करें</string>
+    <string name="torch_off">टॉर्च बंद</string>
+    <string name="my_current_phone_info">मेरे वर्तमान फोन की जानकारी</string>
+    <string name="airplane_mode">एयरप्लेन मोड बंद</string>
+    <string name="clipboard">क्लिपबोर्ड</string>
+    <string name="splashscreenbottomtext">एंड्रॉइड सिस्टम के लिए मेरे प्रैक्टिस को दर्शाता है</string>
+    <string name="machine_learning">मशीन लर्निंग</string>
+    <string name="android_types_of_notifications">एंड्रॉइड के नोटिफिकेशन के प्रकार</string>
+    <string name="default_notification">डिफ़ॉल्ट नोटिफिकेशन</string>
+    <string name="high_notification">हाई नोटिफिकेशन</string>
+    <string name="low_notification">लो नोटिफिकेशन</string>
+    <string name="action_notification">एक्शन नोटिफिकेशन</string>
+    <string name="content_intent_notification">कंटेंट इंटेंट नोटिफिकेशन</string>
+    <string name="on_going_notification">ऑन-गोइंग नोटिफिकेशन</string>
+    <string name="custom_sound_notification">कस्टम साउंड नोटिफिकेशन</string>
+    <string name="big_style_text_notification">बिग स्टाइल टेक्स्ट नोटिफिकेशन</string>
+    <string name="inbox_style_notification">इनबॉक्स स्टाइल नोटिफिकेशन</string>
+    <string name="big_picture_style_notification">बिग पिक्चर स्टाइल नोटिफिकेशन</string>
+    <string name="download_style_notification">डाउनलोड स्टाइल नोटिफिकेशन</string>
+    <string name="messaging_style_notification">मैसेजिंग स्टाइल नोटिफिकेशन</string>
+    <string name="media_style_notification">मीडिया स्टाइल नोटिफिकेशन</string>
+    <string name="this_is_a_cardview">यह एक कार्डव्यू है</string>
+    <string name="default_notification_channel_id">डीएन15</string>
+    <string name="navigation_drawer_open">नेविगेशन ड्रॉअर खोलें</string>
+    <string name="navigation_drawer_close">नेविगेशन ड्रॉअर बंद करें</string>
+    <string name="code_snippet">
+        // ब्लूटूथ टॉगल बटन के लिए कोड
+        fun toggleBluetooth() {
+            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            if (bluetoothAdapter == null) {
+                // डिवाइस ब्लूटूथ का समर्थन नहीं करता
+                Toast.makeText(this, "ब्लूटूथ समर्थित नहीं है", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (bluetoothAdapter.isEnabled) {
+                bluetoothAdapter.disable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+            } else {
+                // ब्लूटूथ अनुमतियाँ यदि अनुदत्त नहीं हैं
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                    return
+                }
+
+                bluetoothAdapter.enable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+            }
+        }
+    </string>
+    <string name="api_integration">एपीआई इंटीग्रेशन</string>
+    <string name="enter_your_github_username">अपना गिटहब यूजरनेम दर्ज करें</string>
+    <string name="github">गिटहब</string>
+    <string name="github_user">गिटहब यूजर</string>
+    <string name="github_email">गिटहब ईमेल</string>
+    <string name="custom_style_notificaiton">कस्टम स्टाइल नोटिफिकेशन</string>
+    <string name="firebase_crash_analytics_head">फायरबेस क्रैश एनालिटिक्स</string>
+    <string name="crash_me_btn_head">क्रैश मी</string>
+    <string name="crash_the_app">ऐप क्रैश करें</string>
+    <string name="index_out_of_bounds_btn">इंडेक्स आउट ऑफ बाउंड्स</string>
+    <string name="arithmetic_exception_crash">अर्थमैटिक एक्सेप्शन क्रैश</string>
+    <string name="stack_overflow_error">स्टैक ओवरफ्लो एरर</string>
+    <string name="array_store_exception">एरे स्टोर एक्सेप्शन</string>
+    <string name="class_class_exception">क्लास कास्ट एक्सेप्शन</string>
+    <string name="illegal_argument_exception">अवैध तर्क अपवाद</string>
+    <string name="firebase_analytics_app">फायरबेस एनालिटिक्स</string>
+    <string name="admob_with_firebase">फायरबेस के साथ एडमॉब</string>
+    <string name="sqlite_db">एसक्यूएलआईटीई डीबी</string>
+    <string name="expandable_list_view">एक्सपैंडेबल लिस्ट व्यू</string>
+    <string name="tab_layouts">टैब लेआउट्स</string>
+    <string name="bottom_nav_bar_tabs">नीचे नेव बार टैब्स</string>
+    <string name="aws_db">एडब्ल्यूएस डीबी</string>
+    <string name="aws_login">एडब्ल्यूएस लॉगिन</string>
+    <string name="aws_signup">एडब्ल्यूएस साइनअप</string>
+    <string name="aws_db_headline">एडब्ल्यूएस डीबी</string>
+    <string name="firebase_auth_options">फायरबेस ऑथेंटिकेशन के विकल्प</string>
+    <string name="with_email_and_password">ईमेल और पासवर्ड के साथ</string>
+    <string name="with_phone_number">फोन नंबर के साथ</string>
+    <string name="with_google_sign_in">गूगल साइन इन</string>
+    <string name="facebook_sign_in">फेसबुक साइन इन</string>
+    <string name="reset_password">पासवर्ड रीसेट करें</string>
+    <string name="reset_email">ईमेल रीसेट करें</string>
+    <string name="reset_email_input">रीसेट ईमेल लिंक</string>
+    <string name="reset_your_email">अपना ईमेल रीसेट करें</string>
+    <string name="click_to_call">कॉल करने के लिए क्लिक करें</string>
+    <string name="enter_your_mobile_number">अपना मोबाइल नंबर दर्ज करें</string>
+    <string name="save_number">नंबर सेव करें</string>
+    <string name="architecture_patterns">आर्किटेक्चर पैटर्न्स</string>
+    <string name="mvvm_pattenr">एमवीवीएम पैटर्न</string>
+    <string name="mvc_pattern">एमवीसी पैटर्न</string>
+    <string name="mvp_pattern">एमवीपी पैटर्न</string>
+    <string name="mvvm_room">एमवीवीएम + रूम</string>
+    <string name="mvvm_retrofit">एमवीवीएम + रिट्रोफिट</string>
+    <string name="simple_view_model">सरल व्यू मॉडल</string>
+    <string name="viewmodel_livedata_databinding">व्यू मॉडल + लाइव डेटा + डेटा बाइंडिंग</string>
+    <string name="activity_fragment_lifecycle">एक्टिविटी + फ्रैगमेंट लाइफसाइकिल</string>
+    <string name="navigation_architecture_component">नेविगेशन आर्किटेक्चर कंपोनेंट</string>
+    <string name="recycleview_fundamentals">रिसाइकिल व्यू की मूल बातें</string>
+    <string name="show_datepicker">डेट पिकर दिखाएं</string>
+    <string name="enter_intent">इंटेंट दर्ज करें</string>
+    <string name="room_data_persistance_library">रूम डेटा पर्सिस्टेंस लाइब्रेरी</string>
+    <string name="retrofit_with_kotlin_coroutine">कोटलिन कॉरूटिन के साथ रिट्रोफिट</string>
+    <string name="dependency_injection_with_dagger">डैगर के साथ डिपेंडेंसी इंजेक्शन</string>
+    <string name="unit_testing">यूनिट टेस्टिंग</string>
+    <string name="click_here">यहां क्लिक करें</string>
+    <string name="a_simple_view_model">एक सरल व्यू मॉडल</string>
+    <string name="add_me">मुझे जोड़ें</string>
+    <string name="nav_fragment_1">नेव फ्रैगमेंट 1</string>
+    <string name="navigation_fragment_2">नेविगेशन फ्रैगमेंट 2</string>
+    <string name="kotlin_fundamentals">कोटलिन की मूल बातें</string>
+    <string name="kotlin_dsa_and_fundamentals">कोटलिन डीएसए और मूल बातें</string>
+    <string name="kotlin_dsa">कोटलिन डीएसए</string>
+    <string name="enter_notification_summary">नोटिफिकेशन सारांश दर्ज करें</string>
+    <string name="enter_notification_headline">नोटिफिकेशन हेडलाइन दर्ज करें</string>
+    <string name="camera_filters">कैमरा फ़िल्टर</string>
+    <string name="image_editor">इमेज एडिटर</string>
+    <string name="video_editor">वीडियो एडिटर</string>
+    <string name="global_android_kotlin_practice">ग्लोबल एंड्रॉइड कोटलिन प्रैक्टिस</string>
+    <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
+    <string name="biomatric_prompt">बायोमेट्रिक प्रॉम्प्ट</string>
+    <string name="check_root_status">रूट स्टेटस की जाँच करें</string>
+    <string name="secure_storage">सिक्योर स्टोरेज</string>
+    <string name="ssl_pinning">एसएसएल पिनिंग</string>
+    <string name="data_encryption">डेटा एन्क्रिप्शन</string>
+    <string name="code_obfuscation">कोड अस्पष्टता</string>
+    <string name="check_permissions">अनुमतियाँ जांचें</string>
+    <string name="secure_network">सिक्योर नेटवर्क</string>
+    <string name="disable_logging">लॉगिंग अक्षम करें</string>
+    <string name="app_integrity_check">ऐप की अखंडता की जाँच करें</string>
+    <string name="seap_sdk">एसईएपी एसडीके</string>
+    <string name="check_emulator">एमुलेटर की जाँच करें</string>
+    <string name="safetynet_check">सेफ्टीनेट जांच</string>
+    <string name="check_app_update">ऐप अपडेट की जाँच करें</string>
+    <string name="tamper_detection">टैम्पर डिटेक्शन</string>
+    <string name="secure_clipboard">सुरक्षित क्लिपबोर्ड</string>
+    <string name="check_device_encryption">डिवाइस एन्क्रिप्शन की जांच करें</string>
+    <string name="keychain_access">कीचेन एक्सेस</string>
+    <string name="network_security_config">नेटवर्क सुरक्षा कॉन्फ़िगरेशन</string>
+    <string name="shared_preference">साझा प्राथमिकता</string>
+    <string name="kotlin_coroutines_demo">कोटलिन कॉरूटिन्स डेमो</string>
+    <string name="download_user_data">यूजर डेटा डाउनलोड करें</string>
+
+    <string-array name="planets_array">
+        <item>बुध</item>
+        <item>शुक्र</item>
+        <item>पृथ्वी</item>
+        <item>मंगल</item>
+        <item>बृहस्पति</item>
+        <item>शनि</item>
+        <item>अरुण</item>
+        <item>वरुण</item>
+    </string-array>
+</resources>
