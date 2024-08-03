@@ -11,6 +11,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.rrbofficial.androiduipracticekotlin.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -53,6 +55,22 @@ class KotlinCoroutinesActivity : AppCompatActivity() {
             }
         }
 
+
+        CoroutineScope(Dispatchers.IO).launch {
+            Log.i("MyStock", "calculation started...")
+           val stock1 = async {
+               getStocck1()
+           }
+
+           val stock2 = async {
+               getStocck2()
+           }
+           val total = stock1.await() + stock2.await()
+           Log.i("MyStock", "Total is $total")
+
+        }
+
+
     }
 
     private suspend fun downloadUserData() {
@@ -70,4 +88,16 @@ class KotlinCoroutinesActivity : AppCompatActivity() {
 
         }
     }
+
+    private suspend fun getStocck1() : Int {
+        delay(10000)
+        Log.i("MyStock", "Stock 1 returned")
+        return 55000
+    }
+    private suspend fun getStocck2() : Int {
+        delay(8000)
+        Log.i("MyStock", "Stock 2 returned")
+        return 35000
+    }
+
 }
