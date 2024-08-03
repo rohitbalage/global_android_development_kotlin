@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.rrbofficial.androiduipracticekotlin.ImplicitIntent
+import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.Coroutines.KotlinCoroutinesActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityKotlindsaFundamentalsBinding
@@ -39,6 +40,11 @@ class KotlinDSAAndFundamentals : AppCompatActivity() {
             val link = "https://docs.google.com/document/d/10jCnaPJngQwL1-TnZstHYeysNIlpWIoJ/edit?usp=sharing&rtpof=true&sd=true"
             val intent = Intent(applicationContext, KotlinDocumentActivity::class.java)
             intent.putExtra("value", link)
+            startActivity(intent)
+        }
+        binding.kotlinCoroutinesDemo.setOnClickListener()
+        {
+            val intent = Intent(this, KotlinCoroutinesActivity::class.java)
             startActivity(intent)
         }
 

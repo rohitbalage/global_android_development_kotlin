@@ -234,6 +234,8 @@
     <string name="keychain_access">Keychain Access</string>
     <string name="network_security_config">Network Security Config</string>
     <string name="shared_preference">Shared Preference</string>
+    <string name="kotlin_coroutines_demo">Kotlin Coroutines Demo</string>
+    <string name="download_user_data">Download User Data</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -36,6 +36,12 @@
             android:text="@string/kotlin_coroutines"
             android:id="@+id/kotlinCoroutinesBtn"
             />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:text="@string/kotlin_coroutines_demo"
+            android:id="@+id/kotlinCoroutinesDemo"
+            />
     </LinearLayout>
 
 </ScrollView>

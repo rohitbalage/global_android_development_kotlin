@@ -183,4 +183,7 @@ dependencies {
 
     // Biometric Prompt
     implementation "androidx.biometric:biometric:1.2.0-alpha03"
+
+    // Kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 }
