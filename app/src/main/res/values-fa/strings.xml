@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">اندروید یو آی تمرین کاتلین</string>
+    <string name="KotlinPractice">تمرین اندروید کاتلین</string>
+    <string name="title_activity_google_maps">گوگل مپ</string>
+    <string name="viewgroupimage">این یک ویوگروپ در اندروید است</string>
+    <string name="intents">اینتنت‌ها</string>
+    <string name="text_view_and_edit_text">نمایش متن و ویرایش متن</string>
+    <string name="explicit_intent">اینتنت صریح</string>
+    <string name="google_implicit_intent">اینتنت ضمنی گوگل</string>
+    <string name="jetpackCompose">اندروید جت‌پک کمپوز</string>
+    <string name="data_binding">داده‌بندی</string>
+    <string name="view_model">مدل نما</string>
+    <string name="live_data">داده زنده + مدل نما</string>
+    <string name="mvvm_and_room">ام‌وی‌وی‌ام و روم</string>
+    <string name="depenedency_injection">تزریق وابستگی</string>
+    <string name="apis">API‌ها</string>
+    <string name="databases">پایگاه داده‌ها</string>
+    <string name="jetpackcompose">جت‌پک کمپوز</string>
+    <string name="kotlin_coroutines">کاتلین کوروثینز</string>
+    <string name="material_ui_designs">طراحی متریال و یو آی</string>
+    <string name="api_designs">طراحی API</string>
+    <string name="retrofit">رتروفیت</string>
+    <string name="volley">ولی</string>
+    <string name="mysql">مای‌اس‌کیوال</string>
+    <string name="ktor">کتور</string>
+    <string name="json_parsing">تجزیه JSON</string>
+    <string name="usd">دلار آمریکا</string>
+    <string name="gbp">پوند انگلیس</string>
+    <string name="nzd">دلار نیوزیلند</string>
+    <string name="share_app">اشتراک‌گذاری اپ</string>
+    <string name="share_whatsapp">اشتراک‌گذاری واتس‌اپ</string>
+    <string name="firebase">فایربیس</string>
+    <string name="mango_db">مانگو دی‌بی</string>
+    <string name="Login">ورود</string>
+    <string name="SignIn">ورود</string>
+    <string name="goToFirebaseAuth">احراز هویت فایربیس</string>
+    <string name="btn_signout">خروج از حساب</string>
+    <string name="btnlogin">ورود</string>
+    <string name="firebaselogintxt">ورود به فایربیس</string>
+    <string name="emailenterhint">ایمیل خود را اینجا وارد کنید</string>
+    <string name="passwordhint">رمز عبور خود را اینجا وارد کنید</string>
+    <string name="skills">مهارت‌های خود را وارد کنید</string>
+    <string name="degreeedittxt">مدرک تحصیلی خود را وارد کنید</string>
+    <string name="submitFirebaseUserdata">ارسال داده</string>
+    <string name="Firebaseuserdatatxtheadline">داده‌های کاربر فایربیس</string>
+    <string name="userskillstxt">مهارت‌های کاربر</string>
+    <string name="userdegreetxt">مدرک کاربر</string>
+    <string name="currentuseremail">ایمیل کاربر فعلی</string>
+    <string name="edtskillshint">مهارت‌های خود را وارد کنید</string>
+    <string name="signoutbtn">خروج از حساب</string>
+    <string name="updateuserdata">بروزرسانی داده‌ها</string>
+    <string name="edtskills">مهارت‌های خود را وارد کنید</string>
+    <string name="firebase_app">برنامه فایربیس</string>
+    <string name="firebase_analytics">آنالیز فایربیس</string>
+    <string name="firebase_in_app_messaging">پیام‌رسانی درون‌برنامه‌ای فایربیس</string>
+    <string name="firebase_crash_analytics">تحلیل خرابی فایربیس</string>
+    <string name="firebase_cloud_messaging">پیام‌رسانی ابری فایربیس</string>
+    <string name="google_maps">گوگل مپ</string>
+    <string name="android_ui_widgets">ابزارهای رابط کاربری اندروید</string>
+    <string name="button_in_android_ui">دکمه در رابط کاربری اندروید</string>
+    <string name="submit_radio_buttons">ارسال دکمه‌های رادیویی</string>
+    <string name="submit_checkboxes">ارسال جعبه‌های چک</string>
+    <string name="submit_rating_bar">ارسال نوار رتبه‌بندی</string>
+    <string name="checked_textview">متن بررسی شده</string>
+    <string name="hello_blank_fragment">سلام، قطعه خالی</string>
+    <string name="fragments">قطعات</string>
+    <string name="replacesecondfragment">تعویض قطعه دوم</string>
+    <string name="animations">انیمیشن‌ها</string>
+    <string name="normal">عادی</string>
+    <string name="hybrid">هیبریدی</string>
+    <string name="satellite">ماهواره‌ای</string>
+    <string name="terrian">زمینی</string>
+    <string name="none">هیچ‌کدام</string>
+    <string name="notifications">اعلان‌ها</string>
+    <string name="aws">AWS</string>
+    <string name="android_security">امنیت اندروید</string>
+    <string name="android_ui_components">ابزارهای رابط کاربری اندروید</string>
+    <string name="artificial_intelligence">هوش مصنوعی</string>
+    <string name="internet_of_things_iot">اینترنت اشیاء (IOT)</string>
+    <string name="kotlin_practice_by_rohit">تمرین کاتلین توسط روهیت</string>
+    <string name="splashdescription">این برنامه برای تمرین کاتلین است</string>
+    <string name="android_system_components">اجزای سیستم اندروید</string>
+    <string name="androidsyscomponentsheadliine">اجزای سیستم اندروید</string>
+    <string name="camera">دوربین</string>
+    <string name="wifi_off">وای‌فای خاموش</string>
+    <string name="wifi_on">وای‌فای روشن</string>
+    <string name="bluetooth_off">بلوتوث خاموش</string>
+    <string name="bluetooth_on">بلوتوث روشن</string>
+    <string name="gallary">گالری</string>
+    <string name="files">فایل‌ها</string>
+    <string name="messages">پیام‌ها</string>
+    <string name="calls_history">تاریخچه تماس‌ها</string>
+    <string name="browser">مرورگر</string>
+    <string name="recordings">شروع ضبط</string>
+    <string name="dial_phone">شماره‌گیری</string>
+    <string name="torch_off">چراغ‌قوه خاموش</string>
+    <string name="my_current_phone_info">اطلاعات فعلی گوشی من</string>
+    <string name="airplane_mode">حالت هواپیما خاموش</string>
+    <string name="clipboard">کلیپ‌بورد</string>
+    <string name="splashscreenbottomtext">نمایش تمرین من برای سیستم اندروید</string>
+    <string name="machine_learning">یادگیری ماشین</string>
+    <string name="android_types_of_notifications">انواع اعلان‌های اندروید</string>
+    <string name="default_notification">اعلان پیش‌فرض</string>
+    <string name="high_notification">اعلان با اولویت بالا</string>
+    <string name="low_notification">اعلان با اولویت پایین</string>
+    <string name="action_notification">اعلان عملیات</string>
+    <string name="content_intent_notification">اعلان نیت محتوا</string>
+    <string name="on_going_notification">اعلان در حال اجرا</string>
+    <string name="custom_sound_notification">اعلان با صدای سفارشی</string>
+    <string name="big_style_text_notification">اعلان با متن بزرگ</string>
+    <string name="inbox_style_notification">اعلان به سبک جعبه پیام</string>
+    <string name="big_picture_style_notification">اعلان با تصویر بزرگ</string>
+    <string name="download_style_notification">اعلان به سبک دانلود</string>
+    <string name="messaging_style_notification">اعلان به سبک پیام‌رسانی</string>
+    <string name="media_style_notification">اعلان به سبک رسانه‌ای</string>
+    <string name="this_is_a_cardview">این یک کاردویو است</string>
+    <string name="default_notification_channel_id">dn15</string>
+    <string name="navigation_drawer_open">باز کردن منوی ناوبری</string>
+    <string name="navigation_drawer_close">بستن منوی ناوبری</string>
+    <string name="code_snippet">
+        // کد برای دکمه تغییر بلوتوث
+        fun toggleBluetooth() {
+            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            if (bluetoothAdapter == null) {
+                // دستگاه از بلوتوث پشتیبانی نمی‌کند
+                Toast.makeText(this, "بلوتوث پشتیبانی نمی‌شود", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (bluetoothAdapter.isEnabled) {
+                bluetoothAdapter.disable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+            } else {
+                // درخواست مجوزهای بلوتوث در صورت عدم صدور
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                    return
+                }
+
+                bluetoothAdapter.enable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+            }
+        }
+    </string>
+    <string name="api_integration">یکپارچه‌سازی API</string>
+    <string name="enter_your_github_username">نام کاربری گیت‌هاب خود را وارد کنید</string>
+    <string name="github">گیت‌هاب</string>
+    <string name="github_user">کاربر گیت‌هاب</string>
+    <string name="github_email">ایمیل گیت‌هاب</string>
+    <string name="custom_style_notificaiton">اعلان به سبک سفارشی</string>
+    <string name="firebase_crash_analytics_head">تحلیل خرابی فایربیس</string>
+    <string name="crash_me_btn_head">خراب کردن من</string>
+    <string name="crash_the_app">خراب کردن برنامه</string>
+    <string name="index_out_of_bounds_btn">شاخص خارج از محدوده</string>
+    <string name="arithmetic_exception_crash">خرابی به دلیل استثنای حسابی</string>
+    <string name="stack_overflow_error">خطای سرریز پشته</string>
+    <string name="array_store_exception">استثنای ذخیره آرایه</string>
+    <string name="class_class_exception">استثنای تبدیل کلاس</string>
+    <string name="illegal_argument_exception">استثنای آرگومان غیرقانونی</string>
+    <string name="firebase_analytics_app">برنامه تحلیل فایربیس</string>
+    <string name="admob_with_firebase">Admob با فایربیس</string>
+    <string name="sqlite_db">پایگاه داده SQLite</string>
+    <string name="expandable_list_view">نمای لیست توسعه‌پذیر</string>
+    <string name="tab_layouts">چیدمان زبانه‌ها</string>
+    <string name="bottom_nav_bar_tabs">زبانه‌های نوار ناوبری پایین</string>
+    <string name="aws_db">پایگاه داده AWS</string>
+    <string name="aws_login">ورود به AWS</string>
+    <string name="aws_signup">ثبت‌نام در AWS</string>
+    <string name="aws_db_headline">پایگاه داده AWS</string>
+    <string name="firebase_auth_options">گزینه‌های احراز هویت فایربیس</string>
+    <string name="with_email_and_password">با ایمیل و رمز عبور</string>
+    <string name="with_phone_number">با شماره تلفن</string>
+    <string name="with_google_sign_in">ورود با گوگل</string>
+    <string name="facebook_sign_in">ورود با فیس‌بوک</string>
+    <string name="reset_password">بازنشانی رمز عبور</string>
+    <string name="reset_email">بازنشانی ایمیل</string>
+    <string name="reset_email_input">پیوند بازنشانی ایمیل</string>
+    <string name="reset_your_email">ایمیل خود را بازنشانی کنید</string>
+    <string name="click_to_call">برای تماس کلیک کنید</string>
+    <string name="enter_your_mobile_number">شماره موبایل خود را وارد کنید</string>
+    <string name="save_number">ذخیره شماره</string>
+    <string name="architecture_patterns">الگوهای معماری</string>
+    <string name="mvvm_pattenr">الگوی MVVM</string>
+    <string name="mvc_pattern">الگوی MVC</string>
+    <string name="mvp_pattern">الگوی MVP</string>
+    <string name="mvvm_room">MVVM + Room</string>
+    <string name="mvvm_retrofit">MVVM + Retrofit</string>
+    <string name="simple_view_model">مدل نمای ساده</string>
+    <string name="viewmodel_livedata_databinding">مدل نما + داده زنده + داده‌بندی</string>
+    <string name="activity_fragment_lifecycle">چرخه حیات فعالیت + قطعه</string>
+    <string name="navigation_architecture_component">کامپوننت معماری ناوبری</string>
+    <string name="recycleview_fundamentals">مبانی RecycleView</string>
+    <string name="show_datepicker">نمایش انتخابگر تاریخ</string>
+    <string name="enter_intent">اینتنت را وارد کنید</string>
+    <string name="room_data_persistance_library">کتابخانه پایداری داده Room</string>
+    <string name="retrofit_with_kotlin_coroutine">رتروفیت با کوروثین کاتلین</string>
+    <string name="dependency_injection_with_dagger">تزریق وابستگی با Dagger</string>
+    <string name="unit_testing">تست واحد</string>
+    <string name="click_here">اینجا کلیک کنید</string>
+    <string name="a_simple_view_model">یک مدل نمای ساده</string>
+    <string name="add_me">من را اضافه کنید</string>
+    <string name="nav_fragment_1">قطعه ناوبری 1</string>
+    <string name="navigation_fragment_2">قطعه ناوبری 2</string>
+    <string name="kotlin_fundamentals">مبانی کاتلین</string>
+    <string name="kotlin_dsa_and_fundamentals">DSA و مبانی کاتلین</string>
+    <string name="kotlin_dsa">DSA کاتلین</string>
+    <string name="enter_notification_summary">خلاصه اعلان را وارد کنید</string>
+    <string name="enter_notification_headline">عنوان اعلان را وارد کنید</string>
+    <string name="camera_filters">فیلترهای دوربین</string>
+    <string name="image_editor">ویرایشگر تصویر</string>
+    <string name="video_editor">ویرایشگر ویدیو</string>
+    <string name="global_android_kotlin_practice">تمرین جهانی اندروید کاتلین</string>
+    <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
+    <string name="biomatric_prompt">پیشنهاد بایومتریک</string>
+    <string name="check_root_status">بررسی وضعیت روت</string>
+    <string name="secure_storage">ذخیره‌سازی امن</string>
+    <string name="ssl_pinning">پینینگ SSL</string>
+    <string name="data_encryption">رمزگذاری داده‌ها</string>
+    <string name="code_obfuscation">مبهم‌سازی کد</string>
+    <string name="check_permissions">بررسی مجوزها</string>
+    <string name="secure_network">شبکه امن</string>
+    <string name="disable_logging">غیرفعال کردن لاگ</string>
+    <string name="app_integrity_check">بررسی یکپارچگی برنامه</string>
+    <string name="seap_sdk">SEAP SDK</string>
+    <string name="check_emulator">بررسی امولاتور</string>
+    <string name="safetynet_check">بررسی SafetyNet</string>
+    <string name="check_app_update">بررسی بروزرسانی برنامه</string>
+    <string name="tamper_detection">تشخیص دستکاری</string>
+    <string name="secure_clipboard">کلیپ‌بورد امن</string>
+    <string name="check_device_encryption">بررسی رمزگذاری دستگاه</string>
+    <string name="keychain_access">دسترسی به کلید</string>
+    <string name="network_security_config">پیکربندی امنیت شبکه</string>
+    <string name="shared_preference">ترجیح مشترک</string>
+    <string name="kotlin_coroutines_demo">دمو کوروثین کاتلین</string>
+    <string name="download_user_data">دانلود داده‌های کاربر</string>
+
+    <string-array name="planets_array">
+        <item>عطارد</item>
+        <item>زهره</item>
+        <item>زمین</item>
+        <item>مریخ</item>
+        <item>مشتری</item>
+        <item>زحل</item>
+        <item>اورانوس</item>
+        <item>نپتون</item>
+    </string-array>
+</resources>
