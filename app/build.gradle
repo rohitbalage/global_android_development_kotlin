@@ -22,6 +22,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -49,31 +53,37 @@ android {
             dimension "region"
             applicationIdSuffix ".nafta"
             versionNameSuffix "-nafta"
+            buildConfigField "String", "FLAVOR", "\"NAFTA\""
         }
         EMEA {
             dimension "region"
             applicationIdSuffix ".emea"
             versionNameSuffix "-emea"
+            buildConfigField "String", "FLAVOR", "\"EMEA\""
         }
         ASIA {
             dimension "region"
             applicationIdSuffix ".asia"
             versionNameSuffix "-asia"
+            buildConfigField "String", "FLAVOR", "\"ASIA\""
         }
         AUSTRALIA {
             dimension "region"
             applicationIdSuffix ".australia"
             versionNameSuffix "-australia"
+            buildConfigField "String", "FLAVOR", "\"AUSTRALIA\""
         }
         ANTARCTICA {
             dimension "region"
             applicationIdSuffix ".antarctica"
             versionNameSuffix "-antarctica"
+            buildConfigField "String", "FLAVOR", "\"ANTARCTICA\""
         }
         AFRICA {
             dimension "region"
             applicationIdSuffix ".africa"
             versionNameSuffix "-africa"
+            buildConfigField "String", "FLAVOR", "\"AFRICA\""
         }
     }
 

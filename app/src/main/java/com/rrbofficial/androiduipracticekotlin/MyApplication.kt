@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Color
 import android.media.AudioAttributes
 import android.net.Uri
@@ -30,12 +31,16 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MEDIA_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
+import java.util.Locale
 
 class MyApplication : Application() {
     private lateinit var crashlytics: FirebaseCrashlytics
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
+
+        //set locale
+        setAppLocale(Locale.getDefault())
 
         // Initialize Firebase
         FirebaseApp.initializeApp(this)
@@ -48,6 +53,13 @@ class MyApplication : Application() {
 
         // Apply theme based on shared preferences
         applyTheme()
+    }
+
+    private fun setAppLocale(locale: Locale) {
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

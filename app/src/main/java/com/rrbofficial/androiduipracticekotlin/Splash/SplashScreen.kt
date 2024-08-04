@@ -5,11 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.rrbofficial.androiduipracticekotlin.BuildConfig
+import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -17,19 +20,26 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_splash_screen)
 
-        // Animate logo and text
-        animateLogoAndText()
+        // Log the flavor and build type for debugging purposes
+        Log.d("SplashScreen", "Current Flavor: ${BuildConfig.FLAVOR}")
+        Log.d("SplashScreen", "Current Build Type: ${BuildConfig.BUILD_TYPE}")
 
-        // Delay for 2 seconds and then move to MainActivity
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 3000) // 2000 milliseconds = 2 seconds
+        if (BuildConfig.FLAVOR == "NAFTA" && BuildConfig.BUILD_TYPE == "debug") {
+            // Logic for NAFTADebug variant
+            setContentView(R.layout.activity_splash_screen)
+            navigateToJetpackCompose()
+        } else {
+            // Default logic for other variants
+            setContentView(R.layout.activity_splash_screen)
+            animateLogoAndText()
 
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }, 3000) // 3000 milliseconds = 3 seconds
+        }
 
-        // for gif image
         val gifImageView: ImageView = findViewById(R.id.gifsplash)
         Glide.with(this)
             .load(R.drawable.androideating)
@@ -39,7 +49,7 @@ class SplashScreen : AppCompatActivity() {
     private fun animateLogoAndText() {
         val logo = findViewById<ImageView>(R.id.splash_image)
         val text = findViewById<TextView>(R.id.splash_text)
-        val fadeInDuration = 1000L // Duration of the fade-in animation in milliseconds
+        val fadeInDuration = 1000L
 
         // Animate logo fading in
         ObjectAnimator.ofFloat(logo, "alpha", 0f, 1f).apply {
@@ -52,5 +62,11 @@ class SplashScreen : AppCompatActivity() {
             duration = fadeInDuration
             start()
         }
+    }
+
+    private fun navigateToJetpackCompose() {
+        // Navigate to JetpackCompose activity for NAFTADebug variant
+        startActivity(Intent(this, JetpackCompose::class.java))
+        finish()
     }
 }

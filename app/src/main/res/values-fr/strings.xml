@@ -1,0 +1,247 @@
+<resources>
+    <string name="app_name">pratique de l\'interface utilisateur Android avec Kotlin</string>
+    <string name="KotlinPractice">Pratique d\'Android en Kotlin</string>
+    <string name="title_activity_google_maps">Google Maps</string>
+    <string name="viewgroupimage">c\'est un groupe de vues dans Android</string>
+    <string name="intents">Intentions</string>
+    <string name="text_view_and_edit_text">Vue de texte et éditer le texte</string>
+    <string name="explicit_intent">Intention explicite</string>
+    <string name="google_implicit_intent">Intention implicite de Google</string>
+    <string name="jetpackCompose">Android Jetpack Compose</string>
+    <string name="data_binding">Liaison de données</string>
+    <string name="view_model">Modèle de vue</string>
+    <string name="live_data">Données en temps réel + Modèle de vue</string>
+    <string name="mvvm_and_room">MVVM et Room</string>
+    <string name="depenedency_injection">Injection de dépendances</string>
+    <string name="apis">API</string>
+    <string name="databases">Bases de données</string>
+    <string name="jetpackcompose">Jetpack Compose</string>
+    <string name="kotlin_coroutines">Coroutines en Kotlin</string>
+    <string name="material_ui_designs">Conceptions de matériaux et d\'UI</string>
+    <string name="api_designs">Conceptions d\'API</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="volley">Volley</string>
+    <string name="mysql">MySQL</string>
+    <string name="ktor">Ktor</string>
+    <string name="json_parsing">Analyse de JSON</string>
+    <string name="usd">USD</string>
+    <string name="gbp">GBP</string>
+    <string name="nzd">NZD</string>
+    <string name="share_app">Partager l\'application</string>
+    <string name="share_whatsapp">partager sur WhatsApp</string>
+    <string name="firebase">Firebase</string>
+    <string name="mango_db">MANGO DB</string>
+    <string name="Login">Connexion</string>
+    <string name="SignIn">S\'inscrire</string>
+    <string name="goToFirebaseAuth">Authentification Firebase</string>
+    <string name="btn_signout">Déconnexion</string>
+    <string name="btnlogin">Connexion</string>
+    <string name="firebaselogintxt">Connexion Firebase</string>
+    <string name="emailenterhint">Entrez votre email ici</string>
+    <string name="passwordhint">Entrez votre mot de passe ici</string>
+    <string name="skills">entrez vos compétences</string>
+    <string name="degreeedittxt">entrez votre diplôme</string>
+    <string name="submitFirebaseUserdata">Soumettre des données</string>
+    <string name="Firebaseuserdatatxtheadline">Données utilisateur Firebase</string>
+    <string name="userskillstxt">Compétences de l\'utilisateur</string>
+    <string name="userdegreetxt">Diplôme de l\'utilisateur</string>
+    <string name="currentuseremail">email utilisateur actuel</string>
+    <string name="edtskillshint">entrez vos compétences</string>
+    <string name="signoutbtn">déconnexion</string>
+    <string name="updateuserdata">mettre à jour les données</string>
+    <string name="edtskills">entrez vos compétences</string>
+    <string name="firebase_app">APP FIREBASE</string>
+    <string name="firebase_analytics">Analytique Firebase</string>
+    <string name="firebase_in_app_messaging">Messagerie in-app Firebase</string>
+    <string name="firebase_crash_analytics">Analytique des plantages Firebase</string>
+    <string name="firebase_cloud_messaging">Messagerie cloud Firebase</string>
+    <string name="google_maps">Google Maps</string>
+    <string name="android_ui_widgets">Widgets d\'interface utilisateur Android</string>
+    <string name="button_in_android_ui">Bouton dans l\'interface utilisateur Android</string>
+    <string name="submit_radio_buttons">Soumettre des boutons radio</string>
+    <string name="submit_checkboxes">Soumettre des cases à cocher</string>
+    <string name="submit_rating_bar">soumettre la barre de notation</string>
+    <string name="checked_textview">TextView vérifiée</string>
+    <string name="hello_blank_fragment">Bonjour, fragment vierge</string>
+    <string name="fragments">Fragments</string>
+    <string name="replacesecondfragment">Remplacer le deuxième fragment</string>
+    <string name="animations">Animations</string>
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybride</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrian">Terrain</string>
+    <string name="none">Aucun</string>
+    <string name="notifications">Notifications</string>
+    <string name="aws">AWS</string>
+    <string name="android_security">Sécurité Android</string>
+    <string name="android_ui_components">Widgets d\'interface utilisateur Android</string>
+    <string name="artificial_intelligence">Intelligence artificielle</string>
+    <string name="internet_of_things_iot">Internet des objets (IOT)</string>
+    <string name="kotlin_practice_by_rohit">PRATIQUE KOTLIN PAR ROHIT</string>
+    <string name="splashdescription">Cette application est pour la pratique de Kotlin</string>
+    <string name="android_system_components">Composants du système Android</string>
+    <string name="androidsyscomponentsheadliine">Composants du système Android</string>
+    <string name="camera">Caméra</string>
+    <string name="wifi_off">WIFI DÉSACTIVÉ</string>
+    <string name="wifi_on">WIFI ACTIVÉ</string>
+    <string name="bluetooth_off">Bluetooth DÉSACTIVÉ</string>
+    <string name="bluetooth_on">Bluetooth ACTIVÉ</string>
+    <string name="gallary">Galerie</string>
+    <string name="files">Fichiers</string>
+    <string name="messages">Messages</string>
+    <string name="calls_history">Historique des appels</string>
+    <string name="browser">Navigateur</string>
+    <string name="recordings">Démarrer l\'enregistrement</string>
+    <string name="dial_phone">Composer un numéro</string>
+    <string name="torch_off">Lampe torche DÉSACTIVÉE</string>
+    <string name="my_current_phone_info">Informations sur mon téléphone actuel</string>
+    <string name="airplane_mode">Mode avion DÉSACTIVÉ</string>
+    <string name="clipboard">Presse-papiers</string>
+    <string name="splashscreenbottomtext">Dépeint ma pratique pour le système Android</string>
+    <string name="machine_learning">Apprentissage automatique</string>
+    <string name="android_types_of_notifications">Types de notifications Android</string>
+    <string name="default_notification">Notification par défaut</string>
+    <string name="high_notification">Notification élevée</string>
+    <string name="low_notification">Notification basse</string>
+    <string name="action_notification">Notification d\'action</string>
+    <string name="content_intent_notification">Notification d\'intention de contenu</string>
+    <string name="on_going_notification">Notification en cours</string>
+    <string name="custom_sound_notification">Notification avec son personnalisé</string>
+    <string name="big_style_text_notification">Notification avec texte en grand style</string>
+    <string name="inbox_style_notification">Notification de style boîte de réception</string>
+    <string name="big_picture_style_notification">Notification avec grande image</string>
+    <string name="download_style_notification">Notification de style téléchargement</string>
+    <string name="messaging_style_notification">Notification de style messagerie</string>
+    <string name="media_style_notification">Notification de style multimédia</string>
+    <string name="this_is_a_cardview">Ceci est une CardView</string>
+    <string name="default_notification_channel_id">dn15</string>
+    <string name="navigation_drawer_open">Ouvrir le tiroir de navigation</string>
+    <string name="navigation_drawer_close">Fermer le tiroir de navigation</string>
+    <string name="code_snippet">
+        // code pour le bouton de bascule Bluetooth
+        fun toggleBluetooth() {
+            val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+            if (bluetoothAdapter == null) {
+                // L\'appareil ne prend pas en charge Bluetooth
+                Toast.makeText(this, "Bluetooth non pris en charge", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            if (bluetoothAdapter.isEnabled) {
+                bluetoothAdapter.disable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_off)
+            } else {
+                // Demander les autorisations Bluetooth si non accordées
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_ADMIN) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.BLUETOOTH_ADMIN), BLUETOOTH_PERMISSION_REQUEST_CODE)
+                    return
+                }
+
+                bluetoothAdapter.enable()
+                binding.BluetoothONOFFBtn.text = getString(R.string.bluetooth_on)
+            }
+        }
+    </string>
+    <string name="api_integration">Intégration API</string>
+    <string name="enter_your_github_username">entrez votre nom d\'utilisateur GitHub</string>
+    <string name="github">GitHub</string>
+    <string name="github_user">Utilisateur GitHub</string>
+    <string name="github_email">Email GitHub</string>
+    <string name="custom_style_notificaiton">Notification avec style personnalisé</string>
+    <string name="firebase_crash_analytics_head">Analytique des plantages Firebase</string>
+    <string name="crash_me_btn_head">Crasher</string>
+    <string name="crash_the_app">Crasher l\'application</string>
+    <string name="index_out_of_bounds_btn">Index hors limites</string>
+    <string name="arithmetic_exception_crash">Exception arithmétique Crasher</string>
+    <string name="stack_overflow_error">Erreur de dépassement de pile</string>
+    <string name="array_store_exception">Exception de stockage de tableau</string>
+    <string name="class_class_exception">Exception de classe de classe</string>
+    <string name="illegal_argument_exception">Exception d\'argument illégal</string>
+    <string name="firebase_analytics_app">Analytique Firebase</string>
+    <string name="admob_with_firebase">Admob avec Firebase</string>
+    <string name="sqlite_db">Base de données SQLite</string>
+    <string name="expandable_list_view">Vue de liste extensible</string>
+    <string name="tab_layouts">Mises en page des onglets</string>
+    <string name="bottom_nav_bar_tabs">Onglets de la barre de navigation inférieure</string>
+    <string name="aws_db">Base de données AWS</string>
+    <string name="aws_login">Connexion AWS</string>
+    <string name="aws_signup">Inscription AWS</string>
+    <string name="aws_db_headline">Base de données AWS</string>
+    <string name="firebase_auth_options">Options d\'authentification Firebase</string>
+    <string name="with_email_and_password">Avec email et mot de passe</string>
+    <string name="with_phone_number">Avec numéro de téléphone</string>
+    <string name="with_google_sign_in">Connexion avec Google</string>
+    <string name="facebook_sign_in">Connexion avec Facebook</string>
+    <string name="reset_password">Réinitialiser le mot de passe</string>
+    <string name="reset_email">Réinitialiser l\'email</string>
+    <string name="reset_email_input">Lien de réinitialisation de l\'email</string>
+    <string name="reset_your_email">Réinitialisez votre email</string>
+    <string name="click_to_call">Cliquez pour appeler</string>
+    <string name="enter_your_mobile_number">Entrez votre numéro de mobile</string>
+    <string name="save_number">Enregistrer le numéro</string>
+    <string name="architecture_patterns">Modèles d\'architecture</string>
+    <string name="mvvm_pattenr">Modèle MVVM</string>
+    <string name="mvc_pattern">Modèle MVC</string>
+    <string name="mvp_pattern">Modèle MVP</string>
+    <string name="mvvm_room">MVVM + Room</string>
+    <string name="mvvm_retrofit">MVVM + Retrofit</string>
+    <string name="simple_view_model">Modèle de vue simple</string>
+    <string name="viewmodel_livedata_databinding">Modèle de vue + Données en temps réel + Liaison de données</string>
+    <string name="activity_fragment_lifecycle">Cycle de vie de l\'activité + fragment</string>
+    <string name="navigation_architecture_component">Composant d\'architecture de navigation</string>
+    <string name="recycleview_fundamentals">Fondamentaux de RecycleView</string>
+    <string name="show_datepicker">Afficher le sélecteur de date</string>
+    <string name="enter_intent">Entrez l\'intention</string>
+    <string name="room_data_persistance_library">Bibliothèque de persistance des données de Room</string>
+    <string name="retrofit_with_kotlin_coroutine">Retrofit avec Coroutine de Kotlin</string>
+    <string name="dependency_injection_with_dagger">Injection de dépendances avec Dagger</string>
+    <string name="unit_testing">Tests unitaires</string>
+    <string name="click_here">Cliquez ici</string>
+    <string name="a_simple_view_model">Un modèle de vue simple</string>
+    <string name="add_me">Ajoutez-moi</string>
+    <string name="nav_fragment_1">Fragment de navigation 1</string>
+    <string name="navigation_fragment_2">Fragment de navigation 2</string>
+    <string name="kotlin_fundamentals">Fondamentaux de Kotlin</string>
+    <string name="kotlin_dsa_and_fundamentals">DSA et fondamentaux de Kotlin</string>
+    <string name="kotlin_dsa">DSA en Kotlin</string>
+    <string name="enter_notification_summary">Entrez le résumé de la notification</string>
+    <string name="enter_notification_headline">Entrez le titre de la notification</string>
+    <string name="camera_filters">Filtres caméra</string>
+    <string name="image_editor">Éditeur d\'images</string>
+    <string name="video_editor">Éditeur vidéo</string>
+    <string name="global_android_kotlin_practice">Pratique globale d\'Android en Kotlin</string>
+    <string name="rohitbalage_rrbofficial_com">rohitbalage@rrbofficial.com</string>
+    <string name="biomatric_prompt">Invite biométrique</string>
+    <string name="check_root_status">Vérifier le statut root</string>
+    <string name="secure_storage">Stockage sécurisé</string>
+    <string name="ssl_pinning">Ancrage SSL</string>
+    <string name="data_encryption">Cryptage des données</string>
+    <string name="code_obfuscation">Obscurcissement du code</string>
+    <string name="check_permissions">Vérifier les autorisations</string>
+    <string name="secure_network">Réseau sécurisé</string>
+    <string name="disable_logging">Désactiver la journalisation</string>
+    <string name="app_integrity_check">Vérification de l\'intégrité de l\'application</string>
+    <string name="seap_sdk">SEAP SDK</string>
+    <string name="check_emulator">Vérifier l\'émulateur</string>
+    <string name="safetynet_check">Vérification de SafetyNet</string>
+    <string name="check_app_update">Vérifier la mise à jour de l\'application</string>
+    <string name="tamper_detection">Détection de falsification</string>
+    <string name="secure_clipboard">Presse-papiers sécurisé</string>
+    <string name="check_device_encryption">Vérifier le cryptage du dispositif</string>
+    <string name="keychain_access">Accès au trousseau</string>
+    <string name="network_security_config">Configuration de la sécurité du réseau</string>
+    <string name="shared_preference">Préférence partagée</string>
+    <string name="kotlin_coroutines_demo">Démonstration des coroutines de Kotlin</string>
+    <string name="download_user_data">Télécharger les données utilisateur</string>
+
+    <string-array name="planets_array">
+        <item>Mercure</item>
+        <item>Vénus</item>
+        <item>Terre</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturne</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+</resources>
