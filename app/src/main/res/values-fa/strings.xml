@@ -233,6 +233,8 @@
     <string name="shared_preference">ترجیح مشترک</string>
     <string name="kotlin_coroutines_demo">دمو کوروثین کاتلین</string>
     <string name="download_user_data">دانلود داده‌های کاربر</string>
+    <string name="payment_integration">Payment Integration</string>
+    <string name="stripe">Stripe</string>
 
     <string-array name="planets_array">
         <item>عطارد</item>

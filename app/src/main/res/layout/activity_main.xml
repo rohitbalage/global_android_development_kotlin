@@ -168,6 +168,12 @@
                         android:id="@+id/GoToAndroidSecurity"
                         style="?attr/buttonStyle"
                         android:text="@string/android_security" />
+
+                    <Button
+                        android:id="@+id/GoToPaymentIntegration"
+                        style="?attr/buttonStyle"
+                        android:text="@string/payment_integration" />
+
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

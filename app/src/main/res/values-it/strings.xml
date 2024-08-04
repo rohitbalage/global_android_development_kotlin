@@ -233,6 +233,8 @@
     <string name="shared_preference">Preferenze condivise</string>
     <string name="kotlin_coroutines_demo">Dimostrazione delle coroutines di Kotlin</string>
     <string name="download_user_data">Scarica dati utente</string>
+    <string name="payment_integration">Payment Integration</string>
+    <string name="stripe">Stripe</string>
 
     <string-array name="planets_array">
         <item>Mercurio</item>

@@ -33,6 +33,7 @@ import com.rrbofficial.androiduipracticekotlin.KotlinDSA.KotlinDSAActivity
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
+import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegrationActivity
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 
@@ -163,6 +164,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AdvanceUIComponets.setOnClickListener(this)
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
+        binding.GoToPaymentIntegration.setOnClickListener(this)
     }
 
     private fun setInitialTheme() {
@@ -331,6 +333,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         viewModel.toggleTheme(isChecked)
                     }
                 }
+            }
+            R.id.GoToPaymentIntegration-> {
+                val intent = Intent(this, PaymentIntegrationActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }

@@ -66,7 +66,7 @@ class SplashScreen : AppCompatActivity() {
 
     private fun navigateToJetpackCompose() {
         // Navigate to JetpackCompose activity for NAFTADebug variant
-        startActivity(Intent(this, JetpackCompose::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }
