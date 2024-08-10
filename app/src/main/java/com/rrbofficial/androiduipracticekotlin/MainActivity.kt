@@ -1,6 +1,7 @@
 package com.rrbofficial.androiduipracticekotlin
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -10,7 +11,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -45,6 +48,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var toggle: ActionBarDrawerToggle
+    private val PREFS_NAME = "AppPrefs"
+    private val FIRST_RUN_KEY = "isFirstRun"
 
     // Permissions to request
     private val PERMISSIONS = arrayOf(
@@ -66,6 +71,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // First Run dialogue
+        if (isFirstRun()) {
+            showWelcomeDialog()
+            setFirstRunFlag()
+        }
 
         // Check for permissions
         if (!hasPermissions(this, *PERMISSIONS)) {
@@ -165,6 +176,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
         binding.GoToPaymentIntegration.setOnClickListener(this)
+    }
+
+    private fun isFirstRun(): Boolean {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean(FIRST_RUN_KEY, true)
+    }
+
+    private fun setFirstRunFlag() {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean(FIRST_RUN_KEY, false)
+        editor.apply()
+    }
+
+    private fun showWelcomeDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
+        // Create the dialog
+        val dialog = Dialog(this)
+        dialog.setContentView(dialogView)
+        // Handle the dismiss button
+        val dismissButton = dialogView.findViewById<Button>(R.id.dismissButton)
+        dismissButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        // Show the dialog
+        dialog.show()
     }
 
     private fun setInitialTheme() {

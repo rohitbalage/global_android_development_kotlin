@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- Logo at the top -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/appicon" />
+
+    <!-- App Name below the logo -->
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/HeadlineTextViewStyle"
+        android:layout_gravity="center"
+        android:fontFamily="@font/amarante"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <!-- ScrollView for the content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+            android:text="Android Kotlin App practise is desiged and developed by Rohit Balage (Android Developer at Reply, Detroi MI USA)
+    This app comprises of various practices in Android development. It includes various SDKS, APIs, Maps, Third Party libraires, Databases and much more.
+    the app is not for sale.
+"
+            android:textSize="16sp"
+            android:textColor="@android:color/black" />
+    </ScrollView>
+
+    <!-- Dismiss button at the bottom -->
+    <Button
+        android:id="@+id/dismissButton"
+        android:backgroundTint="@color/violetlight"
+        android:text="Dismiss"
+        style="?attr/buttonStyle"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

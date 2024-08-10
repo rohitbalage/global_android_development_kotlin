@@ -1,8 +1,10 @@
 package com.rrbofficial.androiduipracticekotlin.PaymentIntegration
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityPaymentIntegrationBinding
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
@@ -35,6 +37,13 @@ class PaymentIntegrationActivity : AppCompatActivity() {
         binding.payWithStripe.setOnClickListener {
             onPayWithStripeClick()
         }
+
+
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        super.onBackPressed()
     }
 
     // Method to handle button click

@@ -235,6 +235,7 @@
     <string name="download_user_data">Télécharger les données utilisateur</string>
     <string name="payment_integration">Payment Integration</string>
     <string name="stripe">Stripe</string>
+    <string name="adyen">Adyen</string>
 
     <string-array name="planets_array">
         <item>Mercure</item>

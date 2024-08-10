@@ -1,6 +1,7 @@
 package com.rrbofficial.androiduipracticekotlin.AndroidSysComponents
 
 import android.Manifest
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -9,6 +10,7 @@ import android.hardware.camera2.CameraAccessException
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
+import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -21,6 +23,7 @@ import androidx.core.app.ActivityCompat
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityAndroidSystemComponentsBinding
+import java.io.File
 import java.io.IOException
 
 class AndroidSystemComponents : AppCompatActivity() {
@@ -112,6 +115,36 @@ class AndroidSystemComponents : AppCompatActivity() {
         // Save number button click listener
         binding.saveNumber.setOnClickListener {
             saveNumber()
+        }
+
+        binding.showTemperature.setOnClickListener {
+            try {
+                val thermalFile = "/sys/class/thermal/thermal_zone0/temp"
+                val temp = File(thermalFile).readText().trim().toFloat() / 1000
+                Toast.makeText(this, "Device Temperature: $temp°C", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Unable to read device temperature", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        binding.showMemoryUsage.setOnClickListener {
+            val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val memoryInfo = ActivityManager.MemoryInfo()
+            activityManager.getMemoryInfo(memoryInfo)
+            Toast.makeText(this, "\"Available Memory: ${memoryInfo.availMem / (1024 * 1024)} MB\\n\" +\n" +
+                    "                    \"Total Memory: ${memoryInfo.totalMem / (1024 * 1024)} MB\"", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.showCPUInfo.setOnClickListener {
+            val cpuInfo = Build.HARDWARE
+            Toast.makeText(this, "CPU Info: $cpuInfo", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.showSensorInfo.setOnClickListener {
+            val sensorManager = getSystemService(Context.SENSOR_SERVICE) as android.hardware.SensorManager
+            val sensors = sensorManager.getSensorList(android.hardware.Sensor.TYPE_ALL)
+            val sensorInfo = sensors.joinToString("\n") { it.name }
+            Toast.makeText(this,"Sensor: $sensorInfo", Toast.LENGTH_SHORT).show()
         }
 
         // Initialize camera manager

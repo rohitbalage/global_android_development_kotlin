@@ -238,6 +238,15 @@
     <string name="download_user_data">Download User Data</string>
     <string name="payment_integration">Payment Integration</string>
     <string name="stripe">Stripe</string>
+    <string name="paypal">Paypal</string>
+    <string name="razor_pay">Razor Pay</string>
+    <string name="in_app_purchase_with_google">In App Purchase with Google</string>
+    <string name="in_app_purchase_with_amazon">In App purchase with Amazon</string>
+    <string name="adyen">Adyen</string>
+    <string name="show_temperatures">Show Temperatures</string>
+    <string name="show_cpu_info">Show CPU Info</string>
+    <string name="show_memory_usage">Show Memory Usage</string>
+    <string name="show_sensor_info">Show Sensor Info</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

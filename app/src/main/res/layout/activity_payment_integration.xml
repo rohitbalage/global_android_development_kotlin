@@ -21,6 +21,38 @@
             android:text="@string/stripe"
             />
 
+        <Button
+            style="?attr/buttonStyle"
+            android:id="@+id/pay_with_paypal"
+            android:text="@string/paypal"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:id="@+id/pay_with_razorpay"
+            android:text="@string/razor_pay"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:id="@+id/inAppPurchaseWithGoogle"
+            android:text="@string/in_app_purchase_with_google"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:id="@+id/inAppPurchaseWithAmazon"
+            android:text="@string/in_app_purchase_with_amazon"
+            />
+
+        <Button
+            style="?attr/buttonStyle"
+            android:id="@+id/AdyenPayment"
+            android:text="@string/adyen"
+            />
+
+
+
     </LinearLayout>
 
 </layout>

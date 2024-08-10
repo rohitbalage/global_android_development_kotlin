@@ -124,6 +124,31 @@
                     android:text="@string/save_number" />
 
                 <Button
+                    android:id="@+id/showTemperature"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_temperatures" />
+
+                <Button
+                    android:id="@+id/showMemoryUsage"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_memory_usage" />
+
+                <Button
+                    android:id="@+id/showCPUInfo"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_cpu_info" />
+
+                <Button
+                    android:id="@+id/showSensorInfo"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_sensor_info" />
+
+
+                <Button
                     android:id="@+id/startrecord"
                     style="?attr/buttonStyle"
                     android:text="Start Recording"
