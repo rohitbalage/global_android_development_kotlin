@@ -147,6 +147,42 @@
                     style="?attr/buttonStyle"
                     android:text="@string/show_sensor_info" />
 
+                <Button
+                    android:id="@+id/showScreendensity"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/screen_density" />
+
+
+                <Button
+                    android:id="@+id/showScreenResolution"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_screen_resolution" />
+
+                <Button
+                    android:id="@+id/showTotalRam"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/ram_status_available_unavailable" />
+
+                <Button
+                    android:id="@+id/showDeviceBootTime"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_boot_time" />
+
+                <Button
+                    android:id="@+id/showCurrentLanguage"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_current_language" />
+
+                <Button
+                    android:id="@+id/showCurrentRunningServices"
+                    app:cornerRadius="10dp"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_current_running_services" />
 
                 <Button
                     android:id="@+id/startrecord"

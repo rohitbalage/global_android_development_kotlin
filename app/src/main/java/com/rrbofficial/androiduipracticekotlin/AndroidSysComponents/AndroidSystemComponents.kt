@@ -14,6 +14,7 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.SystemClock
 import android.provider.ContactsContract
 import android.widget.ImageView
 import android.widget.Toast
@@ -25,6 +26,8 @@ import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityAndroidSystemComponentsBinding
 import java.io.File
 import java.io.IOException
+import java.util.Date
+import java.util.Locale
 
 class AndroidSystemComponents : AppCompatActivity() {
 
@@ -145,6 +148,37 @@ class AndroidSystemComponents : AppCompatActivity() {
             val sensors = sensorManager.getSensorList(android.hardware.Sensor.TYPE_ALL)
             val sensorInfo = sensors.joinToString("\n") { it.name }
             Toast.makeText(this,"Sensor: $sensorInfo", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.showScreendensity.setOnClickListener {
+            val density = resources.displayMetrics.densityDpi
+            Toast.makeText(this, "Screen Density: $density", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.showDeviceBootTime.setOnClickListener{
+            val bootTime = System.currentTimeMillis() - SystemClock.elapsedRealtime()
+            val bootDate = Date(bootTime)
+            Toast.makeText(this, "Boot Time: $bootDate", Toast.LENGTH_LONG).show()
+        }
+
+        binding.showCurrentLanguage.setOnClickListener {
+            val language = Locale.getDefault().displayLanguage
+            Toast.makeText(this, "Current Language: $language", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.showCurrentRunningServices.setOnClickListener {
+            val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val runningServices = activityManager.getRunningServices(Integer.MAX_VALUE)
+            Toast.makeText(this, "Running Services: ${runningServices.size}", Toast.LENGTH_LONG).show()
+        }
+
+        binding.showTotalRam.setOnClickListener{
+            val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+            val memoryInfo = ActivityManager.MemoryInfo()
+            activityManager.getMemoryInfo(memoryInfo)
+            val totalRam = memoryInfo.totalMem / (1024 * 1024)
+            val freeRam = memoryInfo.availMem / (1024 * 1024)
+            Toast.makeText(this, "Free RAM: $freeRam MB  and Total RAM: $totalRam MB\"", Toast.LENGTH_LONG).show()
         }
 
         // Initialize camera manager
