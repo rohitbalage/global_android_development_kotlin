@@ -27,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
@@ -39,6 +40,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegrationActivity
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: MainViewModel by viewModels()
@@ -71,6 +73,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Timber Logs
+        Timber.d("onCreate called Android NAFTA")
+
+        // Handle dynamic links
+
+        // Handle the dynamic link
+        FirebaseDynamicLinks.getInstance()
+            .getDynamicLink(intent)
+            .addOnSuccessListener(this) { pendingDynamicLinkData ->
+                // Get the deep link from result (if there is one)
+                val deepLink = pendingDynamicLinkData?.link
+                deepLink?.let {
+                    // Handle the deep link URL
+                    // For example, navigate to a specific screen
+                    // Example: if (it.toString().contains("some_path")) { navigateToSomeScreen() }
+                }
+            }
+            .addOnFailureListener(this) { e ->
+                // Handle failure
+            }
+
 
         // First Run dialogue
         if (isFirstRun()) {

@@ -31,6 +31,7 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MEDIA_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
+import timber.log.Timber
 import java.util.Locale
 
 class MyApplication : Application() {
@@ -38,6 +39,8 @@ class MyApplication : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
+    // Timber Logcat
+        Timber.plant(Timber.DebugTree())
 
         //set locale
         setAppLocale(Locale.getDefault())
@@ -53,7 +56,10 @@ class MyApplication : Application() {
 
         // Apply theme based on shared preferences
         applyTheme()
+
     }
+
+
 
     private fun setAppLocale(locale: Locale) {
         Locale.setDefault(locale)
