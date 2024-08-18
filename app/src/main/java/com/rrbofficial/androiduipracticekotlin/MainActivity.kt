@@ -7,9 +7,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
-import android.location.Location
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -38,15 +35,16 @@ import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidget
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
-import com.rrbofficial.androiduipracticekotlin.KotlinDSA.KotlinDSAActivity
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegrationActivity
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.Locale
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: MainViewModel by viewModels()
@@ -83,13 +81,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Timber Logs
         Timber.d("onCreate MainActivity Started")
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
-        } else {
-            showLocationDialog()
-        }
+            // check first run
+            checkFirstRun()
+
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Handle the dynamic link
         FirebaseDynamicLinks.getInstance()
@@ -106,14 +103,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .addOnFailureListener(this) { e ->
                 // Handle failure
             }
-
-
-        // First Run dialogue
-        if (isFirstRun()) {
-            showWelcomeDialog()
-            setFirstRunFlag()
-        }
-
         // Check for permissions
         if (!hasPermissions(this, *PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
@@ -214,22 +203,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToPaymentIntegration.setOnClickListener(this)
     }
 
+private  fun checkFirstRun()
+    {
+        if (isFirstRun()) {
+
+            // Launch a coroutine to manage the flow
+            GlobalScope.launch(Dispatchers.Main) {
+                    showWelcomeDialog()
+                    setFirstRunFlag()
+                showLocationDialog()
+                }
+            }
+        }
+
     private fun showLocationDialog() {
         val dialog = LocationDialogFragment()
         dialog.show(supportFragmentManager, "LocationDialog")
     }
 
-
-
-    private fun showLocationDialog(message: String) {
-        val builder = android.app.AlertDialog.Builder(this)
-        builder.setTitle("Current Location")
-        builder.setMessage(message)
-        builder.setPositiveButton("OK") { dialog, _ ->
-            dialog.dismiss()
-        }
-        builder.create().show()
-    }
 
     private fun isFirstRun(): Boolean {
         val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -311,7 +302,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .show()
     }
 
-    private fun hasPermissions(context: Context, vararg permissions: String): Boolean {
+    private fun hasPermissions(context: MainActivity, vararg permissions: String): Boolean {
         return permissions.all {
             ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
         }
