@@ -7,6 +7,9 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -25,6 +28,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
@@ -41,6 +46,7 @@ import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegra
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 import timber.log.Timber
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: MainViewModel by viewModels()
@@ -52,6 +58,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var toggle: ActionBarDrawerToggle
     private val PREFS_NAME = "AppPrefs"
     private val FIRST_RUN_KEY = "isFirstRun"
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     // Permissions to request
     private val PERMISSIONS = arrayOf(
@@ -74,9 +81,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Timber Logs
-        Timber.d("onCreate called Android NAFTA")
+        Timber.d("onCreate MainActivity Started")
 
-        // Handle dynamic links
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        } else {
+            showLocationDialog()
+        }
 
         // Handle the dynamic link
         FirebaseDynamicLinks.getInstance()
@@ -199,6 +212,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
         binding.GoToPaymentIntegration.setOnClickListener(this)
+    }
+
+    private fun showLocationDialog() {
+        val dialog = LocationDialogFragment()
+        dialog.show(supportFragmentManager, "LocationDialog")
+    }
+
+
+
+    private fun showLocationDialog(message: String) {
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("Current Location")
+        builder.setMessage(message)
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.create().show()
     }
 
     private fun isFirstRun(): Boolean {
