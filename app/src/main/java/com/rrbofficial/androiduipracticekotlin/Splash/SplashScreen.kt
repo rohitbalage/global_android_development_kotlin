@@ -25,12 +25,6 @@ class SplashScreen : AppCompatActivity() {
         Log.d("SplashScreen", "Current Flavor: ${BuildConfig.FLAVOR}")
         Log.d("SplashScreen", "Current Build Type: ${BuildConfig.BUILD_TYPE}")
 
-        if (BuildConfig.FLAVOR == "NAFTA" && BuildConfig.BUILD_TYPE == "debug") {
-            // Logic for NAFTADebug variant
-            setContentView(R.layout.activity_splash_screen)
-            navigateToJetpackCompose()
-        } else {
-            // Default logic for other variants
             setContentView(R.layout.activity_splash_screen)
             animateLogoAndText()
 
@@ -38,7 +32,6 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }, 3000) // 3000 milliseconds = 3 seconds
-        }
 
         val gifImageView: ImageView = findViewById(R.id.gifsplash)
         Glide.with(this)
@@ -64,9 +57,4 @@ class SplashScreen : AppCompatActivity() {
         }
     }
 
-    private fun navigateToJetpackCompose() {
-        // Navigate to JetpackCompose activity for NAFTADebug variant
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
 }

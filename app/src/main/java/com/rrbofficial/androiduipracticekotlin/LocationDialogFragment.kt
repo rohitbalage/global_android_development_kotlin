@@ -82,12 +82,12 @@ class LocationDialogFragment : DialogFragment(), OnMapReadyCallback {
 
                         // Format the message based on continent and country
                         val formattedMessage = when (continent) {
-                            "North America" -> "NORTH AMERICA, $countryName, $fullAddress"
-                            "South America" -> "SOUTH AMERICA, $countryName, $fullAddress"
-                            "Europe" -> "EMEA, $countryName, $fullAddress"
-                            "Asia" -> "ASIA, $countryName, $fullAddress"
-                            "Australia" -> "AUSTRALIA, $countryName, $fullAddress"
-                            "Antarctica" -> "ANTARCTICA, $countryName, $fullAddress"
+                            "North America" -> "You are in North America \n $countryName, $fullAddress"
+                            "South America" -> "You are in South America \n $countryName, $fullAddress"
+                            "Europe" -> "You are in Europe \n, $countryName, $fullAddress"
+                            "Asia" -> "You are in Asia \n $countryName, $fullAddress"
+                            "Australia" -> "You are in Australia \n $countryName, $fullAddress"
+                            "Antarctica" -> "You are in Antarctica \n $countryName, $fullAddress"
                             "Africa" -> "AFRICA, $countryName, $fullAddress"
                             else -> "$countryName, $fullAddress"
                         }

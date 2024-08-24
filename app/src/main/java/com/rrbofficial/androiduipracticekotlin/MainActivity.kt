@@ -91,6 +91,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // check first run
         checkFirstRun()
 
+        // check location of the user
+        showLocationDialog()
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Handle the dynamic link
@@ -250,7 +253,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             GlobalScope.launch(Dispatchers.Main) {
                 showWelcomeDialog()
                 setFirstRunFlag()
-                showLocationDialog()
+
             }
         }
     }
