@@ -9,12 +9,15 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +26,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.documentfile.provider.DocumentFile
 import androidx.drawerlayout.widget.DrawerLayout
 import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -45,6 +49,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.io.FileOutputStream
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val viewModel: MainViewModel by viewModels()
@@ -75,16 +81,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     // Request code for permissions
     private val PERMISSION_REQUEST_CODE = 100
+    private val DIRECTORY_PICKER_REQUEST_CODE = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Timber Logs
         Timber.d("onCreate MainActivity Started")
 
-
-            // check first run
-            checkFirstRun()
-
+        // check first run
+        checkFirstRun()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -92,17 +97,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         FirebaseDynamicLinks.getInstance()
             .getDynamicLink(intent)
             .addOnSuccessListener(this) { pendingDynamicLinkData ->
-                // Get the deep link from result (if there is one)
                 val deepLink = pendingDynamicLinkData?.link
                 deepLink?.let {
                     // Handle the deep link URL
-                    // For example, navigate to a specific screen
-                    // Example: if (it.toString().contains("some_path")) { navigateToSomeScreen() }
                 }
             }
             .addOnFailureListener(this) { e ->
                 // Handle failure
             }
+
         // Check for permissions
         if (!hasPermissions(this, *PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
@@ -145,7 +148,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Handle home click
                     val intent = Intent(this, KotlinDSAAndFundamentals::class.java)
                     startActivity(intent)
                     finish()
@@ -155,6 +157,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.nav_settings -> {
                     // Handle settings click
+                }
+                R.id.nav_getlogs -> {
+                    // Handle get logs click
+                    val intent = Intent(Intent.ACTION_OPEN_DOCUMENT_TREE)
+                    startActivityForResult(intent, DIRECTORY_PICKER_REQUEST_CODE)
                 }
             }
             drawerLayout.closeDrawers()
@@ -203,24 +210,55 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToPaymentIntegration.setOnClickListener(this)
     }
 
-private  fun checkFirstRun()
-    {
-        if (isFirstRun()) {
-
-            // Launch a coroutine to manage the flow
-            GlobalScope.launch(Dispatchers.Main) {
-                    showWelcomeDialog()
-                    setFirstRunFlag()
-                showLocationDialog()
-                }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == DIRECTORY_PICKER_REQUEST_CODE && resultCode == RESULT_OK) {
+            data?.data?.let { uri ->
+                // Save logs to the selected directory
+                getAndSaveLogs(uri)
             }
         }
+    }
+
+    private fun getAndSaveLogs(directoryUri: Uri) {
+        try {
+            // Get logs
+            val process = Runtime.getRuntime().exec("logcat -d")
+            val bufferedReader = process.inputStream.bufferedReader()
+            val currentLogs = bufferedReader.use { it.readText() }
+
+            // Create a file in the selected directory
+            val logFileName = "app_logs_${System.currentTimeMillis()}.txt"
+            val documentUri = DocumentFile.fromTreeUri(this, directoryUri)?.createFile("text/plain", logFileName)
+
+            documentUri?.let {
+                contentResolver.openOutputStream(it.uri)?.use { outputStream ->
+                    outputStream.write(currentLogs.toByteArray())
+                    outputStream.flush()
+                    Toast.makeText(this, "Logs saved to ${it.uri}", Toast.LENGTH_LONG).show()
+                }
+            }
+        } catch (e: IOException) {
+            Timber.e(e, "Error getting logs")
+            Toast.makeText(this, "Failed to save logs", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun checkFirstRun() {
+        if (isFirstRun()) {
+            // Launch a coroutine to manage the flow
+            GlobalScope.launch(Dispatchers.Main) {
+                showWelcomeDialog()
+                setFirstRunFlag()
+                showLocationDialog()
+            }
+        }
+    }
 
     private fun showLocationDialog() {
         val dialog = LocationDialogFragment()
         dialog.show(supportFragmentManager, "LocationDialog")
     }
-
 
     private fun isFirstRun(): Boolean {
         val sharedPreferences: SharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -315,7 +353,6 @@ private  fun checkFirstRun()
                 grantResults[index] != PackageManager.PERMISSION_GRANTED
             }
             if (deniedPermissions.isNotEmpty()) {
-                // Handle the case where some permissions were denied
                 AlertDialog.Builder(this)
                     .setTitle("Permissions Required")
                     .setMessage("Please grant all permissions to continue using the app.")
@@ -409,7 +446,6 @@ private  fun checkFirstRun()
                 finish()
             }
             R.id.switchTheme -> {
-                // Handle switchTheme changes
                 binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
                     if (isChecked != viewModel.isNightMode.value) {
                         viewModel.toggleTheme(isChecked)
@@ -426,36 +462,21 @@ private  fun checkFirstRun()
 
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
-        // Set dialog title and message
         builder.setTitle("CLOSE APP")
             .setMessage("Are you sure you want to close this app?")
-
-        // Set "Yes" button and its listener
         builder.setPositiveButton("Yes") { dialogInterface: DialogInterface, _: Int ->
-            // Close the activity
             finish()
             dialogInterface.dismiss()
         }
-
-        // Set "No" button and its listener
         builder.setNegativeButton("No") { dialogInterface: DialogInterface, _: Int ->
-            // Dismiss the dialog box
             dialogInterface.dismiss()
         }
-
-        // Create the dialog
         val dialog: AlertDialog = builder.create()
-
-        // Set background color
         dialog.window?.setBackgroundDrawableResource(R.color.violet)
-
-        // Customize button colors
         dialog.setOnShowListener {
             dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(resources.getColor(R.color.white))
             dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(resources.getColor(R.color.white))
         }
-
-        // Show the dialog
         dialog.show()
     }
 }

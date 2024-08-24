@@ -12,4 +12,9 @@
         android:id="@+id/nav_settings"
         android:title="@string/video_editor"
         android:icon="@drawable/ic_menu_camera" />
+
+    <item
+        android:id="@+id/nav_getlogs"
+        android:title="Get Logs"
+        android:icon="@drawable/ic_menu_camera" />
 </menu>
