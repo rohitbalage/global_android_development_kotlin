@@ -253,6 +253,7 @@
     <string name="show_boot_time">Show Boot time</string>
     <string name="show_current_language">Show Current Language</string>
     <string name="show_current_running_services">Show Current Running Services</string>
+    <string name="google_ads">Google Ads</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

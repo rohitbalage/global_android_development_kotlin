@@ -46,6 +46,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2112678444983361~1234567890"/>
+
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2112678444983361~1630225253"/>
+
+
+
+        <activity
+            android:name=".GoogleAds.GoogleAdsActivity"
+            android:exported="false" />
         <activity
             android:name=".DUOMFA.DUO_MFA_Activity"
             android:exported="false" />
@@ -55,9 +71,7 @@
         <activity
             android:name=".JetpackCompose.RecycleView.RecycleViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".SharedPrefernces.SharedPreferenceActivity"
-            android:exported="false" />
+
         <activity
             android:name=".KotlinDSA.KotlinDSAActivity"
             android:exported="false" />

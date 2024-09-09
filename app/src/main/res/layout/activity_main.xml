@@ -159,6 +159,14 @@
                         android:text="@string/notifications"
                         android:fontFamily="@font/amaranth" />
 
+
+                    <Button
+                        android:id="@+id/GoToGoogleAds"
+                        style="?attr/buttonStyle"
+                        android:text="@string/google_ads" />
+
+
+
                     <Button
                         android:id="@+id/GotoArchitecturePatterns"
                         style="?attr/buttonStyle"

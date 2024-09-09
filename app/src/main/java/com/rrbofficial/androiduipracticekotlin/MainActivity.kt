@@ -37,6 +37,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
+import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
@@ -211,6 +212,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.AndroidSystemComponents.setOnClickListener(this)
         binding.GotoMachineLearning.setOnClickListener(this)
         binding.GoToPaymentIntegration.setOnClickListener(this)
+        binding.GoToGoogleAds.setOnClickListener(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -231,7 +233,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val currentLogs = bufferedReader.use { it.readText() }
 
             // Create a file in the selected directory
-            val logFileName = "app_logs_${System.currentTimeMillis()}.txt"
+            val logFileName = "app_logs_GKA_${System.currentTimeMillis()}.txt"
             val documentUri = DocumentFile.fromTreeUri(this, directoryUri)?.createFile("text/plain", logFileName)
 
             documentUri?.let {
@@ -393,6 +395,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this, GoogleMaps::class.java)
                 startActivity(intent)
             }
+
+            R.id.GoToGoogleAds -> {
+                val intent = Intent(this, GoogleAdsActivity::class.java)
+                startActivity(intent)
+            }
+
             R.id.APisbtn -> {
                 val intent = Intent(this, Apis::class.java)
                 startActivity(intent)
