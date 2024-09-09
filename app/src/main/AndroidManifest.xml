@@ -52,13 +52,6 @@
             android:value="ca-app-pub-2112678444983361~1234567890"/>
 
 
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2112678444983361~1630225253"/>
-
-
-
         <activity
             android:name=".GoogleAds.GoogleAdsActivity"
             android:exported="false" />

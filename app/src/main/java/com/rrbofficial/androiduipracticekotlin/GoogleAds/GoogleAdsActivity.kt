@@ -73,7 +73,7 @@ class GoogleAdsActivity : AppCompatActivity() {
     // Load Interstitial Ad
     private fun loadInterstitialAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx", adRequest,
+        InterstitialAd.load(this, "ca-app-pub-2112678444983361/3369972866", adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     interstitialAd = ad
@@ -88,7 +88,7 @@ class GoogleAdsActivity : AppCompatActivity() {
     // Load Rewarded Video Ad
     private fun loadRewardedAd() {
         val adRequest = AdRequest.Builder().build()
-        RewardedAd.load(this, "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx", adRequest,
+        RewardedAd.load(this, "ca-app-pub-2112678444983361/6481515071", adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdLoaded(ad: RewardedAd) {
                     rewardedAd = ad

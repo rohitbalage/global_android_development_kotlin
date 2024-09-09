@@ -6,66 +6,67 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="56dp"
     tools:context=".GoogleAds.GoogleAdsActivity">
 
-    <!-- Banner AdView at the bottom -->
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-2112678444983361/7498964761" />
+    <!-- Banner AdView -->
+<com.google.android.gms.ads.AdView
+android:id="@+id/adView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+ads:adSize="BANNER"
+ads:adUnitId="ca-app-pub-2112678444983361/7498964761" />
 
     <!-- Button for Banner Ad -->
-    <Button
-        android:id="@+id/btn_show_banner_ad"
-        style="?attr/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Banner Ad"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+<Button
+android:id="@+id/btn_show_banner_ad"
+style="?attr/buttonStyle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Show Banner Ad"
+app:layout_constraintTop_toBottomOf="@+id/textView6"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="16dp"/>
 
     <!-- Button for Interstitial Ad -->
-    <Button
-        android:id="@+id/btn_show_interstitial_ad"
-        style="?attr/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Interstitial Ad"
-        app:layout_constraintTop_toBottomOf="@+id/btn_show_banner_ad"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+<Button
+android:id="@+id/btn_show_interstitial_ad"
+style="?attr/buttonStyle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Show Interstitial Ad"
+app:layout_constraintTop_toBottomOf="@+id/btn_show_banner_ad"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="16dp"/>
 
     <!-- Button for Rewarded Video Ad -->
-    <Button
-        android:id="@+id/btn_show_rewarded_video_ad"
-        style="?attr/buttonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show Rewarded Video Ad"
-        app:layout_constraintTop_toBottomOf="@+id/btn_show_interstitial_ad"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/adView" />
+<Button
+android:id="@+id/btn_show_rewarded_video_ad"
+style="?attr/buttonStyle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Show Rewarded Video Ad"
+app:layout_constraintTop_toBottomOf="@+id/btn_show_interstitial_ad"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="16dp"
+app:layout_constraintBottom_toTopOf="@+id/adView" />
 
     <!-- TextView at the top -->
-    <TextView
-        android:id="@+id/textView6"
-        style="@style/HeadlineTextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ads with Google Adsense"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+<TextView
+android:id="@+id/textView6"
+style="@style/HeadlineTextViewStyle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Ads with Google Adsense"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginTop="24dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
