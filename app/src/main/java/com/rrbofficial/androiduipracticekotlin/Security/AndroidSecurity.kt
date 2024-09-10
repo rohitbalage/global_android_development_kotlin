@@ -17,8 +17,6 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.safetynet.SafetyNet
-import com.google.android.gms.safetynet.SafetyNetApi
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import io.grpc.android.BuildConfig
@@ -77,7 +75,6 @@ class AndroidSecurity : AppCompatActivity() {
         integrityCheckBtn.setOnClickListener { appIntegrityCheck() }
         seapSdkBtn.setOnClickListener { seapSdkIntegration() }
         emulatorCheckBtn.setOnClickListener { checkEmulator() }
-        safetyNetCheckBtn.setOnClickListener { safetyNetCheck() }
         appUpdateCheckBtn.setOnClickListener { checkAppUpdate() }
         tamperDetectionBtn.setOnClickListener { tamperDetection() }
         secureClipboardBtn.setOnClickListener { secureClipboard() }
@@ -256,23 +253,8 @@ class AndroidSecurity : AppCompatActivity() {
         Toast.makeText(this, if (isEmulator) "Running on Emulator" else "Running on Real Device", Toast.LENGTH_SHORT).show()
     }
 
-    private fun safetyNetCheck() {
-        val googleApiClient = GoogleApiClient.Builder(this)
-            .addApi(SafetyNet.API)
-            .build()
 
-        googleApiClient.connect()
-        SafetyNet.SafetyNetApi.attest(googleApiClient, "nonce".toByteArray())
-            .setResultCallback { result ->
-                if (result.status.isSuccess) {
-                    val jwsResult = result.jwsResult
-                    // Parse JWS and validate SafetyNet response
-                    Toast.makeText(this, "SafetyNet check passed", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "SafetyNet check failed", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
+
 
     private fun checkAppUpdate() {
         // Proactive app update check logic here

@@ -468,6 +468,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+
         }
     }
 

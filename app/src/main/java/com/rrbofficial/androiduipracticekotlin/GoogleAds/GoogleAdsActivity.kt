@@ -2,6 +2,8 @@ package com.rrbofficial.androiduipracticekotlin.GoogleAds
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
@@ -11,7 +13,12 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdView
+import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.nativead.MediaView
 import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.AdListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -68,6 +75,9 @@ class GoogleAdsActivity : AppCompatActivity() {
                 loadRewardedAd() // Reload if not ready
             }
         }
+
+        // Load Native Ad
+        loadNativeAd()
     }
 
     // Load Interstitial Ad
@@ -98,6 +108,45 @@ class GoogleAdsActivity : AppCompatActivity() {
                     rewardedAd = null
                 }
             })
+    }
+
+    // Load Native Advanced Ad
+    private fun loadNativeAd() {
+        val adLoader = com.google.android.gms.ads.AdLoader.Builder(this, "ca-app-pub-2112678444983361/7991744151")
+            .forNativeAd { nativeAd ->
+                populateNativeAdView(nativeAd)
+            }
+            .withAdListener(object : AdListener() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    // Handle the error
+                }
+            })
+            .withNativeAdOptions(NativeAdOptions.Builder().build())
+            .build()
+
+        adLoader.loadAd(AdRequest.Builder().build())
+    }
+
+    // Populate Native Ad View
+    private fun populateNativeAdView(nativeAd: NativeAd) {
+        val nativeAdView: NativeAdView = findViewById(R.id.nativeAdView)
+
+        // Set the headline (Title of the ad)
+        nativeAdView.headlineView = nativeAdView.findViewById(R.id.native_ad_headline)
+        (nativeAdView.headlineView as TextView).text = nativeAd.headline
+
+        // Set the media view (For video content)
+        nativeAdView.mediaView = nativeAdView.findViewById(R.id.mediaView)
+        nativeAdView.mediaView?.setMediaContent(nativeAd.mediaContent)
+
+        // If there is an icon
+        if (nativeAd.icon != null) {
+            nativeAdView.iconView = nativeAdView.findViewById(R.id.native_ad_icon)
+            (nativeAdView.iconView as ImageView).setImageDrawable(nativeAd.icon?.drawable)
+        }
+
+        // Assign NativeAd to NativeAdView
+        nativeAdView.setNativeAd(nativeAd)
     }
 
     // Optional: Clean up resources on destroy
