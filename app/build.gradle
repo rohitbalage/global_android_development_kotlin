@@ -201,6 +201,9 @@ dependencies {
     // AdMob dependency for Google Mobile Ads SDK
     implementation 'com.google.android.gms:play-services-ads:22.2.0' // Use the latest version
 
+    // One signal Notificaiton
+    implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
+
 
 }
 

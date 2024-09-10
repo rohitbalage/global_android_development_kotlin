@@ -357,16 +357,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val deniedPermissions = permissions.filterIndexed { index, _ ->
                 grantResults[index] != PackageManager.PERMISSION_GRANTED
             }
-            if (deniedPermissions.isNotEmpty()) {
-                AlertDialog.Builder(this)
-                    .setTitle("Permissions Required")
-                    .setMessage("Please grant all permissions to continue using the app.")
-                    .setPositiveButton("OK") { dialogInterface: DialogInterface, _: Int ->
-                        ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), PERMISSION_REQUEST_CODE)
-                    }
-                    .setCancelable(false)
-                    .show()
-            }
+
         }
     }
 

@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.onesignal.OneSignal
+import com.onesignal.debug.LogLevel
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.TypeAndStyle
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant
@@ -31,16 +33,33 @@ import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NO
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MEDIA_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_MESSAGING_STYLE_CHANNEL_ID
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.AppConstant.NOTIFICATION_ONGOING_CHANNEL_ID
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.Locale
 
 class MyApplication : Application() {
     private lateinit var crashlytics: FirebaseCrashlytics
+    val ONESIGNAL_APP_ID = "e066ae09-b166-455f-a3a4-8b21edca0da9"
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
     // Timber Logcat
         Timber.plant(Timber.DebugTree())
+
+        // one signal notification
+        // Verbose Logging set to help debug issues, remove before releasing your app.
+        OneSignal.Debug.logLevel = LogLevel.VERBOSE
+
+        // OneSignal Initialization
+        OneSignal.initWithContext(this, ONESIGNAL_APP_ID)
+
+        // requestPermission will show the native Android notification permission prompt.
+        // NOTE: It's recommended to use a OneSignal In-App Message to prompt instead.
+        CoroutineScope(Dispatchers.IO).launch {
+            OneSignal.Notifications.requestPermission(false)
+        }
 
         //set locale
         setAppLocale(Locale.getDefault())
