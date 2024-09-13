@@ -41,7 +41,6 @@ class MYSQLSignUp : AppCompatActivity() {
 
         // Set up the image selection button
         selectImageButton.setOnClickListener {
-            // Open gallery to select an image
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, IMAGE_PICK_CODE)
         }
@@ -59,7 +58,7 @@ class MYSQLSignUp : AppCompatActivity() {
                 lifecycleScope.launch(Dispatchers.IO) {
                     try {
                         val retrofit = Retrofit.Builder()
-                            .baseUrl("http://rrbofficial.com/")
+                            .baseUrl("https://rrbofficial.com/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build()
 
@@ -76,6 +75,14 @@ class MYSQLSignUp : AppCompatActivity() {
                         if (response.isSuccessful) {
                             runOnUiThread {
                                 Toast.makeText(this@MYSQLSignUp, "Sign-up successful", Toast.LENGTH_SHORT).show()
+
+                                // After successful sign-up, pass data to MySQLUserActivity
+                                val intent = Intent(this@MYSQLSignUp, MySQLUserActivity::class.java)
+                                intent.putExtra("email", email)
+                                intent.putExtra("hobby", hobby)
+                                intent.putExtra("degree", degree)
+                                intent.putExtra("profile_picture", profileImageBase64)
+                                startActivity(intent)
                             }
                         } else {
                             runOnUiThread {

@@ -23,7 +23,8 @@ class MYSQLActivity : AppCompatActivity() {
         }
 
         binding.mysqlloginbtn.setOnClickListener {
-            // Handle login button click here
+           val intent = Intent(this, MYSQLLogin::class.java)
+            startActivity(intent)
         }
 
         binding.mysqlpasswordresetbtn.setOnClickListener {

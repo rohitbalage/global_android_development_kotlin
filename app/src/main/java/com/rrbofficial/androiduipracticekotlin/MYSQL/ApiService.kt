@@ -1,4 +1,5 @@
 import com.rrbofficial.androiduipracticekotlin.MYSQL.ApiResponse
+import com.rrbofficial.androiduipracticekotlin.MYSQL.LoginResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -13,6 +14,22 @@ interface ApiService {
         @Field("email") email: String,
         @Field("hobby") hobby: String,
         @Field("degree") degree: String,
-        @Field("profile_picture") profile_picture: String? // Ensure consistency
+        @Field("profile_picture") profile_picture: String
     ): Response<ApiResponse>
+
+    @FormUrlEncoded
+    @POST("update_user_profile.php")
+    suspend fun updateUserProfile(
+        @Field("email") email: String,
+        @Field("hobby") hobby: String,
+        @Field("degree") degree: String,
+        @Field("profile_picture") profile_picture: String?
+    ): Response<ApiResponse>
+
+    @FormUrlEncoded
+    @POST("login.php")
+    suspend fun login(
+        @Field("user_id_or_email") userIdOrEmail: String,
+        @Field("password") password: String
+    ): Response<LoginResponse>
 }
