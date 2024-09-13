@@ -254,6 +254,12 @@
     <string name="show_current_language">Show Current Language</string>
     <string name="show_current_running_services">Show Current Running Services</string>
     <string name="google_ads">Google Ads</string>
+    <string name="mysql_app">MYSQL APP</string>
+    <string name="mysql_authentication">MYSQL Authentication</string>
+    <string name="mysql_sing_up">MYSQL sing up</string>
+    <string name="mysql_login">MYSQL Login</string>
+    <string name="mysql_password_reset">MYSQL Password reset</string>
+    <string name="trigger_push_notification">Trigger Push Notification</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -42,15 +42,31 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/appicon"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".MYSQL.MySQLUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MYSQL.MYSQLPasswordReset"
+            android:exported="false" />
+        <activity
+            android:name=".MYSQL.MYSQLLogin"
+            android:exported="false" />
+        <activity
+            android:name=".MYSQL.MYSQLSignUp"
+            android:exported="false" />
+        <activity
+            android:name=".MYSQL.MYSQLActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2112678444983361~1234567890"/>
-
+            android:value="ca-app-pub-2112678444983361~1234567890" />
 
         <activity
             android:name=".GoogleAds.GoogleAdsActivity"
@@ -64,7 +80,6 @@
         <activity
             android:name=".JetpackCompose.RecycleView.RecycleViewActivity"
             android:exported="false" />
-
         <activity
             android:name=".KotlinDSA.KotlinDSAActivity"
             android:exported="false" />

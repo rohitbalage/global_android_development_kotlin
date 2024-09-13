@@ -204,6 +204,16 @@ dependencies {
     // One signal Notificaiton
     implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
 
+    // Retrofit for networking
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    // Gson converter for JSON parsing
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // Coroutines for handling background tasks
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+
 
 }
 

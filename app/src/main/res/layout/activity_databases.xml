@@ -40,16 +40,14 @@
                 android:id="@+id/MYSQLBtn"
                 style="?attr/buttonStyle"
                 android:text="@string/mysql"
-                android:onClick="goToMYSQL"
+                android:onClick="goToMYSQLDB"
                 app:layout_constraintTop_toBottomOf="@+id/button" />
 
             <Button
                 android:id="@+id/MangoDBBtn"
                 style="?attr/buttonStyle"
                 android:text="@string/mango_db"
-                android:onClick="goToMangoDB"
                 app:layout_constraintTop_toBottomOf="@+id/button" />
-
 
 
             <Button
@@ -66,6 +64,7 @@
                 android:text="@string/aws_db"
                 android:onClick="goToAWSDB"
              />
+
 
             <Button
                 android:id="@+id/SharePrefBtn"

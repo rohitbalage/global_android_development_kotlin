@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MYSQL.MYSQLActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/mysqlappline"
+                style="@style/HeadlineTextViewStyle"
+                android:text="@string/mysql_app"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/mysqlsingupbtn"
+                style="?attr/buttonStyle"
+                android:text="@string/mysql_sing_up" />
+
+            <Button
+                android:id="@+id/mysqlloginbtn"
+                style="?attr/buttonStyle"
+                android:text="@string/mysql_login" />
+
+            <Button
+                android:id="@+id/mysqlpasswordresetbtn"
+                style="?attr/buttonStyle"
+                android:text="@string/mysql_password_reset"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/mysqlpushnotificationbtn"
+                style="?attr/buttonStyle"
+                android:text="@string/trigger_push_notification"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

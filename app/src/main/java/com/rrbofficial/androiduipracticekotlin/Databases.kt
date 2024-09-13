@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.rrbofficial.androiduipracticekotlin.AWS.AWSDBActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Firebase
+import com.rrbofficial.androiduipracticekotlin.MYSQL.MYSQLActivity
 import com.rrbofficial.androiduipracticekotlin.SQLite.SQLiteForm
 import com.rrbofficial.androiduipracticekotlin.SharedPreferences.SharedPreferenceActivity
 
@@ -29,8 +30,7 @@ class Databases : AppCompatActivity() {
 
 
     }
-    fun goToMYSQL(view: View) {}
-    fun goToMangoDB(view: View) {}
+
     fun goToSQLITE(view: View) {
 
         val intent = Intent(this, SQLiteForm::class.java)
@@ -47,5 +47,11 @@ class Databases : AppCompatActivity() {
     fun goToSharePref(view: View) {
         val intent = Intent(this, SharedPreferenceActivity   ::class.java)
         startActivity(intent)
+    }
+
+    fun goToMYSQLDB(view: View) {
+        val intent = Intent(this, MYSQLActivity::class.java)
+        startActivity(intent)
+
     }
 }
