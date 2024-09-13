@@ -8,3 +8,4 @@ data class LoginResponse(
     val degree: String?,
     val profile_picture: String?
 )
+

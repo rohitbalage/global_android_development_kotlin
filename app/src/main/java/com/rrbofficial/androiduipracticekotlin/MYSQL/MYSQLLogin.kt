@@ -1,86 +1,81 @@
 package com.rrbofficial.androiduipracticekotlin.MYSQL
 
-import ApiService
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.rrbofficial.androiduipracticekotlin.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.*
+import org.json.JSONObject
+import java.io.IOException
 
 class MYSQLLogin : AppCompatActivity() {
 
-    private lateinit var userIdOrEmailEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var loginButton: Button
+    // Declare variables for views
+    private lateinit var etUserIdOrEmail: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var btnLogin: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mysqllogin)
 
         // Initialize views
-        userIdOrEmailEditText = findViewById(R.id.etUserIdOrEmail)
-        passwordEditText = findViewById(R.id.etPassword)
-        loginButton = findViewById(R.id.btnLogin)
+        etUserIdOrEmail = findViewById(R.id.etUserIdOrEmail)
+        etPassword = findViewById(R.id.etPassword)
+        btnLogin = findViewById(R.id.btnLogin)
 
-        // Handle login button click
-        loginButton.setOnClickListener {
-            val userIdOrEmail = userIdOrEmailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+        btnLogin.setOnClickListener {
+            val userIdOrEmail = etUserIdOrEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
-            if (userIdOrEmail.isNotEmpty() && password.isNotEmpty()) {
-                // Call the login API
-                lifecycleScope.launch(Dispatchers.IO) {
-                    try {
-                        val retrofit = Retrofit.Builder()
-                            .baseUrl("https://rrbofficial.com/")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build()
-
-                        val apiService = retrofit.create(ApiService::class.java)
-                        val response = apiService.login(userIdOrEmail, password)
-
-                        if (response.isSuccessful && response.body() != null) {
-                            val loginResponse = response.body()
-
-                            // Log the response for debugging
-                            Log.d("MYSQLLogin", "Login Response: ${loginResponse}")
-
-                            // Navigate to MySQLUserActivity after successful login
-                            if (loginResponse?.status == "success") {
-                                val intent = Intent(this@MYSQLLogin, MySQLUserActivity::class.java)
-                                intent.putExtra("email", loginResponse.email)
-                                intent.putExtra("hobby", loginResponse.hobby)
-                                intent.putExtra("degree", loginResponse.degree)
-                                intent.putExtra("profile_picture", loginResponse.profile_picture)
-                                startActivity(intent)
-                                finish() // Close login activity
-                            } else {
-                                runOnUiThread {
-                                    Toast.makeText(this@MYSQLLogin, "Login failed: ${loginResponse?.message}", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        } else {
-                            runOnUiThread {
-                                Toast.makeText(this@MYSQLLogin, "Login failed", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    } catch (e: Exception) {
-                        runOnUiThread {
-                            Toast.makeText(this@MYSQLLogin, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
+            if (userIdOrEmail.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Email ID and password are required", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Please fill in both fields", Toast.LENGTH_SHORT).show()
+                loginUser(userIdOrEmail, password)
             }
         }
+    }
+
+    private fun loginUser(email: String, password: String) {
+        val client = OkHttpClient()
+
+        val formBody = FormBody.Builder()
+            .add("email", email)
+            .add("password", password)
+            .build()
+
+        val request = Request.Builder()
+            .url("https://rrbofficial.com/login.php")
+            .post(formBody)
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    Toast.makeText(this@MYSQLLogin, "Login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (response.isSuccessful) {
+                    val responseData = response.body?.string()
+                    val json = JSONObject(responseData)
+                    runOnUiThread {
+                        if (json.getString("status") == "success") {
+                            Toast.makeText(this@MYSQLLogin, "Login successful!", Toast.LENGTH_SHORT).show()
+                            // Navigate to the next activity if needed
+                        } else {
+                            Toast.makeText(this@MYSQLLogin, "Login failed: ${json.getString("message")}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    runOnUiThread {
+                        Toast.makeText(this@MYSQLLogin, "Login failed: server error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
     }
 }
