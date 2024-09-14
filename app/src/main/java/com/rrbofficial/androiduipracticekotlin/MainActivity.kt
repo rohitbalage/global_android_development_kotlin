@@ -13,7 +13,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -36,6 +35,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
+import com.rrbofficial.androiduipracticekotlin.AndroidAnimations.Animations
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AndroidWidgets.AndroidHomeWidgetsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
@@ -51,7 +51,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.io.FileOutputStream
 import java.io.IOException
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -94,7 +93,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         checkFirstRun()
 
         // check location of the user
-        showLocationDialog()
+
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -255,6 +254,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if (isFirstRun()) {
             // Launch a coroutine to manage the flow
             GlobalScope.launch(Dispatchers.Main) {
+                showLocationDialog()
+
+                // Delay for 2 seconds before showing the location dialog
+                Thread.sleep(5000)
                 showWelcomeDialog()
                 setFirstRunFlag()
 

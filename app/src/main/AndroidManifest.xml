@@ -239,7 +239,7 @@
             android:name=".Notifications.Notifications"
             android:exported="false" />
         <activity
-            android:name=".Animations"
+            android:name=".AndroidAnimations.Animations"
             android:exported="false" />
         <activity
             android:name=".KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals"

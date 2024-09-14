@@ -263,6 +263,7 @@
     <string name="your_device_information">Your Device Information</string>
     <string name="device_name">Device Name:</string>
     <string name="manufacturer">Manufacturer:</string>
+    <string name="animatios_in_android">Animatios in Android</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

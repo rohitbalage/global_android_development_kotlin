@@ -220,6 +220,8 @@ dependencies {
     // Add this for the logging interceptor
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
+    // airbnb animation
+    implementation 'com.airbnb.android:lottie:4.2.2'
 
 }
 
