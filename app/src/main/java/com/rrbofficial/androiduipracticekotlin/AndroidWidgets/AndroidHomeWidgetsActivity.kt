@@ -29,28 +29,24 @@ class AndroidHomeWidgetsActivity : AppCompatActivity() {
                 val number = input.toInt()
                 sum += number
 
-                // Update the activity TextView
+                // Update the activity TextView to show the current sum
                 answerTextActivity.text = "Answer: $sum"
 
-                // Update both widgets
-                updateWidget(applicationContext)
+                // Update the second widget with the current sum
+                updateSecondWidget(applicationContext)
             }
         }
     }
 
-    private fun updateWidget(context: Context) {
+    private fun updateSecondWidget(context: Context) {
         val widgetManager = AppWidgetManager.getInstance(context)
-
-        // Update the first widget (with EditText and Button)
-        val firstWidget = ComponentName(context, FirstWidgetProvider::class.java)
-        val remoteViewsFirstWidget = RemoteViews(context.packageName, R.layout.widget_layout_first)
-        remoteViewsFirstWidget.setTextViewText(R.id.answertextwidgets, "Answer: $sum")
-        widgetManager.updateAppWidget(firstWidget, remoteViewsFirstWidget)
 
         // Update the second widget (only displaying the answer)
         val secondWidget = ComponentName(context, SecondWidgetProvider::class.java)
         val remoteViewsSecondWidget = RemoteViews(context.packageName, R.layout.widget_layout_second)
         remoteViewsSecondWidget.setTextViewText(R.id.answerTextOnlyWidget, "Answer: $sum")
+
+        // Apply the update to the second widget
         widgetManager.updateAppWidget(secondWidget, remoteViewsSecondWidget)
     }
 }

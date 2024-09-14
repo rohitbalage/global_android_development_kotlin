@@ -1,33 +1,115 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="@drawable/gradient_background">
 
-    <EditText
-        android:id="@+id/editextwidgets"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter a number"
-        android:inputType="number" />
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="16dp"
+        android:background="@drawable/gradient_background"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/addbuttonwidgets"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Add"
-        android:background="@color/violetlight"
-        android:textColor="#FFFFFF" />
+        <!-- Device Information -->
+        <TextView
+            android:id="@+id/device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device Name: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/answertextwidgets"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Answer: 0"
-    android:layout_gravity="center_horizontal"
-    android:textSize="18sp"
-    android:paddingTop="8dp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/model_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model Name: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manufacturer: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Brand: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/device_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device ID: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/serial_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Serial Number: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/build_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Build Fingerprint: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/sdk_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SDK Version: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/cpu_cores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CPU Cores: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RAM: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Storage: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/battery_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Battery Level: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/battery_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Battery Status: "
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+

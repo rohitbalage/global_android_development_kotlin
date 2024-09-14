@@ -260,6 +260,9 @@
     <string name="mysql_login">MYSQL Login</string>
     <string name="mysql_password_reset">MYSQL Password reset</string>
     <string name="trigger_push_notification">Trigger Push Notification</string>
+    <string name="your_device_information">Your Device Information</string>
+    <string name="device_name">Device Name:</string>
+    <string name="manufacturer">Manufacturer:</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
