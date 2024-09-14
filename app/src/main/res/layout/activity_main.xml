@@ -147,6 +147,11 @@
                         android:text="@string/fragments" />
 
                     <Button
+                        android:id="@+id/GoToAndroidWidgets"
+                        style="?attr/buttonStyle"
+                        android:text="Android Widgets" />
+
+                    <Button
                         android:id="@+id/GotoAnimations"
                         style="?attr/buttonStyle"
                         android:text="@string/animations" />

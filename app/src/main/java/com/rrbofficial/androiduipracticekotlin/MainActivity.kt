@@ -37,6 +37,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
+import com.rrbofficial.androiduipracticekotlin.AndroidWidgets.AndroidHomeWidgetsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
@@ -213,6 +214,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GotoMachineLearning.setOnClickListener(this)
         binding.GoToPaymentIntegration.setOnClickListener(this)
         binding.GoToGoogleAds.setOnClickListener(this)
+        binding.GoToAndroidWidgets.setOnClickListener(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -456,6 +458,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.GoToPaymentIntegration-> {
                 val intent = Intent(this, PaymentIntegrationActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            R.id.GoToAndroidWidgets -> {
+                val intent = Intent(this, AndroidHomeWidgetsActivity::class.java)
                 startActivity(intent)
                 finish()
             }

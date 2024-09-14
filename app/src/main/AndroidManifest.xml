@@ -49,6 +49,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AndroidWidgets.AndroidHomeWidgetsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MYSQL.MySQLUserActivity"
             android:exported="false" />
         <activity
@@ -338,6 +341,26 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
+
+        <!-- Widget Providers should be inside the <application> tag -->
+        <receiver android:name=".AndroidWidgets.FirstWidgetProvider" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_first" />
+        </receiver>
+
+        <receiver android:name=".AndroidWidgets.SecondWidgetProvider" android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_second" />
+        </receiver>
+
     </application>
 
 </manifest>
