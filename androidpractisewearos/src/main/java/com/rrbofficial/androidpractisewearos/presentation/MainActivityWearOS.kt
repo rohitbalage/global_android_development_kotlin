@@ -1,95 +1,146 @@
 package com.rrbofficial.androidpractisewearos.presentation
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material.*
-import com.rrbofficial.androidpractisewearos.R
-import com.rrbofficial.androidpractisewearos.presentation.theme.AndroidUiPracticeKotlinTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.google.accompanist.pager.rememberPagerState
 
 class MainActivityWearOS : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
-        super.onCreate(savedInstanceState)
-        setContent {
-            WearApp()
+
+    private var answer: Int = 0
+
+    // BroadcastReceiver to listen for updates from the WearDataListenerService
+    private val answerReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            answer = intent?.getIntExtra("answer_key", 0) ?: 0
+            // Trigger recomposition to update the UI
+            setContent { WearApp(answer) }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent { WearApp(answer) }
+
+        // Register BroadcastReceiver to listen for updates from the service
+        registerReceiver(answerReceiver, IntentFilter("ANSWER_UPDATE"))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(answerReceiver)
     }
 }
 
+@OptIn(ExperimentalPagerApi::class)
 @Composable
-fun WearApp() {
-    AndroidUiPracticeKotlinTheme {
-        val context = LocalContext.current
+fun WearApp(answer: Int) {
+    val pagerState = rememberPagerState()
+
+    Scaffold(
+        timeText = { TimeText() },
+        vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) }
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colors.background)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .background(Color.Black)  // Keep the black background
         ) {
-            TimeText(modifier = Modifier.padding(bottom = 16.dp))
-            Greeting(greetingName = "Android")
-            Spacer(modifier = Modifier.height(20.dp))
-            CustomButton("Button 1") {
-                Toast.makeText(context, "Button 1 clicked", Toast.LENGTH_SHORT).show()
+            // HorizontalPager to display pages
+            HorizontalPager(
+                state = pagerState,
+                count = 3,  // Set the number of pages directly here
+                modifier = Modifier
+                    .weight(1f)  // Make pager take most of the screen
+                    .fillMaxSize()
+            ) { page ->
+                when (page) {
+                    0 -> AnswerScreen(answer)  // First screen to show the answer
+                    1 -> PageTwoScreen()
+                    2 -> PageThreeScreen()
+                }
             }
-            Spacer(modifier = Modifier.height(10.dp))
-            CustomButton("Button 2") {
-                Toast.makeText(context, "Button 2 clicked", Toast.LENGTH_SHORT).show()
-            }
+
+            // Pager indicator dots at the bottom
+            HorizontalPagerIndicator(
+                pagerState = pagerState,
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(16.dp),
+                activeColor = Color.White,  // Active dot color
+                inactiveColor = Color.Gray  // Inactive dot color
+            )
         }
     }
 }
 
 @Composable
-fun Greeting(greetingName: String) {
-    Text(
+fun AnswerScreen(answer: Int) {
+    Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colors.primary,
-        text = stringResource(R.string.hello_world, greetingName),
-        fontSize = 16.sp
-    )
-}
-
-@Composable
-fun CustomButton(text: String, onClick: () -> Unit) {
-    val buttonColor = Color(0xFFEE82EE) // Violet color defined directly
-    Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = buttonColor,
-            contentColor = Color.White
-        ),
-        modifier = Modifier
-            .fillMaxWidth(0.8f)
-            .height(48.dp)
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-        Text(text = text, fontSize = 16.sp, textAlign = TextAlign.Center)
+        Text(
+            text = "Answer: $answer",  // Display the received answer
+            fontSize = 20.sp,
+            color = Color.White,  // White text on black background
+            textAlign = TextAlign.Center
+        )
     }
 }
 
-@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
 @Composable
-fun DefaultPreview() {
-    WearApp()
+fun PageTwoScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Page Two",
+            fontSize = 20.sp,
+            color = Color.White,  // White text on black background
+            textAlign = TextAlign.Center
+        )
+    }
+}
+
+@Composable
+fun PageThreeScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Page Three",
+            fontSize = 20.sp,
+            color = Color.White,  // White text on black background
+            textAlign = TextAlign.Center
+        )
+    }
 }

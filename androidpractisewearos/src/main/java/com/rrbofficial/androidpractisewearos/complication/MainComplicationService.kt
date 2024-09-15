@@ -8,15 +8,10 @@ import androidx.wear.watchface.complications.datasource.ComplicationRequest
 import androidx.wear.watchface.complications.datasource.SuspendingComplicationDataSourceService
 import java.util.Calendar
 
-/**
- * Skeleton for complication data source that returns short text.
- */
 class MainComplicationService : SuspendingComplicationDataSourceService() {
 
     override fun getPreviewData(type: ComplicationType): ComplicationData? {
-        if (type != ComplicationType.SHORT_TEXT) {
-            return null
-        }
+        if (type != ComplicationType.SHORT_TEXT) return null
         return createComplicationData("Mon", "Monday")
     }
 
@@ -29,13 +24,14 @@ class MainComplicationService : SuspendingComplicationDataSourceService() {
             Calendar.THURSDAY -> createComplicationData("Thu", "Thursday")
             Calendar.FRIDAY -> createComplicationData("Fri!", "Friday!")
             Calendar.SATURDAY -> createComplicationData("Sat", "Saturday")
-            else -> throw IllegalArgumentException("too many days")
+            else -> throw IllegalArgumentException("Invalid day")
         }
     }
 
-    private fun createComplicationData(text: String, contentDescription: String) =
-        ShortTextComplicationData.Builder(
+    private fun createComplicationData(text: String, contentDescription: String): ComplicationData {
+        return ShortTextComplicationData.Builder(
             text = PlainComplicationText.Builder(text).build(),
             contentDescription = PlainComplicationText.Builder(contentDescription).build()
         ).build()
+    }
 }

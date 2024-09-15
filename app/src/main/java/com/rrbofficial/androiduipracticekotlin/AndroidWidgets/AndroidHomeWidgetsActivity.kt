@@ -4,11 +4,14 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RemoteViews
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.wearable.PutDataMapRequest
+import com.google.android.gms.wearable.Wearable
 import com.rrbofficial.androiduipracticekotlin.R
 
 class AndroidHomeWidgetsActivity : AppCompatActivity() {
@@ -32,10 +35,31 @@ class AndroidHomeWidgetsActivity : AppCompatActivity() {
                 // Update the activity TextView to show the current sum
                 answerTextActivity.text = "Answer: $sum"
 
+                // Send the updated sum to the Wear OS device
+                sendDataToWearOS(sum)
+
                 // Update the second widget with the current sum
                 updateSecondWidget(applicationContext)
             }
         }
+    }
+
+    private fun sendDataToWearOS(answer: Int) {
+        // Create a PutDataMapRequest with the path /add_value
+        val dataMapRequest = PutDataMapRequest.create("/add_value").apply {
+            dataMap.putInt("answer_key", answer)  // Add the sum to the DataMap
+        }
+        val putDataRequest = dataMapRequest.asPutDataRequest()
+        putDataRequest.setUrgent()  // Set the data as urgent for immediate syncing
+
+        // Send the data using Wearable DataClient
+        Wearable.getDataClient(this).putDataItem(putDataRequest)
+            .addOnSuccessListener {
+                Log.d("AndroidHomeWidgets", "Data sent to Wear OS: $answer")
+            }
+            .addOnFailureListener { e ->
+                Log.e("AndroidHomeWidgets", "Failed to send data", e)
+            }
     }
 
     private fun updateSecondWidget(context: Context) {
