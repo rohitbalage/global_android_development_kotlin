@@ -28,6 +28,14 @@
                 android:id="@+id/biometricPromptBtn"
                 android:text="@string/biomatric_prompt" />
 
+
+            <Button
+                style="?attr/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/customLockscreenbtn"
+                android:text="Custom Lock Screen" />
+
             <Button
                 android:id="@+id/checkRootBtn"
                 style="?attr/buttonStyle"

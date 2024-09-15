@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
@@ -46,6 +47,7 @@ import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUICompo
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegrationActivity
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
+import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.ScreenReceiver
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -93,8 +95,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         checkFirstRun()
 
         // check location of the user
-
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Handle the dynamic link
@@ -171,6 +171,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             drawerLayout.closeDrawers()
             true
         }
+
+
+        //check for custom lock screen
+        val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
+        filter.addAction(Intent.ACTION_SCREEN_OFF)
+        val receiver = ScreenReceiver()
+        registerReceiver(receiver, filter)
+
+
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("MyAppPreferences", MODE_PRIVATE)

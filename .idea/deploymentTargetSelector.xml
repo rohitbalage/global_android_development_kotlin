@@ -15,10 +15,10 @@
       </SelectionState>
       <SelectionState runConfigName="androidpractisewearos">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-09-14T23:45:06.464427700Z">
+        <DropdownSelection timestamp="2024-09-15T15:17:26.383340500Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=31081JEEJW04QL" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=6b8d6336" />
             </handle>
           </Target>
         </DropdownSelection>

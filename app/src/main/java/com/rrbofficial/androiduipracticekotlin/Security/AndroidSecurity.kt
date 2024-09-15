@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.GoogleApiClient
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
+import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.CustomLockScreenActivity
 import io.grpc.android.BuildConfig
 import java.io.File
 import java.io.FileOutputStream
@@ -62,6 +63,7 @@ class AndroidSecurity : AppCompatActivity() {
         val deviceEncryptionCheckBtn = findViewById<Button>(R.id.deviceEncryptionCheckBtn)
         val keychainAccessBtn = findViewById<Button>(R.id.keychainAccessBtn)
         val networkSecurityConfigBtn = findViewById<Button>(R.id.networkSecurityConfigBtn)
+        val customlockscreenbtn = findViewById<Button>(R.id.customLockscreenbtn)
 
         biometricPromptBtn.setOnClickListener { authenticateUser() }
         checkRootBtn.setOnClickListener { checkRootStatus() }
@@ -81,6 +83,10 @@ class AndroidSecurity : AppCompatActivity() {
         deviceEncryptionCheckBtn.setOnClickListener { checkDeviceEncryption() }
         keychainAccessBtn.setOnClickListener { keychainAccess() }
         networkSecurityConfigBtn.setOnClickListener { networkSecurityConfig() }
+        customlockscreenbtn.setOnClickListener {
+            val intent = Intent(this, CustomLockScreenActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onBackPressed() {
