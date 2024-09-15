@@ -264,6 +264,9 @@
     <string name="device_name">Device Name:</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="animatios_in_android">Animatios in Android</string>
+    <string name="external_ui_libarires">External UI Libarires</string>
+    <string name="tasty_toast">Tasty Toast</string>
+    <string name="external_ui_libraries">External UI libraries</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

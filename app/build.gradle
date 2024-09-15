@@ -224,5 +224,9 @@ dependencies {
     // airbnb animation
     implementation 'com.airbnb.android:lottie:4.2.2'
 
+    implementation 'io.github.shashank02051997:FancyToast:2.0.2'
+
+
+
 }
 

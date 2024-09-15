@@ -97,6 +97,11 @@
                         android:text="@string/android_system_components" />
 
                     <Button
+                        android:id="@+id/externaluilibraries"
+                        style="?attr/buttonStyle"
+                        android:text="@string/external_ui_libarires" />
+
+                    <Button
                         android:id="@+id/AritificalIntelligence"
                         style="?attr/buttonStyle"
                         android:text="@string/artificial_intelligence" />

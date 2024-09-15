@@ -13,6 +13,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -39,6 +40,7 @@ import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidget
 import com.rrbofficial.androiduipracticekotlin.AndroidAnimations.Animations
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AndroidWidgets.AndroidHomeWidgetsActivity
+import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.ExternalUILibrariesActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
@@ -51,6 +53,7 @@ import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.ScreenR
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.IOException
@@ -79,17 +82,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Manifest.permission.CAMERA,
         Manifest.permission.RECORD_AUDIO,
         Manifest.permission.CALL_PHONE,
-        Manifest.permission.READ_CONTACTS
+        Manifest.permission.READ_CONTACTS,
+        Manifest.permission.BLUETOOTH_CONNECT,
     )
 
     // Request code for permissions
     private val PERMISSION_REQUEST_CODE = 100
     private val DIRECTORY_PICKER_REQUEST_CODE = 1001
+    private val REQUEST_OVERLAY_PERMISSION_CODE = 1234
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Timber Logs
         Timber.d("onCreate MainActivity Started")
+
+        //toast types:
+
 
         // check first run
         checkFirstRun()
@@ -110,10 +118,36 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 // Handle failure
             }
 
+
+
+
+
         // Check for permissions
         if (!hasPermissions(this, *PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE)
         }
+
+        //check for overlay permissions
+
+        // Check if the app has permission to draw overlays
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(this)) {
+                // If permission is not granted, request the user to grant permission
+                val intent = Intent(
+                    Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:$packageName")
+                )
+
+                startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION_CODE)
+            } else {
+                // If permission is granted, proceed to start the lock screen service
+                startLockScreenService()
+            }
+        } else {
+            // For Android versions lower than M, directly start the lock screen service
+            startLockScreenService()
+        }
+
 
         // Check internet connectivity
         if (!isInternetAvailable(this)) {
@@ -223,6 +257,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToPaymentIntegration.setOnClickListener(this)
         binding.GoToGoogleAds.setOnClickListener(this)
         binding.GoToAndroidWidgets.setOnClickListener(this)
+        binding.externaluilibraries.setOnClickListener(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -266,7 +301,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 showLocationDialog()
 
                 // Delay for 2 seconds before showing the location dialog
-                Thread.sleep(5000)
+                delay(6000)
                 showWelcomeDialog()
                 setFirstRunFlag()
 
@@ -365,6 +400,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+// Method to start the LockScreenService
+private fun startLockScreenService() {
+    // Start the foreground service to ensure it's always running
+    val serviceIntent = Intent(this, ScreenReceiver::class.java)
+    startService(serviceIntent)
+}
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_REQUEST_CODE) {
@@ -379,6 +421,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.uicomponents -> {
                 val intent = Intent(this, MaterialUIComponents::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.externaluilibraries -> {
+                    val intent = Intent(this, ExternalUILibrariesActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -481,9 +528,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
+
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         val builder = AlertDialog.Builder(this)
         builder.setTitle("CLOSE APP")
             .setMessage("Are you sure you want to close this app?")
