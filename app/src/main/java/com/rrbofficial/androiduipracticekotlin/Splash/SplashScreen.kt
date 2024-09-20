@@ -2,6 +2,7 @@ package com.rrbofficial.androiduipracticekotlin.Splash
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,8 +12,10 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.BuildConfig
-import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_login
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_signup
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -25,13 +28,11 @@ class SplashScreen : AppCompatActivity() {
         Log.d("SplashScreen", "Current Flavor: ${BuildConfig.FLAVOR}")
         Log.d("SplashScreen", "Current Build Type: ${BuildConfig.BUILD_TYPE}")
 
-            setContentView(R.layout.activity_splash_screen)
-            animateLogoAndText()
+        setContentView(R.layout.activity_splash_screen)
+        animateLogoAndText()
 
-            Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }, 3000) // 3000 milliseconds = 3 seconds
+        // Handle dynamic links
+        handleDynamicLink()
 
         val gifImageView: ImageView = findViewById(R.id.gifsplash)
         Glide.with(this)
@@ -57,4 +58,51 @@ class SplashScreen : AppCompatActivity() {
         }
     }
 
+    private fun handleDynamicLink() {
+        FirebaseDynamicLinks.getInstance()
+            .getDynamicLink(intent)
+            .addOnSuccessListener(this) { pendingDynamicLinkData ->
+                var deepLink: Uri? = null
+                if (pendingDynamicLinkData != null) {
+                    deepLink = pendingDynamicLinkData.link
+                    Log.d("DynamicLink", "Received deep link: $deepLink")
+
+                    // Redirect to different activities based on the deep link
+                    when (deepLink?.path) {
+                        "/special-offer" -> {
+                            // Navigate to SpecialOfferActivity
+                            val intent = Intent(this, Firebase_login::class.java)
+                            startActivity(intent)
+                        }
+                        "/profile" -> {
+                            // Navigate to ProfileActivity
+                            val intent = Intent(this, Firebase_signup::class.java)
+                            startActivity(intent)
+                        }
+                        else -> {
+                            // Default behavior, navigate to MainActivity
+                            proceedToMainActivity()
+                        }
+                    }
+
+                    // Finish SplashScreen so it doesn't stay in the back stack
+                    finish()
+
+                } else {
+                    // No deep link, proceed to the main activity
+                    proceedToMainActivity()
+                }
+            }
+            .addOnFailureListener(this) { e ->
+                Log.w("DynamicLink", "getDynamicLink:onFailure", e)
+                proceedToMainActivity() // Proceed as normal if there's an error
+            }
+    }
+
+    private fun proceedToMainActivity() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }, 3000) // Delay to show splash screen for 3 seconds
+    }
 }

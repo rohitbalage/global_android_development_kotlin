@@ -34,6 +34,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.dynamiclinks.DynamicLink
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
@@ -51,6 +52,7 @@ import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegra
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.ScreenReceiver
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMainBinding
+import com.shashank.sony.fancytoastlib.FancyToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -96,29 +98,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Timber Logs
         Timber.d("onCreate MainActivity Started")
 
-        //toast types:
+         //dynamic link received
+        // Get the deep link passed from SplashScreen
+        val deepLink = intent.getStringExtra("deep_link")
+        if (deepLink != null) {
+            Timber.d("DynamicLink", "Deep link received in MainActivity: $deepLink")
+        }
 
 
-        // check first run
+            // check first run
         checkFirstRun()
 
         // check location of the user
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
-        // Handle the dynamic link
-        FirebaseDynamicLinks.getInstance()
-            .getDynamicLink(intent)
-            .addOnSuccessListener(this) { pendingDynamicLinkData ->
-                val deepLink = pendingDynamicLinkData?.link
-                deepLink?.let {
-                    // Handle the deep link URL
-                }
-            }
-            .addOnFailureListener(this) { e ->
-                // Handle failure
-            }
-
-
 
 
 
@@ -132,6 +124,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Check if the app has permission to draw overlays
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!Settings.canDrawOverlays(this)) {
+                FancyToast.makeText(this,"Please allow us permission to stay on top of apps",
+                    FancyToast.LENGTH_LONG,
+                    FancyToast.INFO,true).show()
                 // If permission is not granted, request the user to grant permission
                 val intent = Intent(
                     Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
@@ -259,6 +254,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToAndroidWidgets.setOnClickListener(this)
         binding.externaluilibraries.setOnClickListener(this)
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -532,7 +528,6 @@ private fun startLockScreenService() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         val builder = AlertDialog.Builder(this)
         builder.setTitle("CLOSE APP")
             .setMessage("Are you sure you want to close this app?")

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityExternUiLibrariesBinding
+import com.shashank.sony.fancytoastlib.FancyToast
+
 
 class ExternalUILibrariesActivity : AppCompatActivity() {
 
@@ -20,7 +22,8 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
         // Setting up click listener using data binding
         binding.tastyToastBtn.setOnClickListener {
             // Show a toast message when the button is clicked
-            Toast.makeText(this, "Tasty Toast Button Clicked", Toast.LENGTH_SHORT).show()
+            // fancy toast
+        FancyToast.makeText(this,"Hello World !",FancyToast.LENGTH_LONG,FancyToast.INFO,true).show()
         }
     }
 }
