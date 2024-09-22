@@ -20,6 +20,13 @@
             android:layout_marginTop="20dp"
             android:text="@string/animatios_in_android" />
 
+
+        <Button
+            style="?attr/buttonStyle"
+            android:text="@string/native_animation"
+            android:onClick="gotoNativeAnimation"
+            />
+
         <!-- Image for Animations -->
         <ImageView
             android:id="@+id/imageView"
@@ -29,6 +36,8 @@
             android:contentDescription="Image for animations"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp" />
+
+
 
         <!-- Lottie Animation Views -->
         <com.airbnb.lottie.LottieAnimationView

@@ -267,6 +267,7 @@
     <string name="external_ui_libarires">External UI Libarires</string>
     <string name="tasty_toast">Tasty Toast</string>
     <string name="external_ui_libraries">External UI libraries</string>
+    <string name="native_animation">Native Animation</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -3,12 +3,14 @@ package com.rrbofficial.androiduipracticekotlin.AndroidAnimations
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.rrbofficial.androiduipracticekotlin.AndroidAnimations.NativeBasicAnimations.NativeAndroidAnimationsActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -48,5 +50,11 @@ class Animations : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
+    }
+
+    fun gotoNativeAnimation(view: View) {
+        val intent = Intent(this, NativeAndroidAnimationsActivity::class.java)
+        startActivity(intent)
+
     }
 }
