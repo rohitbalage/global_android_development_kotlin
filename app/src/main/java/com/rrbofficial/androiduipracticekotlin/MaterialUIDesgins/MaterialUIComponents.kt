@@ -143,6 +143,8 @@ class MaterialUIComponents : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_right)
         super.onBackPressed()
     }
 }

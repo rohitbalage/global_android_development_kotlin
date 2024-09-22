@@ -418,6 +418,7 @@ private fun startLockScreenService() {
             R.id.uicomponents -> {
                 val intent = Intent(this, MaterialUIComponents::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_out_left)
                 finish()
             }
             R.id.externaluilibraries -> {
@@ -433,6 +434,7 @@ private fun startLockScreenService() {
             R.id.JetpackCompose -> {
                 val intent = Intent(this, JetpackCompose::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_zoom_out)
                 finish()
             }
             R.id.fragments -> {
@@ -442,6 +444,7 @@ private fun startLockScreenService() {
             R.id.googlemaps -> {
                 val intent = Intent(this, GoogleMaps::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.anim_expand_out, R.anim.anim_expand_out)
             }
 
             R.id.GoToGoogleAds -> {
@@ -497,6 +500,7 @@ private fun startLockScreenService() {
             R.id.AndroidSystemComponents -> {
                 val intent = Intent(this, AndroidSystemComponents::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.anim_fade_in, R.anim.anim_fade_out)
                 finish()
             }
             R.id.GotoMachineLearning -> {
@@ -520,6 +524,7 @@ private fun startLockScreenService() {
             R.id.GoToAndroidWidgets -> {
                 val intent = Intent(this, AndroidHomeWidgetsActivity::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.anim_rotate_in, R.anim.anim_rotate_out)
                 finish()
             }
 

@@ -32,6 +32,7 @@ class JetpackCompose : AppCompatActivity(), View.OnClickListener {
     override fun onBackPressed() {
             val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.anim_zoom_in, R.anim.anim_zoom_out)
         super.onBackPressed()
     }
 
