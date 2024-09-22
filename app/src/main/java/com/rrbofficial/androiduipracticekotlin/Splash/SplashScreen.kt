@@ -20,6 +20,10 @@ import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
 class SplashScreen : AppCompatActivity() {
+
+    // Variable to store the intent to navigate after splash screen
+    private var navigationIntent: Intent? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,7 +35,12 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         animateLogoAndText()
 
-        // Handle dynamic links
+        // Start the splash screen timer for 2 seconds
+        Handler(Looper.getMainLooper()).postDelayed({
+            proceedToNextScreen() // Move to the next screen after 2 seconds
+        }, 2000)
+
+        // Handle dynamic links in parallel
         handleDynamicLink()
 
         val gifImageView: ImageView = findViewById(R.id.gifsplash)
@@ -67,42 +76,31 @@ class SplashScreen : AppCompatActivity() {
                     deepLink = pendingDynamicLinkData.link
                     Log.d("DynamicLink", "Received deep link: $deepLink")
 
-                    // Redirect to different activities based on the deep link
-                    when (deepLink?.path) {
-                        "/special-offer" -> {
-                            // Navigate to SpecialOfferActivity
-                            val intent = Intent(this, Firebase_login::class.java)
-                            startActivity(intent)
-                        }
-                        "/profile" -> {
-                            // Navigate to ProfileActivity
-                            val intent = Intent(this, Firebase_signup::class.java)
-                            startActivity(intent)
-                        }
-                        else -> {
-                            // Default behavior, navigate to MainActivity
-                            proceedToMainActivity()
-                        }
+                    // Set navigation intent based on deep link
+                    navigationIntent = when (deepLink?.path) {
+                        "/special-offer" -> Intent(this, Firebase_login::class.java)
+                        "/profile" -> Intent(this, Firebase_signup::class.java)
+                        else -> Intent(this, MainActivity::class.java)
                     }
-
-                    // Finish SplashScreen so it doesn't stay in the back stack
-                    finish()
-
                 } else {
-                    // No deep link, proceed to the main activity
-                    proceedToMainActivity()
+                    // No deep link, proceed to MainActivity
+                    navigationIntent = Intent(this, MainActivity::class.java)
                 }
             }
             .addOnFailureListener(this) { e ->
                 Log.w("DynamicLink", "getDynamicLink:onFailure", e)
-                proceedToMainActivity() // Proceed as normal if there's an error
+                // Proceed to MainActivity in case of an error
+                navigationIntent = Intent(this, MainActivity::class.java)
             }
     }
 
-    private fun proceedToMainActivity() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }, 3000) // Delay to show splash screen for 3 seconds
+    // Function to navigate to the appropriate screen after splash screen delay
+    private fun proceedToNextScreen() {
+        // If dynamic link was processed, use that intent, else default to MainActivity
+        if (navigationIntent == null) {
+            navigationIntent = Intent(this, MainActivity::class.java)
+        }
+        startActivity(navigationIntent)
+        finish() // Close the SplashScreen
     }
 }
