@@ -228,6 +228,11 @@ dependencies {
     implementation 'io.github.shashank02051997:FancyToast:2.0.2'
 
 
+    // firebase auth with phone
+    implementation("com.google.firebase:firebase-auth")
+
+
+
 
 }
 

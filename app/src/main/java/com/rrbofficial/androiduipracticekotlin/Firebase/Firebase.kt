@@ -17,6 +17,7 @@ import com.rrbofficial.androiduipracticekotlin.Firebase.Admob.AdMobWithFirebaseA
 import com.rrbofficial.androiduipracticekotlin.Firebase.Analytics.FirebaseAnalyticsActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.FirebaseAuthenticationOptions
 import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_signup
+import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithPhoneNumber.SignInwithPhoneNumberFirebase
 import com.rrbofficial.androiduipracticekotlin.Firebase.CloudMessaging.CloudMessagingFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.Firebase.CrashAnalytics.FirebaseCrashAnalytics
 import com.rrbofficial.androiduipracticekotlin.Firebase.DynamicLink.DynamicLinkWithFirebaseActivity
@@ -37,6 +38,7 @@ class Firebase : AppCompatActivity() {
     private  lateinit var  goToDynamicLink : Button
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_firebase)
@@ -51,6 +53,7 @@ class Firebase : AppCompatActivity() {
         goToInappMessaging = findViewById(R.id.buttonInappMessaging)
         goToAnalyticsApp = findViewById(R.id.buttonFirebaseAnalticsApp)
         goToDynamicLink = findViewById(R.id.buttonDynamicLink)
+
 
 
        /*** Go to AUTH SECTION**/
@@ -105,6 +108,7 @@ class Firebase : AppCompatActivity() {
             // Start the new activity
             startActivity(intent)
         }
+
 
 
 
