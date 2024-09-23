@@ -16,6 +16,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.BuildConfig
 import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_login
 import com.rrbofficial.androiduipracticekotlin.Firebase.Auth.WithEmailAndPassword.Firebase_signup
+import com.rrbofficial.androiduipracticekotlin.Firebase.DynamicLink.DynamicLinkWithFirebaseActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 
@@ -78,8 +79,8 @@ class SplashScreen : AppCompatActivity() {
 
                     // Set navigation intent based on deep link
                     navigationIntent = when (deepLink?.path) {
-                        "/special-offer" -> Intent(this, Firebase_login::class.java)
-                        "/profile" -> Intent(this, Firebase_signup::class.java)
+                        "/special-offer" -> Intent(this, DynamicLinkWithFirebaseActivity::class.java)
+                        "/create-profile" -> Intent(this, Firebase_signup::class.java)
                         else -> Intent(this, MainActivity::class.java)
                     }
                 } else {
