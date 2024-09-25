@@ -51,6 +51,7 @@
                     />
 
                 <!-- LineChart (cubic lines) -->
+
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/cubicLineChart"
                     android:layout_width="300dp"
@@ -154,6 +155,7 @@
                     android:layout_width="300dp"
                     android:layout_height="300dp"
                     />
+
 
             </LinearLayout>
         </ScrollView>

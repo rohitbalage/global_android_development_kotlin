@@ -2,6 +2,7 @@ package com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.MPCharts
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -38,11 +39,12 @@ import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.data.ScatterData
 import com.github.mikephil.charting.data.ScatterDataSet
+import com.google.firebase.firestore.FirebaseFirestore
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMpchartsBinding
 
 class MPChartsActivity : AppCompatActivity() {
-    private  lateinit var binding : ActivityMpchartsBinding
+    private lateinit var binding: ActivityMpchartsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,37 +52,54 @@ class MPChartsActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_mpcharts)
 
         /**************************Line chart************************/
-        // Get reference to the LineChart
+// Get reference to the LineChart
         val lineChart = findViewById<LineChart>(R.id.lineChart)
 
-        // Create data entries for the chart
-        val entries = ArrayList<Entry>()
-        entries.add(Entry(0f, 1f))
-        entries.add(Entry(1f, 2f))
-        entries.add(Entry(2f, 0f))
-        entries.add(Entry(3f, 4f))
-        entries.add(Entry(4f, 3f))
+        // Get Firebase Firestore instance
+        val db = FirebaseFirestore.getInstance()
 
-        // Create a LineDataSet with the entries
-        val lineDataSet = LineDataSet(entries, "Sample Data")
-        lineDataSet.color = Color.BLUE // Set the line color
-        lineDataSet.valueTextColor = Color.BLACK // Set the text color
-        lineDataSet.lineWidth = 2f // Set the line width
+        // Reference to the 'chartData' collection
+        val docRef = db.collection("chartData")
+            .document("1y3did0VMLaFsv5PBFeq") // Replace with your document ID
 
-        // Add the data set to the LineData object
-        val lineData = LineData(lineDataSet)
+        // Fetch the document
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val entries = ArrayList<Entry>()
 
-        // Set data and description to the LineChart
-        lineChart.data = lineData
+                    // Parse the 'entries' array from the document
+                    val entryList = document["entries"] as List<Map<String, Number>>
+                    for (entryMap in entryList) {
+                        val x = entryMap["x"]?.toFloat() ?: 0f
+                        val y = entryMap["y"]?.toFloat() ?: 0f
+                        entries.add(Entry(x, y))
+                    }
 
-        // Optional: Customize the chart appearance
-        val description = Description()
-        description.text = "Sample Line Chart"
-        lineChart.description = description
-        lineChart.animateX(1500) // Animate on X-axis for 1500ms
+                    // Create a LineDataSet with the retrieved entries
+                    val lineDataSet = LineDataSet(entries, "Firebase Data")
+                    lineDataSet.color = Color.BLUE
+                    lineDataSet.valueTextColor = Color.BLACK
+                    lineDataSet.lineWidth = 2f
+
+                    // Set the data to the LineChart
+                    val lineData = LineData(lineDataSet)
+                    lineChart.data = lineData
+
+                    // Customize the chart appearance
+                    lineChart.description.text = "Data from Firebase"
+                    lineChart.animateX(1500)
+                } else {
+                    Log.d("Firebase", "No such document!")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d("Firebase", "Failed to get document: ", exception)
+            }
 
 
-        /*************Line chart cubic*******************/
+
+        /** liine chart with cubic line*/
 
         val cubicLineChart = findViewById<LineChart>(R.id.cubicLineChart)
         val cubicEntries = ArrayList<Entry>()
