@@ -28,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/amaranth"
-                    android:text="@string/external_ui_libarires"
+                    android:text="@string/aesthetic_dialog_library"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="30dp"
@@ -38,13 +38,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/tasty_toasts"
+                    android:text="@string/aesthetic_dialogs"
                     />
 
                 <Button
-                    android:id="@+id/tastyToastBtn"
+                    android:id="@+id/aestheticDialogBtn"
                     style="?attr/buttonStyle"
-                    android:text="@string/tasty_toast" />
+                    android:text="Aesthetic Dialogs" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,31 +58,10 @@
                     style="?attr/buttonStyle"
                     android:text="@string/motion_toasts_success" />
 
-
-                <Button
-                    android:id="@+id/aestheticDialogBtn"
-                    style="?attr/buttonStyle"
-                    android:text="@string/go_to_aesthetic_dialog" />
-
-                <Button
-                    android:id="@+id/aestheticDialogDarkBtn"
-                    style="?attr/buttonStyle"
-                    android:text="@string/aesthetic_dialog_dark" />
-
                 <Button
                     android:id="@+id/showBottmSheet"
                     style="?attr/buttonStyle"
                     android:text="@string/show_bottom_sheet" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/rohit_edgewater"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="#FF000000"/>
 
             </LinearLayout>
         </ScrollView>

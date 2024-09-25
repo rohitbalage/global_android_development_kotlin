@@ -269,9 +269,14 @@
     <string name="external_ui_libraries">External UI libraries</string>
     <string name="native_animation">Native Animation</string>
     <string name="firebase_phone_no_auth">Firebase Phone No. Auth</string>
-    <string name="motion_toasts">Motion Toasts</string>
+    <string name="motion_toasts">Motion Toasts - click 5 times</string>
     <string name="tasty_toasts">Tasty Toasts</string>
     <string name="show_bottom_sheet">show bottom sheet</string>
+    <string name="motion_toasts_success">Motion toasts - success</string>
+    <string name="aesthetic_dialog_library">Aesthetic Dialog library</string>
+    <string name="aesthetic_dialogs">Aesthetic Dialogs - click 5 times</string>
+    <string name="go_to_aesthetic_dialog">Aesthetic Dialog Toast</string>
+    <string name="aesthetic_dialog_dark">Aesthetic Dialog dark</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
