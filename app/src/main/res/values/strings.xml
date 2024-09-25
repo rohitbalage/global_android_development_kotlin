@@ -277,6 +277,18 @@
     <string name="aesthetic_dialogs">Aesthetic Dialogs - click 5 times</string>
     <string name="go_to_aesthetic_dialog">Aesthetic Dialog Toast</string>
     <string name="aesthetic_dialog_dark">Aesthetic Dialog dark</string>
+    <string name="go_to_mp_chart">Go to MP charts</string>
+    <string name="charts_with_mp_chart">Charts with MP Chart</string>
+    <string name="line_chart">Line chart</string>
+    <string name="candle_stick_chart">Candle stick chart</string>
+    <string name="bubble_chart">Bubble chart</string>
+    <string name="radar_chart">Radar chart</string>
+    <string name="scatter_chart">Scatter chart</string>
+    <string name="pie_chart">pie chart</string>
+    <string name="combined_chart">combined chart</string>
+    <string name="horizontal_bar_chart">Horizontal bar chart</string>
+    <string name="bar_chart">Bar chart</string>
+    <string name="line_chart_gradient_fill">Line chart -gradient fill</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

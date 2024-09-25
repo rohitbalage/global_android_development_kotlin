@@ -7,11 +7,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:padding="10dp"
         android:layout_height="match_parent">
 
         <ScrollView
             android:id="@+id/scrollview"
+            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -83,6 +83,34 @@
                     android:src="@drawable/rohit_edgewater"
                     app:civ_border_width="2dp"
                     app:civ_border_color="#FF000000"/>
+
+                <Button
+                   style="?attr/buttonStyle"
+                    android:id="@+id/goToMpChart"
+                    android:text="@string/go_to_mp_chart"
+                    />
+
+                <com.flaviofaria.kenburnsview.KenBurnsView
+                    android:id="@+id/image"
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="30dp"
+                    android:src="@drawable/rohit2016" />
+
+                <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="500dp"
+                    android:layout_height="500dp"
+                    android:background="@android:color/white">
+
+                    <ImageView
+                        android:id="@+id/blurryimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/rohit_edgewater" />
+
+                </FrameLayout>
+
 
             </LinearLayout>
         </ScrollView>

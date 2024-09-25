@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+               android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/amaranth"
+                    android:text="@string/charts_with_mp_chart"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="30dp"
+                    />
+
+                <TextView
+                  style="@style/HeadlineTextViewStyle"
+                    android:text="@string/line_chart"
+                    />
+
+                <!-- LineChart -->
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/line_chart"
+                    />
+
+                <!-- LineChart (cubic lines) -->
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/cubicLineChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/line_chart_gradient_fill"
+                    />
+
+                <!-- LineChart (gradient fill) -->
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/gradientLineChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"/>
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/bar_chart"
+                    />
+
+                <!-- BarChart -->
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/horizontal_bar_chart"
+                    />
+
+                <!-- Horizontal BarChart -->
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/horizontalBarChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/combined_chart"
+                    />
+
+                <!-- Combined Chart -->
+                <com.github.mikephil.charting.charts.CombinedChart
+                    android:id="@+id/combinedChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/pie_chart"
+                    />
+
+                <!-- PieChart -->
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/scatter_chart"
+                    />
+
+                <!-- ScatterChart -->
+                <com.github.mikephil.charting.charts.ScatterChart
+                    android:id="@+id/scatterChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/radar_chart"
+                    />
+
+                <!-- RadarChart -->
+                <com.github.mikephil.charting.charts.RadarChart
+                    android:id="@+id/radarChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/bubble_chart"
+                    />
+
+                <!-- BubbleChart -->
+                <com.github.mikephil.charting.charts.BubbleChart
+                    android:id="@+id/bubbleChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/HeadlineTextViewStyle"
+                    android:text="@string/candle_stick_chart"
+                    />
+
+                <com.github.mikephil.charting.charts.CandleStickChart
+                    android:id="@+id/candleStickChart"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

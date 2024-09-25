@@ -1,11 +1,20 @@
 package com.rrbofficial.androiduipracticekotlin.ExternalUILibraries
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.MPCharts.MPChartsActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityExternUiLibrariesBinding
@@ -14,6 +23,7 @@ import com.thecode.aestheticdialogs.AestheticDialog
 import com.thecode.aestheticdialogs.DialogAnimation
 import com.thecode.aestheticdialogs.DialogStyle
 import com.thecode.aestheticdialogs.DialogType
+import jp.wasabeef.blurry.Blurry
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -31,6 +41,24 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
 
         // Initialize data binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_extern_ui_libraries)
+
+        // Reference to the view you want to blur
+        val imageView = findViewById<ImageView>(R.id.blurryimage)
+        val frameLayout = findViewById<FrameLayout>(R.id.frameLayout)
+
+        // Apply blur effect to the ImageView
+        // Blurring a single ImageView
+        Blurry.with(this)
+            .radius(15)
+            .sampling(3)
+            .async()
+            .capture(imageView)  // Apply blur to a specific ImageView
+            .into(imageView)  // Render it back to the same ImageView
+
+        binding.goToMpChart.setOnClickListener{
+            val intent = Intent(this, MPChartsActivity::class.java)
+            startActivity(intent)
+        }
 
         // Setting up click listener using data binding
         binding.tastyToastBtn.setOnClickListener {

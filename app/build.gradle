@@ -247,5 +247,14 @@ dependencies {
     //circle image view
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    // ken burns view
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+
+    // Blurry library
+    implementation 'jp.wasabeef:blurry:4.0.1'
+
+    // MPAndroidChart library
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }
 

@@ -6,6 +6,7 @@ buildscript {
         //  for firebase firestore
         google()
         mavenCentral()
+        jcenter()
         maven { url 'https://jitpack.io'}
     }
 

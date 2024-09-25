@@ -56,6 +56,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ExternalUILibraries.MPCharts.MPChartsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExternalUILibraries.AestheticDialogs.AestheticDialogActivity"
             android:exported="false" />
         <activity
