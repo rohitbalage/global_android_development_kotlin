@@ -30,12 +30,38 @@
                     android:fontFamily="@font/amaranth"
                     android:text="@string/external_ui_libarires"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="30dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/tasty_toasts"
+                    />
 
                 <Button
                     android:id="@+id/tastyToastBtn"
                     style="?attr/buttonStyle"
                     android:text="@string/tasty_toast" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/motion_toasts"
+                    />
+
+                <Button
+                    android:id="@+id/motionToast"
+                    style="?attr/buttonStyle"
+                    android:text="Motion toasts - " />
+
+                <Button
+                    android:id="@+id/showBottmSheet"
+                    style="?attr/buttonStyle"
+                    android:text="@string/show_bottom_sheet" />
 
             </LinearLayout>
         </ScrollView>

@@ -269,6 +269,9 @@
     <string name="external_ui_libraries">External UI libraries</string>
     <string name="native_animation">Native Animation</string>
     <string name="firebase_phone_no_auth">Firebase Phone No. Auth</string>
+    <string name="motion_toasts">Motion Toasts</string>
+    <string name="tasty_toasts">Tasty Toasts</string>
+    <string name="show_bottom_sheet">show bottom sheet</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -224,13 +224,25 @@ dependencies {
     // airbnb animation
     implementation 'com.airbnb.android:lottie:4.2.2'
 
-    // fancy toast
-    implementation 'io.github.shashank02051997:FancyToast:2.0.2'
-
-
     // firebase auth with phone
     implementation("com.google.firebase:firebase-auth")
 
+    // firebase performance
+    implementation("com.google.firebase:firebase-perf")
+
+    // external UI libraries
+
+    // fancy toast - toast message
+    implementation 'io.github.shashank02051997:FancyToast:2.0.2'
+
+    //motion toast
+    implementation 'com.github.Spikeysanju:MotionToast:1.4'
+
+    // super bottom sheet
+    implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
+
+    //aesthetic dialogues
+    implementation 'com.github.gabriel-TheCode:AestheticDialogs:1.3.8'
 
 
 
