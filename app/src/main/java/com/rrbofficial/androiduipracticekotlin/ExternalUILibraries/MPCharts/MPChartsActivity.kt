@@ -39,6 +39,7 @@ import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.data.ScatterData
 import com.github.mikephil.charting.data.ScatterDataSet
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.firebase.firestore.FirebaseFirestore
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityMpchartsBinding
@@ -180,19 +181,40 @@ class MPChartsActivity : AppCompatActivity() {
         combinedChart.invalidate()
 
         /*************Pie chart*******************/
-
+        // Reference to PieChart
         val pieChart = findViewById<PieChart>(R.id.pieChart)
-        val pieEntries = ArrayList<PieEntry>()
-        pieEntries.add(PieEntry(20f, "Category 1"))
-        pieEntries.add(PieEntry(30f, "Category 2"))
-        pieEntries.add(PieEntry(50f, "Category 3"))
+        // Reference to the pieChartData collection
+        val pieChartRef = db.collection("pieChartData").document("vTvmcjUauNnLQt6e0LwJ")
 
-        val pieDataSet = PieDataSet(pieEntries, "Pie Chart")
-        pieDataSet.colors = listOf(Color.RED, Color.GREEN, Color.BLUE)
-        val pieData = PieData(pieDataSet)
-        pieChart.data = pieData
-        pieChart.invalidate()
+        // Fetch the data
+        pieChartRef.get().addOnSuccessListener { document ->
+            if (document != null && document.exists()) {
+                val entriesList = document.get("entries") as List<Map<String, Any>>
 
+                // Create a list to store PieEntry objects
+                val pieEntries = ArrayList<PieEntry>()
+
+                // Loop through each entry in the Firestore document
+                for (entry in entriesList) {
+                    val value = (entry["value"] as Number).toFloat()
+                    val label = entry["label"] as String
+
+                    // Add each entry to the pieEntries list
+                    pieEntries.add(PieEntry(value, label))
+                }
+
+                // Create a PieDataSet and set its appearance
+                val pieDataSet = PieDataSet(pieEntries, "Categories")
+                pieDataSet.colors = ColorTemplate.MATERIAL_COLORS.toList()  // Set colors
+
+                // Create PieData and assign it to the PieChart
+                val pieData = PieData(pieDataSet)
+                pieChart.data = pieData
+                pieChart.invalidate()  // Refresh the chart
+            }
+        }.addOnFailureListener { exception ->
+            Log.w("PieChart", "Error getting documents: ", exception)
+        }
         /*************scatter chart*******************/
 
         val scatterChart = findViewById<ScatterChart>(R.id.scatterChart)
