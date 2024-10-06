@@ -39,6 +39,7 @@ import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidAnimations.Animations
+import com.rrbofficial.androiduipracticekotlin.AndroidServices.AndroidServicesActivity
 import com.rrbofficial.androiduipracticekotlin.AndroidSysComponents.AndroidSystemComponents
 import com.rrbofficial.androiduipracticekotlin.AndroidWidgets.AndroidHomeWidgetsActivity
 import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.ExternalUILibrariesActivity
@@ -253,6 +254,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToGoogleAds.setOnClickListener(this)
         binding.GoToAndroidWidgets.setOnClickListener(this)
         binding.externaluilibraries.setOnClickListener(this)
+        binding.GoToAndroidServices.setOnClickListener(this)
     }
 
 
@@ -523,6 +525,14 @@ private fun startLockScreenService() {
 
             R.id.GoToAndroidWidgets -> {
                 val intent = Intent(this, AndroidHomeWidgetsActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.anim_rotate_in, R.anim.anim_rotate_out)
+                finish()
+            }
+
+
+            R.id.GoToAndroidServices -> {
+                val intent = Intent(this, AndroidServicesActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.anim_rotate_in, R.anim.anim_rotate_out)
                 finish()

@@ -289,6 +289,9 @@
     <string name="horizontal_bar_chart">Horizontal bar chart</string>
     <string name="bar_chart">Bar chart</string>
     <string name="line_chart_gradient_fill">Line chart -gradient fill</string>
+    <string name="android_services">Android Services</string>
+    <string name="stop">Stop</string>
+    <string name="play">Play</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

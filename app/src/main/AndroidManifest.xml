@@ -56,6 +56,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AndroidServices.AndroidServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".youtubePlayer.YoutubePlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapsAndServices.TomTomMaps.TomTomMapsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapsAndServices.MapsAndServicesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ExternalUILibraries.MPCharts.MPChartsActivity"
             android:exported="false" />
         <activity
@@ -393,6 +405,12 @@
                 <action android:name="android.intent.action.SCREEN_OFF" />
             </intent-filter>
         </receiver>
+
+        <service
+            android:name=".AndroidServices.Service.MusicService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
     </application>
 
 </manifest>

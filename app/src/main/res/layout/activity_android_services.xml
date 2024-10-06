@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!-- You can declare variables here if needed -->
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+       android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/headlineServices"
+            style="@style/HeadlineTextViewStyle"
+            android:text="@string/android_services" />
+
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Counter: 0" />
+
+        <Button
+            android:id="@+id/btn_play"
+            style="?attr/buttonStyle"
+            android:text="@string/play"
+           />
+
+        <Button
+            android:id="@+id/btn_stop"
+            style="?attr/buttonStyle"
+            android:text="@string/stop"
+             />
+
+    </LinearLayout>
+</layout>

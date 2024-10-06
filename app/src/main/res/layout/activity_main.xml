@@ -164,8 +164,6 @@
                     <Button
                         android:id="@+id/GotoNotifications"
                         style="?attr/buttonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:text="@string/notifications"
                         android:fontFamily="@font/amaranth" />
 
@@ -175,12 +173,16 @@
                         style="?attr/buttonStyle"
                         android:text="@string/google_ads" />
 
-
-
                     <Button
                         android:id="@+id/GotoArchitecturePatterns"
                         style="?attr/buttonStyle"
                         android:text="@string/architecture_patterns" />
+
+                    <Button
+                        android:id="@+id/GoToAndroidServices"
+                        style="?attr/buttonStyle"
+                        android:text="@string/android_services" />
+
 
                     <Button
                         android:id="@+id/GoToAndroidSecurity"
