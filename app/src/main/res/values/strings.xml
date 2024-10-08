@@ -296,6 +296,8 @@
     <string name="tap_mike_and_speak">tap mike and speak</string>
     <string name="this_is_global_kotlin_application">This is Global Kotlin Application</string>
     <string name="speech_to_text_and_text_to_speech">Speech to Text and Text to Speech</string>
+    <string name="enter_any_sentence">Enter Any Sentence</string>
+    <string name="speak">Speak</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".MachineLearningAndroid.TextToSpeechSpeechToTextActivity">
 
-    <!-- Microphone ImageView -->
     <ImageView
         android:id="@+id/iv_mic"
         android:layout_width="60dp"
@@ -19,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- TextView for Speech to Text -->
+
     <TextView
         android:id="@+id/tv_speech_to_text"
         android:layout_width="wrap_content"
@@ -32,41 +31,27 @@
         app:layout_constraintStart_toStartOf="@+id/iv_mic"
         app:layout_constraintTop_toBottomOf="@+id/iv_mic" />
 
-    <!-- EditText to enter text -->
+
     <EditText
         android:id="@+id/Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:hint="Enter Any Sentence"
+        android:hint="@string/enter_any_sentence"
         android:gravity="center"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_speech_to_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Button to trigger Text-to-Speech -->
+
     <Button
         android:id="@+id/btnText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click Here"
+       style="?attr/buttonStyle"
+        android:text="@string/speak"
         app:layout_constraintTop_toBottomOf="@+id/Text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- TextView to display app name -->
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:gravity="center_horizontal"
-        android:text="@string/this_is_global_kotlin_application"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="36sp"
-        app:layout_constraintTop_toBottomOf="@+id/btnText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,6 +30,8 @@ class TextToSpeechSpeechToTextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_text_to_speech_speech_to_text)
 
+        setContentView(R.layout.activity_text_to_speech_speech_to_text)
+
         // Initialize views
         editText = findViewById(R.id.Text)
         btnText = findViewById(R.id.btnText)
@@ -75,5 +77,27 @@ class TextToSpeechSpeechToTextActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_SPEECH_INPUT && resultCode == RESULT_OK) {
+            val results = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            results?.let {
+                if (it.isNotEmpty()) {
+                    val spokenText = it[0]
+                    tvSpeechToText.text = spokenText // Update the TextView with the recognized text
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        // Shutdown TextToSpeech on activity destroy
+        if (::textToSpeech.isInitialized) {
+            textToSpeech.stop()
+            textToSpeech.shutdown()
+        }
+        super.onDestroy()
     }
 }
