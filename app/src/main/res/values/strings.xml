@@ -293,6 +293,9 @@
     <string name="stop">Stop</string>
     <string name="play">Play</string>
     <string name="pip">PIP</string>
+    <string name="tap_mike_and_speak">tap mike and speak</string>
+    <string name="this_is_global_kotlin_application">This is Global Kotlin Application</string>
+    <string name="speech_to_text_and_text_to_speech">Speech to Text and Text to Speech</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

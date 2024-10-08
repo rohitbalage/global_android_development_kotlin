@@ -256,5 +256,8 @@ dependencies {
     // MPAndroidChart library
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    // rate bar
+    implementation 'com.github.hotchemi:android-rate:1.0.1'
+
 }
 

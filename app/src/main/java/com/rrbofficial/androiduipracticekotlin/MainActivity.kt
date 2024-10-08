@@ -17,7 +17,6 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Rational
-import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -39,8 +38,6 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.google.firebase.dynamiclinks.DynamicLink
-import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.rrbofficial.androiduipracticekotlin.AchitecturePatterns.ArchitecturePatternsActivity
 import com.rrbofficial.androiduipracticekotlin.AdvancedUIWidgets.AndroidUIWidgets
 import com.rrbofficial.androiduipracticekotlin.AndroidAnimations.Animations
@@ -52,6 +49,7 @@ import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
+import com.rrbofficial.androiduipracticekotlin.MachineLearningAndroid.MachineLearning
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
 import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rrbofficial.androiduipracticekotlin">
+    package="com.rrbofficial.androiduipracticekotlin" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -34,7 +34,6 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-
     <uses-feature android:name="android.hardware.camera.flash" />
     <uses-feature
         android:name="android.hardware.telephony"
@@ -56,7 +55,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidUiPracticeKotlin"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <activity
+            android:name=".MachineLearningAndroid.TextToSpeechSpeechToTextActivity"
+            android:exported="false" />
         <activity
             android:name=".AndroidServices.AndroidServicesActivity"
             android:exported="false" />
@@ -71,9 +73,6 @@
             android:exported="false" />
         <activity
             android:name=".ExternalUILibraries.MPCharts.MPChartsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ExternalUILibraries.AestheticDialogs.AestheticDialogActivity"
             android:exported="false" />
         <activity
             android:name=".AndroidAnimations.NativeBasicAnimations.NativeAndroidAnimationsActivity"
@@ -244,14 +243,14 @@
             android:exported="false" />
 
         <activity
-            android:name=".MachineLearning"
+            android:name=".MachineLearningAndroid.MachineLearning"
             android:exported="false" />
         <activity
             android:name=".AndroidSysComponents.AndroidSystemComponents"
             android:exported="false" />
         <activity
             android:name=".Splash.SplashScreen"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -361,12 +360,11 @@
             android:name=".MainActivity"
             android:exported="true"
             android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"
-            />
+            android:supportsPictureInPicture="true" />
 
         <service
             android:name=".MyFirebaseMessagingService"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -382,7 +380,7 @@
             android:value="@string/default_notification_channel_id" /> <!-- Widget Providers should be inside the <application> tag -->
         <receiver
             android:name=".AndroidWidgets.FirstWidgetProvider"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -393,7 +391,7 @@
         </receiver>
         <receiver
             android:name=".AndroidWidgets.SecondWidgetProvider"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -404,7 +402,7 @@
         </receiver>
         <receiver
             android:name=".Security.CustomLockScreen.ScreenReceiver"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.SCREEN_ON" />
                 <action android:name="android.intent.action.SCREEN_OFF" />
@@ -415,7 +413,6 @@
             android:name=".AndroidServices.Service.MusicService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
-
     </application>
 
 </manifest>
