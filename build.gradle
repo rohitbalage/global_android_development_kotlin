@@ -2,11 +2,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Deprecated, consider removing
+        jcenter() // Deprecated
         maven { url 'https://jitpack.io' }
-        maven {
-            url = uri("https://repositories.tomtom.com/artifactory/maven")
-        }
     }
 
     ext {

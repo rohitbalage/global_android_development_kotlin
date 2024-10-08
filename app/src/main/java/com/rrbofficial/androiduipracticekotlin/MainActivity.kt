@@ -2,24 +2,29 @@ package com.rrbofficial.androiduipracticekotlin
 
 import android.Manifest
 import android.app.Dialog
+import android.app.PictureInPictureParams
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Point
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Rational
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +54,7 @@ import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MaterialUIDesgins.MaterialUIComponents
 import com.rrbofficial.androiduipracticekotlin.Notifications.Notifications
+import com.rrbofficial.androiduipracticekotlin.Notifications.util.NotificationHelper
 import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.PaymentIntegrationActivity
 import com.rrbofficial.androiduipracticekotlin.Security.AndroidSecurity
 import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.ScreenReceiver
@@ -255,6 +261,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.GoToAndroidWidgets.setOnClickListener(this)
         binding.externaluilibraries.setOnClickListener(this)
         binding.GoToAndroidServices.setOnClickListener(this)
+        binding.pipchip.setOnClickListener(this)
     }
 
 
@@ -538,8 +545,37 @@ private fun startLockScreenService() {
                 finish()
             }
 
+            R.id.pipchip -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    enterPictureInPictureModeActivity()
+                }
+            }
+
         }
 
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun enterPictureInPictureModeActivity() {
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = size.x
+        val height = size.y
+
+        val ratio = Rational(width, height)
+        val pipBuilder = PictureInPictureParams.Builder()
+        pipBuilder.setAspectRatio(ratio).build()
+        enterPictureInPictureMode(pipBuilder.build())
+
+    }
+
+    override fun onUserLeaveHint() {
+        super.onUserLeaveHint()
+        // Handle additional logic if needed when the user leaves the activity
+        val title = "You are in PIP mode"
+        val msg = "PIP mode activated in GKA"
+        NotificationHelper.lowNotification(this,title,msg)
     }
 
     override fun onBackPressed() {

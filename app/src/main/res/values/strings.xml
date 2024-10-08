@@ -292,6 +292,7 @@
     <string name="android_services">Android Services</string>
     <string name="stop">Stop</string>
     <string name="play">Play</string>
+    <string name="pip">PIP</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
