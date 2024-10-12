@@ -298,6 +298,8 @@
     <string name="speech_to_text_and_text_to_speech">Speech to Text and Text to Speech</string>
     <string name="enter_any_sentence">Enter Any Sentence</string>
     <string name="speak">Speak</string>
+    <string name="go_to_gka">Go to GKA</string>
+    <string name="go_to_ui_widgets">Go to UI widgets</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

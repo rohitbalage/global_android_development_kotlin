@@ -570,10 +570,10 @@ private fun startLockScreenService() {
 
     override fun onUserLeaveHint() {
         super.onUserLeaveHint()
-        // Handle additional logic if needed when the user leaves the activity
-        val title = "You are in PIP mode"
-        val msg = "PIP mode activated in GKA"
-        NotificationHelper.lowNotification(this,title,msg)
+        // Handle additional logic if needed when the user leaves the PIP activity
+//        val title = "You are in PIP mode"
+//        val msg = "PIP mode activated in GKA"
+//        NotificationHelper.lowNotification(this,title,msg)
     }
 
     override fun onBackPressed() {

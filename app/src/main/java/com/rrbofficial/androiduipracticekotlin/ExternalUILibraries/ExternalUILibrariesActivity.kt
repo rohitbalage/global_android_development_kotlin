@@ -3,8 +3,11 @@ package com.rrbofficial.androiduipracticekotlin.ExternalUILibraries
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
@@ -24,6 +27,9 @@ import com.thecode.aestheticdialogs.DialogAnimation
 import com.thecode.aestheticdialogs.DialogStyle
 import com.thecode.aestheticdialogs.DialogType
 import jp.wasabeef.blurry.Blurry
+import top.defaults.colorpicker.ColorPickerPopup
+import top.defaults.colorpicker.ColorPickerPopup.Builder
+import top.defaults.colorpicker.ColorPickerPopup.ColorPickerObserver
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 
@@ -35,6 +41,11 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
     var clickCountTasty = 0
     var clickCountAesthetic = 0
     var clickCountAestheticDark = 0
+    private lateinit var gfgTextView: TextView
+    private lateinit var mSetColorButton: Button
+    private lateinit var mPickColorButton: Button
+    private lateinit var mColorPreview: View
+    private var mDefaultColor = Color.BLACK // Use Color.BLACK instead of 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +56,13 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
         // Reference to the view you want to blur
         val imageView = findViewById<ImageView>(R.id.blurryimage)
         val frameLayout = findViewById<FrameLayout>(R.id.frameLayout)
+
+        // Set the default color to 0 (black)
+        gfgTextView = findViewById(R.id.colortextView)
+        mPickColorButton = findViewById(R.id.pick_color_button)
+        mSetColorButton = findViewById(R.id.set_color_button)
+        mColorPreview = findViewById(R.id.preview_selected_color)
+
 
         // Apply blur effect to the ImageView
         // Blurring a single ImageView
@@ -328,14 +346,37 @@ ZOOM
             }
         }
 
+        mPickColorButton.setOnClickListener { v ->
+            ColorPickerPopup.Builder(this)
+                .initialColor(Color.RED)
+                .enableBrightness(true)
+                .enableAlpha(true)
+                .okTitle("Choose")
+                .cancelTitle("Cancel")
+                .showIndicator(true)
+                .showValue(true)
+                .build()
+                .show(v, object : ColorPickerObserver() {
+                    override fun onColorPicked(color: Int) {
+                        mDefaultColor = color
+                        mColorPreview.setBackgroundColor(mDefaultColor)
+                    }
+                })
+        }
+
+        mSetColorButton.setOnClickListener {
+            gfgTextView.setTextColor(mDefaultColor)
+        }
     }
+
+   
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         super.onBackPressed()
     }
 
-    }
+}
 
 
 
