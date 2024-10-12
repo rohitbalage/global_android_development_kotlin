@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
+import com.rrbofficial.androiduipracticekotlin.PaymentIntegration.RazorPay.RazorPayActivity
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityPaymentIntegrationBinding
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
@@ -36,6 +37,11 @@ class PaymentIntegrationActivity : AppCompatActivity() {
         // Set the onClick listener using binding
         binding.payWithStripe.setOnClickListener {
             onPayWithStripeClick()
+        }
+
+        binding.payWithRazorpay.setOnClickListener{
+            val intent = Intent(this, RazorPayActivity::class.java)
+            startActivity(intent)
         }
 
 

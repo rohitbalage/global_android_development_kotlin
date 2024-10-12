@@ -301,6 +301,7 @@
     <string name="go_to_gka">Go to GKA</string>
     <string name="go_to_ui_widgets">Go to UI widgets</string>
     <string name="verify_captcha">Verify captcha</string>
+    <string name="pay">Pay</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>

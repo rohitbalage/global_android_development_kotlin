@@ -22,10 +22,9 @@
             />
 
         <Button
-            style="?attr/buttonStyle"
             android:id="@+id/pay_with_paypal"
-            android:text="@string/paypal"
-            />
+            style="?attr/buttonStyle"
+            android:text="@string/paypal" />
 
         <Button
             style="?attr/buttonStyle"

@@ -273,6 +273,12 @@ dependencies {
     //safety net
     implementation'com.google.android.gms:play-services-safetynet:18.1.0'
 
+    //razor pay
+    implementation 'com.razorpay:checkout:1.6.40'
+
+    //pattern lock
+    implementation'com.alex-zaitsev:meternumberpicker:1.0.5'
+
 
 }
 

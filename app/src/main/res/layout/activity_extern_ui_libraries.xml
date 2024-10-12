@@ -175,6 +175,25 @@
                     android:layout_centerInParent="true"
                     android:text="@string/verify_captcha" />
 
+                <com.alexzaitsev.meternumberpicker.MeterView
+                    android:id="@+id/meterView"
+                    style="@style/MeterViewStyle"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <Button
+                    android:id="@+id/meterbutton"
+                   style="?attr/buttonStyle"
+                    android:layout_below="@+id/meterView"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="70dp"
+                    android:text="Get"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

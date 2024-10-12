@@ -12,8 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
+import com.alexzaitsev.meternumberpicker.MeterView
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -23,11 +23,6 @@ import com.android.volley.toolbox.Volley
 import com.ecandrea.library.tooltipopwordtv.listeners.SelectableWordListeners
 import com.ecandrea.library.tooltipopwordtv.tooltipopupWindows.ToolPopupWindows
 import com.ecandrea.library.tooltipopwordtv.wordTextView.SelectableWordTextView
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.safetynet.SafetyNet
@@ -35,7 +30,6 @@ import com.google.android.gms.safetynet.SafetyNetApi
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.MPCharts.MPChartsActivity
-import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.databinding.ActivityExternUiLibrariesBinding
 import com.shashank.sony.fancytoastlib.FancyToast
@@ -47,7 +41,6 @@ import jp.wasabeef.blurry.Blurry
 import org.json.JSONObject
 import timber.log.Timber
 import top.defaults.colorpicker.ColorPickerPopup
-import top.defaults.colorpicker.ColorPickerPopup.Builder
 import top.defaults.colorpicker.ColorPickerPopup.ColorPickerObserver
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
@@ -71,6 +64,10 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
     private val SITE_KEY = "6LfeqV8qAAAAAHKG_vbJv4YPa25k7iJqmglKaYcP"
     private val SECRET_KEY = "6LfeqV8qAAAAAA6E1fGVQ07_rQG5JTlyk_aG4oZI"
     private lateinit var queue: RequestQueue
+
+    // variable to pick number
+    private lateinit var meterNumberPicker: MeterView
+
 
 
     // A map to store word-description pairs
@@ -96,6 +93,9 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
         mPickColorButton = findViewById(R.id.pick_color_button)
         mSetColorButton = findViewById(R.id.set_color_button)
         mColorPreview = findViewById(R.id.preview_selected_color)
+        // number picker called using meter picker id
+        meterNumberPicker = findViewById(R.id.meterView);
+        val meterPickerBtn: Button = findViewById(R.id.meterbutton)
 
 
         //     // Initialize Volley request queue
@@ -105,6 +105,13 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
         btnverifyCaptcha = findViewById(R.id.CAPTCHAbutton)
         btnverifyCaptcha.setOnClickListener {
             verifyGoogleReCAPTCHA()
+        }
+
+        meterPickerBtn.setOnClickListener{
+            val number = meterNumberPicker.value
+
+            // Toast value to display the number
+            Toast.makeText(this, "$number", Toast.LENGTH_SHORT).show()
         }
 
         //for wordView
@@ -136,6 +143,11 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
             // Optionally set a background color for the highlighted word
             setBackgroundWordColor(ContextCompat.getColor(this@ExternalUILibrariesActivity, R.color.black))
         }
+
+
+        //meter button:
+
+
 
 
         // Apply blur effect to the ImageView
