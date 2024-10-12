@@ -14,6 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.ecandrea.library.tooltipopwordtv.listeners.SelectableWordListeners
 import com.ecandrea.library.tooltipopwordtv.tooltipopupWindows.ToolPopupWindows
 import com.ecandrea.library.tooltipopwordtv.wordTextView.SelectableWordTextView
@@ -22,6 +28,12 @@ import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.CommonStatusCodes
+import com.google.android.gms.safetynet.SafetyNet
+import com.google.android.gms.safetynet.SafetyNetApi
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.MPCharts.MPChartsActivity
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
@@ -32,6 +44,7 @@ import com.thecode.aestheticdialogs.DialogAnimation
 import com.thecode.aestheticdialogs.DialogStyle
 import com.thecode.aestheticdialogs.DialogType
 import jp.wasabeef.blurry.Blurry
+import org.json.JSONObject
 import timber.log.Timber
 import top.defaults.colorpicker.ColorPickerPopup
 import top.defaults.colorpicker.ColorPickerPopup.Builder
@@ -53,6 +66,11 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
     private lateinit var mColorPreview: View
     val toopop = "ToolPop"
     private var mDefaultColor = Color.BLACK // Use Color.BLACK instead of 0
+
+    private lateinit var btnverifyCaptcha: Button
+    private val SITE_KEY = "6LfeqV8qAAAAAHKG_vbJv4YPa25k7iJqmglKaYcP"
+    private val SECRET_KEY = "6LfeqV8qAAAAAA6E1fGVQ07_rQG5JTlyk_aG4oZI"
+    private lateinit var queue: RequestQueue
 
 
     // A map to store word-description pairs
@@ -78,6 +96,16 @@ class ExternalUILibrariesActivity : AppCompatActivity() {
         mPickColorButton = findViewById(R.id.pick_color_button)
         mSetColorButton = findViewById(R.id.set_color_button)
         mColorPreview = findViewById(R.id.preview_selected_color)
+
+
+        //     // Initialize Volley request queue
+        queue = Volley.newRequestQueue(applicationContext)
+
+        // Initialize button and set click listener
+        btnverifyCaptcha = findViewById(R.id.CAPTCHAbutton)
+        btnverifyCaptcha.setOnClickListener {
+            verifyGoogleReCAPTCHA()
+        }
 
         //for wordView
         val wordTextView = findViewById<SelectableWordTextView>(R.id.word)
@@ -419,15 +447,62 @@ ZOOM
             gfgTextView.setTextColor(mDefaultColor)
         }
     }
-
-   
-    override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        super.onBackPressed()
+    private fun verifyGoogleReCAPTCHA() {
+        SafetyNet.getClient(this).verifyWithRecaptcha(SITE_KEY)
+            .addOnSuccessListener(this, OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse> { response ->
+                val tokenResult = response.tokenResult
+                if (!tokenResult.isNullOrEmpty()) {
+                    handleVerification(tokenResult)
+                }
+            })
+            .addOnFailureListener(this, OnFailureListener { e ->
+                if (e is ApiException) {
+                    Log.d("TAG", "Error message: ${CommonStatusCodes.getStatusCodeString(e.statusCode)}")
+                } else {
+                    Toast.makeText(this@ExternalUILibrariesActivity, "Error found: $e", Toast.LENGTH_SHORT).show()
+                }
+            })
     }
 
+    private fun handleVerification(responseToken: String) {
+        val url = "https://www.google.com/recaptcha/api/siteverify"
+
+        val request = object : StringRequest(
+            Request.Method.POST, url,
+            Response.Listener<String> { response ->
+                try {
+                    val jsonObject = JSONObject(response)
+                    if (jsonObject.getBoolean("success")) {
+                        Toast.makeText(this@ExternalUILibrariesActivity, "User verified with reCAPTCHA", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext, jsonObject.getString("error-codes"), Toast.LENGTH_LONG).show()
+                    }
+                } catch (ex: Exception) {
+                    Log.d("TAG", "JSON exception: ${ex.message}")
+                }
+            },
+            Response.ErrorListener { error ->
+                Log.d("TAG", "Error message: ${error.message}")
+            }) {
+
+            override fun getParams(): Map<String, String> {
+                return hashMapOf(
+                    "secret" to SECRET_KEY,
+                    "response" to responseToken
+                )
+            }
+        }
+
+        request.retryPolicy = DefaultRetryPolicy(
+            50000,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+        queue.add(request)
+    }
 }
+
+
 
 
 

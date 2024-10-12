@@ -267,6 +267,12 @@ dependencies {
     // tooltip
     implementation 'com.github.EusebiuCandrea:ToolTipPopupWordTV:1.0.1'
 
+    //volley
+   implementation 'com.android.volley:volley:1.2.1'
+
+    //safety net
+    implementation'com.google.android.gms:play-services-safetynet:18.1.0'
+
 
 }
 

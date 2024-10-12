@@ -167,6 +167,14 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:setUnderline="true" />
 
+
+                <Button
+                    android:id="@+id/CAPTCHAbutton"
+                    style="?attr/buttonStyle"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:text="@string/verify_captcha" />
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
