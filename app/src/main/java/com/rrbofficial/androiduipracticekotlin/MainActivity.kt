@@ -47,6 +47,7 @@ import com.rrbofficial.androiduipracticekotlin.AndroidWidgets.AndroidHomeWidgets
 import com.rrbofficial.androiduipracticekotlin.ExternalUILibraries.ExternalUILibrariesActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleAds.GoogleAdsActivity
 import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMaps
+import com.rrbofficial.androiduipracticekotlin.GoogleMaps.GoogleMapsOptions
 import com.rrbofficial.androiduipracticekotlin.JetpackCompose.JetpackCompose
 import com.rrbofficial.androiduipracticekotlin.KotlinFundamentalsAndDSA.KotlinDSAAndFundamentals
 import com.rrbofficial.androiduipracticekotlin.MachineLearningAndroid.MachineLearning
@@ -449,7 +450,7 @@ private fun startLockScreenService() {
                 startActivity(intent)
             }
             R.id.googlemaps -> {
-                val intent = Intent(this, GoogleMaps::class.java)
+                val intent = Intent(this, GoogleMapsOptions::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.anim_expand_out, R.anim.anim_expand_out)
             }

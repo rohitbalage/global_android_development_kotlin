@@ -65,6 +65,9 @@
         <activity
             android:name=".MachineLearningAndroid.TextToSpeechSpeechToTextActivity"
             android:exported="false" />
+        <activity android:name=".GoogleMaps.GoogleMapsOptions"
+            android:exported="false" />
+
         <activity
             android:name=".AndroidServices.AndroidServicesActivity"
             android:exported="false" />

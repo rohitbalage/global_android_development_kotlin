@@ -114,7 +114,7 @@ android {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation platform("com.google.firebase:firebase-bom:32.7.3")
+    implementation platform("com.google.firebase:firebase-bom:33.5.1")
     implementation "com.google.firebase:firebase-analytics"
     implementation "com.google.firebase:firebase-database"
     implementation "com.google.firebase:firebase-firestore"
@@ -124,13 +124,13 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.7.0"
     implementation "com.google.android.material:material:1.12.0" // Use the latest version only
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation "com.google.android.gms:play-services-maps:18.2.0"
+    implementation "com.google.android.gms:play-services-maps:18.1.0"
     implementation "androidx.activity:activity-ktx:1.9.0" // Consolidated KTX and activity dependencies
     implementation "androidx.databinding:databinding-runtime:8.5.0" // Keep the latest version only
     implementation "com.google.firebase:firebase-messaging"
     implementation "com.google.android.gms:play-services-safetynet:18.1.0"
     implementation 'androidx.activity:activity:1.9.1'
-    implementation 'com.google.android.gms:play-services-location:21.3.0'
+    implementation "com.google.android.gms:play-services-location:21.0.1"
     implementation 'com.google.android.gms:play-services-wearable:18.2.0'
 
     testImplementation "junit:junit:4.13.2"
@@ -222,7 +222,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
 
     // airbnb animation
-    implementation 'com.airbnb.android:lottie:4.2.2'
+    implementation 'com.airbnb.android:lottie:5.2.0'
 
     // firebase auth with phone
     implementation("com.google.firebase:firebase-auth")
@@ -278,6 +278,17 @@ dependencies {
 
     //pattern lock
     implementation'com.alex-zaitsev:meternumberpicker:1.0.5'
+
+    //play auth
+    implementation 'com.google.android.gms:play-services-auth:21.2.0'
+
+    // Boom menu
+//    implementation 'com.nightonke:boommenu:2.1.1'
+
+//    implementation 'com.ramotion.circlemenu:circle-menu:0.3.2'
+
+    //map places SDK
+//    implementation 'com.google.android.libraries.places:places:4.0.0'
 
 
 }

@@ -17,10 +17,10 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import com.google.android.gms.common.api.GoogleApiClient
+import com.rrbofficial.androiduipracticekotlin.BuildConfig
 import com.rrbofficial.androiduipracticekotlin.MainActivity
 import com.rrbofficial.androiduipracticekotlin.R
 import com.rrbofficial.androiduipracticekotlin.Security.CustomLockScreen.CustomLockScreenActivity
-import io.grpc.android.BuildConfig
 import java.io.File
 import java.io.FileOutputStream
 import java.security.KeyStore
