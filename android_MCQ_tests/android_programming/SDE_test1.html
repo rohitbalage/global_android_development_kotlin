@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6750a4">
+
+<title>Senior Android Engineer | MCQ Assessment</title>
+
+<style>
+:root {
+    --purple: #6750a4;
+    --green: #75be54;
+    --background: #f3f2f2;
+    --text: #292536;
+    --muted: #716d78;
+    --border: #e2deea;
+    --correct-bg: #edf7e8;
+    --wrong: #d94c55;
+    --wrong-bg: #fff0f0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(
+        125deg,
+        #bce0fe 0%,
+        #f3f2f2 48%,
+        #dcf699 100%
+    );
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    width: min(900px, calc(100% - 32px));
+    margin: auto;
+    padding: 40px 0 60px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.hero {
+    text-align: center;
+    padding: 35px 22px;
+    border-radius: 24px;
+    background: linear-gradient(
+        120deg,
+        #bce0fe,
+        #dcf699
+    );
+    border: 1px solid #ffffff;
+    box-shadow: 0 10px 30px #6750a418;
+    margin-bottom: 24px;
+}
+
+.android-header-gif {
+    display: block;
+    width: min(220px, 55vw);
+    max-height: 140px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 6px 13px;
+    border-radius: 30px;
+    background: #ffffffbd;
+    color: var(--purple);
+    border: 1px solid #6750a455;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    margin: 14px 0 8px;
+    color: #342b50;
+    line-height: 1.2;
+}
+
+.subtitle {
+    max-width: 650px;
+    margin: auto;
+    color: #514d5c;
+    font-size: 15px;
+}
+
+.meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.chip {
+    padding: 6px 12px;
+    border-radius: 30px;
+    background: #ffffffa8;
+    border: 1px solid #6750a433;
+    color: #51456e;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* =========================
+   PROGRESS DASHBOARD
+========================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px #6750a410;
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.track {
+    height: 9px;
+    background: #eae7ef;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        #6750a4,
+        #75be54
+    );
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+.score {
+    text-align: right;
+    min-width: 90px;
+}
+
+.score strong {
+    display: block;
+    font-size: 25px;
+    color: var(--purple);
+}
+
+.score span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px #6750a415;
+}
+
+.card-top {
+    padding: 23px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.question-number {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.question {
+    padding: 12px 24px 20px;
+    margin: 0;
+    font-size: clamp(18px, 2.6vw, 21px);
+    line-height: 1.5;
+    font-weight: 750;
+}
+
+/* =========================
+   ANSWER OPTIONS
+========================= */
+
+.options {
+    display: grid;
+    gap: 11px;
+    padding: 0 24px 24px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: #faf9fb;
+    color: var(--text);
+    text-align: left;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.option:hover:not(:disabled) {
+    border-color: var(--purple);
+    background: #f4f0fb;
+    transform: translateY(-1px);
+}
+
+.option:focus-visible {
+    outline: 3px solid var(--purple);
+    outline-offset: 2px;
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.radio {
+    flex: 0 0 19px;
+    height: 19px;
+    border: 2px solid #9991a8;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: relative;
+}
+
+.option.selected .radio::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.letter {
+    color: var(--purple);
+    font-weight: 700;
+    min-width: 18px;
+}
+
+/* Correct answer */
+
+.option.correct {
+    border-color: var(--green);
+    background: var(--correct-bg);
+    color: #284b20;
+}
+
+.option.correct .radio {
+    border-color: var(--green);
+}
+
+.option.correct .letter {
+    color: #4c8b35;
+}
+
+/* Wrong answer */
+
+.option.wrong {
+    border-color: var(--wrong);
+    background: var(--wrong-bg);
+    color: #762d32;
+}
+
+.option.wrong .radio {
+    border-color: var(--wrong);
+}
+
+.option.wrong .letter {
+    color: var(--wrong);
+}
+
+/* =========================
+   EXPLANATION
+========================= */
+
+.feedback {
+    margin: 0 24px 22px;
+    padding: 15px 17px;
+    border-radius: 13px;
+    background: #f8f7fa;
+    border: 1px solid var(--border);
+}
+
+.feedback.good {
+    background: var(--correct-bg);
+    border-color: var(--green);
+}
+
+.feedback.bad {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.feedback p {
+    margin: 0;
+    font-size: 14px;
+    color: #625d6a;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+button.primary,
+button.secondary {
+    padding: 12px 19px;
+    border-radius: 11px;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button.primary {
+    background: var(--purple);
+    color: white;
+}
+
+button.primary:hover:not(:disabled) {
+    background: #55418e;
+}
+
+button.primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+button.secondary {
+    background: #f3f2f2;
+    border: 1px solid var(--border);
+    color: var(--purple);
+}
+
+/* =========================
+   RESULT SCREEN
+========================= */
+
+.result {
+    display: none;
+    padding: 35px 25px;
+    text-align: center;
+}
+
+.result.show {
+    display: block;
+}
+
+.result-score {
+    font-size: clamp(45px, 8vw, 65px);
+    font-weight: 850;
+    color: var(--purple);
+    margin: 12px 0;
+    line-height: 1.2;
+}
+
+.result p {
+    color: var(--muted);
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+        padding-top: 22px;
+    }
+
+    .hero {
+        padding: 25px 15px;
+    }
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .card-top {
+        padding: 19px 17px 0;
+    }
+
+    .question {
+        padding: 12px 17px 17px;
+    }
+
+    .options {
+        padding: 0 17px 18px;
+    }
+
+    .feedback {
+        margin: 0 17px 18px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- HEADER -->
+
+    <header class="hero">
+
+        <img
+            src="../images/androidheader.gif"
+            alt="Android Developer"
+            class="android-header-gif"
+        >
+
+        <span class="eyebrow">
+            TECHNICAL ASSESSMENT
+        </span>
+
+        <h1>🤖 Senior Android Engineer</h1>
+
+        <p class="subtitle">
+            Test your Android development knowledge with
+            practical technical questions covering Kotlin,
+            Coroutines, Jetpack Compose, architecture,
+            performance and security.
+        </p>
+
+        <div class="meta">
+            <span class="chip">25 Questions</span>
+            <span class="chip">Single Best Answer</span>
+            <span class="chip">Instant Feedback</span>
+            <span class="chip">No Timer</span>
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+
+    <section class="dashboard">
+
+        <div>
+            <div class="progress-label">
+                <span id="progressText">Question 1 of 25</span>
+                <span id="answeredText">0 answered</span>
+            </div>
+
+            <div class="track">
+                <div class="bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="score">
+            <strong id="scoreText">0 / 25</strong>
+            <span>Correct answers</span>
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card" id="quizCard">
+
+        <div id="questionView">
+
+            <div class="card-top">
+                <span class="category" id="category"></span>
+                <span class="question-number" id="questionNumber"></span>
+            </div>
+
+            <h2 class="question" id="questionText"></h2>
+
+            <div class="options" id="options" role="radiogroup"></div>
+
+            <div
+                class="feedback hidden"
+                id="feedback"
+                aria-live="polite"
+            >
+                <strong id="feedbackTitle"></strong>
+                <p id="feedbackText"></p>
+            </div>
+
+        </div>
+
+
+        <!-- FINAL RESULT -->
+
+        <div class="result" id="resultView">
+
+            <span class="eyebrow">ASSESSMENT COMPLETED</span>
+
+            <div class="result-score" id="finalScore">
+                0 / 25
+            </div>
+
+            <h2 id="resultHeading">Your Result</h2>
+
+            <p id="resultDescription"></p>
+
+            <div class="result-actions">
+
+                <button class="primary" id="retryButton">
+                    ↻ Retake Assessment
+                </button>
+
+                <button class="secondary" id="reviewButton">
+                    Review Answers
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="actions" id="navigation">
+
+        <span class="hint" id="hint">
+            Choose the best answer to continue.
+        </span>
+
+        <button class="primary" id="nextButton" disabled>
+            Next Question →
+        </button>
+
+    </div>
+
+
+    <footer class="footer">
+        Kotlin · Coroutines · Jetpack Compose · Architecture ·
+        Performance · Testing · Security
+    </footer>
+
+</main>
+
+
+<script>
+
+// ==========================================
+// QUESTIONS DATABASE
+// ==========================================
+
+const QUESTIONS = [
+
+{
+category: "Kotlin & Coroutines",
+question: "A Retrofit API interface declares a suspend function. Which statement is correct?",
+options: [
+"You must always wrap the call in withContext(Dispatchers.IO).",
+"Retrofit supports asynchronous execution; switching to Dispatchers.IO solely for the network call is generally unnecessary.",
+"The function always blocks the main thread.",
+"A suspend function automatically creates a new thread for every call."
+],
+answer: 1,
+explanation: "Retrofit's suspend integration handles asynchronous network requests. Switching to Dispatchers.IO solely for the network call is generally redundant. Use an appropriate dispatcher for blocking operations."
+},
+
+{
+category: "Kotlin & Coroutines",
+question: "A child coroutine launched inside coroutineScope throws an uncaught exception. What normally happens?",
+options: [
+"Only that child is cancelled; siblings continue.",
+"The exception is ignored.",
+"The scope is cancelled, and cancellation propagates to sibling coroutines.",
+"The scope automatically becomes a SupervisorJob."
+],
+answer: 2,
+explanation: "coroutineScope follows structured concurrency. An uncaught child failure cancels the scope and its sibling coroutines. Use supervisorScope when child failures should be isolated."
+},
+
+{
+category: "Kotlin & Coroutines",
+question: "Which statement best describes StateFlow?",
+options: [
+"It is a cold stream that starts a separate producer for every collector.",
+"It is a hot state holder with a current value; updates are conflated.",
+"It stores every emitted value indefinitely.",
+"It can emit only one value."
+],
+answer: 1,
+explanation: "StateFlow is hot, always has a current value, and conflates updates. A slow collector may skip intermediate values and receive the latest state."
+},
+
+{
+category: "Kotlin & Coroutines",
+question: "Why should CancellationException be handled carefully inside a coroutine?",
+options: [
+"Cancellation is never represented by an exception.",
+"Catching and swallowing it can prevent cooperative cancellation from propagating correctly.",
+"Cancellation exceptions occur only on the main thread.",
+"A coroutine cannot be cancelled inside a try block."
+],
+answer: 1,
+explanation: "CancellationException is part of cooperative cancellation. Swallowing it can prevent cancellation from propagating as intended. Rethrow it when handling broader exceptions."
+},
+
+{
+category: "Kotlin & Coroutines",
+question: "Which dispatcher is most appropriate for CPU-intensive work such as image processing?",
+options: [
+"Dispatchers.Main",
+"Dispatchers.IO",
+"Dispatchers.Default",
+"Dispatchers.Unconfined"
+],
+answer: 2,
+explanation: "Dispatchers.Default is designed for CPU-intensive work. Dispatchers.IO is intended primarily for blocking I/O operations."
+},
+
+{
+category: "Android Lifecycle",
+question: "When is viewModelScope automatically cancelled?",
+options: [
+"When the Activity is paused.",
+"When the ViewModel is cleared.",
+"After the first recomposition.",
+"Whenever the device rotates."
+],
+answer: 1,
+explanation: "viewModelScope is tied to the ViewModel lifecycle and is cancelled when the ViewModel is cleared."
+},
+
+{
+category: "Android Lifecycle",
+question: "Why should a Fragment observe LiveData using viewLifecycleOwner?",
+options: [
+"It makes LiveData persistent across process death.",
+"It ties observation to the Fragment's view lifecycle, preventing updates to a destroyed view.",
+"It prevents Fragment recreation.",
+"It moves callbacks to a background thread."
+],
+answer: 1,
+explanation: "A Fragment's view can be destroyed while the Fragment instance remains alive. viewLifecycleOwner prevents observation from outliving the view."
+},
+
+{
+category: "Architecture & Data",
+question: "An app should display cached data immediately when offline and synchronize newer data from an API. Which architecture is most appropriate?",
+options: [
+"Let every screen call the API directly.",
+"Use the local database as the source of truth, synchronize remote data into it, and let the UI observe the database.",
+"Disable local persistence and rely only on HTTP caching.",
+"Store the entire response in an Activity field."
+],
+answer: 1,
+explanation: "In an offline-first architecture, the UI observes local persistent data. The repository synchronizes remote data into the database."
+},
+
+{
+category: "Architecture & Data",
+question: "A repository must update two related Room tables as one logical operation. What should it use?",
+options: [
+"Two independent fire-and-forget coroutines.",
+"A database transaction.",
+"A Handler on the main thread.",
+"A cache eviction policy."
+],
+answer: 1,
+explanation: "A transaction groups related database operations atomically, preventing partially applied updates if an operation fails."
+},
+
+{
+category: "Architecture & Data",
+question: "In Paging 3, what is the typical responsibility of RemoteMediator?",
+options: [
+"It replaces the UI layer.",
+"It coordinates remote loading and writes results into a local database while the UI pages from the local source.",
+"It stores all pages only in memory.",
+"It handles navigation between screens."
+],
+answer: 1,
+explanation: "RemoteMediator coordinates remote loading and local persistence. A database-backed PagingSource can remain the UI's source of truth."
+},
+
+{
+category: "Jetpack Compose",
+question: "A composable contains LaunchedEffect(userId). The value of userId changes. What happens?",
+options: [
+"The existing effect continues with the original key.",
+"The previous effect is cancelled and a new effect starts with the updated key.",
+"The entire application process restarts.",
+"The effect runs again only after navigation."
+],
+answer: 1,
+explanation: "LaunchedEffect is keyed. When a key changes, the previous effect is cancelled and a new effect is launched."
+},
+
+{
+category: "Jetpack Compose",
+question: "What is the key difference between remember and rememberSaveable?",
+options: [
+"remember survives process death, while rememberSaveable survives only recomposition.",
+"Both always survive process death and store data permanently.",
+"remember retains state across recompositions; rememberSaveable can also restore supported state after Activity or process recreation.",
+"rememberSaveable is available only inside ViewModels."
+],
+answer: 2,
+explanation: "remember retains a value across recompositions but does not independently restore it after Activity recreation. rememberSaveable uses saved-state mechanisms for supported values and custom savers."
+},
+
+{
+category: "Jetpack Compose",
+question: "A LazyColumn displays items that can be inserted, removed, and reordered. Why provide stable, unique keys?",
+options: [
+"To force every row to recompose on every frame.",
+"To preserve item identity and associate remembered state with the correct item when the list changes.",
+"To cache network responses automatically.",
+"To prevent scrolling."
+],
+answer: 1,
+explanation: "Stable keys help Compose track items when a list changes. This keeps remembered item state associated with the correct item."
+},
+
+{
+category: "Jetpack Compose",
+question: "What is the primary purpose of state hoisting in Jetpack Compose?",
+options: [
+"To move all UI state into a global singleton.",
+"To move state to an appropriate common owner and pass values and callbacks to child composables.",
+"To eliminate recomposition completely.",
+"To save every UI value automatically in Room."
+],
+answer: 1,
+explanation: "State hoisting creates a clear source of truth and makes composables easier to reuse, test, and maintain."
+},
+
+{
+category: "Jetpack Compose",
+question: "Why is collectAsStateWithLifecycle() generally preferred for collecting a Flow in an Android screen?",
+options: [
+"It converts the Flow into a database table.",
+"It collects while the lifecycle is at least the configured active state and stops below that state.",
+"It makes the Flow synchronous.",
+"It prevents the ViewModel from being cleared."
+],
+answer: 1,
+explanation: "collectAsStateWithLifecycle collects while the lifecycle is at least the configured active state, typically STARTED, and stops below that state."
+},
+
+{
+category: "Background Work",
+question: "A synchronization task is deferrable, should survive app restarts, and should run only when network constraints are met. Which API is the best fit?",
+options: [
+"A raw Thread started by an Activity.",
+"WorkManager.",
+"A Handler tied to the current screen.",
+"A continuously running foreground service."
+],
+answer: 1,
+explanation: "WorkManager is designed for deferrable background work that should persist across app restarts and device reboots, subject to system scheduling and constraints."
+},
+
+{
+category: "Background Work",
+question: "Which scenario most strongly justifies using a foreground service?",
+options: [
+"Refreshing a small cache once per day.",
+"Performing ongoing, user-noticeable work that should continue while the user is not interacting with the app.",
+"Loading a list while its screen is visible.",
+"Saving a small preference value."
+],
+answer: 1,
+explanation: "Foreground services are intended for ongoing work noticeable to the user and require a visible notification. They are not a general replacement for scheduled background work."
+},
+
+{
+category: "Networking & Reliability",
+question: "A client sends a payment request, but the network times out before receiving a response. The client retries. How should duplicate payments be prevented?",
+options: [
+"Generate a different request body for every retry.",
+"Use a stable idempotency key for the logical payment operation and have the backend deduplicate retries.",
+"Retry only on the main thread.",
+"Assume a timeout means the server did not process the request."
+],
+answer: 1,
+explanation: "A timeout does not prove that the server failed to process a request. A stable idempotency key lets the backend recognize retries of the same logical operation and avoid duplicate side effects."
+},
+
+{
+category: "Networking & Reliability",
+question: "An API responds with HTTP 401 Unauthorized. What does this status generally indicate?",
+options: [
+"The request was understood, but the authenticated user lacks permission.",
+"Valid authentication credentials are missing or were not accepted.",
+"The requested resource was permanently deleted.",
+"The server completed the request successfully."
+],
+answer: 1,
+explanation: "HTTP 401 generally indicates that valid authentication credentials are missing or were not accepted. HTTP 403 generally means the server understood the request but refuses authorization."
+},
+
+{
+category: "Performance",
+question: "An app experiences an ANR because the main thread performs a blocking database operation. What is the correct solution?",
+options: [
+"Increase the ANR timeout.",
+"Move blocking work off the main thread and keep main-thread operations short.",
+"Add more composables.",
+"Disable lifecycle callbacks."
+],
+answer: 1,
+explanation: "The main thread must remain responsive to input and rendering. Blocking database operations and other expensive work should run off the main thread."
+},
+
+{
+category: "Performance",
+question: "What is the primary purpose of Android Baseline Profiles?",
+options: [
+"To replace runtime permissions.",
+"To provide profile-guided compilation information for important code paths, improving startup and runtime performance.",
+"To compress image assets inside the APK.",
+"To automatically detect and fix memory leaks."
+],
+answer: 1,
+explanation: "Baseline Profiles identify important code paths so Android Runtime (ART) can compile them ahead of time, improving startup and common user journeys."
+},
+
+{
+category: "Performance",
+question: "A singleton stores an Activity context and keeps that Activity in memory after it has been destroyed. What is the underlying issue?",
+options: [
+"A memory leak caused by a long-lived object retaining a shorter-lived object.",
+"A database transaction conflict.",
+"A coroutine dispatcher mismatch.",
+"A Compose stability issue."
+],
+answer: 0,
+explanation: "A singleton can outlive an Activity. Retaining the Activity context prevents it from being garbage-collected. Use application context when an Activity-specific context is not required."
+},
+
+{
+category: "Android Security",
+question: "What does Android Keystore provide when an app needs to protect cryptographic keys?",
+options: [
+"A public cloud database for passwords.",
+"A system facility for generating and storing cryptographic key material with access controls.",
+"Automatic encryption of every application file.",
+"A replacement for HTTPS/TLS."
+],
+answer: 1,
+explanation: "Android Keystore protects cryptographic key material and can restrict how keys are used. The application still needs to encrypt and store its data appropriately."
+},
+
+{
+category: "Android Security",
+question: "An exported Activity receives deep-link intents from outside the app. What should its implementation do?",
+options: [
+"Trust all incoming extras because Android validates them.",
+"Validate and sanitize untrusted input, including URI parameters and intent extras, and check authorization before acting.",
+"Disable authentication for deep links.",
+"Store every incoming URI as a trusted preference."
+],
+answer: 1,
+explanation: "Exported components and deep links can receive untrusted input. Validate destinations, parameters, and identifiers, and verify authorization before performing sensitive actions."
+},
+
+{
+category: "Performance & Benchmarking",
+question: "A team wants to measure cold app startup and a realistic user journey, such as scrolling through a feed, on a physical device. Which tool is most appropriate?",
+options: [
+"Macrobenchmark.",
+"A plain JVM unit test.",
+"Android Lint only.",
+"A Room migration test."
+],
+answer: 0,
+explanation: "Macrobenchmark measures end-to-end app behavior on a device, including startup and user journeys such as scrolling. Microbenchmark is better suited to isolated code performance."
+}
+
+];
+
+
+// ==========================================
+// QUIZ LOGIC
+// ==========================================
+
+let current = 0;
+
+let answers = Array(QUESTIONS.length).fill(null);
+
+let reviewMode = false;
+
+const $ = id => document.getElementById(id);
+
+const letters = ["A", "B", "C", "D"];
+
+function getScore() {
+
+    return answers.reduce((total, answer, index) => {
+
+        return total +
+            (answer === QUESTIONS[index].answer ? 1 : 0);
+
+    }, 0);
+
+}
+
+
+// ==========================================
+// RENDER QUESTION
+// ==========================================
+
+function render() {
+
+    const q = QUESTIONS[current];
+
+    const answered = answers.filter(
+        answer => answer !== null
+    ).length;
+
+    $("category").textContent = q.category;
+
+    $("questionNumber").textContent =
+        `QUESTION ${String(current + 1).padStart(2, "0")} / ${QUESTIONS.length}`;
+
+    $("progressText").textContent =
+        `Question ${current + 1} of ${QUESTIONS.length}`;
+
+    $("answeredText").textContent =
+        `${answered} answered`;
+
+    $("progressBar").style.width =
+        `${answered / QUESTIONS.length * 100}%`;
+
+    $("scoreText").textContent =
+        `${getScore()} / ${QUESTIONS.length}`;
+
+    $("questionText").textContent = q.question;
+
+    const optionsContainer = $("options");
+
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((value, index) => {
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+
+        button.className = "option";
+
+        button.setAttribute("role", "radio");
+
+        button.setAttribute(
+            "aria-checked",
+            answers[current] === index ? "true" : "false"
+        );
+
+        button.disabled = answers[current] !== null;
+
+        const radio = document.createElement("span");
+
+        radio.className = "radio";
+
+        radio.setAttribute("aria-hidden", "true");
+
+        const letter = document.createElement("span");
+
+        letter.className = "letter";
+
+        letter.textContent = letters[index];
+
+        const text = document.createElement("span");
+
+        text.textContent = value;
+
+        button.append(radio, letter, text);
+
+        if (answers[current] !== null) {
+
+            if (index === q.answer) {
+                button.classList.add("correct");
+            }
+
+            if (
+                index === answers[current] &&
+                answers[current] !== q.answer
+            ) {
+                button.classList.add("wrong");
+            }
+
+            if (index === answers[current]) {
+                button.classList.add("selected");
+            }
+
+        }
+
+        button.addEventListener("click", () => {
+
+            chooseAnswer(index);
+
+        });
+
+        optionsContainer.appendChild(button);
+
+    });
+
+
+    // EXPLANATION
+
+    const feedback = $("feedback");
+
+    if (answers[current] !== null) {
+
+        feedback.classList.remove(
+            "hidden",
+            "good",
+            "bad"
+        );
+
+        const isCorrect =
+            answers[current] === q.answer;
+
+        feedback.classList.add(
+            isCorrect ? "good" : "bad"
+        );
+
+        $("feedbackTitle").textContent = isCorrect
+            ? "✓ Correct Answer"
+            : "✕ Incorrect — Correct answer highlighted in green";
+
+        $("feedbackText").textContent =
+            q.explanation;
+
+    } else {
+
+        feedback.classList.add("hidden");
+
+    }
+
+
+    // NAVIGATION
+
+    $("nextButton").disabled =
+        answers[current] === null && !reviewMode;
+
+    $("nextButton").textContent =
+        current === QUESTIONS.length - 1
+            ? "View Results →"
+            : "Next Question →";
+
+    $("hint").textContent =
+        reviewMode
+            ? "Review mode — your recorded answer is shown."
+            : answers[current] === null
+                ? "Choose the best answer to continue."
+                : "Answer recorded. Continue when ready.";
+
+    $("questionView").classList.remove("hidden");
+
+    $("resultView").classList.remove("show");
+
+    $("navigation").classList.remove("hidden");
+
+}
+
+
+// ==========================================
+// ANSWER SELECTION
+// ==========================================
+
+function chooseAnswer(index) {
+
+    if (answers[current] !== null) return;
+
+    answers[current] = index;
+
+    render();
+
+}
+
+
+// ==========================================
+// FINAL RESULTS
+// ==========================================
+
+function showResults() {
+
+    $("questionView").classList.add("hidden");
+
+    $("resultView").classList.add("show");
+
+    $("navigation").classList.add("hidden");
+
+    const score = getScore();
+
+    const percentage = Math.round(
+        score / QUESTIONS.length * 100
+    );
+
+    $("finalScore").textContent =
+        `${score} / ${QUESTIONS.length}`;
+
+    $("resultHeading").textContent =
+        percentage >= 85
+            ? "Strong Performance!"
+            : percentage >= 70
+                ? "Good Foundation!"
+                : "More Practice Needed";
+
+    $("resultDescription").textContent =
+        `You answered ${score} out of ${QUESTIONS.length} questions correctly (${percentage}%). Review the explanations to identify topics you should revisit.`;
+
+    $("progressText").textContent =
+        "Assessment completed";
+
+    $("answeredText").textContent =
+        `${QUESTIONS.length} answered`;
+
+    $("progressBar").style.width = "100%";
+
+    $("scoreText").textContent =
+        `${score} / ${QUESTIONS.length}`;
+
+}
+
+
+// ==========================================
+// NEXT QUESTION
+// ==========================================
+
+$("nextButton").addEventListener("click", () => {
+
+    if (current === QUESTIONS.length - 1) {
+
+        showResults();
+
+    } else {
+
+        current++;
+
+        render();
+
+    }
+
+});
+
+
+// ==========================================
+// RETAKE ASSESSMENT
+// ==========================================
+
+$("retryButton").addEventListener("click", () => {
+
+    current = 0;
+
+    answers = Array(QUESTIONS.length).fill(null);
+
+    reviewMode = false;
+
+    render();
+
+});
+
+
+// ==========================================
+// REVIEW ANSWERS
+// ==========================================
+
+$("reviewButton").addEventListener("click", () => {
+
+    current = 0;
+
+    reviewMode = true;
+
+    render();
+
+});
+
+
+// INITIALIZE QUIZ
+
+render();
+
+</script>
+
+</body>
+</html>
