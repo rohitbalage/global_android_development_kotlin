@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6750a4">
+<title>Senior Android Engineer - Assessment 02</title>
+
+<style>
+:root {
+    --purple: #6750a4;
+    --green: #75be54;
+    --background: #f3f2f2;
+    --text: #292536;
+    --muted: #716d78;
+    --border: #e2deea;
+    --correct-bg: #edf7e8;
+    --wrong: #d94c55;
+    --wrong-bg: #fff0f0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(
+        125deg,
+        #bce0fe 0%,
+        #f3f2f2 48%,
+        #dcf699 100%
+    );
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    width: min(900px, calc(100% - 32px));
+    margin: auto;
+    padding: 36px 0 55px;
+}
+
+/* HEADER */
+
+.hero {
+    text-align: center;
+    padding: 32px 22px;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #bce0fe, #dcf699);
+    border: 1px solid #ffffff;
+    box-shadow: 0 10px 30px #6750a418;
+    margin-bottom: 22px;
+}
+
+.android-header-gif {
+    display: block;
+    width: min(220px, 55vw);
+    max-height: 135px;
+    object-fit: contain;
+    margin: 0 auto 14px;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 6px 13px;
+    border-radius: 30px;
+    background: #ffffffbd;
+    color: var(--purple);
+    border: 1px solid #6750a455;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+h1 {
+    font-size: clamp(27px, 5vw, 41px);
+    margin: 14px 0 8px;
+    color: #342b50;
+    line-height: 1.2;
+}
+
+.subtitle {
+    max-width: 660px;
+    margin: auto;
+    color: #514d5c;
+    font-size: 15px;
+}
+
+.meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 19px;
+}
+
+.chip {
+    padding: 6px 12px;
+    border-radius: 30px;
+    background: #ffffffa8;
+    border: 1px solid #6750a433;
+    color: #51456e;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.previous-link {
+    display: inline-block;
+    margin-top: 17px;
+    color: #51456e;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.previous-link:hover {
+    text-decoration: underline;
+}
+
+/* PROGRESS */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 19px 20px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 5px 20px #6750a410;
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.track {
+    height: 9px;
+    background: #eae7ef;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6750a4, #75be54);
+    border-radius: 20px;
+    transition: width .3s ease;
+}
+
+.score {
+    text-align: right;
+    min-width: 90px;
+}
+
+.score strong {
+    display: block;
+    font-size: 25px;
+    color: var(--purple);
+}
+
+.score span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* QUESTION CARD */
+
+.card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 35px #6750a415;
+}
+
+.card-top {
+    padding: 23px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.category {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.question-number {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.question {
+    padding: 12px 24px 20px;
+    margin: 0;
+    font-size: clamp(18px, 2.6vw, 21px);
+    line-height: 1.5;
+    font-weight: 750;
+}
+
+/* ANSWERS */
+
+.options {
+    display: grid;
+    gap: 11px;
+    padding: 0 24px 24px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: #faf9fb;
+    color: var(--text);
+    text-align: left;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.option:hover:not(:disabled) {
+    border-color: var(--purple);
+    background: #f4f0fb;
+    transform: translateY(-1px);
+}
+
+.option:focus-visible {
+    outline: 3px solid var(--purple);
+    outline-offset: 2px;
+}
+
+.option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.radio {
+    flex: 0 0 19px;
+    height: 19px;
+    border: 2px solid #9991a8;
+    border-radius: 50%;
+    margin-top: 2px;
+    position: relative;
+}
+
+.option.selected .radio::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.letter {
+    color: var(--purple);
+    font-weight: 700;
+    min-width: 18px;
+}
+
+.option.correct {
+    border-color: var(--green);
+    background: var(--correct-bg);
+    color: #284b20;
+}
+
+.option.correct .radio {
+    border-color: var(--green);
+}
+
+.option.correct .letter {
+    color: #4c8b35;
+}
+
+.option.wrong {
+    border-color: var(--wrong);
+    background: var(--wrong-bg);
+    color: #762d32;
+}
+
+.option.wrong .radio {
+    border-color: var(--wrong);
+}
+
+.option.wrong .letter {
+    color: var(--wrong);
+}
+
+/* EXPLANATION */
+
+.feedback {
+    margin: 0 24px 22px;
+    padding: 15px 17px;
+    border-radius: 13px;
+    background: #f8f7fa;
+    border: 1px solid var(--border);
+}
+
+.feedback.good {
+    background: var(--correct-bg);
+    border-color: var(--green);
+}
+
+.feedback.bad {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.feedback p {
+    margin: 0;
+    font-size: 14px;
+    color: #625d6a;
+}
+
+/* NAVIGATION */
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+button.primary,
+button.secondary {
+    padding: 12px 19px;
+    border-radius: 11px;
+    border: 0;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button.primary {
+    background: var(--purple);
+    color: #ffffff;
+}
+
+button.primary:hover:not(:disabled) {
+    background: #55418e;
+}
+
+button.primary:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+button.secondary {
+    background: #f3f2f2;
+    border: 1px solid var(--border);
+    color: var(--purple);
+}
+
+/* RESULTS */
+
+.result {
+    display: none;
+    padding: 35px 25px;
+    text-align: center;
+}
+
+.result.show {
+    display: block;
+}
+
+.result-score {
+    font-size: clamp(45px, 8vw, 65px);
+    font-weight: 850;
+    color: var(--purple);
+    margin: 12px 0;
+    line-height: 1.2;
+}
+
+.result p {
+    color: var(--muted);
+}
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+        padding-top: 20px;
+    }
+
+    .hero {
+        padding: 25px 15px;
+    }
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .card-top {
+        padding: 19px 17px 0;
+    }
+
+    .question {
+        padding: 12px 17px 17px;
+    }
+
+    .options {
+        padding: 0 17px 18px;
+    }
+
+    .feedback {
+        margin: 0 17px 18px;
+    }
+
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <!-- HEADER -->
+
+    <header class="hero">
+
+        <img
+            src="../images/androidheader.gif"
+            alt="Android Developer"
+            class="android-header-gif"
+        >
+
+        <span class="eyebrow">
+            TECHNICAL ASSESSMENT · SET 02
+        </span>
+
+        <h1>🤖 Senior Android Engineer</h1>
+
+        <p class="subtitle">
+            A second set of 25 scenario-based questions covering advanced
+            Kotlin, Flow, Compose, Android architecture, persistence,
+            dependency injection, testing, performance and security.
+        </p>
+
+        <div class="meta">
+            <span class="chip">25 New Questions</span>
+            <span class="chip">Single Best Answer</span>
+            <span class="chip">Instant Feedback</span>
+            <span class="chip">Explanations Included</span>
+        </div>
+
+        <a class="previous-link" href="SDE_test1.html">
+            ← Go to Assessment 01
+        </a>
+
+    </header>
+
+    <!-- PROGRESS -->
+
+    <section class="dashboard">
+
+        <div>
+            <div class="progress-label">
+                <span id="progressText">Question 1 of 25</span>
+                <span id="answeredText">0 answered</span>
+            </div>
+
+            <div class="track">
+                <div class="bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="score">
+            <strong id="scoreText">0 / 25</strong>
+            <span>Correct answers</span>
+        </div>
+
+    </section>
+
+    <!-- QUIZ -->
+
+    <section class="card" id="quizCard">
+
+        <div id="questionView">
+
+            <div class="card-top">
+                <span class="category" id="category"></span>
+                <span class="question-number" id="questionNumber"></span>
+            </div>
+
+            <h2 class="question" id="questionText"></h2>
+
+            <div
+                class="options"
+                id="options"
+                role="radiogroup"
+                aria-label="Answer options"
+            ></div>
+
+            <div
+                class="feedback hidden"
+                id="feedback"
+                aria-live="polite"
+            >
+                <strong id="feedbackTitle"></strong>
+                <p id="feedbackText"></p>
+            </div>
+
+        </div>
+
+        <!-- FINAL RESULT -->
+
+        <div class="result" id="resultView">
+
+            <span class="eyebrow">ASSESSMENT COMPLETED</span>
+
+            <div class="result-score" id="finalScore">0 / 25</div>
+
+            <h2 id="resultHeading">Your Result</h2>
+
+            <p id="resultDescription"></p>
+
+            <div class="result-actions">
+
+                <button class="primary" id="retryButton">
+                    ↻ Retake Assessment
+                </button>
+
+                <button class="secondary" id="reviewButton">
+                    Review Answers
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NAVIGATION -->
+
+    <div class="actions" id="navigation">
+
+        <span class="hint" id="hint">
+            Choose the best answer to continue.
+        </span>
+
+        <button class="primary" id="nextButton" disabled>
+            Next Question →
+        </button>
+
+    </div>
+
+    <footer class="footer">
+        Kotlin · Flow · Jetpack Compose · Room · WorkManager · Hilt · Testing · Security
+    </footer>
+
+</main>
+
+<script>
+
+// ==========================================
+// ASSESSMENT 02 — QUESTION DATABASE
+// ==========================================
+
+const QUESTIONS = [
+
+{
+    category: "Advanced Kotlin",
+    question: "What does the reified keyword allow when used with an inline function's type parameter?",
+    options: [
+        "It allows the function to inspect the actual type argument at runtime.",
+        "It makes the type parameter nullable by default.",
+        "It prevents the function from being inlined.",
+        "It allows generic types to be stored in primitive variables."
+    ],
+    answer: 0,
+    explanation: "On inline functions, reified preserves access to the type argument at call sites. This enables operations such as T::class and is T checks that are otherwise unavailable for erased generic types."
+},
+
+{
+    category: "Advanced Kotlin",
+    question: "In Kotlin declaration-site variance, what is the main purpose of the out keyword?",
+    options: [
+        "It allows a type parameter to be used only as a function argument.",
+        "It makes a class immutable.",
+        "It marks a type parameter as covariant, allowing it to be safely produced as that type.",
+        "It disables generic type checking."
+    ],
+    answer: 2,
+    explanation: "out declares covariance. A producer of T can be treated as a producer of a supertype of T. The type parameter cannot be used in input positions that would violate type safety."
+},
+
+{
+    category: "Kotlin Flow",
+    question: "When flowOn(Dispatchers.IO) is applied to a Flow pipeline, which part of the pipeline changes context?",
+    options: [
+        "Only the final collector always runs on IO.",
+        "The upstream operators before flowOn run in the specified context; downstream collection remains in the collector's context.",
+        "Every coroutine in the application moves to IO.",
+        "flowOn changes the Android main thread dispatcher globally."
+    ],
+    answer: 1,
+    explanation: "flowOn affects the upstream portion of the Flow pipeline. Downstream operators and the collector continue in their existing context."
+},
+
+{
+    category: "Kotlin Coroutines",
+    question: "Why is Mutex generally more appropriate than synchronized when coordinating access to shared state from suspending coroutine code?",
+    options: [
+        "Mutex makes the protected data immutable.",
+        "synchronized cannot be used anywhere in Kotlin.",
+        "Mutex automatically creates a new thread.",
+        "Mutex.lock suspends the coroutine while waiting instead of blocking the underlying thread."
+    ],
+    answer: 3,
+    explanation: "Mutex provides coroutine-friendly mutual exclusion. Its lock operation suspends while waiting, whereas synchronized blocks the current thread. The protected state still needs correct ownership and access discipline."
+},
+
+{
+    category: "Kotlin Flow",
+    question: "A SharedFlow is configured with replay = 2. What happens when a new collector subscribes?",
+    options: [
+        "It receives up to the two most recently replayed values, followed by new emissions.",
+        "It receives every value emitted since the application started.",
+        "It receives no values until the producer restarts.",
+        "It receives only the first value emitted by the producer."
+    ],
+    answer: 0,
+    explanation: "The replay cache stores the most recent configured number of values. A new subscriber receives those cached values before observing subsequent emissions."
+},
+
+{
+    category: "Kotlin Coroutines",
+    question: "A CPU-intensive coroutine runs a long loop and should respond promptly to cancellation. What should the loop do?",
+    options: [
+        "Catch and ignore every exception.",
+        "Call Thread.sleep() on every iteration.",
+        "Periodically check cancellation, for example with ensureActive(), or use a suspending cancellation-aware operation.",
+        "Switch to GlobalScope."
+    ],
+    answer: 2,
+    explanation: "CPU-bound code can be non-cooperative if it never suspends or checks cancellation. Calling ensureActive() periodically allows the coroutine to stop promptly when its Job is cancelled."
+},
+
+{
+    category: "Kotlin Flow",
+    question: "A StateFlow receives a new value that is equal to its current value according to equals(). What normally happens?",
+    options: [
+        "The application throws an exception.",
+        "The equal update is conflated and collectors are not notified of a new distinct value.",
+        "Every collector receives the value twice.",
+        "The StateFlow becomes a SharedFlow."
+    ],
+    answer: 1,
+    explanation: "StateFlow uses equality-based conflation. Assigning a value equal to the current value does not produce a new observable state update."
+},
+
+{
+    category: "Android Lifecycle",
+    question: "An app needs to restore a small navigation or filter value after the operating system kills its process. Which ViewModel mechanism is designed for this?",
+    options: [
+        "A companion object variable.",
+        "A regular mutable property in the ViewModel.",
+        "A static singleton.",
+        "SavedStateHandle."
+    ],
+    answer: 3,
+    explanation: "SavedStateHandle can preserve small pieces of UI state through saved-state restoration after process recreation. It is not intended to replace a database for large or durable application data."
+},
+
+{
+    category: "Android Lifecycle",
+    question: "Which statement about a ViewModel and process death is correct?",
+    options: [
+        "A ViewModel automatically survives process death with all its properties intact.",
+        "A ViewModel is stored permanently in the application process.",
+        "A ViewModel survives configuration changes while its owner remains, but its in-memory state is lost when the process is killed.",
+        "A ViewModel is recreated every time an Activity is paused."
+    ],
+    answer: 2,
+    explanation: "ViewModels are retained across configuration changes within the same process. Process death destroys them; use saved state and persistent storage for state that must be restored."
+},
+
+{
+    category: "Android Components",
+    question: "What is an important benefit of the Activity Result API compared with handling results through the older onActivityResult() pattern?",
+    options: [
+        "It removes the need for permissions.",
+        "It provides lifecycle-aware result handling through registered contracts and callbacks.",
+        "It guarantees that external Activities cannot fail.",
+        "It automatically stores all returned data in Room."
+    ],
+    answer: 1,
+    explanation: "The Activity Result API uses typed contracts and lifecycle-aware registration. Results can be delivered after recreation when registration is set up consistently."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "When is derivedStateOf most useful in Jetpack Compose?",
+    options: [
+        "When a calculated value changes less frequently than the state values it depends on, and unnecessary recompositions can be avoided.",
+        "Whenever any variable is declared inside a composable.",
+        "To perform network requests automatically.",
+        "To persist state after process death."
+    ],
+    answer: 0,
+    explanation: "derivedStateOf is useful when inputs change frequently but the derived result changes less often. It can prevent downstream consumers from recomposing for irrelevant intermediate changes."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "A long-running LaunchedEffect uses a callback parameter that may change during recomposition. You want the effect to call the latest callback without restarting the effect. What should you use?",
+    options: [
+        "key()",
+        "DisposableEffect",
+        "rememberCoroutineScope only",
+        "rememberUpdatedState"
+    ],
+    answer: 3,
+    explanation: "rememberUpdatedState exposes the latest value to a long-lived effect without making that value an effect key and restarting the effect."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "What is the purpose of DisposableEffect in Compose?",
+    options: [
+        "To launch an effect that can never be cancelled.",
+        "To create a ViewModel automatically.",
+        "To run setup logic and perform cleanup through onDispose when the effect leaves composition or its keys change.",
+        "To cache a composable's output permanently."
+    ],
+    answer: 2,
+    explanation: "DisposableEffect is intended for side effects that need cleanup, such as registering and unregistering a listener. Its onDispose block runs when the effect is disposed or restarted."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "What does snapshotFlow do?",
+    options: [
+        "It converts Compose snapshot state reads inside its block into a Flow that emits when the observed result changes.",
+        "It saves Compose state to a remote server.",
+        "It converts every Flow into LiveData.",
+        "It prevents state reads during composition."
+    ],
+    answer: 0,
+    explanation: "snapshotFlow observes snapshot state read by its block and emits values when the result changes. It is useful for observing Compose state from coroutine-based side effects."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "Why can changing the order of Modifier elements change the appearance or behavior of a composable?",
+    options: [
+        "Modifier order is ignored by Compose.",
+        "Modifiers are applied in sequence, so layout, drawing, clipping, padding and pointer behavior can depend on their order.",
+        "Only the last modifier is ever applied.",
+        "Modifier order changes the application's package name."
+    ],
+    answer: 1,
+    explanation: "Modifier chains are ordered. For example, padding before or after a background can produce different visual results, and ordering can also affect clipping and input behavior."
+},
+
+{
+    category: "Jetpack Compose",
+    question: "When is it appropriate to annotate a model with @Immutable for Compose?",
+    options: [
+        "Whenever the model is a data class, regardless of its properties.",
+        "Whenever the model contains a mutable list.",
+        "Only when the model is used in a ViewModel.",
+        "When its public properties are immutable and their types are themselves stable or immutable, so the promise made by the annotation is true."
+    ],
+    answer: 3,
+    explanation: "@Immutable is a contract with the Compose compiler. Use it only when the object really cannot change through its public properties. Incorrect annotations can cause stale UI because Compose may skip work based on a false promise."
+},
+
+{
+    category: "Room Database",
+    question: "A Room query loads a parent entity together with related child entities. Why might the DAO method need @Transaction?",
+    options: [
+        "To make the query execute on the main thread.",
+        "To automatically encrypt the database.",
+        "To read the related data within a transaction and avoid an inconsistent result if the database changes between related queries.",
+        "To prevent all future database writes."
+    ],
+    answer: 2,
+    explanation: "Room relation loading may involve multiple queries. @Transaction ensures those related reads observe a consistent database state within one transaction."
+},
+
+{
+    category: "Room Database",
+    question: "A production Room database needs a schema change while preserving existing user data. What is the correct approach?",
+    options: [
+        "Delete the database on every app launch.",
+        "Provide a proper schema migration from the old version to the new version.",
+        "Change the version number without migration logic.",
+        "Clear the application's cache."
+    ],
+    answer: 1,
+    explanation: "A migration defines how an existing schema is transformed while retaining data. Destructive migration deliberately drops and recreates tables, so it is unsuitable when user data must be preserved."
+},
+
+{
+    category: "Android Data Storage",
+    question: "What is a key advantage of DataStore over SharedPreferences for modern asynchronous settings storage?",
+    options: [
+        "DataStore provides asynchronous APIs and transactional updates, avoiding synchronous disk access on the main thread.",
+        "DataStore automatically stores unlimited relational data.",
+        "DataStore replaces Room for complex relational queries.",
+        "DataStore is available only from a foreground service."
+    ],
+    answer: 0,
+    explanation: "DataStore provides coroutine- and Flow-based APIs with transactional updates. Room remains the more appropriate choice for structured relational data and complex queries."
+},
+
+{
+    category: "WorkManager",
+    question: "An app enqueues unique work using ExistingWorkPolicy.KEEP. A work request with the same unique name is already pending or running. What happens?",
+    options: [
+        "The existing work is always cancelled.",
+        "Both requests are guaranteed to run simultaneously.",
+        "The new request is ignored and the existing unfinished work is kept.",
+        "The entire WorkManager database is cleared."
+    ],
+    answer: 2,
+    explanation: "KEEP preserves existing unfinished work with the same unique name and does not replace it with the new request. REPLACE cancels and replaces existing work."
+},
+
+{
+    category: "Android Testing",
+    question: "A coroutine unit test uses runTest. What is the main benefit of its test coroutine scheduler?",
+    options: [
+        "It runs tests on a real production server.",
+        "It provides control over coroutine execution and virtual time, allowing delays and scheduled work to be tested deterministically.",
+        "It automatically mocks every repository.",
+        "It prevents coroutine exceptions from reaching the test."
+    ],
+    answer: 1,
+    explanation: "runTest uses a test scheduler to control coroutine execution and virtual time. Utilities such as advanceTimeBy and advanceUntilIdle make time-dependent coroutine tests faster and deterministic."
+},
+
+{
+    category: "Dependency Injection",
+    question: "In Hilt, what is the typical lifecycle of an object annotated with @ActivityRetainedScoped?",
+    options: [
+        "It is recreated on every recomposition.",
+        "It lives for the entire installation of the app.",
+        "It is destroyed whenever the Activity rotates.",
+        "It is retained across Activity configuration changes and cleared when the Activity is permanently finished."
+    ],
+    answer: 3,
+    explanation: "@ActivityRetainedScoped objects live in the ActivityRetainedComponent. They survive configuration changes but are cleared when the Activity's retained lifecycle ends."
+},
+
+{
+    category: "Build & Release",
+    question: "What does R8 do in an Android release build?",
+    options: [
+        "It replaces the Android runtime.",
+        "It only compresses image files.",
+        "It performs code shrinking, optimization and obfuscation; keep rules preserve code that must remain accessible, such as certain reflective entry points.",
+        "It automatically writes unit tests."
+    ],
+    answer: 2,
+    explanation: "R8 shrinks and optimizes code and can obfuscate names. Keep rules are important for code accessed indirectly through reflection, JNI or other mechanisms that static analysis cannot safely infer."
+},
+
+{
+    category: "Android Security",
+    question: "What can Android Network Security Configuration control?",
+    options: [
+        "Per-domain trust anchors, cleartext traffic policy and debug-only trust configuration.",
+        "The user's device unlock PIN.",
+        "The server's database schema.",
+        "The app's runtime memory limit."
+    ],
+    answer: 0,
+    explanation: "Network Security Configuration lets an app define network security policies, including trusted certificate authorities, cleartext traffic rules and debug-only overrides for selected domains."
+},
+
+{
+    category: "Accessibility & Testing",
+    question: "Why are Compose semantics important when building accessible UI and writing UI tests?",
+    options: [
+        "They automatically translate every screen into every language.",
+        "They expose meaningful information such as labels, roles and state to accessibility services and test frameworks.",
+        "They replace the composable layout system.",
+        "They disable touch input for screen readers."
+    ],
+    answer: 1,
+    explanation: "The semantics tree describes the meaning and state of UI elements. Accessibility services use it to communicate the interface, and Compose UI tests use semantics to find and assert UI elements."
+}
+
+];
+
+// ==========================================
+// QUIZ STATE & HELPERS
+// ==========================================
+
+let current = 0;
+
+let answers = Array(QUESTIONS.length).fill(null);
+
+let reviewMode = false;
+
+const $ = id => document.getElementById(id);
+
+const letters = ["A", "B", "C", "D"];
+
+function getScore() {
+
+    return answers.reduce((total, answer, index) =>
+        total + (answer === QUESTIONS[index].answer ? 1 : 0),
+        0
+    );
+
+}
+
+// ==========================================
+// RENDER QUESTION
+// ==========================================
+
+function render() {
+
+    const q = QUESTIONS[current];
+
+    const answered = answers.filter(
+        answer => answer !== null
+    ).length;
+
+    $("category").textContent = q.category;
+
+    $("questionNumber").textContent =
+        `QUESTION ${String(current + 1).padStart(2, "0")} / ${QUESTIONS.length}`;
+
+    $("progressText").textContent =
+        `Question ${current + 1} of ${QUESTIONS.length}`;
+
+    $("answeredText").textContent =
+        `${answered} answered`;
+
+    $("progressBar").style.width =
+        `${answered / QUESTIONS.length * 100}%`;
+
+    $("scoreText").textContent =
+        `${getScore()} / ${QUESTIONS.length}`;
+
+    $("questionText").textContent = q.question;
+
+    const optionsContainer = $("options");
+
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((value, index) => {
+
+        const button = document.createElement("button");
+
+        button.type = "button";
+
+        button.className = "option";
+
+        button.setAttribute("role", "radio");
+
+        button.setAttribute(
+            "aria-checked",
+            answers[current] === index ? "true" : "false"
+        );
+
+        button.disabled = answers[current] !== null;
+
+        const radio = document.createElement("span");
+
+        radio.className = "radio";
+
+        radio.setAttribute("aria-hidden", "true");
+
+        const letter = document.createElement("span");
+
+        letter.className = "letter";
+
+        letter.textContent = letters[index];
+
+        const text = document.createElement("span");
+
+        text.textContent = value;
+
+        button.append(radio, letter, text);
+
+        if (answers[current] !== null) {
+
+            if (index === q.answer) {
+                button.classList.add("correct");
+            }
+
+            if (
+                index === answers[current] &&
+                answers[current] !== q.answer
+            ) {
+                button.classList.add("wrong");
+            }
+
+            if (index === answers[current]) {
+                button.classList.add("selected");
+            }
+
+        }
+
+        button.addEventListener("click", () => {
+            chooseAnswer(index);
+        });
+
+        optionsContainer.appendChild(button);
+
+    });
+
+    // FEEDBACK
+
+    const feedback = $("feedback");
+
+    if (answers[current] !== null) {
+
+        feedback.classList.remove("hidden", "good", "bad");
+
+        const isCorrect =
+            answers[current] === q.answer;
+
+        feedback.classList.add(
+            isCorrect ? "good" : "bad"
+        );
+
+        $("feedbackTitle").textContent = isCorrect
+            ? "✓ Correct Answer"
+            : "✕ Incorrect — Correct answer highlighted in green";
+
+        $("feedbackText").textContent =
+            q.explanation;
+
+    } else {
+
+        feedback.classList.add("hidden");
+
+    }
+
+    // NAVIGATION
+
+    $("nextButton").disabled =
+        answers[current] === null && !reviewMode;
+
+    $("nextButton").textContent =
+        current === QUESTIONS.length - 1
+            ? "View Results →"
+            : "Next Question →";
+
+    $("hint").textContent = reviewMode
+        ? "Review mode — your recorded answer is shown."
+        : answers[current] === null
+            ? "Choose the best answer to continue."
+            : "Answer recorded. Continue when ready.";
+
+    $("questionView").classList.remove("hidden");
+
+    $("resultView").classList.remove("show");
+
+    $("navigation").classList.remove("hidden");
+
+}
+
+// ==========================================
+// ANSWER SELECTION
+// ==========================================
+
+function chooseAnswer(index) {
+
+    if (answers[current] !== null) return;
+
+    answers[current] = index;
+
+    render();
+
+}
+
+// ==========================================
+// FINAL RESULTS
+// ==========================================
+
+function showResults() {
+
+    $("questionView").classList.add("hidden");
+
+    $("resultView").classList.add("show");
+
+    $("navigation").classList.add("hidden");
+
+    const score = getScore();
+
+    const percentage = Math.round(
+        score / QUESTIONS.length * 100
+    );
+
+    $("finalScore").textContent =
+        `${score} / ${QUESTIONS.length}`;
+
+    $("resultHeading").textContent =
+        percentage >= 85
+            ? "Strong Performance!"
+            : percentage >= 70
+                ? "Good Foundation!"
+                : "More Practice Needed";
+
+    $("resultDescription").textContent =
+        `You answered ${score} out of ${QUESTIONS.length} questions correctly (${percentage}%). Review the explanations to identify topics you should revisit.`;
+
+    $("progressText").textContent =
+        "Assessment completed";
+
+    $("answeredText").textContent =
+        `${QUESTIONS.length} answered`;
+
+    $("progressBar").style.width = "100%";
+
+    $("scoreText").textContent =
+        `${score} / ${QUESTIONS.length}`;
+
+}
+
+// ==========================================
+// NAVIGATION
+// ==========================================
+
+$("nextButton").addEventListener("click", () => {
+
+    if (current === QUESTIONS.length - 1) {
+
+        showResults();
+
+    } else {
+
+        current++;
+
+        render();
+
+    }
+
+});
+
+// ==========================================
+// RETAKE ASSESSMENT
+// ==========================================
+
+$("retryButton").addEventListener("click", () => {
+
+    current = 0;
+
+    answers = Array(QUESTIONS.length).fill(null);
+
+    reviewMode = false;
+
+    render();
+
+});
+
+// ==========================================
+// REVIEW ANSWERS
+// ==========================================
+
+$("reviewButton").addEventListener("click", () => {
+
+    current = 0;
+
+    reviewMode = true;
+
+    render();
+
+});
+
+// ==========================================
+// INITIALIZE
+// ==========================================
+
+render();
+
+</script>
+
+</body>
+</html>
